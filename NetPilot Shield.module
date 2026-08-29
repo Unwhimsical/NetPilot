@@ -4,6 +4,11 @@
 #!category=Rules
 
 [Rule]
+DOMAIN-SUFFIX,gs-loc.apple.com,PROXY
+DOMAIN-SUFFIX,gs-loc-cn.apple.com,PROXY
+DOMAIN-SUFFIX,gsp-ssl.ls.apple.com,PROXY
+DOMAIN-SUFFIX,bluedot.is.autonavi.com,PROXY
+DOMAIN-SUFFIX,bluedot.is.autonavi.com.gds.alibabadns.com,PROXY
 DOMAIN-SUFFIX,1sapp.com,REJECT
 DOMAIN-SUFFIX,ad.10010.com,REJECT
 DOMAIN-SUFFIX,aa.online-metrix.net,REJECT
