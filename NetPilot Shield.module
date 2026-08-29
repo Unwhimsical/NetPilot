@@ -385,6 +385,14 @@ IP-CIDR,203.119.206.8/32,REJECT-200
 ^https?:\/\/(gw|heic|img)\.alicdn\.com\/imgextra\/i\w\/([\w\W]*)(1080-|1125-2436|1350|-1602|-1950|-2339|-2436|-2208|1170-2532)([\w\W]*)\.(jpg|png|heic|webp) _ REJECT-200
 ^https?:\/\/app\.58\.com\/api\/home\/appadv\/splashscreenadv _ REJECT-DICT
 ^https?:\/\/open\.taou\.com\/maimai\/adshow _ REJECT
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(show|mshow)\.cn\/ reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(?!.*_home) reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow\.cn reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.nbcps\.presentation\.fetch\.cn reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.app\.home\.v\d+\.bottom\.area reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\. reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.consultmerge reject-200
 
 [Host]
 localhost = 127.0.0.1
