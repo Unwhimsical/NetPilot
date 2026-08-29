@@ -1,8 +1,16 @@
 #!https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Direct.module
 #!name=NetPilot Direct
 #!homepage=https://github.com/GMOogway/shadowrocket-rules
-#!desc=Rules:112110
+#!desc=Rules:112118
 [Rule]
+DOMAIN-SUFFIX,spotify.com,DIRECT
+DOMAIN-SUFFIX,spotifycdn.com,DIRECT
+DOMAIN-SUFFIX,scdn.co,DIRECT
+DOMAIN-SUFFIX,spotify.map.fastly.net,DIRECT
+DOMAIN-SUFFIX,spotify.map.fastlylb.net,DIRECT
+DOMAIN-SUFFIX,spclient.wg.spotify.com,DIRECT
+DOMAIN-SUFFIX,app-measurement.com,DIRECT
+DOMAIN-SUFFIX,branch.io,DIRECT
 DOMAIN-SUFFIX,apple.com,DIRECT
 DOMAIN-SUFFIX,apple.com.cn,DIRECT
 DOMAIN-SUFFIX,appstore.com,DIRECT
@@ -31122,14 +31130,3 @@ DOMAIN-SUFFIX,ifeehei.xyz,DIRECT
 DOMAIN-SUFFIX,qfull.com,DIRECT
 DOMAIN-SUFFIX,wefitos.com,DIRECT
 DOMAIN-SUFFIX,ggfswy.com,DIRECT
-DOMAIN-SUFFIX,whbcrs.com,DIRECT
-DOMAIN-SUFFIX,6655304.com,DIRECT
-DOMAIN-SUFFIX,letssepub.com,DIRECT
-DOMAIN-SUFFIX,ln525.com,DIRECT
-DOMAIN-SUFFIX,001daima.com,DIRECT
-DOMAIN-SUFFIX,console.cdnetworks.com,DIRECT
-DOMAIN-SUFFIX,kejiweixun.com,DIRECT
-DOMAIN-SUFFIX,yiren001.com,DIRECT
-DOMAIN-SUFFIX,queniuql.com,DIRECT
-DOMAIN-SUFFIX,rcmarble.com,DIRECT
-DOMAIN-SUFFIX,diansh
