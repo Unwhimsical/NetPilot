@@ -1,9 +1,16 @@
 #!https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Shield.module
 #!name=NetPilot
-#!desc=屏蔽开屏广告
+#!desc=屏蔽开屏广告+代理分流
 #!category=Rules
 
 [Rule]
+DOMAIN-SUFFIX,accounts.google.com,PROXY
+DOMAIN-SUFFIX,googleapis.com,PROXY
+DOMAIN-SUFFIX,gstatic.com,PROXY
+DOMAIN-SUFFIX,googleusercontent.com,PROXY
+DOMAIN-SUFFIX,google.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY
 DOMAIN-SUFFIX,gs-loc.apple.com,PROXY
 DOMAIN-SUFFIX,gs-loc-cn.apple.com,PROXY
 DOMAIN-SUFFIX,gsp-ssl.ls.apple.com,PROXY
