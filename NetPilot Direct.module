@@ -3,6 +3,8 @@
 #!homepage=https://github.com/GMOogway/shadowrocket-rules
 #!desc=Rules:112118
 [Rule]
+DOMAIN-SUFFIX,app-measurement.com,DIRECT
+DOMAIN-SUFFIX,branch.io,DIRECT
 DOMAIN-SUFFIX,spotify.com,DIRECT
 DOMAIN-SUFFIX,spotifycdn.com,DIRECT
 DOMAIN-SUFFIX,scdn.co,DIRECT
@@ -31120,13 +31122,4 @@ DOMAIN-SUFFIX,sxjdfreight.com,DIRECT
 DOMAIN-SUFFIX,initnn.com,DIRECT
 DOMAIN-SUFFIX,xiagujian.com,DIRECT
 DOMAIN-SUFFIX,11job.com,DIRECT
-DOMAIN-SUFFIX,bmcedu.net,DIRECT
-DOMAIN-SUFFIX,xinli001.com,DIRECT
-DOMAIN-SUFFIX,yuzhouyiyuan.com,DIRECT
-DOMAIN-SUFFIX,amdotibet.com,DIRECT
-DOMAIN-SUFFIX,58dns.org,DIRECT
-DOMAIN-SUFFIX,campusphere.net,DIRECT
-DOMAIN-SUFFIX,ifeehei.xyz,DIRECT
-DOMAIN-SUFFIX,qfull.com,DIRECT
-DOMAIN-SUFFIX,wefitos.com,DIRECT
-DOMAIN-SUFFIX,ggfswy.com,DIRECT
+DOMAIN-SUFFIX,bmcedu.net,DIREC
