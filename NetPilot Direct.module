@@ -1,8 +1,19 @@
 #!https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Direct.module
 #!name=NetPilot Direct
 #!homepage=https://github.com/GMOogway/shadowrocket-rules
-#!desc=Rules:112118
+#!desc=Rules:112131
 [Rule]
+DOMAIN-SUFFIX,douyin.com,DIRECT
+DOMAIN-SUFFIX,douyinvod.com,DIRECT
+DOMAIN-SUFFIX,douyinpic.com,DIRECT
+DOMAIN-SUFFIX,douyinstatic.com,DIRECT
+DOMAIN-SUFFIX,douyincdn.com,DIRECT
+DOMAIN-SUFFIX,byteimg.com,DIRECT
+DOMAIN-SUFFIX,bytecdn.cn,DIRECT
+DOMAIN-SUFFIX,zjcdn.com,DIRECT
+DOMAIN-SUFFIX,amemv.com,DIRECT
+DOMAIN-SUFFIX,ixigua.com,DIRECT
+DOMAIN-SUFFIX,ixiguavideo.com,DIRECT
 DOMAIN-SUFFIX,app-measurement.com,DIRECT
 DOMAIN-SUFFIX,branch.io,DIRECT
 DOMAIN-SUFFIX,spotify.com,DIRECT
@@ -31120,6 +31131,4 @@ DOMAIN,dnl-00.geo.kaspersky.com,DIRECT
 DOMAIN-SUFFIX,cneln.net,DIRECT
 DOMAIN-SUFFIX,sxjdfreight.com,DIRECT
 DOMAIN-SUFFIX,initnn.com,DIRECT
-DOMAIN-SUFFIX,xiagujian.com,DIRECT
-DOMAIN-SUFFIX,11job.com,DIRECT
-DOMAIN-SUFFIX,bmcedu.net,DIREC
+DOMAIN-SUFFIX,xiagujian.
