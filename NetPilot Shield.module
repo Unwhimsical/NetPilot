@@ -84,7 +84,6 @@ DOMAIN-SUFFIX,applovin.com,REJECT
 DOMAIN-SUFFIX,appsflyersdk.com,REJECT-DICT
 DOMAIN-SUFFIX,applog.uc.cn,REJECT-200
 DOMAIN-SUFFIX,aspect-upush.umeng.com,REJECT
-# kugou
 DOMAIN-SUFFIX,activity.kugou.com,REJECT
 DOMAIN-SUFFIX,adservice.kugou.com,REJECT
 DOMAIN-SUFFIX,ad.tencentmusic.com,REJECT
@@ -411,7 +410,7 @@ localhost = 127.0.0.1
 
 [MITM]
 enable = true
-hostname = *.alicdn.com,*.taou.com,*.58.com,cloud.video.taobao.com,m5.amap.com,api.m.jd.com,www.tianxibook.com,*.360buyimg.com,interface.music.163.com,app.bilibili.com,api.zhihu.com,acs.m.goofish.com,*.cainiao.com,*.taobao.com,guide-acs.m.taobao.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,new.vip.weibo.cn,mp.weixin.qq.com
+hostname =%APPEND% *.alicdn.com,*.taou.com,*.58.com,cloud.video.taobao.com,m5.amap.com,api.m.jd.com,www.tianxibook.com,*.360buyimg.com,interface.music.163.com,app.bilibili.com,api.zhihu.com,acs.m.goofish.com,*.cainiao.com,*.taobao.com,guide-acs.m.taobao.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,new.vip.weibo.cn,mp.weixin.qq.com
 
 [Script]
 微博去广告=type=http-response,pattern=^https?://m?api\.weibo\.c(n|om)/2/(cardlist|searchall|page|messageflow|statuses/(unread_)?friends(/|_)timeline|groups/timeline|statuses/(unread_hot_timeline|extend|video_mixtimeline)|profile/(me|statuses)|video/(community_tab|remind_info|tiny_stream_video_list)|checkin/show|\!/live/media_homelist|comments/build_comments|container/get_item|search/(finder|container_timeline|container_discover)),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
