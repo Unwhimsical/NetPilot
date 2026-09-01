@@ -36,8 +36,8 @@ UPSTREAM_JS_SOURCES = {
 }
 
 # 模块文件路径
-DIRECT_MODULE_PATH = "modules/NetPilot Direct.module"
-SHIELD_MODULE_PATH = "modules/NetPilot Shield.module"
+DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
+SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 
 # 是否强制所有 MITM hostname 使用 %APPEND%
