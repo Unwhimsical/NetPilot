@@ -9,7 +9,7 @@ import json
 
 # ========== 用户配置区 ==========
 # 你的 GitHub 用户名（用于生成 raw URL）
-GITHUB_USERNAME = Unwhimsical
+GITHUB_USERNAME = "Unwhimsical"
 REPO_NAME = "NetPilot"
 BRANCH = "main"
 
