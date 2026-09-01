@@ -1,9 +1,22 @@
-#!name=NetPilot Shield
-
-#!desc=去广告模块，自动更新
+#!url=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Shield.module
+#!https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Shield.module
+#!name=NetPilot
+#!desc=屏蔽开屏广告+代理分流
+#!category=Rules
 
 [Rule]
-
+DOMAIN-SUFFIX,accounts.google.com,PROXY
+DOMAIN-SUFFIX,googleapis.com,PROXY
+DOMAIN-SUFFIX,gstatic.com,PROXY
+DOMAIN-SUFFIX,googleusercontent.com,PROXY
+DOMAIN-SUFFIX,google.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY
+DOMAIN-SUFFIX,gs-loc.apple.com,PROXY
+DOMAIN-SUFFIX,gs-loc-cn.apple.com,PROXY
+DOMAIN-SUFFIX,gsp-ssl.ls.apple.com,PROXY
+DOMAIN-SUFFIX,bluedot.is.autonavi.com,PROXY
+DOMAIN-SUFFIX,bluedot.is.autonavi.com.gds.alibabadns.com,PROXY
 DOMAIN-SUFFIX,1sapp.com,REJECT
 DOMAIN-SUFFIX,ad.10010.com,REJECT
 DOMAIN-SUFFIX,aa.online-metrix.net,REJECT
@@ -11,6 +24,10 @@ DOMAIN-SUFFIX,ad.gt,REJECT
 DOMAIN-SUFFIX,ada.baidu.com,REJECT
 DOMAIN-SUFFIX,als.baidu.com,REJECT
 DOMAIN-SUFFIX,afd.baidu.com,REJECT
+DOMAIN-SUFFIX,adashbc.ut.taobao.com,REJECT-200
+DOMAIN-SUFFIX,adashxgc.ut.taobao.com,REJECT-200
+DOMAIN-SUFFIX,h-adashx.ut.dingtalk.com,REJECT-200
+DOMAIN-SUFFIX,adashx.ut.dingtalk.com,REJECT-200
 DOMAIN-SUFFIX,adjust.com,REJECT
 DOMAIN-SUFFIX,adlightning.com,REJECT
 DOMAIN-SUFFIX,adnxs.com,REJECT
@@ -46,6 +63,7 @@ DOMAIN-SUFFIX,adx.journeyads.cn,REJECT
 DOMAIN-SUFFIX,ae.bdstatic.com,REJECT
 DOMAIN-SUFFIX,bb.bdstatic.com,REJECT
 DOMAIN-SUFFIX,msite.baidu.com,REJECT
+DOMAIN-SUFFIX,amdc.m.taobao.com,REJECT-200
 DOMAIN-SUFFIX,amap-aos-info-nogw.amap.com,REJECT
 DOMAIN-SUFFIX,amazon-adsystem.com,REJECT
 DOMAIN-SUFFIX,analytics.adjust.io,REJECT
@@ -64,6 +82,8 @@ DOMAIN-SUFFIX,app.adjust.world,REJECT
 DOMAIN-SUFFIX,app.adjust.net.in,REJECT
 DOMAIN-SUFFIX,app-analytics-services.com,REJECT
 DOMAIN-SUFFIX,applovin.com,REJECT
+DOMAIN-SUFFIX,appsflyersdk.com,REJECT-DICT
+DOMAIN-SUFFIX,applog.uc.cn,REJECT-200
 DOMAIN-SUFFIX,aspect-upush.umeng.com,REJECT
 DOMAIN-SUFFIX,activity.kugou.com,REJECT
 DOMAIN-SUFFIX,adservice.kugou.com,REJECT
@@ -85,6 +105,10 @@ DOMAIN-SUFFIX,beacon.sina.com.cn,REJECT
 DOMAIN-SUFFIX,beacon.tingyun.com,REJECT
 DOMAIN-SUFFIX,bestfunnyads.com,REJECT
 DOMAIN-SUFFIX,bjimp.voiceads.cn,REJECT
+DOMAIN-SUFFIX,boot.biz.weibo.com,REJECT-200
+DOMAIN-SUFFIX,bootpreload.uve.weibo.com,REJECT-200
+DOMAIN-SUFFIX,bootrealtime.uve.weibo.com,REJECT-200
+DOMAIN-SUFFIX,brandvideo.biz.weibo.com,REJECT-200
 DOMAIN-SUFFIX,bv.lnk0.com,REJECT
 DOMAIN-SUFFIX,bz-ipdx.baidu.com,REJECT
 DOMAIN-SUFFIX,cdn.aimtell.com,REJECT
@@ -106,15 +130,21 @@ DOMAIN-SUFFIX,configure.rayjump.com,REJECT
 DOMAIN-SUFFIX,cpro.baidustatic.com,REJECT
 DOMAIN-SUFFIX,creative.xlviirdr.com,REJECT
 DOMAIN-SUFFIX,creative.xlivrdr.com,REJECT
+DOMAIN-SUFFIX,ctobsnssdk.com,REJECT-DICT
 DOMAIN-SUFFIX,ctrack.trafficjunky.net,REJECT
 DOMAIN-SUFFIX,static.kueezrtb.com,REJECT
 DOMAIN-SUFFIX,deliver.ptgncdn.com,REJECT
+DOMAIN-SUFFIX,bdlog.tanx.com,REJECT-200
+DOMAIN-SUFFIX,et.tanx.com,REJECT-200
+DOMAIN-SUFFIX,ef-dongfeng.tanx.com,REJECT-200
+DOMAIN-SUFFIX,df.tanx.com,REJECT-200
 DOMAIN-SUFFIX,doppiocdn.com,REJECT
 DOMAIN-SUFFIX,doppiocdn.net,REJECT
 DOMAIN-SUFFIX,doubleclick.net,REJECT
 DOMAIN-SUFFIX,dpm.demdex.net,REJECT
 DOMAIN-SUFFIX,dsp-ad.yy.com,REJECT
 DOMAIN-SUFFIX,ductquest.com,REJECT
+DOMAIN-SUFFIX,e.qq.com,REJECT-DICT
 DOMAIN-SUFFIX,eclick.baidu.com,REJECT
 DOMAIN-SUFFIX,engagements.appsflyer.com,REJECT
 DOMAIN-SUFFIX,eg-cdn.trafficjunky.net,REJECT
@@ -147,6 +177,8 @@ DOMAIN-SUFFIX,googletagservices.com,REJECT
 DOMAIN-SUFFIX,googletagmanager.com,REJECT
 DOMAIN-SUFFIX,gridsumdissector.com,REJECT
 DOMAIN-SUFFIX,guangtuikeji.com,REJECT
+DOMAIN-SUFFIX,h-adashx.ut.taobao.com,REJECT-200
+DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT-200
 DOMAIN-SUFFIX,h5.analytics.126.net,REJECT
 DOMAIN-SUFFIX,histats.com,REJECT
 DOMAIN-SUFFIX,hm.baidu.com,REJECT
@@ -160,11 +192,15 @@ DOMAIN-SUFFIX,img2.360buyimg.com,REJECT
 DOMAIN-SUFFIX,images.pagechoice.net,REJECT
 DOMAIN-SUFFIX,imgsrc.baidu.com,REJECT
 DOMAIN-SUFFIX,img.whhnkj.com,REJECT
+DOMAIN-SUFFIX,imasdk.googleapis.com,REJECT-DICT
 DOMAIN-SUFFIX,im-x.jd.com,REJECT
 DOMAIN-SUFFIX,in-neo.cn,REJECT
 DOMAIN-SUFFIX,insight.adsrvr.org,REJECT
 DOMAIN-SUFFIX,ios.bugly.qq.com,REJECT
 DOMAIN-SUFFIX,ipm.atm.youku.com,REJECT
+DOMAIN-SUFFIX,ipv6.shuzilm.cn,REJECT-200
+DOMAIN-SUFFIX,idfa2.shuzilm.cn,REJECT-200
+DOMAIN-SUFFIX,iyes.youku.com,REJECT-200
 DOMAIN-SUFFIX,jiongnet.cn,REJECT
 DOMAIN-SUFFIX,j.bs.twlxxl.cn,REJECT
 DOMAIN-SUFFIX,j.s.dhsz.cn,REJECT
@@ -173,6 +209,14 @@ DOMAIN-SUFFIX,js.sohu.com,REJECT
 DOMAIN-SUFFIX,kadmimage.biz.weibo.com,REJECT
 DOMAIN-SUFFIX,l.qq.com,REJECT
 DOMAIN-SUFFIX,legitimatewandermeek.com,REJECT
+DOMAIN-SUFFIX,lf-cdn-tos.bytescm.com,REJECT-200
+DOMAIN-SUFFIX,lf1-cdn-tos.bytescm.com,REJECT-200
+DOMAIN-SUFFIX,lf-leads-fe-scm.bytecdn.com,REJECT-200
+DOMAIN-SUFFIX,lf-reward-video.bytedcdn.com,REJECT-200
+DOMAIN-SUFFIX,lf-static.tiktokpangle-cdn-us.com,REJECT-200
+DOMAIN-SUFFIX,log.snssdk.com,REJECT-DICT-200
+DOMAIN-SUFFIX,logs.amap.com,REJECT-200
+DOMAIN-SUFFIX,dualstack-logs.amap.com,REJECT-200
 DOMAIN-SUFFIX,lupic.cdn.bcebos.com,REJECT
 DOMAIN-SUFFIX,luimg.baidu.com,REJECT
 DOMAIN-SUFFIX,m.ads.8le8le.com,REJECT
@@ -195,6 +239,8 @@ DOMAIN-SUFFIX,mmjs.adutp.com,REJECT
 DOMAIN-SUFFIX,mm1.365dmp.com,REJECT
 DOMAIN-SUFFIX,mm3.365dmp.com,REJECT
 DOMAIN-SUFFIX,mobads.baidu.com,REJECT
+DOMAIN-SUFFIX,mssdk.volces.com,REJECT-DICT
+DOMAIN-SUFFIX,mssdk3-normal-hl.zijieapi.com,REJECT-DICT
 DOMAIN-SUFFIX,myapp.com,REJECT
 DOMAIN-SUFFIX,nex.163.com,REJECT
 DOMAIN-SUFFIX,nsclick.baidu.com,REJECT
@@ -204,7 +250,13 @@ DOMAIN-SUFFIX,opoxv.com,REJECT
 DOMAIN-SUFFIX,optvz.com,REJECT
 DOMAIN-SUFFIX,oqxsu.ajscdn.com,REJECT
 DOMAIN-SUFFIX,orbsrv.com,REJECT
+DOMAIN-KEYWORD,pangolin,REJECT-DICT
+DOMAIN-SUFFIX,pangolin-dsp-toutiao.com,REJECT-DICT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT-DICT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com,REJECT-DICT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao1.com,REJECT-DICT
 DOMAIN-SUFFIX,pgdt.gtimg.cn,REJECT
+DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT-DICT
 DOMAIN-SUFFIX,ping.chartbeat.net,REJECT
 DOMAIN-SUFFIX,pingfore.qq.com,REJECT
 DOMAIN-SUFFIX,pmpmonitor.365dmp.com,REJECT
@@ -217,6 +269,7 @@ DOMAIN-SUFFIX,push.zhanzhang.baidu.com,REJECT
 DOMAIN-SUFFIX,preferencenail.com,REJECT
 DOMAIN-SUFFIX,prvc.io,REJECT
 DOMAIN-SUFFIX,pv.sohu.com,REJECT
+DOMAIN-SUFFIX,px.effirst.com,REJECT-200
 DOMAIN-SUFFIX,px.ucweb.com,REJECT
 DOMAIN-SUFFIX,qchannel01.cn,REJECT
 DOMAIN-SUFFIX,qchannel03.cn,REJECT
@@ -230,14 +283,22 @@ DOMAIN-SUFFIX,render-server.cdn.bcebos.com,REJECT
 DOMAIN-SUFFIX,rlcdn.com,REJECT
 DOMAIN-SUFFIX,saawsedge.com,REJECT
 DOMAIN-SUFFIX,sacdnssedge.com,REJECT
+DOMAIN-SUFFIX,sdk.1rtb.net,REJECT-DICT
+DOMAIN-SUFFIX,sdk.beizi.biz,REJECT-DICT
 DOMAIN-SUFFIX,s.pemsrv.com,REJECT
 DOMAIN-SUFFIX,s.bs.twlxxl.cn,REJECT
 DOMAIN-SUFFIX,s.go.sohu.com,REJECT
 DOMAIN-SUFFIX,s2s.singular.net,REJECT
 DOMAIN-SUFFIX,s3t3d2y8.afcdn.net,REJECT
 DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,sdk.51.la,REJECT-DICT
+DOMAIN-SUFFIX,sdk.api.appwheel.com,REJECT-DICT
+DOMAIN-SUFFIX,sdkapp.uve.weibo.com,REJECT-DICT
+DOMAIN-SUFFIX,sdkclick.biz.weibo.com,REJECT-DICT
+DOMAIN-SUFFIX,sdk-track.66mobi.com,REJECT-DICT
 DOMAIN-SUFFIX,sensors.cloud.tencent.com,REJECT
 DOMAIN-SUFFIX,show.partners-show.com,REJECT
+DOMAIN-SUFFIX,smartad.10010.com,REJECT-200
 DOMAIN-SUFFIX,s22.cnzz.com,REJECT
 DOMAIN-SUFFIX,splash.yy.com,REJECT
 DOMAIN-SUFFIX,sslwidget.criteo.com,REJECT
@@ -266,11 +327,20 @@ DOMAIN-SUFFIX,inpp-ssp-trk.trknext.com,REJECT
 DOMAIN-SUFFIX,tscprts.com,REJECT
 DOMAIN-SUFFIX,tsyndicate.com,REJECT
 DOMAIN-SUFFIX,txt.go.sohu.com,REJECT
+DOMAIN-SUFFIX,ugsdk.com,REJECT-DICT
+DOMAIN-SUFFIX,ugsdk.cn,REJECT-DICT
+DOMAIN-SUFFIX,ulogs.umeng.com,REJECT-DICT
+DOMAIN-SUFFIX,ulogs.umengcloud.com,REJECT-DICT
 DOMAIN-SUFFIX,umini.shujupie.com,REJECT
 DOMAIN-SUFFIX,unseenreport.com,REJECT
 DOMAIN-SUFFIX,upos-sz-mirrorcos.bilivideo.com,REJECT
 DOMAIN-SUFFIX,upos-sz-static.bilivideo.com,REJECT
+DOMAIN-SUFFIX,utoken.umeng.com,REJECT-DICT
 DOMAIN-SUFFIX,uyunad.com,REJECT
+DOMAIN-SUFFIX,cnlogs.umeng.com,REJECT-DICT
+DOMAIN-SUFFIX,cnlogs.umengcloud.com,REJECT-DICT
+DOMAIN-SUFFIX,resolve.umeng.com,REJECT-DICT
+DOMAIN-SUFFIX,script-center.bad.news,REJECT-IMG
 DOMAIN-SUFFIX,ubixioe.com,REJECT
 DOMAIN-SUFFIX,v.adintl.cn,REJECT
 DOMAIN-SUFFIX,v2.reachmax.cn,REJECT
@@ -286,41 +356,15 @@ DOMAIN-SUFFIX,wxcjgg.cn,REJECT
 DOMAIN-SUFFIX,wxs.qq.com,REJECT
 DOMAIN-SUFFIX,xcultur.com,REJECT
 DOMAIN-SUFFIX,xhvideo.sacdnssedge.com,REJECT
+DOMAIN-SUFFIX,xpis-xcdn.youku.com,REJECT-200
 DOMAIN-SUFFIX,yunxish.com,REJECT
 DOMAIN-SUFFIX,zhanzhang.toutiao.com,REJECT
 DOMAIN-SUFFIX,zz.bdstatic.com,REJECT
-DOMAIN-SUFFIX,errlog.umeng.com,REJECT
-DOMAIN-SUFFIX,adashbc.ut.taobao.com,REJECT-200
-DOMAIN-SUFFIX,adashxgc.ut.taobao.com,REJECT-200
-DOMAIN-SUFFIX,h-adashx.ut.dingtalk.com,REJECT-200
-DOMAIN-SUFFIX,adashx.ut.dingtalk.com,REJECT-200
-DOMAIN-SUFFIX,amdc.m.taobao.com,REJECT-200
-DOMAIN-SUFFIX,applog.uc.cn,REJECT-200
-DOMAIN-SUFFIX,boot.biz.weibo.com,REJECT-200
-DOMAIN-SUFFIX,bootpreload.uve.weibo.com,REJECT-200
-DOMAIN-SUFFIX,bootrealtime.uve.weibo.com,REJECT-200
-DOMAIN-SUFFIX,brandvideo.biz.weibo.com,REJECT-200
-DOMAIN-SUFFIX,bdlog.tanx.com,REJECT-200
-DOMAIN-SUFFIX,et.tanx.com,REJECT-200
-DOMAIN-SUFFIX,ef-dongfeng.tanx.com,REJECT-200
-DOMAIN-SUFFIX,df.tanx.com,REJECT-200
-DOMAIN-SUFFIX,h-adashx.ut.taobao.com,REJECT-200
-DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT-200
-DOMAIN-SUFFIX,ipv6.shuzilm.cn,REJECT-200
-DOMAIN-SUFFIX,idfa2.shuzilm.cn,REJECT-200
-DOMAIN-SUFFIX,iyes.youku.com,REJECT-200
-DOMAIN-SUFFIX,lf-cdn-tos.bytescm.com,REJECT-200
-DOMAIN-SUFFIX,lf1-cdn-tos.bytescm.com,REJECT-200
-DOMAIN-SUFFIX,lf-leads-fe-scm.bytecdn.com,REJECT-200
-DOMAIN-SUFFIX,lf-reward-video.bytedcdn.com,REJECT-200
-DOMAIN-SUFFIX,lf-static.tiktokpangle-cdn-us.com,REJECT-200
-DOMAIN-SUFFIX,logs.amap.com,REJECT-200
-DOMAIN-SUFFIX,dualstack-logs.amap.com,REJECT-200
-DOMAIN-SUFFIX,px.effirst.com,REJECT-200
-DOMAIN-SUFFIX,smartad.10010.com,REJECT-200
-DOMAIN-SUFFIX,xpis-xcdn.youku.com,REJECT-200
+URL-REGEX,https?:\/\/m\.xianqihaotianmi\.org\/[a-zA-Z0-9]{8}\/[a-zA-Z0-9]{10}\.js,REJECT-DICT
+URL-REGEX,^http:\/\/m\.chensiwx\.com\/[a-zA-Z0-9]{8}\/[a-zA-Z0-9]{10}\.js,REJECT-DICT
 URL-REGEX,p([\w]*)\-ad\-sign\.byteimg\.com\/web\.business\.image,REJECT-200
 URL-REGEX,p([\w]*)\-sign\.douyinpic\.com\/large\/tos,REJECT-200
+URL-REGEX,m\.xsbiquge\.la\/js\/detail\.js,REJECT-DICT
 IP-CIDR,47.246.103.10/32,REJECT-200
 IP-CIDR,47.246.103.9/32,REJECT-200
 IP-CIDR,59.82.34.148/32,REJECT-200
@@ -333,40 +377,8 @@ IP-CIDR,59.82.113.10/32,REJECT-200
 IP-CIDR,203.119.211.219/32,REJECT-200
 IP-CIDR,59.82.113.219/32,REJECT-200
 IP-CIDR,203.119.206.8/32,REJECT-200
-DOMAIN-SUFFIX,appsflyersdk.com,REJECT-DICT
-DOMAIN-SUFFIX,ctobsnssdk.com,REJECT-DICT
-DOMAIN-SUFFIX,e.qq.com,REJECT-DICT
-DOMAIN-SUFFIX,imasdk.googleapis.com,REJECT-DICT
-DOMAIN-SUFFIX,mssdk.volces.com,REJECT-DICT
-DOMAIN-SUFFIX,mssdk3-normal-hl.zijieapi.com,REJECT-DICT
-DOMAIN-KEYWORD,pangolin,REJECT-DICT
-DOMAIN-SUFFIX,pangolin-dsp-toutiao.com,REJECT-DICT
-DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT-DICT
-DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com,REJECT-DICT
-DOMAIN-SUFFIX,pangolin-sdk-toutiao1.com,REJECT-DICT
-DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT-DICT
-DOMAIN-SUFFIX,sdk.1rtb.net,REJECT-DICT
-DOMAIN-SUFFIX,sdk.beizi.biz,REJECT-DICT
-DOMAIN-SUFFIX,sdk.51.la,REJECT-DICT
-DOMAIN-SUFFIX,sdk.api.appwheel.com,REJECT-DICT
-DOMAIN-SUFFIX,sdkapp.uve.weibo.com,REJECT-DICT
-DOMAIN-SUFFIX,sdkclick.biz.weibo.com,REJECT-DICT
-DOMAIN-SUFFIX,sdk-track.66mobi.com,REJECT-DICT
-DOMAIN-SUFFIX,ugsdk.com,REJECT-DICT
-DOMAIN-SUFFIX,ugsdk.cn,REJECT-DICT
-DOMAIN-SUFFIX,ulogs.umeng.com,REJECT-DICT
-DOMAIN-SUFFIX,ulogs.umengcloud.com,REJECT-DICT
-DOMAIN-SUFFIX,utoken.umeng.com,REJECT-DICT
-DOMAIN-SUFFIX,cnlogs.umeng.com,REJECT-DICT
-DOMAIN-SUFFIX,cnlogs.umengcloud.com,REJECT-DICT
-DOMAIN-SUFFIX,resolve.umeng.com,REJECT-DICT
-URL-REGEX,https?:\/\/m\.xianqihaotianmi\.org\/[a-zA-Z0-9]{8}\/[a-zA-Z0-9]{10}\.js,REJECT-DICT
-URL-REGEX,^http:\/\/m\.chensiwx\.com\/[a-zA-Z0-9]{8}\/[a-zA-Z0-9]{10}\.js,REJECT-DICT
-URL-REGEX,m\.xsbiquge\.la\/js\/detail\.js,REJECT-DICT
-DOMAIN-SUFFIX,script-center.bad.news,REJECT-IMG
 
 [URL Rewrite]
-
 ^https?:\/\/(www\.)?(g\.cn|google\.cn)\/?$ https://www.google.com 307
 ^https:\/\/www\.tianxibook\.com\/public\/\d{6}\.js$ _ REJECT-DICT
 ^https?:\/\/interface\.music\.163\.com\/eapi\/ad\/config\/get _ REJECT
@@ -385,12 +397,25 @@ DOMAIN-SUFFIX,script-center.bad.news,REJECT-IMG
 ^https?:\/\/(gw|heic|img)\.alicdn\.com\/imgextra\/i\w\/([\w\W]*)(1080-|1125-2436|1350|-1602|-1950|-2339|-2436|-2208|1170-2532)([\w\W]*)\.(jpg|png|heic|webp) _ REJECT-200
 ^https?:\/\/app\.58\.com\/api\/home\/appadv\/splashscreenadv _ REJECT-DICT
 ^https?:\/\/open\.taou\.com\/maimai\/adshow _ REJECT
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(show|mshow)\.cn\/ reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(?!.*_home) reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow\.cn reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.nbcps\.presentation\.fetch\.cn reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.app\.home\.v\d+\.bottom\.area reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\. reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.consultmerge reject-200
 
-[Script]
-
-
+[Host]
+localhost = 127.0.0.1
 
 [MITM]
-
 enable = true
-hostname = %APPEND% *.alicdn.com,*.taou.com,*.58.com,cloud.video.taobao.com,m5.amap.com,api.m.jd.com,www.tianxibook.com,*.360buyimg.com,interface.music.163.com,app.bilibili.com,api.zhihu.com,acs.m.goofish.com,*.cainiao.com,*.taobao.com,guide-acs.m.taobao.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,new.vip.weibo.cn,mp.weixin.qq.com
+hostname =%APPEND% *.alicdn.com,*.taou.com,*.58.com,cloud.video.taobao.com,m5.amap.com,api.m.jd.com,www.tianxibook.com,*.360buyimg.com,interface.music.163.com,app.bilibili.com,api.zhihu.com,acs.m.goofish.com,*.cainiao.com,*.taobao.com,guide-acs.m.taobao.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,new.vip.weibo.cn,mp.weixin.qq.com
+
+[Script]
+微博去广告=type=http-response,pattern=^https?://m?api\.weibo\.c(n|om)/2/(cardlist|searchall|page|messageflow|statuses/(unread_)?friends(/|_)timeline|groups/timeline|statuses/(unread_hot_timeline|extend|video_mixtimeline)|profile/(me|statuses)|video/(community_tab|remind_info|tiny_stream_video_list)|checkin/show|\!/live/media_homelist|comments/build_comments|container/get_item|search/(finder|container_timeline|container_discover)),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
+微博去广告1=type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
+微博去广告2=type=http-response,pattern=^https://api.weibo.cn/2/!/client/light_skin,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
+微博去广告3=type=http-response,pattern=^https://new.vip.weibo.cn/littleskin/preview,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
+微信公众号去广告=type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/Netpilot_adblock.js
