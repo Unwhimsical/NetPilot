@@ -20,6 +20,10 @@ UPSTREAM_MODULE_SOURCES = {
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
         "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module",
+        "https://yfamilys.com/module/adultraplus.module",
+        "https://yfamilys.com/module/adultra.module",
+        "https://yfamilys.com/module/startingad.module",
+        "https://yfamilys.com/module/ZhihuBlock.sgmodule",
     ],
 }
 
