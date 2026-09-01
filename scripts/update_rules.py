@@ -11,7 +11,7 @@ REPO_NAME = "NetPilot"
 BRANCH = "main"
 
 # 上游模块源：key 为模块类型（direct/shield），value 为 URL 列表
-# 注意：direct 源可以留空，留空则不会重新生成直连模块，只保留你手动维护的 NetPilot Direct.module
+# 注意：direct 源可以留空，留空则不会重新生成直连模块，只保留你手动维护的 NetPilot_Direct.module
 UPSTREAM_MODULE_SOURCES = {
     "direct": [
         # "https://raw.githubusercontent.com/Unwhimsical/Default/refs/heads/main/sr_direct_list.module",  # 已失效，暂时注释
@@ -34,9 +34,9 @@ UPSTREAM_JS_SOURCES = {
     "wechat_ad.js": "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js",
 }
 
-# 模块文件路径（请根据你仓库中的实际文件名修改，如果文件名包含空格请保留空格）
-DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"   # 或者改为 "modules/NetPilot_Direct.module"
-SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"   # 或者改为 "modules/NetPilot_Shield.module"
+# 模块文件路径（请根据你仓库中的实际文件名修改）
+DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
+SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 
 # 是否强制所有 MITM hostname 使用 %APPEND%
@@ -78,19 +78,20 @@ def clean_mitm(module_content):
     module_content = module_content[:mitm_match.start()] + new_mitm + module_content[mitm_match.end():]
     return module_content
 
-def extract_rules(module_content, policy):
+def extract_rules(module_content, policy=None):
     """
-    从模块内容中提取指定策略的规则行
-    policy: 例如 'DIRECT', 'REJECT', 'PROXY'
+    从模块内容中提取规则行。
+    如果指定 policy，则只提取该策略的规则；否则提取所有规则行。
     """
     rules = []
     for line in module_content.splitlines():
         line = line.strip()
-        # 匹配类似 DOMAIN-SUFFIX,example.com,DIRECT 的规则，忽略注释和空行
         if line.startswith(('DOMAIN,', 'DOMAIN-SUFFIX,', 'DOMAIN-KEYWORD,', 'IP-CIDR,', 'IP-CIDR6,', 'USER-AGENT,', 'PROCESS-NAME,', 'URL-REGEX,')):
-            # 检查策略是否匹配（考虑策略后可能带 no-resolve 等附加参数）
-            if line.endswith(',' + policy) or (policy + ',') in line:
+            if policy is None:
                 rules.append(line)
+            else:
+                if line.endswith(',' + policy) or (policy + ',') in line:
+                    rules.append(line)
     return rules
 
 def extract_url_rewrite(module_content):
@@ -120,6 +121,17 @@ def extract_scripts(module_content):
         if in_script and line.strip() and not line.strip().startswith('#'):
             scripts.append(line.strip())
     return scripts
+
+def extract_mitm_hostnames(module_content):
+    """提取 [MITM] 段中的 hostname 列表（返回字符串，可能包含 %APPEND% 前缀）"""
+    mitm_match = re.search(r'\[MITM\](.*?)(?=\[|$)', module_content, re.DOTALL)
+    if not mitm_match:
+        return ""
+    mitm_block = mitm_match.group(1)
+    hostname_match = re.search(r'(?im)^\s*hostname\s*=\s*(.*)$', mitm_block)
+    if hostname_match:
+        return hostname_match.group(1).strip()
+    return ""
 
 def localize_scripts(scripts, local_js_dir):
     """
@@ -151,27 +163,37 @@ def localize_scripts(scripts, local_js_dir):
         updated_scripts.append(new_line)
     return updated_scripts
 
+def merge_unique(original_list, new_list):
+    """合并两个列表，去重并保持原始列表在前，新列表追加不重复项"""
+    seen = set(original_list)
+    result = original_list.copy()
+    for item in new_list:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
 def main():
     # ========== 处理直连模块 ==========
     print("=== Processing Direct Module ===")
     if UPSTREAM_MODULE_SOURCES["direct"]:
-        direct_rules = []
+        # 如果有上游直连源，则读取现有直连模块并合并
+        original_direct_rules = []
+        if os.path.exists(DIRECT_MODULE_PATH):
+            with open(DIRECT_MODULE_PATH, 'r', encoding='utf-8') as f:
+                original_direct_content = f.read()
+            original_direct_rules = extract_rules(original_direct_content)  # 提取所有规则（不区分策略）
+        new_direct_rules = []
         for url in UPSTREAM_MODULE_SOURCES["direct"]:
             try:
                 content = fetch(url)
                 content = clean_mitm(content)
-                direct_rules.extend(extract_rules(content, 'DIRECT'))
+                new_direct_rules.extend(extract_rules(content, 'DIRECT'))
             except Exception as e:
                 print(f"Failed to process {url}: {e}")
-        # 去重
-        seen = set()
-        unique_direct = []
-        for rule in direct_rules:
-            if rule not in seen:
-                seen.add(rule)
-                unique_direct.append(rule)
+        merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
         # 生成直连模块
-        direct_module = "#!name=NetPilot Direct\n#!desc=国内直连规则，自动更新\n[Rule]\n" + "\n".join(unique_direct) + "\n"
+        direct_module = "#!name=NetPilot Direct\n#!desc=国内直连规则，自动更新\n[Rule]\n" + "\n".join(merged_direct_rules) + "\n"
         direct_module += "GEOIP,CN,DIRECT\n"
         os.makedirs(os.path.dirname(DIRECT_MODULE_PATH), exist_ok=True)
         with open(DIRECT_MODULE_PATH, 'w', encoding='utf-8') as f:
@@ -182,69 +204,88 @@ def main():
 
     # ========== 处理去广告模块 ==========
     print("=== Processing Shield Module ===")
-    reject_rules = []
-    rewrite_rules = []
-    all_scripts = []
+    # 1. 读取现有 shield 模块内容，提取原有规则、rewrite、script、hostname
+    original_rules = []
+    original_rewrites = []
+    original_scripts = []
+    original_hostnames = ""
+    if os.path.exists(SHIELD_MODULE_PATH):
+        with open(SHIELD_MODULE_PATH, 'r', encoding='utf-8') as f:
+            original_shield_content = f.read()
+        original_rules = extract_rules(original_shield_content)  # 提取所有规则
+        original_rewrites = extract_url_rewrite(original_shield_content)
+        original_scripts = extract_scripts(original_shield_content)
+        original_hostnames = extract_mitm_hostnames(original_shield_content)
+        print("Loaded existing shield module content for merging.")
+    else:
+        print("No existing shield module found; creating new one.")
+
+    # 2. 从上游拉取新规则、rewrite、script
+    new_rules = []
+    new_rewrites = []
+    new_scripts = []
+    new_hostnames_set = set()
     for url in UPSTREAM_MODULE_SOURCES["shield"]:
         try:
             content = fetch(url)
             content = clean_mitm(content)
-            reject_rules.extend(extract_rules(content, 'REJECT'))
-            reject_rules.extend(extract_rules(content, 'REJECT-200'))
-            reject_rules.extend(extract_rules(content, 'REJECT-DICT'))
-            reject_rules.extend(extract_rules(content, 'REJECT-IMG'))
-            reject_rules.extend(extract_rules(content, 'REJECT-NO-DROP'))
-            rewrite_rules.extend(extract_url_rewrite(content))
-            all_scripts.extend(extract_scripts(content))
+            # 提取各类 REJECT 规则
+            new_rules.extend(extract_rules(content, 'REJECT'))
+            new_rules.extend(extract_rules(content, 'REJECT-200'))
+            new_rules.extend(extract_rules(content, 'REJECT-DICT'))
+            new_rules.extend(extract_rules(content, 'REJECT-IMG'))
+            new_rules.extend(extract_rules(content, 'REJECT-NO-DROP'))
+            new_rewrites.extend(extract_url_rewrite(content))
+            new_scripts.extend(extract_scripts(content))
+            # 提取上游 hostname 并加入集合
+            upstream_hostnames = extract_mitm_hostnames(content)
+            if upstream_hostnames:
+                # 移除可能的 %APPEND% 前缀，便于后续去重
+                clean_hostnames = upstream_hostnames.replace('%APPEND%', '').strip()
+                if clean_hostnames:
+                    # 按逗号分割，去除空白
+                    for h in clean_hostnames.split(','):
+                        h = h.strip()
+                        if h:
+                            new_hostnames_set.add(h)
         except Exception as e:
             print(f"Failed to process {url}: {e}")
 
-    # 去重 reject
-    seen_reject = set()
-    unique_reject = []
-    for rule in reject_rules:
-        if rule not in seen_reject:
-            seen_reject.add(rule)
-            unique_reject.append(rule)
+    # 3. 合并规则、rewrite、script
+    merged_rules = merge_unique(original_rules, new_rules)
+    merged_rewrites = merge_unique(original_rewrites, new_rewrites)
+    merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 去重 rewrite
-    seen_rewrite = set()
-    unique_rewrite = []
-    for rule in rewrite_rules:
-        if rule not in seen_rewrite:
-            seen_rewrite.add(rule)
-            unique_rewrite.append(rule)
+    # 4. 合并 hostname：原有 hostname + 上游新增 hostname
+    original_hostname_list = []
+    if original_hostnames:
+        # 去掉 %APPEND% 前缀
+        clean_original = original_hostnames.replace('%APPEND%', '').strip()
+        if clean_original:
+            original_hostname_list = [h.strip() for h in clean_original.split(',') if h.strip()]
+    all_hostnames = original_hostname_list + [h for h in new_hostnames_set if h not in original_hostname_list]
+    merged_hostnames = ', '.join(all_hostnames)
+    if FORCE_APPEND:
+        if not merged_hostnames.startswith('%APPEND%'):
+            merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 本地化 JS 脚本
-    updated_scripts = localize_scripts(all_scripts, LOCAL_JS_DIR)
+    # 5. 本地化 JS 脚本
+    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR)
 
-    # 组装 shield 模块
+    # 6. 生成新的 shield 模块
     shield_parts = ["#!name=NetPilot Shield", "#!desc=去广告模块，自动更新", "[Rule]"]
-    shield_parts.append("\n".join(unique_reject))
+    shield_parts.append("\n".join(merged_rules))
     shield_parts.append("[URL Rewrite]")
-    shield_parts.append("\n".join(unique_rewrite))
+    shield_parts.append("\n".join(merged_rewrites))
     shield_parts.append("[Script]")
     shield_parts.append("\n".join(updated_scripts))
     shield_parts.append("[MITM]")
-
-    # 获取已有 shield 模块中的 hostname（如果有），否则用默认
-    existing_shield_hostnames = ""
-    if os.path.exists(SHIELD_MODULE_PATH):
-        with open(SHIELD_MODULE_PATH, 'r', encoding='utf-8') as f:
-            old_content = f.read()
-        old_mitm_match = re.search(r'\[MITM\](.*?)(?=\[|$)', old_content, re.DOTALL)
-        if old_mitm_match:
-            old_hostname_match = re.search(r'(?im)^\s*hostname\s*=\s*(.*)$', old_mitm_match.group(1))
-            if old_hostname_match:
-                existing_shield_hostnames = old_hostname_match.group(1).strip()
-    if not existing_shield_hostnames:
-        existing_shield_hostnames = "%APPEND%"
-    shield_parts.append(f"enable = true\nhostname = {existing_shield_hostnames}")
+    shield_parts.append(f"enable = true\nhostname = {merged_hostnames}")
     shield_content = "\n\n".join(shield_parts) + "\n"
     os.makedirs(os.path.dirname(SHIELD_MODULE_PATH), exist_ok=True)
     with open(SHIELD_MODULE_PATH, 'w', encoding='utf-8') as f:
         f.write(shield_content)
-    print("Shield module written.")
+    print("Shield module written with merged content.")
 
     # ========== 处理独立 JS 源 ==========
     for filename, url in UPSTREAM_JS_SOURCES.items():
