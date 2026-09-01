@@ -19,6 +19,7 @@ UPSTREAM_MODULE_SOURCES = {
     ],
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
+        "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module",
     ],
 }
 
