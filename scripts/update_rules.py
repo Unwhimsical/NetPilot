@@ -47,6 +47,9 @@ DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 
+# 日志目录
+LOG_DIR = "logs"
+
 # 是否强制所有 MITM hostname 使用 %APPEND%
 FORCE_APPEND = True
 
@@ -141,9 +144,10 @@ def extract_mitm_hostnames(module_content):
         return hostname_match.group(1).strip()
     return ""
 
-def localize_scripts(scripts, local_js_dir):
+def localize_scripts(scripts, local_js_dir, download_log):
     """
-    下载脚本中引用的 JS 文件到 local_js_dir，并替换 script-path 为本地仓库 URL
+    下载脚本中引用的 JS 文件到 local_js_dir，并替换 script-path 为本地仓库 URL。
+    同时将每个脚本的下载状态记录到 download_log 列表中。
     """
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
@@ -160,8 +164,11 @@ def localize_scripts(scripts, local_js_dir):
             with open(local_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f"Downloaded JS: {filename}")
+            download_log.append(f"✅ {filename} 下载成功")
         except Exception as e:
             print(f"Failed to download {original_url}: {e}")
+            download_log.append(f"❌ {filename} 下载失败: {e}")
+            # 下载失败则保留原始脚本行（不替换路径）
             updated_scripts.append(script_line)
             continue
         local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
@@ -193,11 +200,20 @@ def get_added_items(original_list, new_list):
     return added
 
 def main():
-    # 获取当前 UTC 时间字符串
+    # 获取当前 UTC 时间字符串和日期
     current_time = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+    current_date = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+
+    # 初始化日志相关
+    log_lines = []
+    log_lines.append(f"# 更新日志 {current_date}\n")
+    log_lines.append(f"**运行时间**: {current_time}\n")
+    log_lines.append("---\n")
 
     # ========== 处理直连模块 ==========
     print("=== Processing Direct Module ===")
+    log_lines.append("## 直连模块\n")
+    direct_source_status = []
     if UPSTREAM_MODULE_SOURCES["direct"]:
         # 读取现有直连模块中的规则
         original_direct_rules = []
@@ -212,15 +228,26 @@ def main():
                 content = fetch(url)
                 content = clean_mitm(content)
                 new_direct_rules.extend(extract_rules(content, 'DIRECT'))
+                direct_source_status.append(f"✅ {url}")
             except Exception as e:
                 print(f"Failed to process {url}: {e}")
+                direct_source_status.append(f"❌ {url} - {e}")
         # 合并规则，并找出新增规则
         merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
         added_direct_rules = get_added_items(original_direct_rules, new_direct_rules)
 
+        log_lines.append("### 上游源状态\n")
+        log_lines.extend([f"- {status}" for status in direct_source_status])
+        log_lines.append(f"\n**原有规则数**: {len(original_direct_rules)}")
+        log_lines.append(f"**新增规则数**: {len(added_direct_rules)}")
+        log_lines.append(f"**更新后总数**: {len(merged_direct_rules)}\n")
+        if added_direct_rules:
+            log_lines.append("#### 新增规则明细\n")
+            log_lines.extend([f"- {rule}" for rule in added_direct_rules])
+        log_lines.append("\n")
+
         # 生成模块内容
         # 外部显示用 #!desc 显示规则总数
-        # 内部保留原描述、更新时间和新增规则标记
         direct_parts = [
             "#!name=NetPilot Direct",
             f"#!desc=直连规则总数: {len(merged_direct_rules)}",
@@ -229,9 +256,7 @@ def main():
             f"# 直连规则总数: {len(merged_direct_rules)}",
             "[Rule]"
         ]
-        # 原有规则
         direct_parts.append("\n".join(original_direct_rules))
-        # 新增规则（如果有）
         if added_direct_rules:
             direct_parts.append(f"# === 新增规则 {current_time} ===")
             direct_parts.append("\n".join(added_direct_rules))
@@ -242,11 +267,13 @@ def main():
             f.write(direct_module)
         print("Direct module written.")
     else:
+        log_lines.append("无直连上游源，跳过直连模块更新。\n")
         print("No direct upstream sources, skipping Direct module generation (manual file preserved).")
 
     # ========== 处理去广告+代理模块 (Shield) ==========
     print("=== Processing Shield Module ===")
-    # 1. 读取现有 shield 模块，分离代理规则和去广告规则
+    log_lines.append("## 代理分流模块\n")
+    # 读取现有 shield 模块
     original_proxy_rules = []
     original_reject_rules = []
     original_rewrites = []
@@ -260,7 +287,7 @@ def main():
             if is_reject_rule(rule):
                 original_reject_rules.append(rule)
             else:
-                original_proxy_rules.append(rule)  # 包括 PROXY、DIRECT 等非 REJECT
+                original_proxy_rules.append(rule)
         original_rewrites = extract_url_rewrite(original_shield_content)
         original_scripts = extract_scripts(original_shield_content)
         original_hostnames = extract_mitm_hostnames(original_shield_content)
@@ -269,16 +296,20 @@ def main():
         print("No existing shield module found; creating new one.")
 
     # 2. 从上游拉取代理规则（proxy 源）
+    proxy_source_status = []
     new_proxy_rules = []
     for url in UPSTREAM_MODULE_SOURCES.get("proxy", []):
         try:
             content = fetch(url)
             content = clean_mitm(content)
             new_proxy_rules.extend(extract_rules(content, 'PROXY'))
+            proxy_source_status.append(f"✅ {url}")
         except Exception as e:
             print(f"Failed to process proxy source {url}: {e}")
+            proxy_source_status.append(f"❌ {url} - {e}")
 
     # 3. 从上游拉取去广告规则（shield 源）
+    shield_source_status = []
     new_reject_rules = []
     new_rewrites = []
     new_scripts = []
@@ -302,10 +333,12 @@ def main():
                         h = h.strip()
                         if h:
                             new_hostnames_set.add(h)
+            shield_source_status.append(f"✅ {url}")
         except Exception as e:
             print(f"Failed to process shield source {url}: {e}")
+            shield_source_status.append(f"❌ {url} - {e}")
 
-    # 4. 合并各类型规则，并计算新增
+    # 合并代理和去广告规则
     merged_proxy_rules = merge_unique(original_proxy_rules, new_proxy_rules)
     added_proxy_rules = get_added_items(original_proxy_rules, new_proxy_rules)
 
@@ -315,7 +348,30 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 5. 合并 hostname
+    # 记录日志（代理分流）
+    log_lines.append("### 上游源状态\n")
+    log_lines.extend([f"- {status}" for status in proxy_source_status])
+    log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
+    log_lines.append(f"**新增代理规则数**: {len(added_proxy_rules)}")
+    log_lines.append(f"**更新后代理规则总数**: {len(merged_proxy_rules)}\n")
+    if added_proxy_rules:
+        log_lines.append("#### 新增代理规则明细\n")
+        log_lines.extend([f"- {rule}" for rule in added_proxy_rules])
+    log_lines.append("\n")
+
+    # 记录日志（去广告）
+    log_lines.append("## 去广告模块\n")
+    log_lines.append("### 上游源状态\n")
+    log_lines.extend([f"- {status}" for status in shield_source_status])
+    log_lines.append(f"\n**原有去广告规则数**: {len(original_reject_rules)}")
+    log_lines.append(f"**新增去广告规则数**: {len(added_reject_rules)}")
+    log_lines.append(f"**更新后去广告规则总数**: {len(merged_reject_rules)}\n")
+    if added_reject_rules:
+        log_lines.append("#### 新增去广告规则明细\n")
+        log_lines.extend([f"- {rule}" for rule in added_reject_rules])
+    log_lines.append("\n")
+
+    # 合并 hostname
     original_hostname_list = []
     if original_hostnames:
         clean_original = original_hostnames.replace('%APPEND%', '').strip()
@@ -327,11 +383,16 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 6. 本地化 JS 脚本
-    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR)
+    # 本地化 JS 脚本，并记录下载状态
+    download_log = []
+    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log)
 
-    # 7. 生成新的 shield 模块
-    # 外部显示用 #!desc 显示规则总数，内部保留原描述和详细统计
+    # 记录 JS 下载状态到日志
+    log_lines.append("## JS 脚本本地化\n")
+    log_lines.extend([f"- {status}" for status in download_log])
+    log_lines.append("\n")
+
+    # 生成新的 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(merged_proxy_rules)} ｜ 去广告规则: {len(merged_reject_rules)}",
@@ -341,25 +402,20 @@ def main():
         f"# 去广告规则总数: {len(merged_reject_rules)}",
         "[Rule]"
     ]
-    # 代理分流部分
     shield_parts.append("# --- 代理分流规则 ---")
     shield_parts.append("\n".join(original_proxy_rules))
     if added_proxy_rules:
         shield_parts.append(f"# === 新增代理规则 {current_time} ===")
         shield_parts.append("\n".join(added_proxy_rules))
-    # 去广告拦截部分
     shield_parts.append("# --- 去广告拦截规则 ---")
     shield_parts.append("\n".join(original_reject_rules))
     if added_reject_rules:
         shield_parts.append(f"# === 新增去广告规则 {current_time} ===")
         shield_parts.append("\n".join(added_reject_rules))
-    # URL Rewrite 部分
     shield_parts.append("[URL Rewrite]")
     shield_parts.append("\n".join(merged_rewrites))
-    # Script 部分
     shield_parts.append("[Script]")
     shield_parts.append("\n".join(updated_scripts))
-    # MITM 部分
     shield_parts.append("[MITM]")
     shield_parts.append(f"enable = true\nhostname = {merged_hostnames}")
     shield_content = "\n\n".join(shield_parts) + "\n"
@@ -369,6 +425,7 @@ def main():
     print("Shield module written with merged content (proxy + adblock separated).")
 
     # ========== 处理独立 JS 源 ==========
+    log_lines.append("## 独立 JS 源\n")
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
         os.makedirs(LOCAL_JS_DIR, exist_ok=True)
@@ -377,8 +434,19 @@ def main():
             with open(local_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f"Downloaded independent JS: {filename}")
+            log_lines.append(f"- ✅ {filename} 下载成功")
         except Exception as e:
             print(f"Failed to download {url}: {e}")
+            log_lines.append(f"- ❌ {filename} 下载失败: {e}")
+
+    # 写入日志文件
+    log_lines.append("---\n")
+    log_content = "\n".join(log_lines)
+    log_file_path = os.path.join(LOG_DIR, f"update_{current_date}.md")
+    os.makedirs(LOG_DIR, exist_ok=True)
+    with open(log_file_path, 'w', encoding='utf-8') as f:
+        f.write(log_content)
+    print(f"Log written to {log_file_path}")
 
 if __name__ == "__main__":
     main()
