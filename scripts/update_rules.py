@@ -3,8 +3,7 @@
 
 import os
 import re
-import json
-import hashlib
+import glob
 import requests
 import datetime
 
@@ -38,12 +37,13 @@ DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
-DECISION_FILE_PATH = "config/decisions.json"
+FLAGGED_DOMAINS_FILE = "flagged_domains.txt"   # 用户编辑的主标记文件（仓库根目录）
+MAX_LOG_FILES = 5
+MAX_LOG_ITEMS = 5
 
 FORCE_APPEND = True
 SKIP_EXISTING_JS = True
 
-# 敏感域名关键词（银行/支付等，绝不加入 MITM 解密）
 SENSITIVE_KEYWORDS = [
     'bank', 'pay', 'unionpay', 'alipay', 'wechatpay',
     'icbc', 'ccb', 'boc', 'cmb', 'spdb', 'citic', 'cebbank',
@@ -51,13 +51,11 @@ SENSITIVE_KEYWORDS = [
     'cbhb', 'bosc', 'jsbchina', 'nbcb', 'njcb', 'hzbank'
 ]
 
-# 潜在危险域名关键词（可能误伤或涉及隐私，但不自动删除）
 DANGEROUS_HOSTNAME_KEYWORDS = [
     'ad', 'ads', 'track', 'log', 'sdk', 'push', 'stat', 'monitor',
     'analytics', 'crash', 'bugly', 'umeng', 'appsflyer', 'adjust'
 ]
 
-# 危险 JS 模式（静态扫描）
 DANGEROUS_JS_PATTERNS = [
     r'\$httpClient\.(get|post|put|delete)',
     r'\$task\.fetch',
@@ -173,21 +171,124 @@ def scan_js_content(js_content):
             risks.append(pattern)
     return risks
 
-def load_decisions():
-    if os.path.exists(DECISION_FILE_PATH):
-        with open(DECISION_FILE_PATH, 'r', encoding='utf-8') as f:
-            try:
-                return json.load(f)
-            except Exception:
-                return {"hostname_blacklist": [], "hostname_whitelist": [], "script_blacklist": [], "script_whitelist": []}
-    return {"hostname_blacklist": [], "hostname_whitelist": [], "script_blacklist": [], "script_whitelist": []}
+def load_blacklisted_hostnames():
+    """读取 flagged_domains.txt 中标记了 #black 的域名"""
+    blacklisted = set()
+    if os.path.exists(FLAGGED_DOMAINS_FILE):
+        with open(FLAGGED_DOMAINS_FILE, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith('#'):
+                    continue
+                if '#black' in line:
+                    domain = line.split('#')[0].strip()
+                    if domain:
+                        blacklisted.add(domain)
+    return blacklisted
 
-def save_decisions(decisions):
-    os.makedirs(os.path.dirname(DECISION_FILE_PATH), exist_ok=True)
-    with open(DECISION_FILE_PATH, 'w', encoding='utf-8') as f:
-        json.dump(decisions, f, indent=2, ensure_ascii=False)
+def load_existing_flagged_domains():
+    """读取 flagged_domains.txt 中所有域名（不论是否有标记）"""
+    domains = set()
+    if os.path.exists(FLAGGED_DOMAINS_FILE):
+        with open(FLAGGED_DOMAINS_FILE, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith('#'):
+                    continue
+                domain = line.split('#')[0].strip()
+                if domain:
+                    domains.add(domain)
+    return domains
 
-def localize_scripts(scripts, local_js_dir, download_log, decisions):
+def update_flagged_domains_file(new_dangerous_domains):
+    """更新根目录的危险域名标记文件，保留已有标记，追加新发现的域名"""
+    existing_blacklisted = load_blacklisted_hostnames()
+    existing_domains = load_existing_flagged_domains()
+
+    # 合并新域名（仅在旧文件中不存在的才添加）
+    all_domains = existing_domains | set(new_dangerous_domains)
+
+    header = "# 危险域名标记文件\n"
+    header += "# 在要拉黑的域名后面添加 #black 标记，然后手动运行脚本即可生效\n"
+    header += "# 示例：ad.12306.cn #black\n"
+    header += "# 未标记的域名默认保留，且不会在日志中重复提示\n\n"
+
+    body_lines = []
+    for domain in sorted(all_domains):
+        if domain in existing_blacklisted:
+            body_lines.append(f"{domain} #black")
+        else:
+            body_lines.append(domain)
+
+    with open(FLAGGED_DOMAINS_FILE, 'w', encoding='utf-8') as f:
+        f.write(header)
+        f.write('\n'.join(body_lines))
+        f.write('\n')
+
+def get_log_dir_and_base(current_date):
+    """返回当天的日志子目录路径和基础文件名（不含扩展名）"""
+    log_subdir = os.path.join(LOG_DIR, current_date)
+    os.makedirs(log_subdir, exist_ok=True)
+    base = os.path.join(log_subdir, "update")
+    return log_subdir, base
+
+def get_log_file_path(current_date):
+    """
+    在 logs/日期/ 下生成不覆盖的日志文件路径，同一天最多保留 5 个。
+    文件名格式：update.md, update_2.md, update_3.md ...
+    如果已有 5 个文件，删除最旧的一个（序号最小的），然后使用下一个最大序号。
+    """
+    log_subdir, base = get_log_dir_and_base(current_date)
+
+    # 查找当天已有的日志文件
+    existing_logs = sorted(glob.glob(os.path.join(log_subdir, "update*.md")))
+    count = len(existing_logs)
+
+    if count >= MAX_LOG_FILES:
+        # 删除最旧的一个（按文件名排序，序号最小的）
+        oldest = existing_logs[0]
+        os.remove(oldest)
+        print(f"Removed oldest log to keep limit: {oldest}")
+        # 删除后重新获取列表和最大序号
+        existing_logs = sorted(glob.glob(os.path.join(log_subdir, "update*.md")))
+        if not existing_logs:
+            max_num = 0
+        else:
+            max_num = 0
+            for f in existing_logs:
+                name = os.path.basename(f)
+                if name == "update.md":
+                    num = 1
+                else:
+                    match = re.search(r'update_(\d+)\.md', name)
+                    if match:
+                        num = int(match.group(1))
+                    else:
+                        num = 0
+                if num > max_num:
+                    max_num = num
+        next_num = max_num + 1
+    else:
+        # 未达到上限，寻找下一个可用序号
+        existing_nums = set()
+        for f in existing_logs:
+            name = os.path.basename(f)
+            if name == "update.md":
+                existing_nums.add(1)
+            else:
+                match = re.search(r'update_(\d+)\.md', name)
+                if match:
+                    existing_nums.add(int(match.group(1)))
+        next_num = 1
+        while next_num in existing_nums:
+            next_num += 1
+
+    if next_num == 1:
+        return os.path.join(log_subdir, "update.md")
+    else:
+        return os.path.join(log_subdir, f"update_{next_num}.md")
+
+def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
     seen_urls = set()
@@ -201,7 +302,6 @@ def localize_scripts(scripts, local_js_dir, download_log, decisions):
         original_url = m.group(1)
         filename = original_url.split('/')[-1]
 
-        # 去重
         if original_url in seen_urls or filename in seen_filenames:
             local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
             new_line = script_line.replace(original_url, local_url)
@@ -210,18 +310,15 @@ def localize_scripts(scripts, local_js_dir, download_log, decisions):
         seen_urls.add(original_url)
         seen_filenames.add(filename)
 
-        # 检查黑名单
-        if filename in decisions.get("script_blacklist", []):
+        if filename in script_blacklist:
             print(f"⛔ Script blacklisted, skipping: {filename}")
-            download_log.append(f"⛔ {filename} 已被用户加入黑名单，跳过")
+            download_log.append(f"⛔ {filename} 已被拉黑，跳过")
             continue
 
         local_path = os.path.join(local_js_dir, filename)
 
-        # 跳过已存在
         if SKIP_EXISTING_JS and os.path.exists(local_path):
-            print(f"Skipped existing JS: {filename}")
-            download_log.append(f"⏭️ {filename} 已存在，跳过下载")
+            pass
         else:
             try:
                 content = fetch(original_url)
@@ -229,17 +326,15 @@ def localize_scripts(scripts, local_js_dir, download_log, decisions):
                     f.write(content)
                 print(f"Downloaded JS: {filename}")
                 download_log.append(f"✅ {filename} 下载成功")
-                # 扫描风险
                 risks = scan_js_content(content)
                 if risks:
-                    download_log.append(f"⚠️ {filename} 检测到可疑模式: {', '.join(risks)}")
+                    download_log.append(f"⚠️ {filename} 可疑模式: {', '.join(risks[:3])}")
             except Exception as e:
                 print(f"Failed to download {original_url}: {e}")
                 download_log.append(f"❌ {filename} 下载失败: {e}")
                 updated_scripts.append(script_line)
                 continue
 
-        # 替换为本地 URL
         local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
         new_line = script_line.replace(original_url, local_url)
         updated_scripts.append(new_line)
@@ -267,11 +362,16 @@ def get_added_items(original_list, new_list):
     return added
 
 def main():
-    current_time = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
-    current_date = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+    # 使用北京时间
+    tz = datetime.timezone(datetime.timedelta(hours=8))
+    now = datetime.datetime.now(tz)
+    current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
+    current_date = now.strftime('%Y-%m-%d')
 
-    # 加载用户决策
-    decisions = load_decisions()
+    # 读取用户标记的拉黑域名
+    blacklisted_hostnames = load_blacklisted_hostnames()
+    # 读取所有已存在标记文件中的域名（用于判断新域名）
+    existing_flagged = load_existing_flagged_domains()
 
     log_lines = []
     log_lines.append(f"# 更新日志 {current_date}\n")
@@ -308,7 +408,10 @@ def main():
         log_lines.append(f"**更新后总数**: {len(merged_direct_rules)}\n")
         if added_direct_rules:
             log_lines.append("#### 新增规则明细\n")
-            log_lines.extend([f"- {rule}" for rule in added_direct_rules])
+            show_items = added_direct_rules[:MAX_LOG_ITEMS]
+            log_lines.extend([f"- {rule}" for rule in show_items])
+            if len(added_direct_rules) > MAX_LOG_ITEMS:
+                log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_direct_rules)} 条")
         log_lines.append("\n")
 
         direct_parts = [
@@ -407,7 +510,7 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 日志
+    # 日志代理
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in proxy_source_status])
     log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
@@ -415,9 +518,13 @@ def main():
     log_lines.append(f"**更新后代理规则总数**: {len(merged_proxy_rules)}\n")
     if added_proxy_rules:
         log_lines.append("#### 新增代理规则明细\n")
-        log_lines.extend([f"- {rule}" for rule in added_proxy_rules])
+        show_items = added_proxy_rules[:MAX_LOG_ITEMS]
+        log_lines.extend([f"- {rule}" for rule in show_items])
+        if len(added_proxy_rules) > MAX_LOG_ITEMS:
+            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_proxy_rules)} 条")
     log_lines.append("\n")
 
+    # 日志去广告
     log_lines.append("## 去广告模块\n")
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in shield_source_status])
@@ -426,7 +533,10 @@ def main():
     log_lines.append(f"**更新后去广告规则总数**: {len(merged_reject_rules)}\n")
     if added_reject_rules:
         log_lines.append("#### 新增去广告规则明细\n")
-        log_lines.extend([f"- {rule}" for rule in added_reject_rules])
+        show_items = added_reject_rules[:MAX_LOG_ITEMS]
+        log_lines.extend([f"- {rule}" for rule in show_items])
+        if len(added_reject_rules) > MAX_LOG_ITEMS:
+            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_reject_rules)} 条")
     log_lines.append("\n")
 
     # ====== 合并 hostname（应用安全过滤） ======
@@ -436,51 +546,71 @@ def main():
         if clean_original:
             original_hostname_list = [h.strip() for h in clean_original.split(',') if h.strip()]
 
-    # 合并所有候选 hostname
     candidate_hostnames = original_hostname_list + [h for h in new_hostnames_set if h not in original_hostname_list]
 
-    # 应用决策：黑名单移除，白名单强制保留
     filtered_hostnames = []
     sensitive_removed = []
-    dangerous_marked = []
+    dangerous_domains = []
+
     for h in candidate_hostnames:
-        # 检查白名单
-        if h in decisions.get("hostname_whitelist", []):
-            filtered_hostnames.append(h)
+        # 用户标记拉黑
+        if h in blacklisted_hostnames:
             continue
-        # 检查黑名单
-        if h in decisions.get("hostname_blacklist", []):
-            continue
-        # 检查敏感域名
+        # 敏感域名过滤
         if is_sensitive_hostname(h):
             sensitive_removed.append(h)
             continue
-        # 检查危险域名
+        # 危险域名收集
         if is_dangerous_hostname(h):
-            dangerous_marked.append(h)
+            dangerous_domains.append(h)
         filtered_hostnames.append(h)
+
+    # 更新根目录危险域名标记文件
+    update_flagged_domains_file(dangerous_domains)
+
+    # 在当天日志子目录中保存危险域名快照
+    log_subdir, _ = get_log_dir_and_base(current_date)
+    snapshot_path = os.path.join(log_subdir, "dangerous_domains.txt")
+    with open(snapshot_path, 'w', encoding='utf-8') as f:
+        f.write(f"# 危险域名快照 {current_date}\n")
+        f.write(f"# 共 {len(dangerous_domains)} 个\n\n")
+        for d in sorted(dangerous_domains):
+            f.write(d + "\n")
+    print(f"Dangerous domains snapshot saved to {snapshot_path}")
 
     merged_hostnames = ', '.join(filtered_hostnames)
     if FORCE_APPEND:
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 日志记录敏感和危险域名
+    # 日志记录敏感域名
     if sensitive_removed:
         log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
-        log_lines.extend([f"- {h}" for h in sensitive_removed])
+        show_items = sensitive_removed[:MAX_LOG_ITEMS]
+        log_lines.extend([f"- {h}" for h in show_items])
+        if len(sensitive_removed) > MAX_LOG_ITEMS:
+            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(sensitive_removed)} 条")
         log_lines.append("\n")
-    if dangerous_marked:
-        log_lines.append("## ⚠️ 危险域名标记（默认保留，可在 decisions.json 中拉黑）\n")
-        log_lines.extend([f"- {h}" for h in dangerous_marked])
+
+    # 日志记录危险域名（仅显示新出现的）
+    new_dangerous = [d for d in dangerous_domains if d not in existing_flagged]
+    if new_dangerous:
+        log_lines.append(f"## ⚠️ 新发现危险域名（共 {len(new_dangerous)} 个，默认保留）\n")
+        log_lines.append("如需拉黑，编辑 `flagged_domains.txt`，在对应域名后加 `#black`，然后手动运行脚本即可。\n")
+        show_items = new_dangerous[:MAX_LOG_ITEMS]
+        log_lines.extend([f"- {h}" for h in show_items])
+        if len(new_dangerous) > MAX_LOG_ITEMS:
+            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(new_dangerous)} 条")
         log_lines.append("\n")
 
     # 本地化脚本
     download_log = []
-    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log, decisions)
-    log_lines.append("## JS 脚本本地化\n")
-    log_lines.extend([f"- {status}" for status in download_log])
-    log_lines.append("\n")
+    script_blacklist = set()
+    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log, script_blacklist)
+    if download_log:
+        log_lines.append("## JS 脚本本地化\n")
+        log_lines.extend([f"- {status}" for status in download_log])
+        log_lines.append("\n")
 
     # 生成 shield 模块
     shield_parts = [
@@ -515,38 +645,34 @@ def main():
     print("Shield module written with merged content (proxy + adblock separated).")
 
     # 独立 JS 源
-    log_lines.append("## 独立 JS 源\n")
+    independent_log = []
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
         os.makedirs(LOCAL_JS_DIR, exist_ok=True)
-        if filename in decisions.get("script_blacklist", []):
-            log_lines.append(f"- ⛔ {filename} 已被用户加入黑名单，跳过")
-            continue
         if SKIP_EXISTING_JS and os.path.exists(local_path):
-            print(f"Skipped existing independent JS: {filename}")
-            log_lines.append(f"- ⏭️ {filename} 已存在，跳过下载")
             continue
         try:
             content = fetch(url)
             with open(local_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f"Downloaded independent JS: {filename}")
-            log_lines.append(f"- ✅ {filename} 下载成功")
+            independent_log.append(f"✅ {filename} 下载成功")
             risks = scan_js_content(content)
             if risks:
-                log_lines.append(f"- ⚠️ {filename} 检测到可疑模式: {', '.join(risks)}")
+                independent_log.append(f"⚠️ {filename} 可疑模式: {', '.join(risks[:3])}")
         except Exception as e:
             print(f"Failed to download {url}: {e}")
-            log_lines.append(f"- ❌ {filename} 下载失败: {e}")
+            independent_log.append(f"❌ {filename} 下载失败: {e}")
 
-    # 保存决策文件（即使没有修改也保持存在）
-    save_decisions(decisions)
+    if independent_log:
+        log_lines.append("## 独立 JS 源\n")
+        log_lines.extend([f"- {status}" for status in independent_log])
+        log_lines.append("\n")
 
-    # 写日志
+    # 写入日志文件（同一天自动编号，最多5个）
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
-    log_file_path = os.path.join(LOG_DIR, f"update_{current_date}.md")
-    os.makedirs(LOG_DIR, exist_ok=True)
+    log_file_path = get_log_file_path(current_date)
     with open(log_file_path, 'w', encoding='utf-8') as f:
         f.write(log_content)
     print(f"Log written to {log_file_path}")
