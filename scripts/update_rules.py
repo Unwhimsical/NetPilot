@@ -17,11 +17,9 @@ BRANCH = "main"
 # - shield: 去广告拦截规则，会合并进 NetPilot_Shield.module 的“去广告拦截”部分
 UPSTREAM_MODULE_SOURCES = {
     "direct": [
-        # "https://example.com/direct.module",  # 可选，直连源
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module",
     ],
     "proxy": [
-        # "https://example.com/proxy.module",  # 可选，代理分流源
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module",
     ],
     "shield": [
@@ -55,14 +53,29 @@ FORCE_APPEND = True
 
 # ========== 工具函数 ==========
 def fetch(url):
-    """下载文本内容，失败时抛出异常"""
+    """
+    下载文本内容，使用浏览器请求头和 Session 尝试绕过简单反爬。
+    如果仍然失败，抛出异常。
+    """
     print(f"Fetching: {url}")
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+        "Accept": "text/plain, */*; q=0.01",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Referer": "https://yfamilys.com/",
     }
-    r = requests.get(url, timeout=30, headers=headers)
+    # 创建 Session，尝试获取 Cookie
+    session = requests.Session()
+    try:
+        # 先访问主页，模拟浏览器行为，可能会获得必要的 Cookie
+        if "yfamilys.com" in url:
+            session.get("https://yfamilys.com/", headers=headers, timeout=20)
+    except Exception:
+        pass  # 忽略主页访问错误
+    # 真正请求模块
+    r = session.get(url, timeout=30, headers=headers)
     r.raise_for_status()
     return r.text
 
@@ -220,13 +233,11 @@ def main():
     log_lines.append("## 直连模块\n")
     direct_source_status = []
     if UPSTREAM_MODULE_SOURCES["direct"]:
-        # 读取现有直连模块中的规则
         original_direct_rules = []
         if os.path.exists(DIRECT_MODULE_PATH):
             with open(DIRECT_MODULE_PATH, 'r', encoding='utf-8') as f:
                 original_direct_content = f.read()
-            original_direct_rules = extract_rules(original_direct_content)  # 提取所有规则
-        # 从上游拉取直连规则
+            original_direct_rules = extract_rules(original_direct_content)
         new_direct_rules = []
         for url in UPSTREAM_MODULE_SOURCES["direct"]:
             try:
@@ -237,7 +248,6 @@ def main():
             except Exception as e:
                 print(f"Failed to process {url}: {e}")
                 direct_source_status.append(f"❌ {url} - {e}")
-        # 合并规则，并找出新增规则
         merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
         added_direct_rules = get_added_items(original_direct_rules, new_direct_rules)
 
@@ -251,8 +261,6 @@ def main():
             log_lines.extend([f"- {rule}" for rule in added_direct_rules])
         log_lines.append("\n")
 
-        # 生成模块内容
-        # 外部显示用 #!desc 显示规则总数
         direct_parts = [
             "#!name=NetPilot Direct",
             f"#!desc=直连规则总数: {len(merged_direct_rules)}",
@@ -273,12 +281,11 @@ def main():
         print("Direct module written.")
     else:
         log_lines.append("无直连上游源，跳过直连模块更新。\n")
-        print("No direct upstream sources, skipping Direct module generation (manual file preserved).")
+        print("No direct upstream sources, skipping Direct module generation.")
 
     # ========== 处理去广告+代理模块 (Shield) ==========
     print("=== Processing Shield Module ===")
     log_lines.append("## 代理分流模块\n")
-    # 读取现有 shield 模块
     original_proxy_rules = []
     original_reject_rules = []
     original_rewrites = []
@@ -300,7 +307,7 @@ def main():
     else:
         print("No existing shield module found; creating new one.")
 
-    # 2. 从上游拉取代理规则（proxy 源）
+    # 代理源
     proxy_source_status = []
     new_proxy_rules = []
     for url in UPSTREAM_MODULE_SOURCES.get("proxy", []):
@@ -313,7 +320,7 @@ def main():
             print(f"Failed to process proxy source {url}: {e}")
             proxy_source_status.append(f"❌ {url} - {e}")
 
-    # 3. 从上游拉取去广告规则（shield 源）
+    # shield源
     shield_source_status = []
     new_reject_rules = []
     new_rewrites = []
@@ -343,17 +350,14 @@ def main():
             print(f"Failed to process shield source {url}: {e}")
             shield_source_status.append(f"❌ {url} - {e}")
 
-    # 合并代理和去广告规则
     merged_proxy_rules = merge_unique(original_proxy_rules, new_proxy_rules)
     added_proxy_rules = get_added_items(original_proxy_rules, new_proxy_rules)
-
     merged_reject_rules = merge_unique(original_reject_rules, new_reject_rules)
     added_reject_rules = get_added_items(original_reject_rules, new_reject_rules)
-
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 记录日志（代理分流）
+    # 日志代理
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in proxy_source_status])
     log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
@@ -364,7 +368,7 @@ def main():
         log_lines.extend([f"- {rule}" for rule in added_proxy_rules])
     log_lines.append("\n")
 
-    # 记录日志（去广告）
+    # 日志去广告
     log_lines.append("## 去广告模块\n")
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in shield_source_status])
@@ -388,16 +392,14 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 本地化 JS 脚本，并记录下载状态
+    # 本地化脚本
     download_log = []
     updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log)
-
-    # 记录 JS 下载状态到日志
     log_lines.append("## JS 脚本本地化\n")
     log_lines.extend([f"- {status}" for status in download_log])
     log_lines.append("\n")
 
-    # 生成新的 shield 模块
+    # 生成 Shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(merged_proxy_rules)} ｜ 去广告规则: {len(merged_reject_rules)}",
@@ -429,7 +431,7 @@ def main():
         f.write(shield_content)
     print("Shield module written with merged content (proxy + adblock separated).")
 
-    # ========== 处理独立 JS 源 ==========
+    # 独立 JS 源
     log_lines.append("## 独立 JS 源\n")
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
@@ -444,7 +446,7 @@ def main():
             print(f"Failed to download {url}: {e}")
             log_lines.append(f"- ❌ {filename} 下载失败: {e}")
 
-    # 写入日志文件
+    # 写日志
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
     log_file_path = os.path.join(LOG_DIR, f"update_{current_date}.md")
