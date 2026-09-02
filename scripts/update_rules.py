@@ -219,10 +219,14 @@ def main():
         added_direct_rules = get_added_items(original_direct_rules, new_direct_rules)
 
         # 生成模块内容
+        # 外部显示用 #!desc 显示规则总数
+        # 内部保留原描述、更新时间和新增规则标记
         direct_parts = [
             "#!name=NetPilot Direct",
-            "#!desc=国内直连规则，自动更新",
+            f"#!desc=直连规则总数: {len(merged_direct_rules)}",
+            "# 描述：国内直连规则，自动更新",
             f"# 更新时间: {current_time}",
+            f"# 直连规则总数: {len(merged_direct_rules)}",
             "[Rule]"
         ]
         # 原有规则
@@ -326,11 +330,15 @@ def main():
     # 6. 本地化 JS 脚本
     updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR)
 
-    # 7. 生成新的 shield 模块，包含清晰的注释分隔
+    # 7. 生成新的 shield 模块
+    # 外部显示用 #!desc 显示规则总数，内部保留原描述和详细统计
     shield_parts = [
         "#!name=NetPilot Shield",
-        "#!desc=代理分流 + 去广告模块，自动更新",
+        f"#!desc=代理规则: {len(merged_proxy_rules)} ｜ 去广告规则: {len(merged_reject_rules)}",
+        "# 描述：代理分流 + 去广告模块，自动更新",
         f"# 更新时间: {current_time}",
+        f"# 代理规则总数: {len(merged_proxy_rules)}",
+        f"# 去广告规则总数: {len(merged_reject_rules)}",
         "[Rule]"
     ]
     # 代理分流部分
