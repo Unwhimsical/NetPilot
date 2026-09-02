@@ -25,10 +25,11 @@ UPSTREAM_MODULE_SOURCES = {
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
         "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module",
-        "https://yfamilys.com/module/adultraplus.module",
-        "https://yfamilys.com/module/adultra.module",
-        "https://yfamilys.com/module/startingad.module",
-        "https://yfamilys.com/module/ZhihuBlock.sgmodule",
+        # 以下 4 个 yfamilys.com 源持续返回 403，已移除
+        # "https://yfamilys.com/module/adultraplus.module",
+        # "https://yfamilys.com/module/adultra.module",
+        # "https://yfamilys.com/module/startingad.module",
+        # "https://yfamilys.com/module/ZhihuBlock.sgmodule",
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module",
         "https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module",
     ],
@@ -52,12 +53,12 @@ LOG_DIR = "logs"
 # 是否强制所有 MITM hostname 使用 %APPEND%
 FORCE_APPEND = True
 
+# 是否跳过已存在的 JS 文件（避免重复下载，节省时间和仓库空间）
+SKIP_EXISTING_JS = True
+
 # ========== 工具函数 ==========
 def fetch(url):
-    """
-    下载文本内容，使用浏览器请求头和 Session 尝试绕过简单反爬。
-    如果仍然失败，抛出异常。
-    """
+    """下载文本内容，失败时抛出异常"""
     print(f"Fetching: {url}")
     headers = {
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
@@ -67,33 +68,24 @@ def fetch(url):
         "Connection": "keep-alive",
         "Referer": "https://yfamilys.com/",
     }
-    # 创建 Session，尝试获取 Cookie
     session = requests.Session()
     try:
-        # 先访问主页，模拟浏览器行为，可能会获得必要的 Cookie
         if "yfamilys.com" in url:
             session.get("https://yfamilys.com/", headers=headers, timeout=20)
     except Exception:
-        pass  # 忽略主页访问错误
-    # 真正请求模块
+        pass
     r = session.get(url, timeout=30, headers=headers)
     r.raise_for_status()
     return r.text
 
 def clean_mitm(module_content):
-    """
-    清洗模块中的 [MITM] 段：
-    - 删除 ca-p12 和 ca-passphrase
-    - 确保 hostname 以 %APPEND% 开头（如果 FORCE_APPEND 为 True）
-    """
+    """清洗模块中的 [MITM] 段，删除 ca-p12/ca-passphrase，确保 %APPEND%"""
     mitm_match = re.search(r'\[MITM\](.*?)(?=\[|$)', module_content, re.DOTALL)
     if not mitm_match:
         return module_content
     mitm_block = mitm_match.group(1)
-    # 删除证书相关行
     mitm_block = re.sub(r'(?im)^\s*ca-p12\s*=.*$', '', mitm_block)
     mitm_block = re.sub(r'(?im)^\s*ca-passphrase\s*=.*$', '', mitm_block)
-    # 提取 hostname 行
     hostname_match = re.search(r'(?im)^\s*hostname\s*=\s*(.*)$', mitm_block)
     if hostname_match:
         hostnames = hostname_match.group(1).strip()
@@ -101,18 +93,12 @@ def clean_mitm(module_content):
             hostnames = '%APPEND% ' + hostnames
         mitm_block = re.sub(r'(?im)^\s*hostname\s*=.*$', f'hostname = {hostnames}', mitm_block)
     else:
-        # 没有 hostname，添加默认
         mitm_block += '\nhostname = %APPEND%\n'
-    # 重新组合
     new_mitm = '[MITM]' + mitm_block.rstrip() + '\n'
     module_content = module_content[:mitm_match.start()] + new_mitm + module_content[mitm_match.end():]
     return module_content
 
 def extract_rules(module_content, policy=None):
-    """
-    从模块内容中提取规则行。
-    如果指定 policy，则只提取该策略的规则；否则提取所有规则行。
-    """
     rules = []
     for line in module_content.splitlines():
         line = line.strip()
@@ -125,7 +111,6 @@ def extract_rules(module_content, policy=None):
     return rules
 
 def extract_url_rewrite(module_content):
-    """提取 [URL Rewrite] 段中的规则（非注释行）"""
     rewrite_lines = []
     in_rewrite = False
     for line in module_content.splitlines():
@@ -139,7 +124,6 @@ def extract_url_rewrite(module_content):
     return rewrite_lines
 
 def extract_scripts(module_content):
-    """提取 [Script] 段中的所有条目"""
     scripts = []
     in_script = False
     for line in module_content.splitlines():
@@ -153,7 +137,6 @@ def extract_scripts(module_content):
     return scripts
 
 def extract_mitm_hostnames(module_content):
-    """提取 [MITM] 段中的 hostname 列表（返回字符串，可能包含 %APPEND% 前缀）"""
     mitm_match = re.search(r'\[MITM\](.*?)(?=\[|$)', module_content, re.DOTALL)
     if not mitm_match:
         return ""
@@ -166,37 +149,62 @@ def extract_mitm_hostnames(module_content):
 def localize_scripts(scripts, local_js_dir, download_log):
     """
     下载脚本中引用的 JS 文件到 local_js_dir，并替换 script-path 为本地仓库 URL。
-    同时将每个脚本的下载状态记录到 download_log 列表中。
+    - 自动去重：相同 URL 或相同文件名只处理一次。
+    - 若本地已存在同名文件且 SKIP_EXISTING_JS=True，则跳过下载，直接使用本地 URL。
     """
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
+    seen_urls = set()
+    seen_filenames = set()
+
     for script_line in scripts:
         m = re.search(r'script-path=([^,\s]+)', script_line)
         if not m:
             updated_scripts.append(script_line)
             continue
+
         original_url = m.group(1)
         filename = original_url.split('/')[-1]
-        local_path = os.path.join(local_js_dir, filename)
-        try:
-            content = fetch(original_url)
-            with open(local_path, 'w', encoding='utf-8') as f:
-                f.write(content)
-            print(f"Downloaded JS: {filename}")
-            download_log.append(f"✅ {filename} 下载成功")
-        except Exception as e:
-            print(f"Failed to download {original_url}: {e}")
-            download_log.append(f"❌ {filename} 下载失败: {e}")
-            # 下载失败则保留原始脚本行（不替换路径）
-            updated_scripts.append(script_line)
+
+        # 去重：相同 URL 或相同文件名已经处理过，直接替换并跳过
+        if original_url in seen_urls or filename in seen_filenames:
+            local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
+            new_line = script_line.replace(original_url, local_url)
+            updated_scripts.append(new_line)
             continue
+
+        # 标记已处理
+        seen_urls.add(original_url)
+        seen_filenames.add(filename)
+
+        local_path = os.path.join(local_js_dir, filename)
+
+        # 检查是否跳过下载
+        if SKIP_EXISTING_JS and os.path.exists(local_path):
+            print(f"Skipped existing JS: {filename}")
+            download_log.append(f"⏭️ {filename} 已存在，跳过下载")
+        else:
+            try:
+                content = fetch(original_url)
+                with open(local_path, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                print(f"Downloaded JS: {filename}")
+                download_log.append(f"✅ {filename} 下载成功")
+            except Exception as e:
+                print(f"Failed to download {original_url}: {e}")
+                download_log.append(f"❌ {filename} 下载失败: {e}")
+                # 下载失败则保留原始脚本行，不再继续处理该脚本
+                updated_scripts.append(script_line)
+                continue
+
+        # 生成本地 raw URL 并替换
         local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
         new_line = script_line.replace(original_url, local_url)
         updated_scripts.append(new_line)
+
     return updated_scripts
 
 def merge_unique(original_list, new_list):
-    """合并两个列表，去重并保持原始列表在前，新列表追加不重复项"""
     seen = set(original_list)
     result = original_list.copy()
     for item in new_list:
@@ -206,11 +214,9 @@ def merge_unique(original_list, new_list):
     return result
 
 def is_reject_rule(rule):
-    """判断规则是否为 REJECT 系列"""
     return bool(re.search(r',REJECT(-[A-Z]+)?', rule))
 
 def get_added_items(original_list, new_list):
-    """返回新列表中不在原列表中的项（即新增项）"""
     original_set = set(original_list)
     added = []
     for item in new_list:
@@ -219,11 +225,9 @@ def get_added_items(original_list, new_list):
     return added
 
 def main():
-    # 获取当前 UTC 时间字符串和日期
     current_time = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
     current_date = datetime.datetime.utcnow().strftime('%Y-%m-%d')
 
-    # 初始化日志相关
     log_lines = []
     log_lines.append(f"# 更新日志 {current_date}\n")
     log_lines.append(f"**运行时间**: {current_time}\n")
@@ -358,7 +362,7 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 日志代理
+    # 日志
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in proxy_source_status])
     log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
@@ -369,7 +373,6 @@ def main():
         log_lines.extend([f"- {rule}" for rule in added_proxy_rules])
     log_lines.append("\n")
 
-    # 日志去广告
     log_lines.append("## 去广告模块\n")
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in shield_source_status])
@@ -400,7 +403,7 @@ def main():
     log_lines.extend([f"- {status}" for status in download_log])
     log_lines.append("\n")
 
-    # 生成 Shield 模块
+    # 生成 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(merged_proxy_rules)} ｜ 去广告规则: {len(merged_reject_rules)}",
@@ -437,6 +440,10 @@ def main():
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
         os.makedirs(LOCAL_JS_DIR, exist_ok=True)
+        if SKIP_EXISTING_JS and os.path.exists(local_path):
+            print(f"Skipped existing independent JS: {filename}")
+            log_lines.append(f"- ⏭️ {filename} 已存在，跳过下载")
+            continue
         try:
             content = fetch(url)
             with open(local_path, 'w', encoding='utf-8') as f:
