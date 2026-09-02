@@ -18,7 +18,6 @@ UPSTREAM_MODULE_SOURCES = {
     ],
     "proxy": [
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module",
-        "https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module",
     ],
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
@@ -38,7 +37,7 @@ DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
-FLAGGED_DOMAINS_FILE = "flagged_domains.txt"
+FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"   # 拉黑域名标记文件，放在 config 目录
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 
@@ -173,7 +172,7 @@ def scan_js_content(js_content):
     return risks
 
 def load_blacklisted_hostnames():
-    """读取 flagged_domains.txt 中标记了 #black 的域名"""
+    """读取 config/flagged_domains.txt 中标记了 #black 的域名"""
     blacklisted = set()
     if os.path.exists(FLAGGED_DOMAINS_FILE):
         with open(FLAGGED_DOMAINS_FILE, 'r', encoding='utf-8') as f:
@@ -188,7 +187,7 @@ def load_blacklisted_hostnames():
     return blacklisted
 
 def load_existing_flagged_domains():
-    """读取 flagged_domains.txt 中所有域名（不论是否有标记）"""
+    """读取 config/flagged_domains.txt 中所有域名（不论是否有标记）"""
     domains = set()
     if os.path.exists(FLAGGED_DOMAINS_FILE):
         with open(FLAGGED_DOMAINS_FILE, 'r', encoding='utf-8') as f:
@@ -202,11 +201,13 @@ def load_existing_flagged_domains():
     return domains
 
 def update_flagged_domains_file(new_dangerous_domains):
-    """更新根目录的危险域名标记文件，保留已有标记，追加新发现的域名"""
+    """更新 config/flagged_domains.txt，保留已有标记，追加新发现的域名"""
+    # 确保 config 目录存在
+    os.makedirs(os.path.dirname(FLAGGED_DOMAINS_FILE), exist_ok=True)
+
     existing_blacklisted = load_blacklisted_hostnames()
     existing_domains = load_existing_flagged_domains()
 
-    # 合并新域名（仅在旧文件中不存在的才添加）
     all_domains = existing_domains | set(new_dangerous_domains)
 
     header = "# 危险域名标记文件\n"
@@ -227,30 +228,20 @@ def update_flagged_domains_file(new_dangerous_domains):
         f.write('\n')
 
 def get_log_dir_and_base(current_date):
-    """返回当天的日志子目录路径和基础文件名（不含扩展名）"""
     log_subdir = os.path.join(LOG_DIR, current_date)
     os.makedirs(log_subdir, exist_ok=True)
     base = os.path.join(log_subdir, "update")
     return log_subdir, base
 
 def get_log_file_path(current_date):
-    """
-    在 logs/日期/ 下生成不覆盖的日志文件路径，同一天最多保留 5 个。
-    文件名格式：update.md, update_2.md, update_3.md ...
-    如果已有 5 个文件，删除最旧的一个（序号最小的），然后使用下一个最大序号。
-    """
     log_subdir, base = get_log_dir_and_base(current_date)
-
-    # 查找当天已有的日志文件
     existing_logs = sorted(glob.glob(os.path.join(log_subdir, "update*.md")))
     count = len(existing_logs)
 
     if count >= MAX_LOG_FILES:
-        # 删除最旧的一个（按文件名排序，序号最小的）
         oldest = existing_logs[0]
         os.remove(oldest)
         print(f"Removed oldest log to keep limit: {oldest}")
-        # 删除后重新获取列表和最大序号
         existing_logs = sorted(glob.glob(os.path.join(log_subdir, "update*.md")))
         if not existing_logs:
             max_num = 0
@@ -270,7 +261,6 @@ def get_log_file_path(current_date):
                     max_num = num
         next_num = max_num + 1
     else:
-        # 未达到上限，寻找下一个可用序号
         existing_nums = set()
         for f in existing_logs:
             name = os.path.basename(f)
@@ -288,6 +278,16 @@ def get_log_file_path(current_date):
         return os.path.join(log_subdir, "update.md")
     else:
         return os.path.join(log_subdir, f"update_{next_num}.md")
+
+def cleanup_legacy_log_files(log_dir):
+    if not os.path.isdir(log_dir):
+        return
+    for filename in os.listdir(log_dir):
+        if filename.startswith("update_") and filename.endswith(".md"):
+            filepath = os.path.join(log_dir, filename)
+            if os.path.isfile(filepath):
+                print(f"Deleting legacy log file: {filepath}")
+                os.remove(filepath)
 
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
     os.makedirs(local_js_dir, exist_ok=True)
@@ -363,15 +363,16 @@ def get_added_items(original_list, new_list):
     return added
 
 def main():
-    # 使用北京时间
     tz = datetime.timezone(datetime.timedelta(hours=8))
     now = datetime.datetime.now(tz)
     current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
     current_date = now.strftime('%Y-%m-%d')
 
+    # 清理旧格式日志文件
+    cleanup_legacy_log_files(LOG_DIR)
+
     # 读取用户标记的拉黑域名
     blacklisted_hostnames = load_blacklisted_hostnames()
-    # 读取所有已存在标记文件中的域名（用于判断新域名）
     existing_flagged = load_existing_flagged_domains()
 
     log_lines = []
@@ -554,19 +555,16 @@ def main():
     dangerous_domains = []
 
     for h in candidate_hostnames:
-        # 用户标记拉黑
         if h in blacklisted_hostnames:
             continue
-        # 敏感域名过滤
         if is_sensitive_hostname(h):
             sensitive_removed.append(h)
             continue
-        # 危险域名收集
         if is_dangerous_hostname(h):
             dangerous_domains.append(h)
         filtered_hostnames.append(h)
 
-    # 更新根目录危险域名标记文件
+    # 更新 config/flagged_domains.txt
     update_flagged_domains_file(dangerous_domains)
 
     # 在当天日志子目录中保存危险域名快照
@@ -594,7 +592,7 @@ def main():
     new_dangerous = [d for d in dangerous_domains if d not in existing_flagged]
     if new_dangerous:
         log_lines.append(f"## ⚠️ 新发现危险域名（共 {len(new_dangerous)} 个，默认保留）\n")
-        log_lines.append("如需拉黑，编辑 `flagged_domains.txt`，在对应域名后加 `#black`，然后手动运行脚本即可。\n")
+        log_lines.append("如需拉黑，编辑 `config/flagged_domains.txt`，在对应域名后加 `#black`，然后手动运行脚本即可。\n")
         log_lines.extend([f"- {h}" for h in new_dangerous])
         log_lines.append("\n")
 
