@@ -3,18 +3,16 @@
 
 import os
 import re
+import json
+import hashlib
 import requests
 import datetime
 
 # ========== 用户配置区 ==========
-GITHUB_USERNAME = "Unwhimsical"        # 请改成你的 GitHub 用户名
+GITHUB_USERNAME = "Unwhimsical"
 REPO_NAME = "NetPilot"
 BRANCH = "main"
 
-# 上游模块源：key 为模块类型（direct/proxy/shield），value 为 URL 列表
-# - direct: 直连规则，生成/更新 NetPilot_Direct.module
-# - proxy : 代理分流规则，会合并进 NetPilot_Shield.module 的“代理分流”部分
-# - shield: 去广告拦截规则，会合并进 NetPilot_Shield.module 的“去广告拦截”部分
 UPSTREAM_MODULE_SOURCES = {
     "direct": [
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module",
@@ -25,40 +23,55 @@ UPSTREAM_MODULE_SOURCES = {
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
         "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module",
-        # 以下 4 个 yfamilys.com 源持续返回 403，已移除
-        # "https://yfamilys.com/module/adultraplus.module",
-        # "https://yfamilys.com/module/adultra.module",
-        # "https://yfamilys.com/module/startingad.module",
-        # "https://yfamilys.com/module/ZhihuBlock.sgmodule",
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module",
         "https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module",
     ],
 }
 
-# 需要本地化的独立 JS 脚本源（键为文件名，值为 URL）
 UPSTREAM_JS_SOURCES = {
     "weibo_main.js": "https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js",
     "weibo_launch.js": "https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_launch.js",
     "wechat_ad.js": "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js",
 }
 
-# 模块文件路径（请根据你仓库中的实际文件名修改）
 DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
-
-# 日志目录
 LOG_DIR = "logs"
+DECISION_FILE_PATH = "config/decisions.json"
 
-# 是否强制所有 MITM hostname 使用 %APPEND%
 FORCE_APPEND = True
-
-# 是否跳过已存在的 JS 文件（避免重复下载，节省时间和仓库空间）
 SKIP_EXISTING_JS = True
+
+# 敏感域名关键词（银行/支付等，绝不加入 MITM 解密）
+SENSITIVE_KEYWORDS = [
+    'bank', 'pay', 'unionpay', 'alipay', 'wechatpay',
+    'icbc', 'ccb', 'boc', 'cmb', 'spdb', 'citic', 'cebbank',
+    'cmbc', 'pingan', 'bocomm', 'psbc', 'cib', 'hxb', 'czbank',
+    'cbhb', 'bosc', 'jsbchina', 'nbcb', 'njcb', 'hzbank'
+]
+
+# 潜在危险域名关键词（可能误伤或涉及隐私，但不自动删除）
+DANGEROUS_HOSTNAME_KEYWORDS = [
+    'ad', 'ads', 'track', 'log', 'sdk', 'push', 'stat', 'monitor',
+    'analytics', 'crash', 'bugly', 'umeng', 'appsflyer', 'adjust'
+]
+
+# 危险 JS 模式（静态扫描）
+DANGEROUS_JS_PATTERNS = [
+    r'\$httpClient\.(get|post|put|delete)',
+    r'\$task\.fetch',
+    r'eval\(',
+    r'new Function\(',
+    r'device\.id',
+    r'location\.',
+    r'pasteboard',
+    r'\$persistentStore\.write',
+    r'\$prefs\.setValueForKey',
+]
 
 # ========== 工具函数 ==========
 def fetch(url):
-    """下载文本内容，失败时抛出异常"""
     print(f"Fetching: {url}")
     headers = {
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
@@ -79,7 +92,6 @@ def fetch(url):
     return r.text
 
 def clean_mitm(module_content):
-    """清洗模块中的 [MITM] 段，删除 ca-p12/ca-passphrase，确保 %APPEND%"""
     mitm_match = re.search(r'\[MITM\](.*?)(?=\[|$)', module_content, re.DOTALL)
     if not mitm_match:
         return module_content
@@ -146,12 +158,36 @@ def extract_mitm_hostnames(module_content):
         return hostname_match.group(1).strip()
     return ""
 
-def localize_scripts(scripts, local_js_dir, download_log):
-    """
-    下载脚本中引用的 JS 文件到 local_js_dir，并替换 script-path 为本地仓库 URL。
-    - 自动去重：相同 URL 或相同文件名只处理一次。
-    - 若本地已存在同名文件且 SKIP_EXISTING_JS=True，则跳过下载，直接使用本地 URL。
-    """
+def is_sensitive_hostname(hostname):
+    low = hostname.lower()
+    return any(k in low for k in SENSITIVE_KEYWORDS)
+
+def is_dangerous_hostname(hostname):
+    low = hostname.lower()
+    return any(k in low for k in DANGEROUS_HOSTNAME_KEYWORDS)
+
+def scan_js_content(js_content):
+    risks = []
+    for pattern in DANGEROUS_JS_PATTERNS:
+        if re.search(pattern, js_content):
+            risks.append(pattern)
+    return risks
+
+def load_decisions():
+    if os.path.exists(DECISION_FILE_PATH):
+        with open(DECISION_FILE_PATH, 'r', encoding='utf-8') as f:
+            try:
+                return json.load(f)
+            except Exception:
+                return {"hostname_blacklist": [], "hostname_whitelist": [], "script_blacklist": [], "script_whitelist": []}
+    return {"hostname_blacklist": [], "hostname_whitelist": [], "script_blacklist": [], "script_whitelist": []}
+
+def save_decisions(decisions):
+    os.makedirs(os.path.dirname(DECISION_FILE_PATH), exist_ok=True)
+    with open(DECISION_FILE_PATH, 'w', encoding='utf-8') as f:
+        json.dump(decisions, f, indent=2, ensure_ascii=False)
+
+def localize_scripts(scripts, local_js_dir, download_log, decisions):
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
     seen_urls = set()
@@ -162,24 +198,27 @@ def localize_scripts(scripts, local_js_dir, download_log):
         if not m:
             updated_scripts.append(script_line)
             continue
-
         original_url = m.group(1)
         filename = original_url.split('/')[-1]
 
-        # 去重：相同 URL 或相同文件名已经处理过，直接替换并跳过
+        # 去重
         if original_url in seen_urls or filename in seen_filenames:
             local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
             new_line = script_line.replace(original_url, local_url)
             updated_scripts.append(new_line)
             continue
-
-        # 标记已处理
         seen_urls.add(original_url)
         seen_filenames.add(filename)
 
+        # 检查黑名单
+        if filename in decisions.get("script_blacklist", []):
+            print(f"⛔ Script blacklisted, skipping: {filename}")
+            download_log.append(f"⛔ {filename} 已被用户加入黑名单，跳过")
+            continue
+
         local_path = os.path.join(local_js_dir, filename)
 
-        # 检查是否跳过下载
+        # 跳过已存在
         if SKIP_EXISTING_JS and os.path.exists(local_path):
             print(f"Skipped existing JS: {filename}")
             download_log.append(f"⏭️ {filename} 已存在，跳过下载")
@@ -190,14 +229,17 @@ def localize_scripts(scripts, local_js_dir, download_log):
                     f.write(content)
                 print(f"Downloaded JS: {filename}")
                 download_log.append(f"✅ {filename} 下载成功")
+                # 扫描风险
+                risks = scan_js_content(content)
+                if risks:
+                    download_log.append(f"⚠️ {filename} 检测到可疑模式: {', '.join(risks)}")
             except Exception as e:
                 print(f"Failed to download {original_url}: {e}")
                 download_log.append(f"❌ {filename} 下载失败: {e}")
-                # 下载失败则保留原始脚本行，不再继续处理该脚本
                 updated_scripts.append(script_line)
                 continue
 
-        # 生成本地 raw URL 并替换
+        # 替换为本地 URL
         local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
         new_line = script_line.replace(original_url, local_url)
         updated_scripts.append(new_line)
@@ -227,6 +269,9 @@ def get_added_items(original_list, new_list):
 def main():
     current_time = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
     current_date = datetime.datetime.utcnow().strftime('%Y-%m-%d')
+
+    # 加载用户决策
+    decisions = load_decisions()
 
     log_lines = []
     log_lines.append(f"# 更新日志 {current_date}\n")
@@ -384,21 +429,55 @@ def main():
         log_lines.extend([f"- {rule}" for rule in added_reject_rules])
     log_lines.append("\n")
 
-    # 合并 hostname
+    # ====== 合并 hostname（应用安全过滤） ======
     original_hostname_list = []
     if original_hostnames:
         clean_original = original_hostnames.replace('%APPEND%', '').strip()
         if clean_original:
             original_hostname_list = [h.strip() for h in clean_original.split(',') if h.strip()]
-    all_hostnames = original_hostname_list + [h for h in new_hostnames_set if h not in original_hostname_list]
-    merged_hostnames = ', '.join(all_hostnames)
+
+    # 合并所有候选 hostname
+    candidate_hostnames = original_hostname_list + [h for h in new_hostnames_set if h not in original_hostname_list]
+
+    # 应用决策：黑名单移除，白名单强制保留
+    filtered_hostnames = []
+    sensitive_removed = []
+    dangerous_marked = []
+    for h in candidate_hostnames:
+        # 检查白名单
+        if h in decisions.get("hostname_whitelist", []):
+            filtered_hostnames.append(h)
+            continue
+        # 检查黑名单
+        if h in decisions.get("hostname_blacklist", []):
+            continue
+        # 检查敏感域名
+        if is_sensitive_hostname(h):
+            sensitive_removed.append(h)
+            continue
+        # 检查危险域名
+        if is_dangerous_hostname(h):
+            dangerous_marked.append(h)
+        filtered_hostnames.append(h)
+
+    merged_hostnames = ', '.join(filtered_hostnames)
     if FORCE_APPEND:
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
+    # 日志记录敏感和危险域名
+    if sensitive_removed:
+        log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
+        log_lines.extend([f"- {h}" for h in sensitive_removed])
+        log_lines.append("\n")
+    if dangerous_marked:
+        log_lines.append("## ⚠️ 危险域名标记（默认保留，可在 decisions.json 中拉黑）\n")
+        log_lines.extend([f"- {h}" for h in dangerous_marked])
+        log_lines.append("\n")
+
     # 本地化脚本
     download_log = []
-    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log)
+    updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log, decisions)
     log_lines.append("## JS 脚本本地化\n")
     log_lines.extend([f"- {status}" for status in download_log])
     log_lines.append("\n")
@@ -440,6 +519,9 @@ def main():
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
         os.makedirs(LOCAL_JS_DIR, exist_ok=True)
+        if filename in decisions.get("script_blacklist", []):
+            log_lines.append(f"- ⛔ {filename} 已被用户加入黑名单，跳过")
+            continue
         if SKIP_EXISTING_JS and os.path.exists(local_path):
             print(f"Skipped existing independent JS: {filename}")
             log_lines.append(f"- ⏭️ {filename} 已存在，跳过下载")
@@ -450,9 +532,15 @@ def main():
                 f.write(content)
             print(f"Downloaded independent JS: {filename}")
             log_lines.append(f"- ✅ {filename} 下载成功")
+            risks = scan_js_content(content)
+            if risks:
+                log_lines.append(f"- ⚠️ {filename} 检测到可疑模式: {', '.join(risks)}")
         except Exception as e:
             print(f"Failed to download {url}: {e}")
             log_lines.append(f"- ❌ {filename} 下载失败: {e}")
+
+    # 保存决策文件（即使没有修改也保持存在）
+    save_decisions(decisions)
 
     # 写日志
     log_lines.append("---\n")
