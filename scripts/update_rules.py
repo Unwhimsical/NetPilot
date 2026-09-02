@@ -37,7 +37,7 @@ DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
-FLAGGED_DOMAINS_FILE = "flagged_domains.txt"   # 用户编辑的主标记文件（仓库根目录）
+FLAGGED_DOMAINS_FILE = "flagged_domains.txt"
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 
@@ -583,24 +583,18 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 日志记录敏感域名
+    # 日志记录敏感域名（全部显示）
     if sensitive_removed:
         log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
-        show_items = sensitive_removed[:MAX_LOG_ITEMS]
-        log_lines.extend([f"- {h}" for h in show_items])
-        if len(sensitive_removed) > MAX_LOG_ITEMS:
-            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(sensitive_removed)} 条")
+        log_lines.extend([f"- {h}" for h in sensitive_removed])
         log_lines.append("\n")
 
-    # 日志记录危险域名（仅显示新出现的）
+    # 日志记录危险域名（全部显示）
     new_dangerous = [d for d in dangerous_domains if d not in existing_flagged]
     if new_dangerous:
         log_lines.append(f"## ⚠️ 新发现危险域名（共 {len(new_dangerous)} 个，默认保留）\n")
         log_lines.append("如需拉黑，编辑 `flagged_domains.txt`，在对应域名后加 `#black`，然后手动运行脚本即可。\n")
-        show_items = new_dangerous[:MAX_LOG_ITEMS]
-        log_lines.extend([f"- {h}" for h in show_items])
-        if len(new_dangerous) > MAX_LOG_ITEMS:
-            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(new_dangerous)} 条")
+        log_lines.extend([f"- {h}" for h in new_dangerous])
         log_lines.append("\n")
 
     # 本地化脚本
