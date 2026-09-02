@@ -1,8 +1,14 @@
 #!name=NetPilot Shield
 
-#!desc=代理分流 + 去广告模块，自动更新
+#!desc=代理规则: 27317 ｜ 去广告规则: 188573
 
-# 更新时间: 2026-09-02 03:05:04 UTC
+# 描述：代理分流 + 去广告模块，自动更新
+
+# 更新时间: 2026-09-02 07:01:42 UTC
+
+# 代理规则总数: 27317
+
+# 去广告规则总数: 188573
 
 [Rule]
 
@@ -20,9 +26,6 @@ DOMAIN-SUFFIX,gs-loc-cn.apple.com,PROXY
 DOMAIN-SUFFIX,gsp-ssl.ls.apple.com,PROXY
 DOMAIN-SUFFIX,bluedot.is.autonavi.com,PROXY
 DOMAIN-SUFFIX,bluedot.is.autonavi.com.gds.alibabadns.com,PROXY
-
-# === 新增代理规则 2026-09-02 03:05:04 UTC ===
-
 DOMAIN-SUFFIX,watchmygf.me,PROXY
 DOMAIN-SUFFIX,nurofen.hu,PROXY
 DOMAIN-SUFFIX,myhulu.com,PROXY
@@ -27692,9 +27695,6 @@ IP-CIDR,203.119.211.219/32,REJECT-200
 IP-CIDR,59.82.113.219/32,REJECT-200
 IP-CIDR,203.119.206.8/32,REJECT-200
 DOMAIN-SUFFIX,errlog.umeng.com,REJECT
-
-# === 新增去广告规则 2026-09-02 03:05:04 UTC ===
-
 DOMAIN-SUFFIX,data-b4df3518e0.haustec.de,REJECT
 DOMAIN-SUFFIX,info.benico.aleragroup.com,REJECT
 DOMAIN-SUFFIX,ads.wetpussy.sexy,REJECT
@@ -216212,6 +216212,15 @@ WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
+12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
+caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
+feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
+jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
+jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
+ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
+ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
+Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
+WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js

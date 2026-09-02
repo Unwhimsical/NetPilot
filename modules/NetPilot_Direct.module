@@ -1,8 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=国内直连规则，自动更新
+#!desc=直连规则总数: 111274
 
-# 更新时间: 2026-09-02 03:05:04 UTC
+# 描述：国内直连规则，自动更新
+
+# 更新时间: 2026-09-02 07:01:42 UTC
+
+# 直连规则总数: 111274
 
 [Rule]
 
@@ -31135,9 +31139,6 @@ DOMAIN-SUFFIX,cneln.net,DIRECT
 DOMAIN-SUFFIX,sxjdfreight.com,DIRECT
 DOMAIN-SUFFIX,initnn.com,DIRECT
 DOMAIN-SUFFIX,xiagujian.
-
-# === 新增规则 2026-09-02 03:05:04 UTC ===
-
 DOMAIN-SUFFIX,hangtianride.com,DIRECT
 DOMAIN-SUFFIX,anjgas.com,DIRECT
 DOMAIN-SUFFIX,jiemaiyang.com,DIRECT
