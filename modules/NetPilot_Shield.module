@@ -4,7 +4,7 @@
 
 # 描述：代理分流 + 去广告模块，自动更新
 
-# 更新时间: 2026-09-02 17:39:28 北京时间
+# 更新时间: 2026-09-02 18:09:31 北京时间
 
 # 代理规则总数: 27334
 
@@ -27331,9 +27331,6 @@ DOMAIN-SUFFIX,xxxpornmovs.com,PROXY
 DOMAIN-SUFFIX,autodeskuniversity.com,PROXY
 DOMAIN-SUFFIX,lsmkorean.org,PROXY
 DOMAIN-SUFFIX,starbucks.in,PROXY
-
-# === 新增代理规则 2026-09-02 17:39:28 北京时间 ===
-
 DOMAIN-SUFFIX,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,PROXY
 DOMAIN-SUFFIX,openaicomproductionae4b.blob.core.windows.net,PROXY
 DOMAIN-SUFFIX,production-openaicom-storage.azureedge.net,PROXY
@@ -219135,6 +219132,18 @@ amdc2=type=http-response,pattern=^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}
 tieba-proto2=type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/(b\/ad\/adBid|f\/(frs\/(page|threadlist|generalTabList)|ad\/getFeedAd|pb\/page|excellent\/personalized))\?cmd,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/tieba-proto.js
 tieba-json2=type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(ad\/getSplashAd|frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/tieba-json.js
 applet=type=http-response,pattern=^(https?://)?([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+[a-zA-Z]{2,}(:\d+)?/wp-json/[a-zA-Z0-9_-]+/(mp\/)?v\d/posts,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/applet.js
+12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
+caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
+feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
+jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
+jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
+ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
+ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
+Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
+WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
+XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
+XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
+XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
