@@ -30,6 +30,7 @@ UPSTREAM_MODULE_SOURCES = {
         "https://yfamilys.com/module/startingad.module",
         "https://yfamilys.com/module/ZhihuBlock.sgmodule",
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module",
+        "https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module",
     ],
 }
 
