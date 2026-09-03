@@ -41,9 +41,9 @@
 
 | 模块 | 链接 |
 |------|------|
-| 直连模块 | `https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/NetPilot_Direct.module` |
-| 去广告/代理模块 | `https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/NetPilot_Shield.module` |
-| 主规则配置 | `https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Route.conf` |
+| 直连模块 | [NetPilot_Direct.module](https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/NetPilot_Direct.module) |
+| 去广告/代理模块 | [NetPilot_Shield.module](https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/NetPilot_Shield.module) |
+| 主规则配置 | [NetPilot Route.conf](https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/NetPilot%20Route.conf) |
 
 添加后，建议在 Shadowrocket 中将全局路由设置为“配置”，并按需开启 HTTPS 解密（仅解密去广告脚本涉及的域名）。
 
@@ -53,8 +53,13 @@
 
 - 通过 GitHub Actions 每天 **北京时间 12:00 和 00:00** 自动运行。
 - 从多个可信上游源拉取规则，自动清洗、合并、去重。
+- 日志保存在 `logs/日期/` 目录下，同一天最多保留 5 个日志文件。
+- 危险域名标记文件位于 `config/flagged_domains.txt`，你可以编辑该文件，给不希望解密的域名添加 `#black` 标记。
 
+---
 
+<!-- STATS_START -->
+<!-- STATS_END -->
 
 ---
 
@@ -67,5 +72,3 @@
 ## 🙏 致谢
 
 感谢所有开源规则和脚本的作者，本项目汇集了多位贡献者的成果。
-
-
