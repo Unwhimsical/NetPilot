@@ -202,7 +202,6 @@ def load_existing_flagged_domains():
 
 def update_flagged_domains_file(new_dangerous_domains):
     """更新 config/flagged_domains.txt，保留已有标记，追加新发现的域名"""
-    # 确保 config 目录存在
     os.makedirs(os.path.dirname(FLAGGED_DOMAINS_FILE), exist_ok=True)
 
     existing_blacklisted = load_blacklisted_hostnames()
@@ -361,6 +360,39 @@ def get_added_items(original_list, new_list):
         if item not in original_set:
             added.append(item)
     return added
+
+def update_readme(direct_total, proxy_total, reject_total, added_direct, added_proxy, added_reject, current_date):
+    """更新 README.md 中 STATS_START 和 STATS_END 之间的统计信息"""
+    readme_path = "README.md"
+    if not os.path.exists(readme_path):
+        return
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    stats_text = (
+        f"## 📊 更新统计\n"
+        f"- 更新时间：{current_date}\n"
+        f"- 直连规则总数：**{direct_total}**（今日新增 {added_direct} 条）\n"
+        f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
+        f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
+    )
+
+    # 使用正则替换两个标记之间的内容
+    pattern = re.compile(
+        r"<!-- STATS_START -->.*?<!-- STATS_END -->",
+        re.DOTALL,
+    )
+    replacement = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
+    new_content = pattern.sub(replacement, content)
+
+    # 如果没有标记，则在末尾添加
+    if new_content == content:
+        new_content += f"\n\n<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->\n"
+
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    print("README updated.")
 
 def main():
     tz = datetime.timezone(datetime.timedelta(hours=8))
@@ -669,6 +701,17 @@ def main():
     with open(log_file_path, 'w', encoding='utf-8') as f:
         f.write(log_content)
     print(f"Log written to {log_file_path}")
+
+    # 更新 README 统计信息
+    update_readme(
+        direct_total=len(merged_direct_rules),
+        proxy_total=len(merged_proxy_rules),
+        reject_total=len(merged_reject_rules),
+        added_direct=len(added_direct_rules),
+        added_proxy=len(added_proxy_rules),
+        added_reject=len(added_reject_rules),
+        current_date=current_date,
+    )
 
 if __name__ == "__main__":
     main()
