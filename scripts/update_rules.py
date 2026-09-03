@@ -4,6 +4,7 @@
 import os
 import re
 import glob
+import json
 import requests
 import datetime
 
@@ -37,7 +38,7 @@ DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
-FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"   # 拉黑域名标记文件，放在 config 目录
+FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 
@@ -288,6 +289,61 @@ def cleanup_legacy_log_files(log_dir):
                 print(f"Deleting legacy log file: {filepath}")
                 os.remove(filepath)
 
+def get_today_stats_path(current_date: str) -> str:
+    """返回今日统计文件路径"""
+    return os.path.join(LOG_DIR, current_date, "today_stats.json")
+
+def load_today_stats(current_date: str) -> dict:
+    """读取今日累计新增统计，若不存在则返回初始值"""
+    stats_path = get_today_stats_path(current_date)
+    if os.path.exists(stats_path):
+        with open(stats_path, 'r', encoding='utf-8') as f:
+            try:
+                return json.load(f)
+            except Exception:
+                pass
+    return {"added_direct": 0, "added_proxy": 0, "added_reject": 0}
+
+def save_today_stats(current_date: str, stats: dict) -> None:
+    """保存今日累计新增统计"""
+    stats_path = get_today_stats_path(current_date)
+    os.makedirs(os.path.dirname(stats_path), exist_ok=True)
+    with open(stats_path, 'w', encoding='utf-8') as f:
+        json.dump(stats, f, ensure_ascii=False, indent=2)
+
+def update_readme(direct_total, proxy_total, reject_total, added_direct, added_proxy, added_reject, current_date):
+    """更新 README.md 中 STATS_START 和 STATS_END 之间的统计信息"""
+    readme_path = "README.md"
+    if not os.path.exists(readme_path):
+        return
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    stats_text = (
+        f"## 📊 更新统计\n"
+        f"- 更新时间：{current_date}\n"
+        f"- 直连规则总数：**{direct_total}**（今日新增 {added_direct} 条）\n"
+        f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
+        f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
+    )
+
+    # 使用正则替换两个标记之间的内容
+    pattern = re.compile(
+        r"<!-- STATS_START -->.*?<!-- STATS_END -->",
+        re.DOTALL,
+    )
+    replacement = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
+    new_content = pattern.sub(replacement, content)
+
+    # 如果没有标记，则在末尾添加
+    if new_content == content:
+        new_content += f"\n\n<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->\n"
+
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    print("README updated.")
+
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
@@ -361,39 +417,6 @@ def get_added_items(original_list, new_list):
             added.append(item)
     return added
 
-def update_readme(direct_total, proxy_total, reject_total, added_direct, added_proxy, added_reject, current_date):
-    """更新 README.md 中 STATS_START 和 STATS_END 之间的统计信息"""
-    readme_path = "README.md"
-    if not os.path.exists(readme_path):
-        return
-
-    with open(readme_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    stats_text = (
-        f"## 📊 更新统计\n"
-        f"- 更新时间：{current_date}\n"
-        f"- 直连规则总数：**{direct_total}**（今日新增 {added_direct} 条）\n"
-        f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
-        f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
-    )
-
-    # 使用正则替换两个标记之间的内容
-    pattern = re.compile(
-        r"<!-- STATS_START -->.*?<!-- STATS_END -->",
-        re.DOTALL,
-    )
-    replacement = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
-    new_content = pattern.sub(replacement, content)
-
-    # 如果没有标记，则在末尾添加
-    if new_content == content:
-        new_content += f"\n\n<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->\n"
-
-    with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(new_content)
-    print("README updated.")
-
 def main():
     tz = datetime.timezone(datetime.timedelta(hours=8))
     now = datetime.datetime.now(tz)
@@ -403,9 +426,17 @@ def main():
     # 清理旧格式日志文件
     cleanup_legacy_log_files(LOG_DIR)
 
+    # 读取今日累计统计
+    today_stats = load_today_stats(current_date)
+
     # 读取用户标记的拉黑域名
     blacklisted_hostnames = load_blacklisted_hostnames()
     existing_flagged = load_existing_flagged_domains()
+
+    # 初始化新增规则变量，防止后面可能不存在
+    added_direct_rules = []
+    added_proxy_rules = []
+    added_reject_rules = []
 
     log_lines = []
     log_lines.append(f"# 更新日志 {current_date}\n")
@@ -702,14 +733,20 @@ def main():
         f.write(log_content)
     print(f"Log written to {log_file_path}")
 
-    # 更新 README 统计信息
+    # 更新今日累计统计并保存
+    today_stats["added_direct"] += len(added_direct_rules)
+    today_stats["added_proxy"] += len(added_proxy_rules)
+    today_stats["added_reject"] += len(added_reject_rules)
+    save_today_stats(current_date, today_stats)
+
+    # 更新 README 统计信息（使用累计值）
     update_readme(
         direct_total=len(merged_direct_rules),
         proxy_total=len(merged_proxy_rules),
         reject_total=len(merged_reject_rules),
-        added_direct=len(added_direct_rules),
-        added_proxy=len(added_proxy_rules),
-        added_reject=len(added_reject_rules),
+        added_direct=today_stats["added_direct"],
+        added_proxy=today_stats["added_proxy"],
+        added_reject=today_stats["added_reject"],
         current_date=current_date,
     )
 
