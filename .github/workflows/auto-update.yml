@@ -2,7 +2,8 @@ name: Auto Update Rules
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 每天 UTC 3:00（北京时间 11:00）运行
+    - cron: '0 4 * * *'    # 北京时间 12:00（UTC 04:00）
+    - cron: '0 16 * * *'   # 北京时间 00:00（UTC 16:00）
   workflow_dispatch:       # 允许手动触发
 
 jobs:
