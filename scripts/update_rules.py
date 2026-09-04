@@ -710,8 +710,10 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
     readme_path = "README.md"
     if not os.path.exists(readme_path):
         return
+
     with open(readme_path, "r", encoding="utf-8") as f:
         content = f.read()
+
     stats_text = (
         f"## 📊 更新统计\n"
         f"- 更新时间：{current_date}\n"
@@ -719,13 +721,20 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
+
+    # 删除所有已有的统计块（包括标记行），避免重复
     pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
-    replacement = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
-    new_content = pattern.sub(replacement, content)
-    if new_content == content:
-        new_content += f"\n\n<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->\n"
+    content = pattern.sub("", content)
+
+    # 清理可能多余的空行
+    content = re.sub(r"\n{3,}", "\n\n", content).strip()
+
+    # 追加新的统计块
+    new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
+    content += f"\n\n{new_block}\n"
+
     with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(new_content)
+        f.write(content)
     print("README updated.")
 
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
@@ -868,22 +877,19 @@ def main():
 
         # 过滤海外规则和强制代理域名
         filtered_rules = []
-        filtered_details = []  # (rule, matched_keyword)
+        filtered_details = []
         for rule in merged_direct_rules:
             domain = extract_domain_from_rule(rule)
             low = rule.lower()
 
-            # 强制代理域名优先
             if any(domain_match(domain, fp) for fp in FORCE_PROXY_DOMAINS):
                 filtered_details.append((rule, "强制代理域名"))
                 continue
 
-            # 白名单
             if any(domain_match(domain, kw) or kw in low for kw in direct_whitelist):
                 filtered_rules.append(rule)
                 continue
 
-            # 黑名单
             for kw in direct_blacklist:
                 if domain_match(domain, kw) or kw in low:
                     filtered_details.append((rule, kw))
@@ -910,7 +916,6 @@ def main():
             'final': len(sorted_direct_rules)
         }
 
-        # 详细日志
         if filtered_details:
             log_lines.append(f"### 🔍 过滤海外/强制代理直连规则（共 {filtered_out} 条）\n")
             log_lines.append("**原因**：规则域名匹配海外黑名单关键词，或属于强制代理域名（如定位模块）。\n")
@@ -1220,7 +1225,6 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 日志敏感域名
     if sensitive_removed:
         log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
         log_lines.append("**原因**：域名包含银行/支付关键词，为防止隐私泄露，不加入解密列表。\n")
