@@ -392,15 +392,10 @@ def render_health_summary(health_data, log_lines):
         log_lines.append("暂无记录\n")
         return
     for url, entry in health_data.items():
-        status_icon = {
-            "healthy": "✅",
-            "warning": "⚠️",
-            "unhealthy": "❌"
-        }.get(entry.get("status"), "❓")
+        status_icon = {"healthy": "✅", "warning": "⚠️", "unhealthy": "❌"}.get(entry.get("status"), "❓")
         log_lines.append(
             f"- {status_icon} {url}\n"
-            f"  - 成功 {entry.get('total_success', 0)} 次，失败 {entry.get('total_fail', 0)} 次，"
-            f"连续失败 {entry.get('consecutive_fail', 0)} 次\n"
+            f"  - 成功 {entry.get('total_success', 0)} 次，失败 {entry.get('total_fail', 0)} 次，连续失败 {entry.get('consecutive_fail', 0)} 次\n"
             f"  - 最近成功: {entry.get('last_success') or '无'}\n"
             f"  - 最近失败: {entry.get('last_fail') or '无'} {('- ' + entry.get('last_error')) if entry.get('last_error') else ''}\n"
         )
@@ -435,8 +430,8 @@ def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
         except ValueError:
             continue
 
-# ========== 健康检查模块 ==========
-def health_check_module(module_content, label, min_rules=50, max_rules=100000):
+# ========== 健康检查模块（已提高 max_rules） ==========
+def health_check_module(module_content, label, min_rules=50, max_rules=1_000_000):
     if not module_content or not module_content.strip():
         return False, f"{label}: 模块内容为空"
     if '[Rule]' not in module_content:
@@ -448,7 +443,7 @@ def health_check_module(module_content, label, min_rules=50, max_rules=100000):
     if rule_count > max_rules:
         return False, f"{label}: 规则数量过多 ({rule_count} > {max_rules})"
     file_size = len(module_content.encode('utf-8'))
-    if file_size > 5 * 1024 * 1024:
+    if file_size > 10 * 1024 * 1024:
         return False, f"{label}: 模块文件过大 ({file_size / 1024 / 1024:.1f} MB)"
     return True, f"{label}: 健康检查通过（{rule_count} 条规则）"
 
@@ -783,7 +778,6 @@ def main():
     direct_blacklist = load_keyword_list(DIRECT_BLACKLIST_FILE)
     direct_whitelist = load_keyword_list(DIRECT_WHITELIST_FILE)
 
-    # 加载源健康数据
     health_data = load_source_health()
 
     added_direct_rules = []
@@ -880,7 +874,6 @@ def main():
                 log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_direct_rules)} 条")
         log_lines.append("\n")
 
-        # 生成直连模块内容
         direct_parts = [
             "#!name=NetPilot Direct",
             f"#!desc=直连规则总数: {len(sorted_direct_rules)}",
@@ -1095,7 +1088,6 @@ def main():
         log_lines.extend([f"- {status}" for status in download_log])
         log_lines.append("\n")
 
-    # 生成 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(sorted_proxy_rules)} ｜ 去广告规则: {len(sorted_reject_rules)}",
@@ -1154,10 +1146,10 @@ def main():
         log_lines.extend([f"- {status}" for status in independent_log])
         log_lines.append("\n")
 
-    # 在日志末尾添加源健康摘要
+    # 源健康摘要
     render_health_summary(health_data, log_lines)
 
-    # 写入日志
+    # 写日志
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
     log_file_path = get_log_file_path(current_date)
@@ -1165,16 +1157,16 @@ def main():
         f.write(log_content)
     print(f"Log written to {log_file_path}")
 
-    # 保存源健康数据
+    # 保存健康数据
     save_source_health(health_data)
 
-    # 更新今日累计统计
+    # 今日统计
     today_stats["added_direct"] += len(added_direct_rules)
     today_stats["added_proxy"] += len(added_proxy_rules)
     today_stats["added_reject"] += len(added_reject_rules)
     save_today_stats(current_date, today_stats)
 
-    # 更新 README
+    # README
     update_readme(
         direct_total=len(sorted_direct_rules),
         proxy_total=len(sorted_proxy_rules),
@@ -1185,7 +1177,7 @@ def main():
         current_date=current_date,
     )
 
-    # 生成变更报告（包含健康数据）
+    # 变更报告
     generate_change_report(
         current_date=current_date,
         log_lines=log_lines,
