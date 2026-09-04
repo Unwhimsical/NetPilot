@@ -1,5 +1,7 @@
 # NetPilot
 
+![NetPilot](assets/NetPilot.png)
+
 > 一个自动维护的 Shadowrocket（小火箭） 模块规则仓库，帮你保持国内直连、国外代理、广告拦截的平衡。
 
 ---
