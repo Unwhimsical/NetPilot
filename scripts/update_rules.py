@@ -41,6 +41,8 @@ SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
 FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"
+DIRECT_BLACKLIST_FILE = "config/direct_blacklist.txt"
+DIRECT_WHITELIST_FILE = "config/direct_whitelist.txt"
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 
@@ -174,6 +176,44 @@ def scan_js_content(js_content):
             risks.append(pattern)
     return risks
 
+def load_keyword_list(file_path):
+    """读取每行一个关键词的文件，返回关键词列表"""
+    keywords = []
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    keywords.append(line)
+    return keywords
+
+def should_keep_direct(rule, blacklist, whitelist):
+    """判断直连规则是否保留：白名单优先，黑名单剔除"""
+    low = rule.lower()
+    if any(k in low for k in whitelist):
+        return True
+    if any(k in low for k in blacklist):
+        return False
+    return True
+
+def sort_rules(rules):
+    """
+    对规则列表进行排序：先按规则类型分组，再按字母排序。
+    顺序：DOMAIN-SUFFIX, DOMAIN-KEYWORD, DOMAIN, IP-CIDR6, IP-CIDR, USER-AGENT, PROCESS-NAME, URL-REGEX
+    """
+    order = ['DOMAIN-SUFFIX', 'DOMAIN-KEYWORD', 'DOMAIN', 'IP-CIDR6', 'IP-CIDR', 'USER-AGENT', 'PROCESS-NAME', 'URL-REGEX']
+    type_map = {t: i for i, t in enumerate(order)}
+
+    def get_rule_type(rule):
+        return rule.split(',')[0] if ',' in rule else ''
+
+    def key_func(rule):
+        prefix = get_rule_type(rule)
+        type_index = type_map.get(prefix, 99)
+        return (type_index, rule)
+
+    return sorted(rules, key=key_func)
+
 def load_blacklisted_hostnames():
     """读取 config/flagged_domains.txt 中标记了 #black 的域名"""
     blacklisted = set()
@@ -292,11 +332,9 @@ def cleanup_legacy_log_files(log_dir):
                 os.remove(filepath)
 
 def get_today_stats_path(current_date: str) -> str:
-    """返回今日统计文件路径"""
     return os.path.join(LOG_DIR, current_date, "today_stats.json")
 
 def load_today_stats(current_date: str) -> dict:
-    """读取今日累计新增统计，若不存在则返回初始值"""
     stats_path = get_today_stats_path(current_date)
     if os.path.exists(stats_path):
         with open(stats_path, 'r', encoding='utf-8') as f:
@@ -307,14 +345,12 @@ def load_today_stats(current_date: str) -> dict:
     return {"added_direct": 0, "added_proxy": 0, "added_reject": 0}
 
 def save_today_stats(current_date: str, stats: dict) -> None:
-    """保存今日累计新增统计"""
     stats_path = get_today_stats_path(current_date)
     os.makedirs(os.path.dirname(stats_path), exist_ok=True)
     with open(stats_path, 'w', encoding='utf-8') as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
 
 def update_readme(direct_total, proxy_total, reject_total, added_direct, added_proxy, added_reject, current_date):
-    """更新 README.md 中 STATS_START 和 STATS_END 之间的统计信息"""
     readme_path = "README.md"
     if not os.path.exists(readme_path):
         return
@@ -330,15 +366,10 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
 
-    # 使用正则替换两个标记之间的内容
-    pattern = re.compile(
-        r"<!-- STATS_START -->.*?<!-- STATS_END -->",
-        re.DOTALL,
-    )
+    pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
     replacement = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
     new_content = pattern.sub(replacement, content)
 
-    # 如果没有标记，则在末尾添加
     if new_content == content:
         new_content += f"\n\n<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->\n"
 
@@ -425,17 +456,15 @@ def main():
     current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
     current_date = now.strftime('%Y-%m-%d')
 
-    # 清理旧格式日志文件
     cleanup_legacy_log_files(LOG_DIR)
-
-    # 读取今日累计统计
     today_stats = load_today_stats(current_date)
-
-    # 读取用户标记的拉黑域名
     blacklisted_hostnames = load_blacklisted_hostnames()
     existing_flagged = load_existing_flagged_domains()
 
-    # 初始化新增规则变量，防止后面可能不存在
+    # 读取直连黑名单和白名单
+    direct_blacklist = load_keyword_list(DIRECT_BLACKLIST_FILE)
+    direct_whitelist = load_keyword_list(DIRECT_WHITELIST_FILE)
+
     added_direct_rules = []
     added_proxy_rules = []
     added_reject_rules = []
@@ -455,6 +484,7 @@ def main():
             with open(DIRECT_MODULE_PATH, 'r', encoding='utf-8') as f:
                 original_direct_content = f.read()
             original_direct_rules = extract_rules(original_direct_content)
+
         new_direct_rules = []
         for url in UPSTREAM_MODULE_SOURCES["direct"]:
             try:
@@ -465,14 +495,27 @@ def main():
             except Exception as e:
                 print(f"Failed to process {url}: {e}")
                 direct_source_status.append(f"❌ {url} - {e}")
+
         merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
-        added_direct_rules = get_added_items(original_direct_rules, new_direct_rules)
+
+        # **过滤海外直连规则**
+        before_filter = len(merged_direct_rules)
+        filtered_direct_rules = [rule for rule in merged_direct_rules if should_keep_direct(rule, direct_blacklist, direct_whitelist)]
+        filtered_out_count = before_filter - len(filtered_direct_rules)
+        if filtered_out_count:
+            log_lines.append(f"⚠️ 已过滤海外直连规则：{filtered_out_count} 条\n")
+
+        # **计算新增规则（过滤后）**
+        added_direct_rules = get_added_items(original_direct_rules, filtered_direct_rules)
+
+        # **排序**
+        sorted_direct_rules = sort_rules(filtered_direct_rules)
 
         log_lines.append("### 上游源状态\n")
         log_lines.extend([f"- {status}" for status in direct_source_status])
         log_lines.append(f"\n**原有规则数**: {len(original_direct_rules)}")
         log_lines.append(f"**新增规则数**: {len(added_direct_rules)}")
-        log_lines.append(f"**更新后总数**: {len(merged_direct_rules)}\n")
+        log_lines.append(f"**更新后总数**: {len(sorted_direct_rules)}\n")
         if added_direct_rules:
             log_lines.append("#### 新增规则明细\n")
             show_items = added_direct_rules[:MAX_LOG_ITEMS]
@@ -483,16 +526,13 @@ def main():
 
         direct_parts = [
             "#!name=NetPilot Direct",
-            f"#!desc=直连规则总数: {len(merged_direct_rules)}",
+            f"#!desc=直连规则总数: {len(sorted_direct_rules)}",
             "# 描述：国内直连规则，自动更新",
             f"# 更新时间: {current_time}",
-            f"# 直连规则总数: {len(merged_direct_rules)}",
+            f"# 直连规则总数: {len(sorted_direct_rules)}",
             "[Rule]"
         ]
-        direct_parts.append("\n".join(original_direct_rules))
-        if added_direct_rules:
-            direct_parts.append(f"# === 新增规则 {current_time} ===")
-            direct_parts.append("\n".join(added_direct_rules))
+        direct_parts.append("\n".join(sorted_direct_rules))
         direct_parts.append("GEOIP,CN,DIRECT")
         direct_module = "\n\n".join(direct_parts) + "\n"
         os.makedirs(os.path.dirname(DIRECT_MODULE_PATH), exist_ok=True)
@@ -577,12 +617,16 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
+    # **排序代理和去广告规则**
+    sorted_proxy_rules = sort_rules(merged_proxy_rules)
+    sorted_reject_rules = sort_rules(merged_reject_rules)
+
     # 日志代理
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in proxy_source_status])
     log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
     log_lines.append(f"**新增代理规则数**: {len(added_proxy_rules)}")
-    log_lines.append(f"**更新后代理规则总数**: {len(merged_proxy_rules)}\n")
+    log_lines.append(f"**更新后代理规则总数**: {len(sorted_proxy_rules)}\n")
     if added_proxy_rules:
         log_lines.append("#### 新增代理规则明细\n")
         show_items = added_proxy_rules[:MAX_LOG_ITEMS]
@@ -597,7 +641,7 @@ def main():
     log_lines.extend([f"- {status}" for status in shield_source_status])
     log_lines.append(f"\n**原有去广告规则数**: {len(original_reject_rules)}")
     log_lines.append(f"**新增去广告规则数**: {len(added_reject_rules)}")
-    log_lines.append(f"**更新后去广告规则总数**: {len(merged_reject_rules)}\n")
+    log_lines.append(f"**更新后去广告规则总数**: {len(sorted_reject_rules)}\n")
     if added_reject_rules:
         log_lines.append("#### 新增去广告规则明细\n")
         show_items = added_reject_rules[:MAX_LOG_ITEMS]
@@ -629,10 +673,8 @@ def main():
             dangerous_domains.append(h)
         filtered_hostnames.append(h)
 
-    # 更新 config/flagged_domains.txt
     update_flagged_domains_file(dangerous_domains)
 
-    # 在当天日志子目录中保存危险域名快照
     log_subdir, _ = get_log_dir_and_base(current_date)
     snapshot_path = os.path.join(log_subdir, "dangerous_domains.txt")
     with open(snapshot_path, 'w', encoding='utf-8') as f:
@@ -647,13 +689,11 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
-    # 日志记录敏感域名（全部显示）
     if sensitive_removed:
         log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
         log_lines.extend([f"- {h}" for h in sensitive_removed])
         log_lines.append("\n")
 
-    # 日志记录危险域名（全部显示）
     new_dangerous = [d for d in dangerous_domains if d not in existing_flagged]
     if new_dangerous:
         log_lines.append(f"## ⚠️ 新发现危险域名（共 {len(new_dangerous)} 个，默认保留）\n")
@@ -661,7 +701,6 @@ def main():
         log_lines.extend([f"- {h}" for h in new_dangerous])
         log_lines.append("\n")
 
-    # 本地化脚本
     download_log = []
     script_blacklist = set()
     updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log, script_blacklist)
@@ -673,23 +712,17 @@ def main():
     # 生成 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
-        f"#!desc=代理规则: {len(merged_proxy_rules)} ｜ 去广告规则: {len(merged_reject_rules)}",
+        f"#!desc=代理规则: {len(sorted_proxy_rules)} ｜ 去广告规则: {len(sorted_reject_rules)}",
         "# 描述：代理分流 + 去广告模块，自动更新",
         f"# 更新时间: {current_time}",
-        f"# 代理规则总数: {len(merged_proxy_rules)}",
-        f"# 去广告规则总数: {len(merged_reject_rules)}",
+        f"# 代理规则总数: {len(sorted_proxy_rules)}",
+        f"# 去广告规则总数: {len(sorted_reject_rules)}",
         "[Rule]"
     ]
     shield_parts.append("# --- 代理分流规则 ---")
-    shield_parts.append("\n".join(original_proxy_rules))
-    if added_proxy_rules:
-        shield_parts.append(f"# === 新增代理规则 {current_time} ===")
-        shield_parts.append("\n".join(added_proxy_rules))
+    shield_parts.append("\n".join(sorted_proxy_rules))
     shield_parts.append("# --- 去广告拦截规则 ---")
-    shield_parts.append("\n".join(original_reject_rules))
-    if added_reject_rules:
-        shield_parts.append(f"# === 新增去广告规则 {current_time} ===")
-        shield_parts.append("\n".join(added_reject_rules))
+    shield_parts.append("\n".join(sorted_reject_rules))
     shield_parts.append("[URL Rewrite]")
     shield_parts.append("\n".join(merged_rewrites))
     shield_parts.append("[Script]")
@@ -727,7 +760,6 @@ def main():
         log_lines.extend([f"- {status}" for status in independent_log])
         log_lines.append("\n")
 
-    # 写入日志文件（同一天自动编号，最多5个）
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
     log_file_path = get_log_file_path(current_date)
@@ -743,9 +775,9 @@ def main():
 
     # 更新 README 统计信息（使用累计值）
     update_readme(
-        direct_total=len(merged_direct_rules),
-        proxy_total=len(merged_proxy_rules),
-        reject_total=len(merged_reject_rules),
+        direct_total=len(sorted_direct_rules) if 'sorted_direct_rules' in locals() else 0,
+        proxy_total=len(sorted_proxy_rules),
+        reject_total=len(sorted_reject_rules),
         added_direct=today_stats["added_direct"],
         added_proxy=today_stats["added_proxy"],
         added_reject=today_stats["added_reject"],
