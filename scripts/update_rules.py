@@ -722,16 +722,26 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
 
-    # 删除所有已有的统计块（包括标记行），避免重复
+    new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
+
+    # 删除所有已有的统计块（避免重复）
     pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
     content = pattern.sub("", content)
 
     # 清理可能多余的空行
     content = re.sub(r"\n{3,}", "\n\n", content).strip()
 
-    # 追加新的统计块
-    new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
-    content += f"\n\n{new_block}\n"
+    # 查找“更新机制”标题，将统计块插入到它下面
+    heading = "## 🔄 更新机制"
+    if heading in content:
+        # 在标题后插入统计块，保留标题和其余内容
+        parts = content.split(heading, 1)
+        before = parts[0] + heading + "\n\n"
+        after = parts[1].lstrip('\n')
+        content = before + new_block + "\n\n" + after
+    else:
+        # 如果找不到标题，则追加到文件末尾
+        content += "\n\n" + new_block + "\n"
 
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(content)
