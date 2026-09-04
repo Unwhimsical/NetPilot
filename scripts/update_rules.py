@@ -49,7 +49,7 @@ DIRECT_BLACKLIST_FILE = "config/direct_blacklist.txt"
 DIRECT_WHITELIST_FILE = "config/direct_whitelist.txt"
 SOURCE_HEALTH_FILE = "config/source_health.json"
 MAX_LOG_FILES = 5
-MAX_LOG_ITEMS = 5
+MAX_LOG_ITEMS = 5  # 这个现在只用于“新增规则明细”的折叠阈值，详细日志中不再截断
 MAX_BACKUP_DAYS = 7
 
 FORCE_APPEND = True
@@ -281,6 +281,7 @@ def detect_parent_child_conflicts(rules):
 def quality_check_rules(rules, label="rules"):
     valid = []
     invalid = []
+    invalid_details = []  # 新增：记录无效规则及原因
     valid_prefixes = (
         'DOMAIN,', 'DOMAIN-SUFFIX,', 'DOMAIN-KEYWORD,',
         'IP-CIDR,', 'IP-CIDR6,', 'USER-AGENT,',
@@ -293,21 +294,25 @@ def quality_check_rules(rules, label="rules"):
             continue
         if not rule.startswith(valid_prefixes):
             invalid.append(rule)
+            invalid_details.append((rule, "规则前缀不合法"))
             continue
         parts = rule.split(',')
         if len(parts) < 3:
             invalid.append(rule)
+            invalid_details.append((rule, "缺少策略字段"))
             continue
         policy = parts[2].strip().upper()
         if policy not in valid_policies and not policy.startswith('REJECT'):
             invalid.append(rule)
+            invalid_details.append((rule, f"策略 '{policy}' 不合法"))
             continue
         if rule in seen:
             invalid.append(rule)
+            invalid_details.append((rule, "重复规则"))
             continue
         seen.add(rule)
         valid.append(rule)
-    return valid, invalid
+    return valid, invalid, invalid_details
 
 def test_rule_hit(domain, rules):
     domain = domain.lower()
@@ -345,7 +350,7 @@ def save_source_health(health_data):
         json.dump(health_data, f, ensure_ascii=False, indent=2)
 
 def get_health_status(consecutive_fail, last_success, last_fail):
-    now = datetime.datetime.now()
+    now = get_beijing_now()
     if consecutive_fail >= 3:
         return "unhealthy"
     if consecutive_fail >= 1:
@@ -359,10 +364,15 @@ def get_health_status(consecutive_fail, last_success, last_fail):
             pass
     return "healthy"
 
+def get_beijing_now():
+    """返回北京时间 datetime 对象（不带时区信息，便于格式化）"""
+    tz = datetime.timezone(datetime.timedelta(hours=8))
+    return datetime.datetime.now(tz).replace(tzinfo=None)
+
 def update_source_health(url, success, error=None, health_data=None):
     if health_data is None:
         health_data = {}
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = get_beijing_now().strftime("%Y-%m-%d %H:%M:%S")
     entry = health_data.get(url, {
         "total_success": 0,
         "total_fail": 0,
@@ -406,7 +416,7 @@ def backup_module_file(src_path, backup_subdir):
     if not os.path.exists(src_path):
         return None
     os.makedirs(backup_subdir, exist_ok=True)
-    timestamp = datetime.datetime.now().strftime('%H%M%S')
+    timestamp = get_beijing_now().strftime('%H%M%S')
     filename = os.path.basename(src_path)
     stem, ext = os.path.splitext(filename)
     backup_path = os.path.join(backup_subdir, f"{stem}_{timestamp}{ext}")
@@ -417,7 +427,7 @@ def backup_module_file(src_path, backup_subdir):
 def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
     if not os.path.isdir(backup_dir):
         return
-    cutoff = datetime.datetime.now() - datetime.timedelta(days=keep_days)
+    cutoff = get_beijing_now() - datetime.timedelta(days=keep_days)
     for date_dir in os.listdir(backup_dir):
         dir_path = os.path.join(backup_dir, date_dir)
         if not os.path.isdir(dir_path):
@@ -430,7 +440,7 @@ def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
         except ValueError:
             continue
 
-# ========== 健康检查模块（已提高 max_rules） ==========
+# ========== 健康检查模块 ==========
 def health_check_module(module_content, label, min_rules=50, max_rules=1_000_000):
     if not module_content or not module_content.strip():
         return False, f"{label}: 模块内容为空"
@@ -500,7 +510,7 @@ def query_rule_hit(domain, direct_module_path, shield_module_path):
 def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, reject_stats, conflicts, parent_child_conflicts, quality_issues, health_data):
     report = []
     report.append(f"# 变更报告 {current_date}\n")
-    report.append(f"生成时间：{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    report.append(f"生成时间：{get_beijing_now().strftime('%Y-%m-%d %H:%M:%S')}\n")
     report.append("---\n")
     report.append("## 直连模块\n")
     report.append(f"- 原有规则数：{direct_stats.get('original', 0)}")
@@ -766,8 +776,8 @@ def main():
         query_rule_hit(args.query_domain, DIRECT_MODULE_PATH, SHIELD_MODULE_PATH)
         return 0
 
-    tz = datetime.timezone(datetime.timedelta(hours=8))
-    now = datetime.datetime.now(tz)
+    # 统一使用北京时间
+    now = get_beijing_now()
     current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
     current_date = now.strftime('%Y-%m-%d')
 
@@ -792,7 +802,7 @@ def main():
     reject_stats = {}
     all_conflicts = []
     all_parent_child_conflicts = []
-    all_quality_issues = []
+    all_quality_issues = []  # 现在存储 (rule, reason) 元组
     health_checks = []
 
     log_lines = []
@@ -830,12 +840,30 @@ def main():
                 health_data = update_source_health(url, success=False, error=e, health_data=health_data)
 
         merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
-        before_filter = len(merged_direct_rules)
-        filtered_direct_rules = [rule for rule in merged_direct_rules if should_keep_direct(rule, direct_blacklist, direct_whitelist)]
-        filtered_out = before_filter - len(filtered_direct_rules)
 
-        valid_direct, invalid_direct = quality_check_rules(filtered_direct_rules, "直连规则")
-        all_quality_issues.extend(invalid_direct)
+        # 过滤海外规则，并记录详细原因
+        filtered_rules = []
+        filtered_details = []  # (rule, matched_keyword)
+        for rule in merged_direct_rules:
+            domain = extract_domain_from_rule(rule)
+            low = rule.lower()
+            # 白名单优先
+            if any(domain_match(domain, kw) or kw in low for kw in direct_whitelist):
+                filtered_rules.append(rule)
+                continue
+            # 黑名单过滤
+            for kw in direct_blacklist:
+                if domain_match(domain, kw) or kw in low:
+                    filtered_details.append((rule, kw))
+                    break
+            else:
+                filtered_rules.append(rule)
+
+        filtered_out = len(filtered_details)
+        valid_direct, invalid_direct, invalid_direct_details = quality_check_rules(filtered_rules, "直连规则")
+
+        # 将质量异常详情并入 all_quality_issues
+        all_quality_issues.extend([(rule, reason) for rule, reason in invalid_direct_details])
 
         direct_conflicts = detect_rule_conflicts(valid_direct)
         direct_parent_child = detect_parent_child_conflicts(valid_direct)
@@ -852,15 +880,55 @@ def main():
             'final': len(sorted_direct_rules)
         }
 
-        if filtered_out:
-            log_lines.append(f"⚠️ 已过滤海外直连规则：{filtered_out} 条\n")
-        if direct_conflicts:
-            log_lines.append(f"⚠️ 同域名策略冲突 {len(direct_conflicts)} 组\n")
-        if direct_parent_child:
-            log_lines.append(f"⚠️ 父子域冲突 {len(direct_parent_child)} 组\n")
-        if invalid_direct:
-            log_lines.append(f"⚠️ 异常规则 {len(invalid_direct)} 条已过滤\n")
+        # ===== 详细日志记录 =====
+        if filtered_details:
+            log_lines.append(f"### 🔍 过滤海外直连规则（共 {filtered_out} 条）\n")
+            log_lines.append("**原因**：规则域名匹配海外黑名单关键词，属于海外服务，不应直连。\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看被过滤规则及命中关键词</summary>\n")
+            log_lines.append("```")
+            for rule, kw in filtered_details:
+                log_lines.append(f"- {rule}  (命中关键词: {kw})")
+            log_lines.append("```")
+            log_lines.append("</details>\n")
 
+        if invalid_direct_details:
+            log_lines.append(f"### ❌ 直连规则质量检查异常（共 {len(invalid_direct_details)} 条）\n")
+            log_lines.append("**处理动作**：异常规则已从最终模块中移除。\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看异常规则及原因</summary>\n")
+            log_lines.append("```")
+            for rule, reason in invalid_direct_details:
+                log_lines.append(f"- {rule}  (原因: {reason})")
+            log_lines.append("```")
+            log_lines.append("</details>\n")
+
+        if direct_conflicts:
+            log_lines.append(f"### ⚠️ 直连模块同域名策略冲突（共 {len(direct_conflicts)} 组）\n")
+            log_lines.append("**判断依据**：同一域名出现多个规则，且策略不同。\n")
+            log_lines.append("**处理动作**：排序后靠前的规则优先生效，后续冲突规则不会影响最终策略，但已记录。\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看冲突详情</summary>\n")
+            for c in direct_conflicts:
+                log_lines.append(f"**{c['key']}**")
+                log_lines.append("```")
+                for r in c['rules']:
+                    log_lines.append(f"- {r}")
+                log_lines.append("```")
+            log_lines.append("</details>\n")
+
+        if direct_parent_child:
+            log_lines.append(f"### ⚠️ 直连模块父子域冲突（共 {len(direct_parent_child)} 组）\n")
+            log_lines.append("**判断依据**：DOMAIN 规则被 DOMAIN-SUFFIX 规则覆盖且策略不同。\n")
+            log_lines.append("**处理动作**：排序后 DOMAIN 规则在前，将优先生效。\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看冲突详情</summary>\n")
+            for c in direct_parent_child:
+                log_lines.append(f"- {c['description']}")
+                log_lines.append("")
+            log_lines.append("</details>\n")
+
+        # 常规统计
         log_lines.append("### 上游源状态\n")
         log_lines.extend([f"- {status}" for status in direct_source_status])
         log_lines.append(f"\n**原有规则数**: {len(original_direct_rules)}")
@@ -868,12 +936,14 @@ def main():
         log_lines.append(f"**更新后总数**: {len(sorted_direct_rules)}\n")
         if added_direct_rules:
             log_lines.append("#### 新增规则明细\n")
-            show_items = added_direct_rules[:MAX_LOG_ITEMS]
-            log_lines.extend([f"- {rule}" for rule in show_items])
-            if len(added_direct_rules) > MAX_LOG_ITEMS:
-                log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_direct_rules)} 条")
-        log_lines.append("\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看新增规则（共 {len(added_direct_rules)} 条）</summary>\n")
+            log_lines.append("```")
+            log_lines.extend([r for r in added_direct_rules])
+            log_lines.append("```")
+            log_lines.append("</details>\n")
 
+        # 生成模块内容
         direct_parts = [
             "#!name=NetPilot Direct",
             f"#!desc=直连规则总数: {len(sorted_direct_rules)}",
@@ -972,10 +1042,10 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    valid_proxy, invalid_proxy = quality_check_rules(merged_proxy_rules, "代理规则")
-    valid_reject, invalid_reject = quality_check_rules(merged_reject_rules, "去广告规则")
-    all_quality_issues.extend(invalid_proxy)
-    all_quality_issues.extend(invalid_reject)
+    valid_proxy, invalid_proxy, invalid_proxy_details = quality_check_rules(merged_proxy_rules, "代理规则")
+    valid_reject, invalid_reject, invalid_reject_details = quality_check_rules(merged_reject_rules, "去广告规则")
+    all_quality_issues.extend([(rule, reason) for rule, reason in invalid_proxy_details])
+    all_quality_issues.extend([(rule, reason) for rule, reason in invalid_reject_details])
 
     proxy_conflicts = detect_rule_conflicts(valid_proxy)
     reject_conflicts = detect_rule_conflicts(valid_reject)
@@ -1003,6 +1073,68 @@ def main():
         'final': len(sorted_reject_rules)
     }
 
+    # ===== 详细日志记录（Shield） =====
+    if invalid_proxy_details:
+        log_lines.append(f"### ❌ 代理规则质量检查异常（共 {len(invalid_proxy_details)} 条）\n")
+        log_lines.append("**处理动作**：异常规则已从最终模块中移除。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看异常规则及原因</summary>\n")
+        log_lines.append("```")
+        for rule, reason in invalid_proxy_details:
+            log_lines.append(f"- {rule}  (原因: {reason})")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
+
+    if invalid_reject_details:
+        log_lines.append(f"### ❌ 去广告规则质量检查异常（共 {len(invalid_reject_details)} 条）\n")
+        log_lines.append("**处理动作**：异常规则已从最终模块中移除。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看异常规则及原因</summary>\n")
+        log_lines.append("```")
+        for rule, reason in invalid_reject_details:
+            log_lines.append(f"- {rule}  (原因: {reason})")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
+
+    if proxy_conflicts:
+        log_lines.append(f"### ⚠️ 代理模块同域名策略冲突（共 {len(proxy_conflicts)} 组）\n")
+        log_lines.append("**判断依据**：同一域名出现多个规则，且策略不同。\n")
+        log_lines.append("**处理动作**：排序后靠前的规则优先生效，后续冲突规则不会影响最终策略，但已记录。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看冲突详情</summary>\n")
+        for c in proxy_conflicts:
+            log_lines.append(f"**{c['key']}**")
+            log_lines.append("```")
+            for r in c['rules']:
+                log_lines.append(f"- {r}")
+            log_lines.append("```")
+        log_lines.append("</details>\n")
+
+    if reject_conflicts:
+        log_lines.append(f"### ⚠️ 去广告模块同域名策略冲突（共 {len(reject_conflicts)} 组）\n")
+        log_lines.append("**判断依据**：同一域名出现多个规则，且策略不同。\n")
+        log_lines.append("**处理动作**：排序后靠前的规则优先生效，后续冲突规则不会影响最终策略，但已记录。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看冲突详情</summary>\n")
+        for c in reject_conflicts:
+            log_lines.append(f"**{c['key']}**")
+            log_lines.append("```")
+            for r in c['rules']:
+                log_lines.append(f"- {r}")
+            log_lines.append("```")
+        log_lines.append("</details>\n")
+
+    if proxy_parent_child or reject_parent_child:
+        log_lines.append(f"### ⚠️ 父子域冲突（代理和去广告合计 {len(proxy_parent_child) + len(reject_parent_child)} 组）\n")
+        log_lines.append("**判断依据**：DOMAIN 规则被 DOMAIN-SUFFIX 规则覆盖且策略不同。\n")
+        log_lines.append("**处理动作**：排序后 DOMAIN 规则在前，将优先生效。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看冲突详情</summary>\n")
+        for c in proxy_parent_child + reject_parent_child:
+            log_lines.append(f"- {c['description']}")
+        log_lines.append("</details>\n")
+
+    # 常规统计
     log_lines.append("### 上游源状态\n")
     log_lines.extend([f"- {status}" for status in proxy_source_status])
     log_lines.append(f"\n**原有代理规则数**: {len(original_proxy_rules)}")
@@ -1010,11 +1142,12 @@ def main():
     log_lines.append(f"**更新后代理规则总数**: {len(sorted_proxy_rules)}\n")
     if added_proxy_rules:
         log_lines.append("#### 新增代理规则明细\n")
-        show_items = added_proxy_rules[:MAX_LOG_ITEMS]
-        log_lines.extend([f"- {rule}" for rule in show_items])
-        if len(added_proxy_rules) > MAX_LOG_ITEMS:
-            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_proxy_rules)} 条")
-    log_lines.append("\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看新增代理规则（共 {len(added_proxy_rules)} 条）</summary>\n")
+        log_lines.append("```")
+        log_lines.extend(added_proxy_rules)
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     log_lines.append("## 去广告模块\n")
     log_lines.append("### 上游源状态\n")
@@ -1024,11 +1157,12 @@ def main():
     log_lines.append(f"**更新后去广告规则总数**: {len(sorted_reject_rules)}\n")
     if added_reject_rules:
         log_lines.append("#### 新增去广告规则明细\n")
-        show_items = added_reject_rules[:MAX_LOG_ITEMS]
-        log_lines.extend([f"- {rule}" for rule in show_items])
-        if len(added_reject_rules) > MAX_LOG_ITEMS:
-            log_lines.append(f"仅显示前 {MAX_LOG_ITEMS} 条，共 {len(added_reject_rules)} 条")
-    log_lines.append("\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看新增去广告规则（共 {len(added_reject_rules)} 条）</summary>\n")
+        log_lines.append("```")
+        log_lines.extend(added_reject_rules)
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     # ====== 合并 hostname ======
     original_hostname_list = []
@@ -1068,17 +1202,27 @@ def main():
         if not merged_hostnames.startswith('%APPEND%'):
             merged_hostnames = '%APPEND% ' + merged_hostnames
 
+    # 日志敏感域名
     if sensitive_removed:
         log_lines.append("## ⚠️ 敏感域名已自动过滤（银行/支付）\n")
-        log_lines.extend([f"- {h}" for h in sensitive_removed])
-        log_lines.append("\n")
+        log_lines.append("**原因**：域名包含银行/支付关键词，为防止隐私泄露，不加入解密列表。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看被过滤的敏感域名（共 {len(sensitive_removed)} 个）</summary>\n")
+        log_lines.append("```")
+        log_lines.extend([h for h in sensitive_removed])
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     new_dangerous = [d for d in dangerous_domains if d not in existing_flagged]
     if new_dangerous:
         log_lines.append(f"## ⚠️ 新发现危险域名（共 {len(new_dangerous)} 个，默认保留）\n")
-        log_lines.append("如需拉黑，编辑 `config/flagged_domains.txt`，在对应域名后加 `#black`，然后手动运行脚本即可。\n")
-        log_lines.extend([f"- {h}" for h in new_dangerous])
-        log_lines.append("\n")
+        log_lines.append("**说明**：这些域名可能涉及广告/追踪，但未自动拉黑。如需拉黑，编辑 `config/flagged_domains.txt`，在对应域名后加 `#black`。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看危险域名列表</summary>\n")
+        log_lines.append("```")
+        log_lines.extend([h for h in new_dangerous])
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     download_log = []
     script_blacklist = set()
@@ -1088,6 +1232,7 @@ def main():
         log_lines.extend([f"- {status}" for status in download_log])
         log_lines.append("\n")
 
+    # 生成 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(sorted_proxy_rules)} ｜ 去广告规则: {len(sorted_reject_rules)}",
@@ -1186,7 +1331,7 @@ def main():
         reject_stats=reject_stats,
         conflicts=all_conflicts,
         parent_child_conflicts=all_parent_child_conflicts,
-        quality_issues=all_quality_issues,
+        quality_issues=[(rule, reason) for rule, reason in all_quality_issues],
         health_data=health_data,
     )
 
