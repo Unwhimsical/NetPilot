@@ -48,6 +48,7 @@ FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"
 DIRECT_BLACKLIST_FILE = "config/direct_blacklist.txt"
 DIRECT_WHITELIST_FILE = "config/direct_whitelist.txt"
 SOURCE_HEALTH_FILE = "config/source_health.json"
+DNS_LEAK_KEYWORDS_FILE = "config/dns_leak_keywords.txt"   # 新增：DNS泄漏检测关键词文件
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 MAX_BACKUP_DAYS = 7
@@ -201,6 +202,10 @@ def load_keyword_list(file_path):
                     keywords.append(line)
     return keywords
 
+def load_dns_leak_keywords():
+    """加载 DNS 泄漏检测关键词（忽略 # 注释行）"""
+    return load_keyword_list(DNS_LEAK_KEYWORDS_FILE)
+
 def extract_domain_from_rule(rule):
     parts = rule.split(',')
     if len(parts) >= 2:
@@ -217,11 +222,8 @@ def domain_match(domain, keyword):
 def should_keep_direct(rule, blacklist, whitelist, force_proxy_domains):
     domain = extract_domain_from_rule(rule)
     low = rule.lower()
-
-    # 强制代理域名：如果规则域名匹配 FORCE_PROXY_DOMAINS，则从直连模块中移除
     if any(domain_match(domain, fp) for fp in force_proxy_domains):
         return False
-
     if any(domain_match(domain, kw) or kw in low for kw in whitelist):
         return True
     if any(domain_match(domain, kw) or kw in low for kw in blacklist):
@@ -310,8 +312,6 @@ def quality_check_rules(rules, label="rules"):
             invalid.append(rule)
             invalid_details.append((rule, "规则前缀不合法"))
             continue
-
-        # 特殊处理 URL-REGEX：使用 rsplit 获取最后一个逗号后的策略
         if rule.startswith('URL-REGEX,'):
             if ',' not in rule:
                 invalid.append(rule)
@@ -326,19 +326,16 @@ def quality_check_rules(rules, label="rules"):
                 invalid_details.append((rule, "缺少策略字段"))
                 continue
             policy = parts[2].strip().upper()
-
         if policy not in valid_policies and not policy.startswith('REJECT'):
             invalid.append(rule)
             invalid_details.append((rule, f"策略 '{policy}' 不合法"))
             continue
-
         if rule in seen:
             invalid.append(rule)
             invalid_details.append((rule, "重复规则"))
             continue
         seen.add(rule)
         valid.append(rule)
-
     return valid, invalid, invalid_details
 
 def test_rule_hit(domain, rules):
@@ -360,6 +357,54 @@ def test_rule_hit(domain, rules):
             if target in domain:
                 return rule
     return None
+
+# ========== 新增：DNS 泄漏检测 ==========
+def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot Route.conf"):
+    risks = []
+    keywords = load_dns_leak_keywords()
+
+    # 检查直连规则中的海外域名
+    for rule in direct_rules:
+        domain = extract_domain_from_rule(rule)
+        if any(domain_match(domain, kw) or kw in domain for kw in keywords):
+            risks.append({
+                "type": "直连海外域名",
+                "severity": "高",
+                "description": f"直连规则包含海外域名: {rule}，可能导致 DNS 查询在本地解析，暴露访问记录。",
+            })
+
+    # 检查代理规则是否带 no-resolve
+    for rule in proxy_rules:
+        if 'no-resolve' in rule.lower():
+            risks.append({
+                "type": "代理规则使用 no-resolve",
+                "severity": "中",
+                "description": f"代理规则带 no-resolve: {rule}，该域名的 DNS 将在本地解析，可能泄漏。",
+            })
+
+    # 检查主配置的 DNS 设置
+    if main_config_path and os.path.exists(main_config_path):
+        with open(main_config_path, 'r', encoding='utf-8') as f:
+            main_content = f.read()
+
+        if re.search(r'^\s*dns-direct-system\s*=\s*true', main_content, re.MULTILINE | re.IGNORECASE):
+            risks.append({
+                "type": "dns-direct-system 开启",
+                "severity": "中",
+                "description": "主配置中 dns-direct-system = true，直连域名将使用系统 DNS，可能造成 DNS 泄漏。建议改为 false。",
+            })
+
+        dns_match = re.search(r'^\s*dns-server\s*=\s*(.*)', main_content, re.MULTILINE | re.IGNORECASE)
+        if dns_match:
+            dns_value = dns_match.group(1).strip()
+            if not dns_value.startswith('https://'):
+                risks.append({
+                    "type": "DNS 非 DoH",
+                    "severity": "高",
+                    "description": f"主配置 dns-server 不是 DoH: {dns_value}，DNS 查询可能明文传输。",
+                })
+
+    return risks
 
 # ========== 源健康监控 ==========
 def load_source_health():
@@ -533,7 +578,7 @@ def query_rule_hit(domain, direct_module_path, shield_module_path):
     return result
 
 # ========== 变更报告 ==========
-def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, reject_stats, conflicts, parent_child_conflicts, quality_issues, health_data):
+def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, reject_stats, conflicts, parent_child_conflicts, quality_issues, health_data, dns_risks=None):
     report = []
     report.append(f"# 变更报告 {current_date}\n")
     report.append(f"生成时间：{get_beijing_now().strftime('%Y-%m-%d %H:%M:%S')}\n")
@@ -581,6 +626,14 @@ def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, r
             report.append(f"- {status_icon} {url} (成功 {entry.get('total_success', 0)}, 失败 {entry.get('total_fail', 0)}, 连续失败 {entry.get('consecutive_fail', 0)})")
     else:
         report.append("暂无记录\n")
+    # DNS 泄漏风险
+    report.append("## DNS 泄漏风险\n")
+    if dns_risks:
+        for risk in dns_risks:
+            report.append(f"- **{risk['severity']}风险 - {risk['type']}**")
+            report.append(f"  {risk['description']}\n")
+    else:
+        report.append("未发现明显的 DNS 泄漏风险。\n")
     report.append("---\n")
     report.append("详细日志请查看同目录下的 update 日志文件。\n")
     report_path = os.path.join(LOG_DIR, current_date, "change_report.md")
@@ -710,10 +763,8 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
     readme_path = "README.md"
     if not os.path.exists(readme_path):
         return
-
     with open(readme_path, "r", encoding="utf-8") as f:
         content = f.read()
-
     stats_text = (
         f"## 📊 更新统计\n"
         f"- 更新时间：{current_date}\n"
@@ -721,28 +772,18 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
-
     new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
-
-    # 删除所有已有的统计块（避免重复）
     pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
     content = pattern.sub("", content)
-
-    # 清理可能多余的空行
     content = re.sub(r"\n{3,}", "\n\n", content).strip()
-
-    # 查找“更新机制”标题，将统计块插入到它下面
     heading = "## 🔄 更新机制"
     if heading in content:
-        # 在标题后插入统计块，保留标题和其余内容
         parts = content.split(heading, 1)
         before = parts[0] + heading + "\n\n"
         after = parts[1].lstrip('\n')
         content = before + new_block + "\n\n" + after
     else:
-        # 如果找不到标题，则追加到文件末尾
         content += "\n\n" + new_block + "\n"
-
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(content)
     print("README updated.")
@@ -1326,6 +1367,22 @@ def main():
     # 源健康摘要
     render_health_summary(health_data, log_lines)
 
+    # ====== DNS 泄漏检测 ======
+    dns_risks = detect_dns_leak_risks(
+        direct_rules=sorted_direct_rules,
+        proxy_rules=sorted_proxy_rules,
+        main_config_path="NetPilot Route.conf"  # 根据实际文件名调整
+    )
+    if dns_risks:
+        log_lines.append("## 🔒 DNS 泄漏风险检测\n")
+        for risk in dns_risks:
+            log_lines.append(f"- **{risk['severity']}风险 - {risk['type']}**")
+            log_lines.append(f"  {risk['description']}\n")
+        log_lines.append("\n")
+    else:
+        log_lines.append("## 🔒 DNS 泄漏风险检测\n")
+        log_lines.append("未发现明显的 DNS 泄漏风险。\n\n")
+
     # 写日志
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
@@ -1354,7 +1411,7 @@ def main():
         current_date=current_date,
     )
 
-    # 变更报告
+    # 变更报告（含 DNS 风险）
     generate_change_report(
         current_date=current_date,
         log_lines=log_lines,
@@ -1365,6 +1422,7 @@ def main():
         parent_child_conflicts=all_parent_child_conflicts,
         quality_issues=all_quality_issues,
         health_data=health_data,
+        dns_risks=dns_risks,
     )
 
     return 0
