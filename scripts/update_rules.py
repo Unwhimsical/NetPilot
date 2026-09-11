@@ -356,6 +356,24 @@ def test_rule_hit(domain, rules):
                 return rule
     return None
 
+# ========== 白名单豁免过滤（新增） ==========
+def filter_by_whitelist(rules, whitelist, label="规则"):
+    """
+    对规则做白名单豁免：命中 direct_whitelist 的域名从列表中剔除。
+    返回 (filtered_rules, removed_rules)
+    """
+    filtered = []
+    removed = []
+    for rule in rules:
+        domain = extract_domain_from_rule(rule)
+        if any(domain_match(domain, kw) for kw in whitelist):
+            removed.append(rule)
+            continue
+        filtered.append(rule)
+    if removed:
+        print(f"[白名单豁免] {label} 剔除 {len(removed)} 条命中白名单的规则")
+    return filtered, removed
+
 # ========== DNS 泄漏检测 ==========
 def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot Route.conf"):
     risks = []
@@ -768,8 +786,8 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
-    new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
-    pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
+    new_block = f"<!--ocal STATS_START -->\n{stats_text}\_n<!-- STATS_END -->"
+    pattern = rejs.compile(r"<!-- STATS_START -->.*?_dir<!-- STATS_END -->,", re.DOTALL)
     content = pattern.sub("", content)
     content = re.sub(r"\n{3,}", "\n\n", content).strip()
     heading = "## 🔄 更新机制"
@@ -806,7 +824,7 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
         if filename in script_blacklist:
             download_log.append(f"⛔ {filename} 已被拉黑，跳过")
             continue
-        local_path = os.path.join(local_js_dir, filename)
+        local_path = os.path.join(l filename)
         if SKIP_EXISTING_JS and os.path.exists(local_path):
             pass
         else:
@@ -1119,6 +1137,32 @@ def main():
     merged_reject_rules = merge_unique(original_reject_rules, new_reject_rules)
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
+
+    # **新增：白名单豁免——从代理和去广告规则中剔除命中白名单的域名**
+    merged_proxy_rules, whitelist_removed_proxy = filter_by_whitelist(merged_proxy_rules, direct_whitelist, "代理规则")
+    merged_reject_rules, whitelist_removed_reject = filter_by_whitelist(merged_reject_rules, direct_whitelist, "去广告规则")
+
+    if whitelist_removed_proxy:
+        log_lines.append(f"### 🛡️ 白名单豁免（代理规则，共 {len(whitelist_removed_proxy)} 条）\n")
+        log_lines.append("**原因**：这些域名在 `direct_whitelist.txt` 中，已从代理规则中移除，确保走直连。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看被豁免的代理规则</summary>\n")
+        log_lines.append("```")
+        for rule in whitelist_removed_proxy:
+            log_lines.append(f"- {rule}")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
+
+    if whitelist_removed_reject:
+        log_lines.append(f"### 🛡️ 白名单豁免（去广告规则，共 {len(whitelist_removed_reject)} 条）\n")
+        log_lines.append("**原因**：这些域名在 `direct_whitelist.txt` 中，已从去广告规则中移除，避免误拦截。\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看被豁免的去广告规则</summary>\n")
+        log_lines.append("```")
+        for rule in whitelist_removed_reject:
+            log_lines.append(f"- {rule}")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     force_proxy_rules = [f"DOMAIN,{d},PROXY" for d in FORCE_PROXY_DOMAINS]
     merged_proxy_rules = merge_unique(merged_proxy_rules, force_proxy_rules)
