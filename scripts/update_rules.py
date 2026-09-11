@@ -786,8 +786,8 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f"- 代理规则总数：**{proxy_total}**（今日新增 {added_proxy} 条）\n"
         f"- 去广告规则总数：**{reject_total}**（今日新增 {added_reject} 条）\n"
     )
-    new_block = f"<!--ocal STATS_START -->\n{stats_text}\_n<!-- STATS_END -->"
-    pattern = rejs.compile(r"<!-- STATS_START -->.*?_dir<!-- STATS_END -->,", re.DOTALL)
+    new_block = f"<!-- STATS_START -->\n{stats_text}\n<!-- STATS_END -->"
+    pattern = re.compile(r"<!-- STATS_START -->.*?<!-- STATS_END -->", re.DOTALL)
     content = pattern.sub("", content)
     content = re.sub(r"\n{3,}", "\n\n", content).strip()
     heading = "## 🔄 更新机制"
@@ -824,7 +824,7 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
         if filename in script_blacklist:
             download_log.append(f"⛔ {filename} 已被拉黑，跳过")
             continue
-        local_path = os.path.join(l filename)
+        local_path = os.path.join(local_js_dir, filename)
         if SKIP_EXISTING_JS and os.path.exists(local_path):
             pass
         else:
