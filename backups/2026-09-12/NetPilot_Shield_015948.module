@@ -1,14 +1,14 @@
 #!name=NetPilot Shield
 
-#!desc=代理规则: 27345 ｜ 去广告规则: 191631
+#!desc=代理规则: 27347 ｜ 去广告规则: 191639
 
 # 描述：代理分流 + 去广告模块，自动更新
 
-# 更新时间: 2026-09-12 01:59:48 北京时间
+# 更新时间: 2026-09-12 01:44:13 北京时间
 
-# 代理规则总数: 27345
+# 代理规则总数: 27347
 
-# 去广告规则总数: 191631
+# 去广告规则总数: 191639
 
 [Rule]
 
@@ -5562,6 +5562,7 @@ DOMAIN-SUFFIX,byspotify.com,PROXY
 DOMAIN-SUFFIX,bystys.tech,PROXY
 DOMAIN-SUFFIX,bytedapm.com,PROXY
 DOMAIN-SUFFIX,bytegecko-i18n.com,PROXY
+DOMAIN-SUFFIX,bytegecko.com,PROXY
 DOMAIN-SUFFIX,byteoversea.com,PROXY
 DOMAIN-SUFFIX,bytick.com,PROXY
 DOMAIN-SUFFIX,c-est-simple.com,PROXY
@@ -21678,6 +21679,7 @@ DOMAIN-SUFFIX,snmc.io,PROXY
 DOMAIN-SUFFIX,snow.me,PROXY
 DOMAIN-SUFFIX,snowcorp.com,PROXY
 DOMAIN-SUFFIX,snowmiku.com,PROXY
+DOMAIN-SUFFIX,snssdk.com,PROXY
 DOMAIN-SUFFIX,so-net.ne.jp,PROXY
 DOMAIN-SUFFIX,so-net.net.tw,PROXY
 DOMAIN-SUFFIX,soasta-dswb.com,PROXY
@@ -71562,6 +71564,7 @@ DOMAIN-SUFFIX,dm.isnssdk.com,REJECT
 DOMAIN-SUFFIX,dm.ittadionline.com,REJECT
 DOMAIN-SUFFIX,dm.jb51.net,REJECT
 DOMAIN-SUFFIX,dm.lianzhixiu.com,REJECT
+DOMAIN-SUFFIX,dm.pstatp.com,REJECT
 DOMAIN-SUFFIX,dm.pushic.com,REJECT
 DOMAIN-SUFFIX,dm.pw0.cn,REJECT
 DOMAIN-SUFFIX,dm.sanwen.net,REJECT
@@ -98168,6 +98171,7 @@ DOMAIN-SUFFIX,iazcpoptkwapp.store,REJECT
 DOMAIN-SUFFIX,iazwzp.lyst.com,REJECT
 DOMAIN-SUFFIX,ib-ebanking.com,REJECT
 DOMAIN-SUFFIX,ib-ibi.com,REJECT
+DOMAIN-SUFFIX,ib.snssdk.com,REJECT
 DOMAIN-SUFFIX,ib5s02kbxy.com,REJECT
 DOMAIN-SUFFIX,iba.feedblitz.com,REJECT
 DOMAIN-SUFFIX,ibankingdigital.com,REJECT
@@ -115857,6 +115861,7 @@ DOMAIN-SUFFIX,log-dttc.sggp.org.vn,REJECT
 DOMAIN-SUFFIX,log-en.nhandan.vn,REJECT
 DOMAIN-SUFFIX,log-en.sggp.org.vn,REJECT
 DOMAIN-SUFFIX,log-gateway.zoom.us,REJECT
+DOMAIN-SUFFIX,log-hl.snssdk.com,REJECT
 DOMAIN-SUFFIX,log-lb.skyperfectv.co.jp,REJECT
 DOMAIN-SUFFIX,log-mediation.easemobi.net,REJECT
 DOMAIN-SUFFIX,log-music-data.line-apps.com,REJECT
@@ -116054,6 +116059,8 @@ DOMAIN-SUFFIX,log.smartclearpro.com,REJECT
 DOMAIN-SUFFIX,log.smoney.vn,REJECT
 DOMAIN-SUFFIX,log.snapdeal.com,REJECT
 DOMAIN-SUFFIX,log.snow.me,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT
+DOMAIN-SUFFIX,log.snssdk.com,REJECT-DICT-200
 DOMAIN-SUFFIX,log.stickflow.xyz,REJECT
 DOMAIN-SUFFIX,log.strawpoll.com,REJECT
 DOMAIN-SUFFIX,log.strm.yandex.ru,REJECT
@@ -120895,6 +120902,7 @@ DOMAIN-SUFFIX,mcrfungk.com,REJECT
 DOMAIN-SUFFIX,mcs-va.capcutapi.com,REJECT
 DOMAIN-SUFFIX,mcs-va.tiktok.com,REJECT
 DOMAIN-SUFFIX,mcs-va.tiktokv.com,REJECT
+DOMAIN-SUFFIX,mcs.snssdk.com,REJECT
 DOMAIN-SUFFIX,mcs.tiktokv.us,REJECT
 DOMAIN-SUFFIX,mcs.tiktokw.us,REJECT
 DOMAIN-SUFFIX,mcs.zijieapi.com,REJECT
@@ -126417,6 +126425,7 @@ DOMAIN-SUFFIX,mon.ingservices.nl,REJECT
 DOMAIN-SUFFIX,mon.isnssdk.com,REJECT
 DOMAIN-SUFFIX,mon.kbeauty.rs,REJECT
 DOMAIN-SUFFIX,mon.nveda.in,REJECT
+DOMAIN-SUFFIX,mon.snssdk.com,REJECT
 DOMAIN-SUFFIX,mon.tiktokv.com,REJECT
 DOMAIN-SUFFIX,mon.uppyhouse.com,REJECT
 DOMAIN-SUFFIX,mon.us.tiktokv.com,REJECT
@@ -213441,6 +213450,7 @@ DOMAIN-SUFFIX,xlnkn.axparis.com,REJECT
 DOMAIN-SUFFIX,xlog-va.musical.ly,REJECT
 DOMAIN-SUFFIX,xlog-va.tiktokv.com,REJECT
 DOMAIN-SUFFIX,xlog.byteoversea.com,REJECT
+DOMAIN-SUFFIX,xlog.snssdk.com,REJECT
 DOMAIN-SUFFIX,xlog.tiktokv.com,REJECT
 DOMAIN-SUFFIX,xlovecam.com,REJECT
 DOMAIN-SUFFIX,xlp.sparkasse.si,REJECT
@@ -227655,18 +227665,6 @@ amdc2=type=http-response,pattern=^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}
 tieba-proto2=type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/(b\/ad\/adBid|f\/(frs\/(page|threadlist|generalTabList)|ad\/getFeedAd|pb\/page|excellent\/personalized))\?cmd,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/tieba-proto.js
 tieba-json2=type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(ad\/getSplashAd|frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/tieba-json.js
 applet=type=http-response,pattern=^(https?://)?([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+[a-zA-Z]{2,}(:\d+)?/wp-json/[a-zA-Z0-9_-]+/(mp\/)?v\d/posts,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/applet.js
-12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
-caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
-feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
-jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
-jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
-ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
-ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
-Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
-WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
-XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
-XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
-XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
