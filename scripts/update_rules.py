@@ -467,6 +467,8 @@ def render_health_summary(health_data, log_lines):
     if not health_data:
         log_lines.append("暂无记录\n")
         return
+    log_lines.append("<details>")
+    log_lines.append(f"<summary>展开查看各上游源健康状态（共 {len(health_data)} 个源）</summary>\n")
     for url, entry in health_data.items():
         status_icon = {"healthy": "✅", "warning": "⚠️", "unhealthy": "❌"}.get(entry.get("status"), "❓")
         log_lines.append(
@@ -475,7 +477,7 @@ def render_health_summary(health_data, log_lines):
             f"  - 最近成功: {entry.get('last_success') or '无'}\n"
             f"  - 最近失败: {entry.get('last_fail') or '无'} {('- ' + entry.get('last_error')) if entry.get('last_error') else ''}\n"
         )
-    log_lines.append("\n")
+    log_lines.append("</details>\n")
 
 # ========== 版本化备份 ==========
 def backup_module_file(src_path, backup_subdir):
@@ -506,7 +508,7 @@ def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
         except ValueError:
             continue
 
-# ========== 健康检查模块（已放宽限制） ==========
+# ========== 健康检查模块 ==========
 def health_check_module(module_content, label, min_rules=50, max_rules=2_000_000, max_file_size_mb=50):
     if not module_content or not module_content.strip():
         return False, f"{label}: 模块内容为空"
@@ -889,7 +891,6 @@ def main():
     log_lines.append(f"**运行时间**: {current_time}\n")
     log_lines.append("---\n")
 
-    # ========== 版本化备份 ==========
     backup_subdir = os.path.join(BACKUP_DIR, current_date)
     backup_module_file(DIRECT_MODULE_PATH, backup_subdir)
     backup_module_file(SHIELD_MODULE_PATH, backup_subdir)
@@ -1361,14 +1362,41 @@ def main():
         proxy_rules=sorted_proxy_rules,
         main_config_path="NetPilot Route.conf"
     )
+    log_lines.append("## 🔒 DNS 泄漏风险检测\n")
     if dns_risks:
-        log_lines.append("## 🔒 DNS 泄漏风险检测\n")
-        for risk in dns_risks:
-            log_lines.append(f"- **{risk['severity']}风险 - {risk['type']}**")
-            log_lines.append(f"  {risk['description']}\n")
+        high_risks = [r for r in dns_risks if r['severity'] == '高']
+        medium_risks = [r for r in dns_risks if r['severity'] == '中']
+        low_risks = [r for r in dns_risks if r['severity'] == '低']
+
+        if high_risks:
+            log_lines.append(f"### 🔴 高风险（{len(high_risks)} 条）\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看高风险详情</summary>\n")
+            for risk in high_risks:
+                log_lines.append(f"- **{risk['type']}**")
+                log_lines.append(f"  {risk['description']}\n")
+            log_lines.append("</details>\n")
+
+        if medium_risks:
+            log_lines.append(f"### 🟡 中风险（{len(medium_risks)} 条）\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看中风险详情</summary>\n")
+            for risk in medium_risks:
+                log_lines.append(f"- **{risk['type']}**")
+                log_lines.append(f"  {risk['description']}\n")
+            log_lines.append("</details>\n")
+
+        if low_risks:
+            log_lines.append(f"### 🟢 低风险（{len(low_risks)} 条）\n")
+            log_lines.append("<details>")
+            log_lines.append(f"<summary>展开查看低风险详情</summary>\n")
+            for risk in low_risks:
+                log_lines.append(f"- **{risk['type']}**")
+                log_lines.append(f"  {risk['description']}\n")
+            log_lines.append("</details>\n")
+
         log_lines.append("\n")
     else:
-        log_lines.append("## 🔒 DNS 泄漏风险检测\n")
         log_lines.append("未发现明显的 DNS 泄漏风险。\n\n")
 
     log_lines.append("---\n")
