@@ -1,15 +1,15 @@
 # 变更报告 2026-09-12
 
-生成时间：2026-09-12 01:20:41
+生成时间：2026-09-12 01:44:34
 
 ---
 
 ## 直连模块
 
-- 原有规则数：110393
-- 新增规则数：0
+- 原有规则数：31251
+- 新增规则数：79061
 - 过滤海外规则：930
-- 最终规则数：110393
+- 最终规则数：110306
 
 ## 代理模块
 
@@ -63,19 +63,25 @@
 
 ## 质量检查
 
-发现 1 条异常规则：
+发现 7 条异常规则：
 
+- ('DOMAIN-SUFFIX,bytecdn.cn,DIRECT', '重复规则')
+- ('DOMAIN-SUFFIX,bytegecko.com,DIRECT', '重复规则')
+- ('DOMAIN-SUFFIX,bytegoofy.com,DIRECT', '重复规则')
+- ('DOMAIN-SUFFIX,byteimg.com,DIRECT', '重复规则')
+- ('DOMAIN-SUFFIX,douyinpic.com,DIRECT', '重复规则')
+- ('DOMAIN-SUFFIX,douyinvod.com,DIRECT', '重复规则')
 - ('DOMAIN-SUFFIX,OMAIN-SUFFIX,bing.net,PROXY', "策略 'BING.NET' 不合法")
 ## 规则源健康状态
 
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 25, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 25, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 26, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 26, 失败 0, 连续失败 0)
 ## DNS 泄漏风险
 
 - **高风险 - 直连海外域名**
@@ -758,12 +764,6 @@
 
 - **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN-SUFFIX,simapple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN-SUFFIX,spotify.map.fastly.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN-SUFFIX,spotify.map.fastlylb.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN-SUFFIX,svip5-applefix.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
