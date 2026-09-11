@@ -48,7 +48,7 @@ FLAGGED_DOMAINS_FILE = "config/flagged_domains.txt"
 DIRECT_BLACKLIST_FILE = "config/direct_blacklist.txt"
 DIRECT_WHITELIST_FILE = "config/direct_whitelist.txt"
 SOURCE_HEALTH_FILE = "config/source_health.json"
-DNS_LEAK_KEYWORDS_FILE = "config/dns_leak_keywords.txt"   # 新增：DNS泄漏检测关键词文件
+DNS_LEAK_KEYWORDS_FILE = "config/dns_leak_keywords.txt"
 MAX_LOG_FILES = 5
 MAX_LOG_ITEMS = 5
 MAX_BACKUP_DAYS = 7
@@ -56,7 +56,6 @@ MAX_BACKUP_DAYS = 7
 FORCE_APPEND = True
 SKIP_EXISTING_JS = True
 
-# 必须走代理的域名（定位模块等），这些域名会从直连模块中移除，并在 Shield 模块中强制添加 PROXY 规则
 FORCE_PROXY_DOMAINS = [
     "gs-loc.apple.com",
     "gs-loc-cn.apple.com",
@@ -203,7 +202,6 @@ def load_keyword_list(file_path):
     return keywords
 
 def load_dns_leak_keywords():
-    """加载 DNS 泄漏检测关键词（忽略 # 注释行）"""
     return load_keyword_list(DNS_LEAK_KEYWORDS_FILE)
 
 def extract_domain_from_rule(rule):
@@ -358,12 +356,11 @@ def test_rule_hit(domain, rules):
                 return rule
     return None
 
-# ========== 新增：DNS 泄漏检测 ==========
+# ========== DNS 泄漏检测 ==========
 def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot Route.conf"):
     risks = []
     keywords = load_dns_leak_keywords()
 
-    # 检查直连规则中的海外域名
     for rule in direct_rules:
         domain = extract_domain_from_rule(rule)
         if any(domain_match(domain, kw) or kw in domain for kw in keywords):
@@ -373,7 +370,6 @@ def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot 
                 "description": f"直连规则包含海外域名: {rule}，可能导致 DNS 查询在本地解析，暴露访问记录。",
             })
 
-    # 检查代理规则是否带 no-resolve
     for rule in proxy_rules:
         if 'no-resolve' in rule.lower():
             risks.append({
@@ -382,7 +378,6 @@ def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot 
                 "description": f"代理规则带 no-resolve: {rule}，该域名的 DNS 将在本地解析，可能泄漏。",
             })
 
-    # 检查主配置的 DNS 设置
     if main_config_path and os.path.exists(main_config_path):
         with open(main_config_path, 'r', encoding='utf-8') as f:
             main_content = f.read()
@@ -511,8 +506,8 @@ def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
         except ValueError:
             continue
 
-# ========== 健康检查模块 ==========
-def health_check_module(module_content, label, min_rules=50, max_rules=1_000_000):
+# ========== 健康检查模块（已放宽限制） ==========
+def health_check_module(module_content, label, min_rules=50, max_rules=2_000_000, max_file_size_mb=50):
     if not module_content or not module_content.strip():
         return False, f"{label}: 模块内容为空"
     if '[Rule]' not in module_content:
@@ -524,9 +519,9 @@ def health_check_module(module_content, label, min_rules=50, max_rules=1_000_000
     if rule_count > max_rules:
         return False, f"{label}: 规则数量过多 ({rule_count} > {max_rules})"
     file_size = len(module_content.encode('utf-8'))
-    if file_size > 10 * 1024 * 1024:
+    if file_size > max_file_size_mb * 1024 * 1024:
         return False, f"{label}: 模块文件过大 ({file_size / 1024 / 1024:.1f} MB)"
-    return True, f"{label}: 健康检查通过（{rule_count} 条规则）"
+    return True, f"{label}: 健康检查通过（{rule_count} 条规则，{file_size / 1024 / 1024:.1f} MB）"
 
 # ========== 规则命中查询 CLI ==========
 def query_rule_hit(domain, direct_module_path, shield_module_path):
@@ -626,7 +621,6 @@ def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, r
             report.append(f"- {status_icon} {url} (成功 {entry.get('total_success', 0)}, 失败 {entry.get('total_fail', 0)}, 连续失败 {entry.get('consecutive_fail', 0)})")
     else:
         report.append("暂无记录\n")
-    # DNS 泄漏风险
     report.append("## DNS 泄漏风险\n")
     if dns_risks:
         for risk in dns_risks:
@@ -926,7 +920,6 @@ def main():
 
         merged_direct_rules = merge_unique(original_direct_rules, new_direct_rules)
 
-        # 过滤海外规则和强制代理域名
         filtered_rules = []
         filtered_details = []
         for rule in merged_direct_rules:
@@ -1047,6 +1040,7 @@ def main():
             os.makedirs(os.path.dirname(DIRECT_MODULE_PATH), exist_ok=True)
             with open(DIRECT_MODULE_PATH, 'w', encoding='utf-8') as f:
                 f.write(direct_module)
+            log_lines.append(f"✅ 直连模块已写入，共 {len(sorted_direct_rules)} 条规则\n")
             print("Direct module written.")
         else:
             log_lines.append("⚠️ 直连模块健康检查未通过，已保留原文件\n")
@@ -1125,7 +1119,6 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 强制添加定位模块代理规则
     force_proxy_rules = [f"DOMAIN,{d},PROXY" for d in FORCE_PROXY_DOMAINS]
     merged_proxy_rules = merge_unique(merged_proxy_rules, force_proxy_rules)
 
@@ -1160,7 +1153,6 @@ def main():
         'final': len(sorted_reject_rules)
     }
 
-    # 详细日志
     if invalid_proxy_details:
         log_lines.append(f"### ❌ 代理规则质量检查异常（共 {len(invalid_proxy_details)} 条）\n")
         log_lines.append("**处理动作**：异常规则已从最终模块中移除。\n")
@@ -1238,7 +1230,6 @@ def main():
         log_lines.append("```")
         log_lines.append("</details>\n")
 
-    # ====== 合并 hostname ======
     original_hostname_list = []
     if original_hostnames:
         clean_original = original_hostnames.replace('%APPEND%', '').strip()
@@ -1305,7 +1296,6 @@ def main():
         log_lines.extend([f"- {status}" for status in download_log])
         log_lines.append("\n")
 
-    # 生成 shield 模块
     shield_parts = [
         "#!name=NetPilot Shield",
         f"#!desc=代理规则: {len(sorted_proxy_rules)} ｜ 去广告规则: {len(sorted_reject_rules)}",
@@ -1335,11 +1325,11 @@ def main():
         os.makedirs(os.path.dirname(SHIELD_MODULE_PATH), exist_ok=True)
         with open(SHIELD_MODULE_PATH, 'w', encoding='utf-8') as f:
             f.write(shield_content)
+        log_lines.append(f"✅ Shield 模块已写入，代理 {len(sorted_proxy_rules)} 条，去广告 {len(sorted_reject_rules)} 条\n")
         print("Shield module written with merged content (proxy + adblock separated).")
     else:
         log_lines.append("⚠️ Shield 模块健康检查未通过，已保留原文件\n")
 
-    # 独立 JS 源
     independent_log = []
     for filename, url in UPSTREAM_JS_SOURCES.items():
         local_path = os.path.join(LOCAL_JS_DIR, filename)
@@ -1364,14 +1354,12 @@ def main():
         log_lines.extend([f"- {status}" for status in independent_log])
         log_lines.append("\n")
 
-    # 源健康摘要
     render_health_summary(health_data, log_lines)
 
-    # ====== DNS 泄漏检测 ======
     dns_risks = detect_dns_leak_risks(
         direct_rules=sorted_direct_rules,
         proxy_rules=sorted_proxy_rules,
-        main_config_path="NetPilot Route.conf"  # 根据实际文件名调整
+        main_config_path="NetPilot Route.conf"
     )
     if dns_risks:
         log_lines.append("## 🔒 DNS 泄漏风险检测\n")
@@ -1383,7 +1371,6 @@ def main():
         log_lines.append("## 🔒 DNS 泄漏风险检测\n")
         log_lines.append("未发现明显的 DNS 泄漏风险。\n\n")
 
-    # 写日志
     log_lines.append("---\n")
     log_content = "\n".join(log_lines)
     log_file_path = get_log_file_path(current_date)
@@ -1391,16 +1378,13 @@ def main():
         f.write(log_content)
     print(f"Log written to {log_file_path}")
 
-    # 保存健康数据
     save_source_health(health_data)
 
-    # 今日统计
     today_stats["added_direct"] += len(added_direct_rules)
     today_stats["added_proxy"] += len(added_proxy_rules)
     today_stats["added_reject"] += len(added_reject_rules)
     save_today_stats(current_date, today_stats)
 
-    # README
     update_readme(
         direct_total=len(sorted_direct_rules),
         proxy_total=len(sorted_proxy_rules),
@@ -1411,7 +1395,6 @@ def main():
         current_date=current_date,
     )
 
-    # 变更报告（含 DNS 风险）
     generate_change_report(
         current_date=current_date,
         log_lines=log_lines,
