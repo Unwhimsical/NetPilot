@@ -6,6 +6,7 @@ import re
 import sys
 import glob
 import json
+import hashlib
 import shutil
 import argparse
 import requests
@@ -356,7 +357,7 @@ def test_rule_hit(domain, rules):
                 return rule
     return None
 
-# ========== 白名单豁免过滤（新增） ==========
+# ========== 白名单豁免过滤 ==========
 def filter_by_whitelist(rules, whitelist, label="规则"):
     """
     对规则做白名单豁免：命中 direct_whitelist 的域名从列表中剔除。
@@ -802,47 +803,120 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f.write(content)
     print("README updated.")
 
+# ========== JS 脚本本地化（新版） ==========
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
+    """
+    本地化脚本：
+    - 相同 URL 只下载一次
+    - 同名但内容不同 → 自动加数字后缀（_2、_3 ...），保留所有版本
+    - 同名且内容相同 → 复用已有文件
+    - 下载失败 → 丢弃该脚本引用，下次运行重试
+    """
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
-    seen_urls = set()
-    seen_filenames = set()
+
+    # URL 到本地 URL 的映射，避免重复下载
+    url_to_local = {}
+    # 最终文件名到内容哈希的映射，用于检测同名冲突
+    filename_to_hash = {}
+
     for script_line in scripts:
         m = re.search(r'script-path=([^,\s]+)', script_line)
         if not m:
             updated_scripts.append(script_line)
             continue
+
         original_url = m.group(1)
-        filename = original_url.split('/')[-1]
-        if original_url in seen_urls or filename in seen_filenames:
-            local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
-            new_line = script_line.replace(original_url, local_url)
+
+        # 该 URL 已处理过，直接复用本地 URL
+        if original_url in url_to_local:
+            new_line = script_line.replace(original_url, url_to_local[original_url])
             updated_scripts.append(new_line)
             continue
-        seen_urls.add(original_url)
-        seen_filenames.add(filename)
-        if filename in script_blacklist:
-            download_log.append(f"⛔ {filename} 已被拉黑，跳过")
+
+        # 提取原始文件名（去掉查询参数）
+        raw_filename = original_url.split('/')[-1]
+        if '?' in raw_filename:
+            raw_filename = raw_filename.split('?')[0]
+        if not raw_filename:
+            raw_filename = "script.js"
+
+        # 黑名单检查
+        if raw_filename in script_blacklist:
+            download_log.append(f"⛔ {raw_filename} 已被拉黑，跳过")
             continue
-        local_path = os.path.join(local_js_dir, filename)
-        if SKIP_EXISTING_JS and os.path.exists(local_path):
-            pass
-        else:
+
+        # 下载内容
+        try:
+            content = fetch(original_url)
+        except Exception as e:
+            download_log.append(f"❌ {raw_filename} 下载失败，已丢弃引用（下次会重试）: {e}")
+            continue
+
+        content_hash = hashlib.sha256(content.encode('utf-8')).hexdigest()[:12]
+
+        # 拆出文件名和后缀，方便加数字后缀
+        stem, ext = os.path.splitext(raw_filename)
+        if not ext:
+            ext = ".js"
+        if not stem:
+            stem = "script"
+
+        # 确定最终文件名
+        final_name = raw_filename
+        if final_name in filename_to_hash:
+            if filename_to_hash[final_name] == content_hash:
+                # 同名同内容，复用
+                pass
+            else:
+                # 同名不同内容，尝试加数字后缀
+                counter = 2
+                while True:
+                    candidate = f"{stem}_{counter}{ext}"
+                    if candidate not in filename_to_hash:
+                        final_name = candidate
+                        break
+                    if filename_to_hash[candidate] == content_hash:
+                        final_name = candidate
+                        break
+                    counter += 1
+
+        filename_to_hash[final_name] = content_hash
+        local_path = os.path.join(local_js_dir, final_name)
+
+        # 判断是否需要写入（内容相同跳过）
+        need_write = True
+        if os.path.exists(local_path):
             try:
-                content = fetch(original_url)
-                with open(local_path, 'w', encoding='utf-8') as f:
-                    f.write(content)
-                download_log.append(f"✅ {filename} 下载成功")
-                risks = scan_js_content(content)
-                if risks:
-                    download_log.append(f"⚠️ {filename} 可疑模式: {', '.join(risks[:3])}")
-            except Exception as e:
-                download_log.append(f"❌ {filename} 下载失败: {e}")
-                updated_scripts.append(script_line)
-                continue
-        local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{filename}"
+                with open(local_path, 'r', encoding='utf-8') as f:
+                    existing = f.read()
+                if hashlib.sha256(existing.encode('utf-8')).hexdigest()[:12] == content_hash:
+                    need_write = False
+            except Exception:
+                pass
+
+        if need_write:
+            with open(local_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            if final_name == raw_filename:
+                download_log.append(f"✅ {final_name} 下载成功")
+            else:
+                download_log.append(f"✅ {final_name} 下载成功（同名冲突，重命名）")
+        else:
+            download_log.append(f"⏭️ {final_name} 内容未变，跳过写入")
+
+        # 风险扫描
+        risks = scan_js_content(content)
+        if risks:
+            download_log.append(f"⚠️ {final_name} 可疑模式: {', '.join(risks[:3])}")
+
+        # 生成本地 URL
+        local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{final_name}"
+        url_to_local[original_url] = local_url
+
         new_line = script_line.replace(original_url, local_url)
         updated_scripts.append(new_line)
+
     return updated_scripts
 
 def merge_unique(original_list, new_list):
@@ -1138,7 +1212,7 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # **新增：白名单豁免——从代理和去广告规则中剔除命中白名单的域名**
+    # 白名单豁免——从代理和去广告规则中剔除命中白名单的域名
     merged_proxy_rules, whitelist_removed_proxy = filter_by_whitelist(merged_proxy_rules, direct_whitelist, "代理规则")
     merged_reject_rules, whitelist_removed_reject = filter_by_whitelist(merged_reject_rules, direct_whitelist, "去广告规则")
 
