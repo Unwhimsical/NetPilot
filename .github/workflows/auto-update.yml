@@ -1,5 +1,9 @@
 name: Auto Update Rules
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
   schedule:
     - cron: '0 4 * * *'    # 北京时间 12:00（UTC 04:00）
@@ -15,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,5 +42,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto update rules $(date -u +%Y-%m-%d)"
+            git pull origin main --rebase
             git push
           fi
