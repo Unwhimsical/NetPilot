@@ -42,6 +42,7 @@ UPSTREAM_JS_SOURCES = {
 
 DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
+MAIN_CONFIG_PATH = "NetPilot Route.conf"          # 主规则文件，会一起备份
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
 BACKUP_DIR = "backups"
@@ -359,10 +360,6 @@ def test_rule_hit(domain, rules):
 
 # ========== 白名单豁免过滤 ==========
 def filter_by_whitelist(rules, whitelist, label="规则"):
-    """
-    对规则做白名单豁免：命中 direct_whitelist 的域名从列表中剔除。
-    返回 (filtered_rules, removed_rules)
-    """
     filtered = []
     removed = []
     for rule in rules:
@@ -376,7 +373,7 @@ def filter_by_whitelist(rules, whitelist, label="规则"):
     return filtered, removed
 
 # ========== DNS 泄漏检测 ==========
-def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path="NetPilot Route.conf"):
+def detect_dns_leak_risks(direct_rules, proxy_rules, main_config_path=MAIN_CONFIG_PATH):
     risks = []
     keywords = load_dns_leak_keywords()
 
@@ -498,8 +495,62 @@ def render_health_summary(health_data, log_lines):
         )
     log_lines.append("</details>\n")
 
+# ========== 日期目录工具 ==========
+def get_date_paths(date_str):
+    """
+    根据日期字符串（YYYY-MM-DD）返回 year/month/day 三段。
+    """
+    try:
+        y, m, d = date_str.split('-')
+        return y, m, d
+    except Exception:
+        now = get_beijing_now()
+        return now.strftime('%Y'), now.strftime('%m'), now.strftime('%d')
+
+def migrate_legacy_dirs():
+    """
+    把旧的平铺目录 logs/YYYY-MM-DD/ 和 backups/YYYY-MM-DD/ 迁移到
+    logs/YYYY/MM/DD/ 和 backups/YYYY/MM/DD/。
+    已迁移过的不会再处理。
+    """
+    for base_dir in (LOG_DIR, BACKUP_DIR):
+        if not os.path.isdir(base_dir):
+            continue
+        for entry in os.listdir(base_dir):
+            entry_path = os.path.join(base_dir, entry)
+            if not os.path.isdir(entry_path):
+                continue
+            # 只处理形如 YYYY-MM-DD 的旧结构
+            if not re.match(r'^\d{4}-\d{2}-\d{2}$', entry):
+                continue
+            y, m, d = entry.split('-')
+            new_dir = os.path.join(base_dir, y, m, d)
+            if os.path.exists(new_dir):
+                # 已存在新目录，把旧目录中的文件合并进去
+                os.makedirs(new_dir, exist_ok=True)
+                for item in os.listdir(entry_path):
+                    src = os.path.join(entry_path, item)
+                    dst = os.path.join(new_dir, item)
+                    try:
+                        if os.path.isfile(src) and not os.path.exists(dst):
+                            shutil.move(src, dst)
+                    except Exception as e:
+                        print(f"迁移文件失败 {src} -> {dst}: {e}")
+                try:
+                    os.rmdir(entry_path)
+                except Exception:
+                    pass
+            else:
+                try:
+                    os.makedirs(os.path.dirname(new_dir), exist_ok=True)
+                    shutil.move(entry_path, new_dir)
+                    print(f"Migrated {entry_path} -> {new_dir}")
+                except Exception as e:
+                    print(f"迁移目录失败 {entry_path} -> {new_dir}: {e}")
+
 # ========== 版本化备份 ==========
-def backup_module_file(src_path, backup_subdir):
+def backup_file(src_path, backup_subdir):
+    """备份一个文件到指定备份目录，文件名带时间戳。"""
     if not os.path.exists(src_path):
         return None
     os.makedirs(backup_subdir, exist_ok=True)
@@ -511,21 +562,49 @@ def backup_module_file(src_path, backup_subdir):
     print(f"Backed up {filename} to {backup_path}")
     return backup_path
 
+def backup_module_file(src_path, backup_subdir):
+    """兼容旧调用，内部调用 backup_file。"""
+    return backup_file(src_path, backup_subdir)
+
 def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
+    """
+    清理超过 keep_days 天的旧备份目录。
+    新的结构是 backups/YYYY/MM/DD/，需要从三级目录判断日期。
+    """
     if not os.path.isdir(backup_dir):
         return
     cutoff = get_beijing_now() - datetime.timedelta(days=keep_days)
-    for date_dir in os.listdir(backup_dir):
-        dir_path = os.path.join(backup_dir, date_dir)
-        if not os.path.isdir(dir_path):
+    # 收集所有 backups/YYYY/MM/DD 格式的目录
+    for year in os.listdir(backup_dir):
+        year_path = os.path.join(backup_dir, year)
+        if not os.path.isdir(year_path) or not re.match(r'^\d{4}$', year):
             continue
+        for month in os.listdir(year_path):
+            month_path = os.path.join(year_path, month)
+            if not os.path.isdir(month_path) or not re.match(r'^\d{2}$', month):
+                continue
+            for day in os.listdir(month_path):
+                day_path = os.path.join(month_path, day)
+                if not os.path.isdir(day_path) or not re.match(r'^\d{2}$', day):
+                    continue
+                try:
+                    dir_date = datetime.datetime.strptime(f"{year}-{month}-{day}", '%Y-%m-%d')
+                    if dir_date < cutoff:
+                        shutil.rmtree(day_path)
+                        print(f"Removed old backup directory: {day_path}")
+                except Exception:
+                    continue
+            # 清理空的月份目录
+            try:
+                if not os.listdir(month_path):
+                    os.rmdir(month_path)
+            except Exception:
+                pass
         try:
-            dir_date = datetime.datetime.strptime(date_dir, '%Y-%m-%d')
-            if dir_date < cutoff:
-                shutil.rmtree(dir_path)
-                print(f"Removed old backup directory: {dir_path}")
-        except ValueError:
-            continue
+            if not os.listdir(year_path):
+                os.rmdir(year_path)
+        except Exception:
+            pass
 
 # ========== 健康检查模块 ==========
 def health_check_module(module_content, label, min_rules=50, max_rules=2_000_000, max_file_size_mb=50):
@@ -651,7 +730,8 @@ def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, r
         report.append("未发现明显的 DNS 泄漏风险。\n")
     report.append("---\n")
     report.append("详细日志请查看同目录下的 update 日志文件。\n")
-    report_path = os.path.join(LOG_DIR, current_date, "change_report.md")
+    log_subdir = get_log_dir(current_date)
+    report_path = os.path.join(log_subdir, "change_report.md")
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
     with open(report_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(report))
@@ -705,13 +785,16 @@ def update_flagged_domains_file(new_dangerous_domains):
         f.write('\n'.join(body_lines))
         f.write('\n')
 
-def get_log_dir_and_base(current_date):
-    log_subdir = os.path.join(LOG_DIR, current_date)
+# ========== 日志目录（年/月/日） ==========
+def get_log_dir(current_date):
+    """返回 logs/YYYY/MM/DD 目录路径。"""
+    y, m, d = get_date_paths(current_date)
+    log_subdir = os.path.join(LOG_DIR, y, m, d)
     os.makedirs(log_subdir, exist_ok=True)
-    return log_subdir, os.path.join(log_subdir, "update")
+    return log_subdir
 
 def get_log_file_path(current_date):
-    log_subdir, _ = get_log_dir_and_base(current_date)
+    log_subdir = get_log_dir(current_date)
     existing_logs = sorted(glob.glob(os.path.join(log_subdir, "update*.md")))
     count = len(existing_logs)
     if count >= MAX_LOG_FILES:
@@ -747,16 +830,16 @@ def get_log_file_path(current_date):
     return os.path.join(log_subdir, f"update_{next_num}.md")
 
 def cleanup_legacy_log_files(log_dir):
+    """清理日志根目录下旧格式 update_*.md（避免残留），不影响年/月/日新结构。"""
     if not os.path.isdir(log_dir):
         return
     for filename in os.listdir(log_dir):
-        if filename.startswith("update_") and filename.endswith(".md"):
-            filepath = os.path.join(log_dir, filename)
-            if os.path.isfile(filepath):
-                os.remove(filepath)
+        full_path = os.path.join(log_dir, filename)
+        if os.path.isfile(full_path) and filename.startswith("update_") and filename.endswith(".md"):
+            os.remove(full_path)
 
 def get_today_stats_path(current_date):
-    return os.path.join(LOG_DIR, current_date, "today_stats.json")
+    return os.path.join(get_log_dir(current_date), "today_stats.json")
 
 def load_today_stats(current_date):
     stats_path = get_today_stats_path(current_date)
@@ -803,7 +886,7 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
         f.write(content)
     print("README updated.")
 
-# ========== JS 脚本本地化（新版） ==========
+# ========== JS 脚本本地化 ==========
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
     """
     本地化脚本：
@@ -814,10 +897,7 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
     """
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
-
-    # URL 到本地 URL 的映射，避免重复下载
     url_to_local = {}
-    # 最终文件名到内容哈希的映射，用于检测同名冲突
     filename_to_hash = {}
 
     for script_line in scripts:
@@ -828,25 +908,21 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
 
         original_url = m.group(1)
 
-        # 该 URL 已处理过，直接复用本地 URL
         if original_url in url_to_local:
             new_line = script_line.replace(original_url, url_to_local[original_url])
             updated_scripts.append(new_line)
             continue
 
-        # 提取原始文件名（去掉查询参数）
         raw_filename = original_url.split('/')[-1]
         if '?' in raw_filename:
             raw_filename = raw_filename.split('?')[0]
         if not raw_filename:
             raw_filename = "script.js"
 
-        # 黑名单检查
         if raw_filename in script_blacklist:
             download_log.append(f"⛔ {raw_filename} 已被拉黑，跳过")
             continue
 
-        # 下载内容
         try:
             content = fetch(original_url)
         except Exception as e:
@@ -855,21 +931,17 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
 
         content_hash = hashlib.sha256(content.encode('utf-8')).hexdigest()[:12]
 
-        # 拆出文件名和后缀，方便加数字后缀
         stem, ext = os.path.splitext(raw_filename)
         if not ext:
             ext = ".js"
         if not stem:
             stem = "script"
 
-        # 确定最终文件名
         final_name = raw_filename
         if final_name in filename_to_hash:
             if filename_to_hash[final_name] == content_hash:
-                # 同名同内容，复用
                 pass
             else:
-                # 同名不同内容，尝试加数字后缀
                 counter = 2
                 while True:
                     candidate = f"{stem}_{counter}{ext}"
@@ -884,7 +956,6 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
         filename_to_hash[final_name] = content_hash
         local_path = os.path.join(local_js_dir, final_name)
 
-        # 判断是否需要写入（内容相同跳过）
         need_write = True
         if os.path.exists(local_path):
             try:
@@ -905,12 +976,10 @@ def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
         else:
             download_log.append(f"⏭️ {final_name} 内容未变，跳过写入")
 
-        # 风险扫描
         risks = scan_js_content(content)
         if risks:
             download_log.append(f"⚠️ {final_name} 可疑模式: {', '.join(risks[:3])}")
 
-        # 生成本地 URL
         local_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{REPO_NAME}/{BRANCH}/{LOCAL_JS_DIR}/{final_name}"
         url_to_local[original_url] = local_url
 
@@ -954,7 +1023,10 @@ def main():
     current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
     current_date = now.strftime('%Y-%m-%d')
 
+    # 先迁移旧目录结构，再清理旧日志
+    migrate_legacy_dirs()
     cleanup_legacy_log_files(LOG_DIR)
+
     today_stats = load_today_stats(current_date)
     blacklisted_hostnames = load_blacklisted_hostnames()
     existing_flagged = load_existing_flagged_domains()
@@ -983,9 +1055,12 @@ def main():
     log_lines.append(f"**运行时间**: {current_time}\n")
     log_lines.append("---\n")
 
-    backup_subdir = os.path.join(BACKUP_DIR, current_date)
+    # ========== 版本化备份（含主规则） ==========
+    y, m, d = get_date_paths(current_date)
+    backup_subdir = os.path.join(BACKUP_DIR, y, m, d)
     backup_module_file(DIRECT_MODULE_PATH, backup_subdir)
     backup_module_file(SHIELD_MODULE_PATH, backup_subdir)
+    backup_module_file(MAIN_CONFIG_PATH, backup_subdir)
     cleanup_old_backups(BACKUP_DIR)
 
     # ========== 处理直连模块 ==========
@@ -1212,7 +1287,6 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    # 白名单豁免——从代理和去广告规则中剔除命中白名单的域名
     merged_proxy_rules, whitelist_removed_proxy = filter_by_whitelist(merged_proxy_rules, direct_whitelist, "代理规则")
     merged_reject_rules, whitelist_removed_reject = filter_by_whitelist(merged_reject_rules, direct_whitelist, "去广告规则")
 
@@ -1373,7 +1447,7 @@ def main():
 
     update_flagged_domains_file(dangerous_domains)
 
-    log_subdir, _ = get_log_dir_and_base(current_date)
+    log_subdir = get_log_dir(current_date)
     snapshot_path = os.path.join(log_subdir, "dangerous_domains.txt")
     with open(snapshot_path, 'w', encoding='utf-8') as f:
         f.write(f"# 危险域名快照 {current_date}\n")
@@ -1407,13 +1481,18 @@ def main():
         log_lines.append("```")
         log_lines.append("</details>\n")
 
+    # ===== JS 脚本本地化（折叠输出） =====
     download_log = []
     script_blacklist = set()
     updated_scripts = localize_scripts(merged_scripts, LOCAL_JS_DIR, download_log, script_blacklist)
     if download_log:
         log_lines.append("## JS 脚本本地化\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看 JS 本地化详情（共 {len(download_log)} 条）</summary>\n")
+        log_lines.append("```")
         log_lines.extend([f"- {status}" for status in download_log])
-        log_lines.append("\n")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     shield_parts = [
         "#!name=NetPilot Shield",
@@ -1470,15 +1549,19 @@ def main():
 
     if independent_log:
         log_lines.append("## 独立 JS 源\n")
+        log_lines.append("<details>")
+        log_lines.append(f"<summary>展开查看独立 JS 源详情（共 {len(independent_log)} 条）</summary>\n")
+        log_lines.append("```")
         log_lines.extend([f"- {status}" for status in independent_log])
-        log_lines.append("\n")
+        log_lines.append("```")
+        log_lines.append("</details>\n")
 
     render_health_summary(health_data, log_lines)
 
     dns_risks = detect_dns_leak_risks(
         direct_rules=sorted_direct_rules,
         proxy_rules=sorted_proxy_rules,
-        main_config_path="NetPilot Route.conf"
+        main_config_path=MAIN_CONFIG_PATH
     )
     log_lines.append("## 🔒 DNS 泄漏风险检测\n")
     if dns_risks:
