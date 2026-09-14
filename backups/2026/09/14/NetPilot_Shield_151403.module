@@ -1,14 +1,14 @@
 #!name=NetPilot Shield
 
-#!desc=代理规则: 27331 ｜ 去广告规则: 192701
+#!desc=代理规则: 27346 ｜ 去广告规则: 192715
 
 # 描述：代理分流 + 去广告模块，自动更新
 
-# 更新时间: 2026-09-14 15:14:03 北京时间
+# 更新时间: 2026-09-14 12:09:10 北京时间
 
-# 代理规则总数: 27331
+# 代理规则总数: 27346
 
-# 去广告规则总数: 192701
+# 去广告规则总数: 192715
 
 [Rule]
 
@@ -98,6 +98,7 @@ DOMAIN,bnetproduct-a.akamaihd.net,PROXY
 DOMAIN,bnetshopus.akamaized.net,PROXY
 DOMAIN,brightcove.imgix.net,PROXY
 DOMAIN,browser-intake-datadoghq.com,PROXY
+DOMAIN,bybit-exchange.github.io,PROXY
 DOMAIN,bybit.ada.support,PROXY
 DOMAIN,c.ppy.sh,PROXY
 DOMAIN,cbsi.live.ott.irdeto.com,PROXY
@@ -117,6 +118,7 @@ DOMAIN,cloudaicompanion.googleapis.com,PROXY
 DOMAIN,cloudcode-pa.googleapis.com,PROXY
 DOMAIN,cloudsync-prod.s3.amazonaws.com,PROXY
 DOMAIN,configuration-lb.ls-apple.com.akadns.net,PROXY
+DOMAIN,copilot-proxy.githubusercontent.com,PROXY
 DOMAIN,copilot-workspace.githubnext.com,PROXY
 DOMAIN,copilot.microsoft.com,PROXY
 DOMAIN,copilotprodattachments.blob.core.windows.net,PROXY
@@ -308,9 +310,11 @@ DOMAIN,location.microsoft.com,PROXY
 DOMAIN,lolstatic-a.akamaihd.net,PROXY
 DOMAIN,m1.ppy.sh,PROXY
 DOMAIN,makersuite.google.com,PROXY
+DOMAIN,matsuridayo.github.io,PROXY
 DOMAIN,mdn.mozillademos.org,PROXY
 DOMAIN,media-rockstargames-com.akamaized.net,PROXY
 DOMAIN,medone-education.thieme.com,PROXY
+DOMAIN,metacubex.github.io,PROXY
 DOMAIN,misa-prod.s3.ap-northeast-1.amazonaws.com,PROXY
 DOMAIN,mobilelive-hamivideo.cdn.hinet.net,PROXY
 DOMAIN,mozilla-ohttp.fastly-edge.com,PROXY
@@ -326,6 +330,7 @@ DOMAIN,mwf-service.akamaized.net,PROXY
 DOMAIN,na1r.services.adobe.com,PROXY
 DOMAIN,nbbb1bb7.pmhcjk.com,PROXY
 DOMAIN,netflix.com.edgesuite.net,PROXY
+DOMAIN,nix-community.github.io,PROXY
 DOMAIN,notary-submissions-prod.s3-accelerate.amazonaws.com,PROXY
 DOMAIN,notary-submissions-prod.s3.us-west-2.amazonaws.com,PROXY
 DOMAIN,notebooklm-pa.googleapis.com,PROXY
@@ -568,6 +573,7 @@ DOMAIN,t.ssp.hinet.net,PROXY
 DOMAIN,t21.nikkei.co.jp,PROXY
 DOMAIN,t21ipau.nikkei.co.jp,PROXY
 DOMAIN,teamviewer.com.cdn.cloudflare.net,PROXY
+DOMAIN,throneproj.github.io,PROXY
 DOMAIN,thumbnail-hamivideo.cdn.hinet.net,PROXY
 DOMAIN,time-a-b.nist.gov,PROXY
 DOMAIN,time-a-g.nist.gov,PROXY
@@ -605,6 +611,7 @@ DOMAIN,time5.facebook.com,PROXY
 DOMAIN,tlmr-hamivideo2.cdn.hinet.net,PROXY
 DOMAIN,tmdb-image-prod.b-cdn.net,PROXY
 DOMAIN,tmdb-web-image-prod.b-cdn.net,PROXY
+DOMAIN,trojan-gfw.github.io,PROXY
 DOMAIN,tv.applemusic.com,PROXY
 DOMAIN,tvcastlive-hamivideo.cdn.hinet.net,PROXY
 DOMAIN,ubisoft-orbit-savegames.s3.amazonaws.com,PROXY
@@ -775,6 +782,7 @@ DOMAIN,www-cdn.icloud.com.akadns.net,PROXY
 DOMAIN,www.bing.com,PROXY
 DOMAIN,www.microsoft.com,PROXY
 DOMAIN,www.quora.com.cdn.cloudflare.net,PROXY
+DOMAIN,xtls.github.io,PROXY
 DOMAIN,yangzhi.app,PROXY
 DOMAIN,yt3.googleusercontent.com,PROXY
 DOMAIN,zeenews-fonts.s3.amazonaws.com,PROXY
@@ -10747,10 +10755,13 @@ DOMAIN-SUFFIX,gitgud.io,PROXY
 DOMAIN-SUFFIX,github.ai,PROXY
 DOMAIN-SUFFIX,github.blog,PROXY
 DOMAIN-SUFFIX,github.career,PROXY
+DOMAIN-SUFFIX,github.com,PROXY
 DOMAIN-SUFFIX,github.community,PROXY
 DOMAIN-SUFFIX,github.dev,PROXY
+DOMAIN-SUFFIX,github.io,PROXY
 DOMAIN-SUFFIX,github1s.com,PROXY
 DOMAIN-SUFFIX,githubapp.com,PROXY
+DOMAIN-SUFFIX,githubassets.com,PROXY
 DOMAIN-SUFFIX,githubcopilot.com,PROXY
 DOMAIN-SUFFIX,githubhackathon.com,PROXY
 DOMAIN-SUFFIX,githubnext.com,PROXY
@@ -10758,6 +10769,7 @@ DOMAIN-SUFFIX,githubpreview.dev,PROXY
 DOMAIN-SUFFIX,githubstatus.com,PROXY
 DOMAIN-SUFFIX,githubsupport.com,PROXY
 DOMAIN-SUFFIX,githubuniverse.com,PROXY
+DOMAIN-SUFFIX,githubusercontent.com,PROXY
 DOMAIN-SUFFIX,gitlab-static.net,PROXY
 DOMAIN-SUFFIX,gitlab.com,PROXY
 DOMAIN-SUFFIX,gitlab.io,PROXY
@@ -20826,6 +20838,7 @@ DOMAIN-SUFFIX,scatshop.com,PROXY
 DOMAIN-SUFFIX,scatsite.com,PROXY
 DOMAIN-SUFFIX,scatvids.club,PROXY
 DOMAIN-SUFFIX,scatville.com,PROXY
+DOMAIN-SUFFIX,scdn.co,PROXY
 DOMAIN-SUFFIX,scene7.com,PROXY
 DOMAIN-SUFFIX,scenesource.me,PROXY
 DOMAIN-SUFFIX,scharferporno.com,PROXY
@@ -21955,8 +21968,10 @@ DOMAIN-SUFFIX,sportswomenoftheyear.co.uk,PROXY
 DOMAIN-SUFFIX,spotflux.com,PROXY
 DOMAIN-SUFFIX,spoti.fi,PROXY
 DOMAIN-SUFFIX,spotify-everywhere.com,PROXY
+DOMAIN-SUFFIX,spotify.com,PROXY
 DOMAIN-SUFFIX,spotify.design,PROXY
 DOMAIN-SUFFIX,spotify.link,PROXY
+DOMAIN-SUFFIX,spotifycdn.com,PROXY
 DOMAIN-SUFFIX,spotifycdn.net,PROXY
 DOMAIN-SUFFIX,spotifycharts.com,PROXY
 DOMAIN-SUFFIX,spotifycodes.com,PROXY
@@ -34872,6 +34887,8 @@ DOMAIN-SUFFIX,adeqmedia.com,REJECT
 DOMAIN-SUFFIX,adespresso.com,REJECT
 DOMAIN-SUFFIX,adetracking.com,REJECT
 DOMAIN-SUFFIX,adeumssp.com,REJECT
+DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
+DOMAIN-SUFFIX,adeventtrackermonitoring.spotify.com,REJECT
 DOMAIN-SUFFIX,adevppl.com,REJECT
 DOMAIN-SUFFIX,adex.kintetsu-re.co.jp,REJECT
 DOMAIN-SUFFIX,adex.media,REJECT
@@ -37959,6 +37976,7 @@ DOMAIN-SUFFIX,aestivator.com,REJECT
 DOMAIN-SUFFIX,aests.aesthency.com,REJECT
 DOMAIN-SUFFIX,aesus.so-net.ne.jp,REJECT
 DOMAIN-SUFFIX,aesvnxentohkew.com,REJECT
+DOMAIN-SUFFIX,aet.spotify.com,REJECT
 DOMAIN-SUFFIX,aets22.com,REJECT
 DOMAIN-SUFFIX,aets88.com,REJECT
 DOMAIN-SUFFIX,aets99.com,REJECT
@@ -40902,6 +40920,7 @@ DOMAIN-SUFFIX,analytics.getlimy.ai,REJECT
 DOMAIN-SUFFIX,analytics.getshogun.com,REJECT
 DOMAIN-SUFFIX,analytics.getsnworks.com,REJECT
 DOMAIN-SUFFIX,analytics.gewaterheater.com,REJECT
+DOMAIN-SUFFIX,analytics.githubassets.com,REJECT
 DOMAIN-SUFFIX,analytics.global.sky.com,REJECT
 DOMAIN-SUFFIX,analytics.globality.com,REJECT
 DOMAIN-SUFFIX,analytics.gnetworks.xyz,REJECT
@@ -57985,6 +58004,7 @@ DOMAIN-SUFFIX,collector-1.ex.co,REJECT
 DOMAIN-SUFFIX,collector-analytics.efigence.com,REJECT
 DOMAIN-SUFFIX,collector-api.99designs.com,REJECT
 DOMAIN-SUFFIX,collector-api.frspecifics.com,REJECT
+DOMAIN-SUFFIX,collector-cdn.github.com,REJECT
 DOMAIN-SUFFIX,collector-dev.cdp-dev.cnn.com,REJECT
 DOMAIN-SUFFIX,collector-hpn.ghostery.net,REJECT
 DOMAIN-SUFFIX,collector-medium.lightstep.com,REJECT
@@ -58025,6 +58045,7 @@ DOMAIN-SUFFIX,collector.fullxh.com,REJECT
 DOMAIN-SUFFIX,collector.gamechanger.io,REJECT
 DOMAIN-SUFFIX,collector.getguardianlegal.com,REJECT
 DOMAIN-SUFFIX,collector.getyourguide.com,REJECT
+DOMAIN-SUFFIX,collector.github.com,REJECT
 DOMAIN-SUFFIX,collector.githubapp.com,REJECT
 DOMAIN-SUFFIX,collector.goldwaterlawfirm.com,REJECT
 DOMAIN-SUFFIX,collector.hippodromeonline.com,REJECT
@@ -59303,6 +59324,7 @@ DOMAIN-SUFFIX,copacet.com,REJECT
 DOMAIN-SUFFIX,copalundo.cfd,REJECT
 DOMAIN-SUFFIX,copartbells.shop,REJECT
 DOMAIN-SUFFIX,copeckshymnode.cfd,REJECT
+DOMAIN-SUFFIX,copilot-telemetry.githubusercontent.com,REJECT
 DOMAIN-SUFFIX,copiousgoutswimwear.com,REJECT
 DOMAIN-SUFFIX,copisevacuee.cfd,REJECT
 DOMAIN-SUFFIX,copitacoodle.cyou,REJECT
@@ -70261,6 +70283,7 @@ DOMAIN-SUFFIX,developermedia.com,REJECT
 DOMAIN-SUFFIX,developpementdurable.ricoh.fr,REJECT
 DOMAIN-SUFFIX,developproxybilling.net.mydays.de,REJECT
 DOMAIN-SUFFIX,devestseiren.com,REJECT
+DOMAIN-SUFFIX,devgottia.github.io,REJECT
 DOMAIN-SUFFIX,devguardmap.org,REJECT
 DOMAIN-SUFFIX,devhipaa.duke.edu,REJECT
 DOMAIN-SUFFIX,devhttps-fonts-googleapis-com7.net.mydays.de,REJECT
@@ -87662,6 +87685,7 @@ DOMAIN-SUFFIX,google.bawakeerschools.com,REJECT
 DOMAIN-SUFFIX,google.istanatopup.com,REJECT
 DOMAIN-SUFFIX,google.les-surmatelas.fr,REJECT
 DOMAIN-SUFFIX,googleads-cn.com,REJECT
+DOMAIN-SUFFIX,googleads.github.io,REJECT
 DOMAIN-SUFFIX,googleadservices-cn.com,REJECT
 DOMAIN-SUFFIX,googleadservices.com,REJECT
 DOMAIN-SUFFIX,googleadsserving.cn,REJECT
@@ -116633,6 +116657,7 @@ DOMAIN-SUFFIX,log2.musical.ly,REJECT
 DOMAIN-SUFFIX,log2.perfectworldgames.com,REJECT
 DOMAIN-SUFFIX,log2.pwsdk.com,REJECT
 DOMAIN-SUFFIX,log2.radiko.jp,REJECT
+DOMAIN-SUFFIX,log2.spotify.com,REJECT
 DOMAIN-SUFFIX,log2.wanmei.com,REJECT
 DOMAIN-SUFFIX,log22.makeshop.co.kr,REJECT
 DOMAIN-SUFFIX,log4x.nixcdn.com,REJECT
@@ -125735,6 +125760,7 @@ DOMAIN-SUFFIX,migrationwheat.com,REJECT
 DOMAIN-SUFFIX,migstat.com,REJECT
 DOMAIN-SUFFIX,mihkieqzbounu.space,REJECT
 DOMAIN-SUFFIX,mihmadovjkpi.in,REJECT
+DOMAIN-SUFFIX,mihoutao1868.github.io,REJECT
 DOMAIN-SUFFIX,mije.fr,REJECT
 DOMAIN-SUFFIX,mijqnkabhtbpj.website,REJECT
 DOMAIN-SUFFIX,mijqwsfktcape.com,REJECT
@@ -139477,6 +139503,7 @@ DOMAIN-SUFFIX,pixel-img.com,REJECT
 DOMAIN-SUFFIX,pixel-profile-cloud.eniro.com,REJECT
 DOMAIN-SUFFIX,pixel-secure.solvemedia.com,REJECT
 DOMAIN-SUFFIX,pixel-see.com,REJECT
+DOMAIN-SUFFIX,pixel-static.spotify.com,REJECT
 DOMAIN-SUFFIX,pixel-storage.konnektu.ru,REJECT
 DOMAIN-SUFFIX,pixel.1und1.de,REJECT
 DOMAIN-SUFFIX,pixel.4pcdn.de,REJECT
@@ -139575,6 +139602,7 @@ DOMAIN-SUFFIX,pixel.sibellemodas.com.br,REJECT
 DOMAIN-SUFFIX,pixel.smartmedia.tj,REJECT
 DOMAIN-SUFFIX,pixel.smartnews.com,REJECT
 DOMAIN-SUFFIX,pixel.sojern.com,REJECT
+DOMAIN-SUFFIX,pixel.spotify.com,REJECT
 DOMAIN-SUFFIX,pixel.sprinklr.com,REJECT
 DOMAIN-SUFFIX,pixel.staging.tree.com,REJECT
 DOMAIN-SUFFIX,pixel.staticworld.net,REJECT
@@ -139613,6 +139641,7 @@ DOMAIN-SUFFIX,pixels.afcdn.com,REJECT
 DOMAIN-SUFFIX,pixels.argusplatform.com,REJECT
 DOMAIN-SUFFIX,pixels.ingbank.com.tr,REJECT
 DOMAIN-SUFFIX,pixels.livingsocial.com,REJECT
+DOMAIN-SUFFIX,pixels.spotify.com,REJECT
 DOMAIN-SUFFIX,pixels.zalify.com,REJECT
 DOMAIN-SUFFIX,pixeltransito.wxadv.com.br,REJECT
 DOMAIN-SUFFIX,pixeltrouble.com,REJECT
@@ -228819,15 +228848,6 @@ WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
-12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
-caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
-feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
-jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
-jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
-ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
-ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
-Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
-WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
