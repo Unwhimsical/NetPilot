@@ -7,60 +7,43 @@
 # ============================================
 # GitHub 相关
 # ============================================
-# GitHub 主站
-github.com
-# GitHub 用户内容（raw 文件、图片、附件等）
-githubusercontent.com
-# GitHub 静态资源（CSS、JS、头像等）
-githubassets.com
-# GitHub Pages 站点
-github.io
+
+# --- GitHub ---
+github.com                  # GitHub 主站
+githubusercontent.com       # GitHub 用户内容（raw 文件、图片、附件等）
+githubassets.com            # GitHub 静态资源（CSS、JS、头像等）
+github.io                   # GitHub Pages 站点
 
 # ============================================
 # Spotify 相关
 # ============================================
-# Spotify 主站
-spotify.com
-# Spotify CDN（封面、静态资源）
-spotifycdn.com
-# Spotify 音频 CDN（歌曲流媒体）
-scdn.co
+
+# --- Spotify ---
+spotify.com                 # Spotify 主站
+spotifycdn.com              # Spotify CDN（封面、静态资源）
+scdn.co                     # Spotify 音频 CDN（歌曲流媒体）
 
 # ============================================
 # 抖音 / 字节跳动相关
 # ============================================
-# 抖音主站
-douyin.com
-# 抖音视频点播
-douyinvod.com
-# 抖音图片资源
-douyinpic.com
-# 抖音静态资源
-douyinstatic.com
-# 抖音 CDN
-douyincdn.com
-# 抖音电商（物流、订单等）
-douyinec.com
-# 字节跳动图片 CDN
-byteimg.com
-# 字节跳动 CDN
-bytecdn.cn
-# 字节跳动 CDN（网页资源）
-bytegecko.com
-# 字节跳动 CDN（静态资源）
-bytegoofy.com
-# 字节跳动基础域名（推荐、API 等）
-pstatp.com
-# 字节跳动基础域名（短视频、直播等）
-snssdk.com
-# 字节跳动短视频（抖音、火山等）
-amemv.com
-# 字节跳动 CDN（静态资源）
-zjcdn.com
-# 西瓜视频主站
-#ixigua.com
-# 西瓜视频视频 CDN
-#ixiguavideo.com
+
+# --- 抖音 / 字节跳动 ---
+douyin.com                  # 抖音主站
+douyinvod.com               # 抖音视频点播
+douyinpic.com               # 抖音图片资源
+douyinstatic.com            # 抖音静态资源
+douyincdn.com               # 抖音 CDN
+douyinec.com                # 抖音电商（物流、订单等）
+byteimg.com                 # 字节跳动图片 CDN
+bytecdn.cn                  # 字节跳动 CDN
+bytegecko.com               # 字节跳动 CDN（网页资源）
+bytegoofy.com               # 字节跳动 CDN（静态资源）
+pstatp.com                  # 字节跳动基础域名（推荐、API 等）
+snssdk.com                  # 字节跳动基础域名（短视频、直播等）
+amemv.com                   # 字节跳动短视频（抖音、火山等）
+zjcdn.com                   # 字节跳动 CDN（静态资源）
+#ixigua.com                 # 西瓜视频主站
+#ixiguavideo.com            # 西瓜视频视频 CDN
 
 # ============================================
 # 银行域名（国内，强制直连，避免风控与信息泄露）
@@ -127,6 +110,23 @@ bankofas.com           # 鞍山银行
 bankofbx.com           # 本溪市商业银行
 uccb.com.cn            # 乌鲁木齐市商业银行
 yantaibank.net         # 烟台银行
+suzhoubank.com         # 苏州银行
+qlbank.com             # 齐鲁银行
+qdccb.com              # 青岛银行
+zzbank.cn              # 郑州银行
+gyccb.com.cn           # 贵阳银行
+lzbank.com             # 兰州银行
+xmbankonline.com       # 厦门银行
+bankoftianjin.com      # 天津银行
+hebbank.com            # 河北银行
+jshbank.com            # 晋商银行
+bankofdl.com           # 大连银行
+jlbank.com.cn          # 吉林银行
+jx-bank.com            # 江西银行
+zybank.com.cn          # 中原银行
+hkbchina.com           # 汉口银行
+bobbg.com.cn           # 广西北部湾银行
+fudian-bank.com        # 富滇银行
 
 # --- 农村商业银行 ---
 bjrcb.com              # 北京农商银行
@@ -146,6 +146,15 @@ jiangnanbank.com       # 江南农商银行
 changshubank.com       # 常熟农商银行
 kunshanbank.com        # 昆山农商银行
 nanhaibank.com         # 南海农商银行
+grcbank.com            # 广州农商银行
+cdrcb.com              # 成都农商银行
+szrcb.com              # 深圳农商银行
+urcb.com               # 杭州联合银行
+sdebank.com            # 顺德农商银行
+qrcb.com.cn            # 青岛农商银行
+hnbank.com.cn          # 海南农商银行
+xsbank.com             # 萧山农商银行
+qinnongbank.com        # 秦农银行
 
 # --- 民营银行 ---
 kcbebank.com           # 天津金城银行
@@ -170,12 +179,17 @@ xa-bank.com            # 安徽新安银行
 newupbank.com          # 辽宁振兴银行
 ymbank.com             # 江西裕民银行
 wxsbank.com            # 无锡锡商银行
+sushangbank.com        # 苏商银行（原江苏苏宁银行）
 
-# --- 外资银行 ---
-citibank.com.cn        # 花旗银行（中国）
-hsbc.com.cn            # 汇丰银行（中国）
-hsbcqh.com.cn          # 汇丰前海证券
-hsbcinsurance.com.cn   # 汇丰保险
+# --- 外资银行（暂时不用，全部注释保留） ---
+# citibank.com.cn        # 花旗银行（中国）
+# hsbc.com.cn            # 汇丰银行（中国）
+# hsbcqh.com.cn          # 汇丰前海证券
+# hsbcinsurance.com.cn   # 汇丰保险
+# sc.com.cn              # 渣打银行（中国）
+# dbs.com.cn             # 星展银行（中国）
+# hkbea.com.cn           # 东亚银行（中国）
+# hangseng.com.cn        # 恒生银行（中国）
 
 # --- 银联 ---
 unionpay.com           # 中国银联
