@@ -42,7 +42,7 @@ UPSTREAM_JS_SOURCES = {
 
 DIRECT_MODULE_PATH = "modules/NetPilot_Direct.module"
 SHIELD_MODULE_PATH = "modules/NetPilot_Shield.module"
-MAIN_CONFIG_PATH = "NetPilot Route.conf"          # 主规则文件，会一起备份
+MAIN_CONFIG_PATH = "NetPilot Route.conf"
 LOCAL_JS_DIR = "modules/local_js"
 LOG_DIR = "logs"
 BACKUP_DIR = "backups"
@@ -194,6 +194,7 @@ def scan_js_content(js_content):
     return risks
 
 def load_keyword_list(file_path):
+    """读取每行一个关键词的文件，忽略空行和整行注释。用于黑名单、DNS 泄漏关键词等。"""
     keywords = []
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -202,6 +203,36 @@ def load_keyword_list(file_path):
                 if line and not line.startswith('#'):
                     keywords.append(line)
     return keywords
+
+def load_whitelist_with_purpose(file_path):
+    """
+    读取白名单文件，返回 {域名: 用途} 字典。
+    - 支持行内注释：# 后面的内容作为用途说明。
+    - 整行以 # 开头的注释会被忽略。
+    - 无注释的行，用途为空字符串。
+    """
+    result = {}
+    if not os.path.exists(file_path):
+        return result
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for raw_line in f:
+            line = raw_line.strip()
+            if not line:
+                continue
+            # 整行注释，跳过
+            if line.startswith('#'):
+                continue
+            # 拆分行内注释
+            if '#' in line:
+                domain_part, purpose_part = line.split('#', 1)
+                domain = domain_part.strip()
+                purpose = purpose_part.strip()
+            else:
+                domain = line
+                purpose = ""
+            if domain:
+                result[domain] = purpose
+    return result
 
 def load_dns_leak_keywords():
     return load_keyword_list(DNS_LEAK_KEYWORDS_FILE)
@@ -359,13 +390,25 @@ def test_rule_hit(domain, rules):
     return None
 
 # ========== 白名单豁免过滤 ==========
-def filter_by_whitelist(rules, whitelist, label="规则"):
+def filter_by_whitelist(rules, whitelist_dict, label="规则"):
+    """
+    对规则做白名单豁免：命中 direct_whitelist 的域名从列表中剔除。
+    whitelist_dict: {域名: 用途} 字典。
+    返回 (filtered_rules, removed_rules)
+    removed_rules 是列表，每项为 (rule, matched_keyword, purpose) 元组。
+    """
     filtered = []
     removed = []
     for rule in rules:
         domain = extract_domain_from_rule(rule)
-        if any(domain_match(domain, kw) for kw in whitelist):
-            removed.append(rule)
+        matched = None
+        for kw in whitelist_dict:
+            if domain_match(domain, kw):
+                matched = kw
+                break
+        if matched:
+            purpose = whitelist_dict.get(matched, "") or "（白名单自定义条目，未填写用途）"
+            removed.append((rule, matched, purpose))
             continue
         filtered.append(rule)
     if removed:
@@ -497,9 +540,6 @@ def render_health_summary(health_data, log_lines):
 
 # ========== 日期目录工具 ==========
 def get_date_paths(date_str):
-    """
-    根据日期字符串（YYYY-MM-DD）返回 year/month/day 三段。
-    """
     try:
         y, m, d = date_str.split('-')
         return y, m, d
@@ -508,11 +548,6 @@ def get_date_paths(date_str):
         return now.strftime('%Y'), now.strftime('%m'), now.strftime('%d')
 
 def migrate_legacy_dirs():
-    """
-    把旧的平铺目录 logs/YYYY-MM-DD/ 和 backups/YYYY-MM-DD/ 迁移到
-    logs/YYYY/MM/DD/ 和 backups/YYYY/MM/DD/。
-    已迁移过的不会再处理。
-    """
     for base_dir in (LOG_DIR, BACKUP_DIR):
         if not os.path.isdir(base_dir):
             continue
@@ -520,13 +555,11 @@ def migrate_legacy_dirs():
             entry_path = os.path.join(base_dir, entry)
             if not os.path.isdir(entry_path):
                 continue
-            # 只处理形如 YYYY-MM-DD 的旧结构
             if not re.match(r'^\d{4}-\d{2}-\d{2}$', entry):
                 continue
             y, m, d = entry.split('-')
             new_dir = os.path.join(base_dir, y, m, d)
             if os.path.exists(new_dir):
-                # 已存在新目录，把旧目录中的文件合并进去
                 os.makedirs(new_dir, exist_ok=True)
                 for item in os.listdir(entry_path):
                     src = os.path.join(entry_path, item)
@@ -550,7 +583,6 @@ def migrate_legacy_dirs():
 
 # ========== 版本化备份 ==========
 def backup_file(src_path, backup_subdir):
-    """备份一个文件到指定备份目录，文件名带时间戳。"""
     if not os.path.exists(src_path):
         return None
     os.makedirs(backup_subdir, exist_ok=True)
@@ -563,18 +595,12 @@ def backup_file(src_path, backup_subdir):
     return backup_path
 
 def backup_module_file(src_path, backup_subdir):
-    """兼容旧调用，内部调用 backup_file。"""
     return backup_file(src_path, backup_subdir)
 
 def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
-    """
-    清理超过 keep_days 天的旧备份目录。
-    新的结构是 backups/YYYY/MM/DD/，需要从三级目录判断日期。
-    """
     if not os.path.isdir(backup_dir):
         return
     cutoff = get_beijing_now() - datetime.timedelta(days=keep_days)
-    # 收集所有 backups/YYYY/MM/DD 格式的目录
     for year in os.listdir(backup_dir):
         year_path = os.path.join(backup_dir, year)
         if not os.path.isdir(year_path) or not re.match(r'^\d{4}$', year):
@@ -594,7 +620,6 @@ def cleanup_old_backups(backup_dir, keep_days=MAX_BACKUP_DAYS):
                         print(f"Removed old backup directory: {day_path}")
                 except Exception:
                     continue
-            # 清理空的月份目录
             try:
                 if not os.listdir(month_path):
                     os.rmdir(month_path)
@@ -787,7 +812,6 @@ def update_flagged_domains_file(new_dangerous_domains):
 
 # ========== 日志目录（年/月/日） ==========
 def get_log_dir(current_date):
-    """返回 logs/YYYY/MM/DD 目录路径。"""
     y, m, d = get_date_paths(current_date)
     log_subdir = os.path.join(LOG_DIR, y, m, d)
     os.makedirs(log_subdir, exist_ok=True)
@@ -830,7 +854,6 @@ def get_log_file_path(current_date):
     return os.path.join(log_subdir, f"update_{next_num}.md")
 
 def cleanup_legacy_log_files(log_dir):
-    """清理日志根目录下旧格式 update_*.md（避免残留），不影响年/月/日新结构。"""
     if not os.path.isdir(log_dir):
         return
     for filename in os.listdir(log_dir):
@@ -888,13 +911,6 @@ def update_readme(direct_total, proxy_total, reject_total, added_direct, added_p
 
 # ========== JS 脚本本地化 ==========
 def localize_scripts(scripts, local_js_dir, download_log, script_blacklist):
-    """
-    本地化脚本：
-    - 相同 URL 只下载一次
-    - 同名但内容不同 → 自动加数字后缀（_2、_3 ...），保留所有版本
-    - 同名且内容相同 → 复用已有文件
-    - 下载失败 → 丢弃该脚本引用，下次运行重试
-    """
     os.makedirs(local_js_dir, exist_ok=True)
     updated_scripts = []
     url_to_local = {}
@@ -1023,7 +1039,6 @@ def main():
     current_time = now.strftime('%Y-%m-%d %H:%M:%S 北京时间')
     current_date = now.strftime('%Y-%m-%d')
 
-    # 先迁移旧目录结构，再清理旧日志
     migrate_legacy_dirs()
     cleanup_legacy_log_files(LOG_DIR)
 
@@ -1031,7 +1046,11 @@ def main():
     blacklisted_hostnames = load_blacklisted_hostnames()
     existing_flagged = load_existing_flagged_domains()
     direct_blacklist = load_keyword_list(DIRECT_BLACKLIST_FILE)
-    direct_whitelist = load_keyword_list(DIRECT_WHITELIST_FILE)
+
+    # 读取白名单：字典形式，键为域名，值为行内注释中的用途说明
+    direct_whitelist_dict = load_whitelist_with_purpose(DIRECT_WHITELIST_FILE)
+    # 用于匹配和过滤时使用键列表
+    direct_whitelist = list(direct_whitelist_dict.keys())
 
     health_data = load_source_health()
 
@@ -1287,29 +1306,34 @@ def main():
     merged_rewrites = merge_unique(original_rewrites, new_rewrites)
     merged_scripts = merge_unique(original_scripts, new_scripts)
 
-    merged_proxy_rules, whitelist_removed_proxy = filter_by_whitelist(merged_proxy_rules, direct_whitelist, "代理规则")
-    merged_reject_rules, whitelist_removed_reject = filter_by_whitelist(merged_reject_rules, direct_whitelist, "去广告规则")
+    # 白名单豁免
+    merged_proxy_rules, whitelist_removed_proxy = filter_by_whitelist(merged_proxy_rules, direct_whitelist_dict, "代理规则")
+    merged_reject_rules, whitelist_removed_reject = filter_by_whitelist(merged_reject_rules, direct_whitelist_dict, "去广告规则")
 
     if whitelist_removed_proxy:
         log_lines.append(f"### 🛡️ 白名单豁免（代理规则，共 {len(whitelist_removed_proxy)} 条）\n")
         log_lines.append("**原因**：这些域名在 `direct_whitelist.txt` 中，已从代理规则中移除，确保走直连。\n")
         log_lines.append("<details>")
-        log_lines.append(f"<summary>展开查看被豁免的代理规则</summary>\n")
-        log_lines.append("```")
-        for rule in whitelist_removed_proxy:
-            log_lines.append(f"- {rule}")
-        log_lines.append("```")
+        log_lines.append(f"<summary>展开查看被豁免的代理规则（{len(whitelist_removed_proxy)} 条）</summary>\n")
+        log_lines.append("")
+        for rule, kw, purpose in whitelist_removed_proxy:
+            log_lines.append(f"- `{rule}`")
+            log_lines.append(f"  - 匹配白名单：`{kw}`")
+            log_lines.append(f"  - 用途：{purpose}")
+        log_lines.append("")
         log_lines.append("</details>\n")
 
     if whitelist_removed_reject:
         log_lines.append(f"### 🛡️ 白名单豁免（去广告规则，共 {len(whitelist_removed_reject)} 条）\n")
         log_lines.append("**原因**：这些域名在 `direct_whitelist.txt` 中，已从去广告规则中移除，避免误拦截。\n")
         log_lines.append("<details>")
-        log_lines.append(f"<summary>展开查看被豁免的去广告规则</summary>\n")
-        log_lines.append("```")
-        for rule in whitelist_removed_reject:
-            log_lines.append(f"- {rule}")
-        log_lines.append("```")
+        log_lines.append(f"<summary>展开查看被豁免的去广告规则（{len(whitelist_removed_reject)} 条）</summary>\n")
+        log_lines.append("")
+        for rule, kw, purpose in whitelist_removed_reject:
+            log_lines.append(f"- `{rule}`")
+            log_lines.append(f"  - 匹配白名单：`{kw}`")
+            log_lines.append(f"  - 用途：{purpose}")
+        log_lines.append("")
         log_lines.append("</details>\n")
 
     force_proxy_rules = [f"DOMAIN,{d},PROXY" for d in FORCE_PROXY_DOMAINS]
