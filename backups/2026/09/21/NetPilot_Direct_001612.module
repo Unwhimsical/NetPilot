@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 110306
+#!desc=直连规则总数: 110304
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-09-14 01:32:10 北京时间
+# 更新时间: 2026-09-20 12:09:01 北京时间
 
-# 直连规则总数: 110306
+# 直连规则总数: 110304
 
 [Rule]
 
@@ -37869,8 +37869,6 @@ DOMAIN-SUFFIX,gitee.com,DIRECT
 DOMAIN-SUFFIX,gitee.io,DIRECT
 DOMAIN-SUFFIX,giteeusercontent.com,DIRECT
 DOMAIN-SUFFIX,githang.com,DIRECT
-DOMAIN-SUFFIX,githubim.com,DIRECT
-DOMAIN-SUFFIX,githubshare.com,DIRECT
 DOMAIN-SUFFIX,gitinn.com,DIRECT
 DOMAIN-SUFFIX,gitiu.com,DIRECT
 DOMAIN-SUFFIX,gitlib.com,DIRECT
