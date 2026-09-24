@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 110304
+#!desc=直连规则总数: 110315
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-09-17 12:09:08 北京时间
+# 更新时间: 2026-09-24 12:08:56 北京时间
 
-# 直连规则总数: 110304
+# 直连规则总数: 110315
 
 [Rule]
 
@@ -155,6 +155,7 @@ DOMAIN,doubleclick-cn.net,DIRECT
 DOMAIN,doubleclick.net,DIRECT
 DOMAIN,download.developer.apple.com,DIRECT
 DOMAIN,downloaddispatch.itunes.apple.com,DIRECT
+DOMAIN,drivers.amd.com,DIRECT
 DOMAIN,edge.geo.kaspersky.com,DIRECT
 DOMAIN,end-api.shallow.ink,DIRECT
 DOMAIN,end.shallow.ink,DIRECT
@@ -35008,6 +35009,7 @@ DOMAIN-SUFFIX,fnnspa.com,DIRECT
 DOMAIN-SUFFIX,fnos.net,DIRECT
 DOMAIN-SUFFIX,fnrcw.com,DIRECT
 DOMAIN-SUFFIX,fnrczp.com,DIRECT
+DOMAIN-SUFFIX,fnrrc.com,DIRECT
 DOMAIN-SUFFIX,fnsbqvz.com,DIRECT
 DOMAIN-SUFFIX,fnscore.com,DIRECT
 DOMAIN-SUFFIX,fnwlzz.com,DIRECT
@@ -38544,6 +38546,7 @@ DOMAIN-SUFFIX,gongkongmall.com,DIRECT
 DOMAIN-SUFFIX,gongkongsaas.com,DIRECT
 DOMAIN-SUFFIX,gonglf.com,DIRECT
 DOMAIN-SUFFIX,gonglve.net,DIRECT
+DOMAIN-SUFFIX,gongniukaiguan.net,DIRECT
 DOMAIN-SUFFIX,gongnou.com,DIRECT
 DOMAIN-SUFFIX,gongpin.net,DIRECT
 DOMAIN-SUFFIX,gongpingjia.com,DIRECT
@@ -63859,6 +63862,7 @@ DOMAIN-SUFFIX,mdaehx.com,DIRECT
 DOMAIN-SUFFIX,mdbchina.com,DIRECT
 DOMAIN-SUFFIX,mdbimg.com,DIRECT
 DOMAIN-SUFFIX,mdclub.org,DIRECT
+DOMAIN-SUFFIX,mddclass.com,DIRECT
 DOMAIN-SUFFIX,mdddg.com,DIRECT
 DOMAIN-SUFFIX,mddj.com,DIRECT
 DOMAIN-SUFFIX,mddlsa.com,DIRECT
@@ -74843,6 +74847,7 @@ DOMAIN-SUFFIX,qudajie.com,DIRECT
 DOMAIN-SUFFIX,qudao168.com,DIRECT
 DOMAIN-SUFFIX,qudaowuyou.com,DIRECT
 DOMAIN-SUFFIX,qudayun.com,DIRECT
+DOMAIN-SUFFIX,qudian.com,DIRECT
 DOMAIN-SUFFIX,qudingshui.com,DIRECT
 DOMAIN-SUFFIX,qudong.com,DIRECT
 DOMAIN-SUFFIX,qudong51.net,DIRECT
@@ -81942,6 +81947,7 @@ DOMAIN-SUFFIX,sjez.com,DIRECT
 DOMAIN-SUFFIX,sjf029.com,DIRECT
 DOMAIN-SUFFIX,sjfcdn.com,DIRECT
 DOMAIN-SUFFIX,sjfh168.com,DIRECT
+DOMAIN-SUFFIX,sjfls6.com,DIRECT
 DOMAIN-SUFFIX,sjfpro.com,DIRECT
 DOMAIN-SUFFIX,sjfzxm.com,DIRECT
 DOMAIN-SUFFIX,sjg8.com,DIRECT
@@ -90227,6 +90233,7 @@ DOMAIN-SUFFIX,ubnt.com,DIRECT
 DOMAIN-SUFFIX,uboat100.com,DIRECT
 DOMAIN-SUFFIX,uborn.net,DIRECT
 DOMAIN-SUFFIX,uboxol.com,DIRECT
+DOMAIN-SUFFIX,uboxs.com,DIRECT
 DOMAIN-SUFFIX,ubs001.com,DIRECT
 DOMAIN-SUFFIX,ubssdic.com,DIRECT
 DOMAIN-SUFFIX,ubt.tripcdn.com,DIRECT
@@ -92315,6 +92322,7 @@ DOMAIN-SUFFIX,vwwmsd.com,DIRECT
 DOMAIN-SUFFIX,vx.com,DIRECT
 DOMAIN-SUFFIX,vx56.com,DIRECT
 DOMAIN-SUFFIX,vxe.com,DIRECT
+DOMAIN-SUFFIX,vxhcm.com,DIRECT
 DOMAIN-SUFFIX,vxia.net,DIRECT
 DOMAIN-SUFFIX,vxiaocheng.com,DIRECT
 DOMAIN-SUFFIX,vxinyou.com,DIRECT
@@ -103382,6 +103390,7 @@ DOMAIN-SUFFIX,youbangkeyi.com,DIRECT
 DOMAIN-SUFFIX,youbangyun.com,DIRECT
 DOMAIN-SUFFIX,youbbs.org,DIRECT
 DOMAIN-SUFFIX,youbian.com,DIRECT
+DOMAIN-SUFFIX,youbianku.com,DIRECT
 DOMAIN-SUFFIX,youbibi.com,DIRECT
 DOMAIN-SUFFIX,youbike.me,DIRECT
 DOMAIN-SUFFIX,youbikecn.com,DIRECT
@@ -107463,6 +107472,7 @@ DOMAIN-SUFFIX,zhongliangxny.com,DIRECT
 DOMAIN-SUFFIX,zhonglianhuashu.com,DIRECT
 DOMAIN-SUFFIX,zhonglianhuaxin.com,DIRECT
 DOMAIN-SUFFIX,zhonglianyx.com,DIRECT
+DOMAIN-SUFFIX,zhongliujie.com,DIRECT
 DOMAIN-SUFFIX,zhongliusp.com,DIRECT
 DOMAIN-SUFFIX,zhongliuyiyuan.com,DIRECT
 DOMAIN-SUFFIX,zhonglue-consulting.com,DIRECT
@@ -109665,6 +109675,7 @@ DOMAIN-SUFFIX,zuixiaoyao.com,DIRECT
 DOMAIN-SUFFIX,zuixu.com,DIRECT
 DOMAIN-SUFFIX,zuiyanke.com,DIRECT
 DOMAIN-SUFFIX,zuiyou.com,DIRECT
+DOMAIN-SUFFIX,zuiyou.tv,DIRECT
 DOMAIN-SUFFIX,zuiyouxi.com,DIRECT
 DOMAIN-SUFFIX,zuizhifu.com,DIRECT
 DOMAIN-SUFFIX,zuji360.com,DIRECT
