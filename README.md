@@ -69,6 +69,19 @@
 
 ---
 
+## 📱 推荐客户端：Eclipse
+
+[NetPilot](https://github.com/Unwhimsical/NetPilot) 的规则与模块为 Shadowrocket 格式设计，同样完美兼容 **[Eclipse](https://github.com/Unwhimsical/Eclipse)**——全平台开源代理客户端（Android / iOS / Windows / macOS / Linux）：
+
+- 原生支持 `.sgmodule` 模块导入（规则 / Host / URL Rewrite / Script / MITM）
+- 原生支持 `.conf` 配置导入
+- 内置 CA 中心，一键生成 MITM 证书
+- 场景模式、代理链、JS 脚本引擎
+
+👉 [下载 Eclipse](https://github.com/Unwhimsical/Eclipse/releases)
+
+---
+
 ## ⚠️ 免责声明
 
 本项目仅供学习和技术交流，请勿用于非法用途。使用本规则可能影响部分应用功能，请自行测试和调整。作者不对因使用本规则造成的任何损失负责。
