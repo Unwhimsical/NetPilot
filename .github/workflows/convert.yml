@@ -14,11 +14,16 @@ on:
     workflows: ["Auto Update Rules"]
     types: [completed]
     branches: [main]
-  workflow_dispatch: # 允许手动触发（首次运行用）
+  push:
+    branches: [main]
+    paths: # 转换器本身有改动时也自检一遍（产物提交不碰这些路径，不会自触发）
+      - "scripts/converters/**"
+      - ".github/workflows/convert.yml"
+  workflow_dispatch: # 允许手动触发
 
 jobs:
   convert:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
