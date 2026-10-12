@@ -59,6 +59,7 @@
 | Loon | [NetPilot_Shield.plugin](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/loon/NetPilot_Shield.plugin) · [NetPilot_Direct.plugin](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/loon/NetPilot_Direct.plugin) |
 | Clash / Mihomo | [去广告规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Ads.yaml) · [代理规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Proxy.yaml) · [直连规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Direct.yaml)（规则集，需挂到自己的配置上，示例见 [config_example.yaml](clash/config_example.yaml)） |
 | Stash | [NetPilot.stoverride](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/stash/NetPilot.stoverride)（覆写示例，引用上面的 Clash 规则集） |
+| Quantumult X | [去广告](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/filter/NetPilot_Ads.list) · [去广告·精简版](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/filter/NetPilot_Ads_Lite.list) · [代理](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/filter/NetPilot_Proxy.list) · [直连](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/filter/NetPilot_Direct.list) · [重写](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/rewrite/NetPilot_Rewrite.conf) · [脚本](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/quanx/rewrite/NetPilot_Scripts.conf)（用法见 [quanx 说明](quanx/README.md)） |
 
 ---
 
