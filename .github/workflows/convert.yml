@@ -1,0 +1,58 @@
+name: Convert Formats
+
+# 在主更新流水线（Auto Update Rules）成功后，自动把最新模块转换为
+# Surge / Loon / Clash(Mihomo) 格式。本流水线独立于主流水线：
+# 只读 modules/ 源文件，只写 surge/ loon/ clash/ 输出目录，单独提交；
+# 转换失败不会影响 Shadowrocket 源模块的更新。
+
+concurrency:
+  group: convert-formats
+  cancel-in-progress: false
+
+on:
+  workflow_run:
+    workflows: ["Auto Update Rules"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch: # 允许手动触发（首次运行用）
+
+jobs:
+  convert:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run converters
+        run: |
+          set -o pipefail
+          python3 scripts/converters/convert_all.py --root . | tee convert-summary.md
+          cat convert-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Idempotency self-check
+        run: python3 scripts/converters/convert_all.py --root . --verify-idempotent
+
+      - name: Commit and push converted files if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add surge loon clash
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto convert formats (Surge/Loon/Clash)"
+            git pull origin main --rebase
+            git push
+          fi

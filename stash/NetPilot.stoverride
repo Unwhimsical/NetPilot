@@ -1,0 +1,35 @@
+# NetPilot · Stash 覆写示例（手工维护的示例文件，不会被转换器覆盖）
+# 用法：Stash → 设置 → 覆写 → 从 URL 安装本文件，或把片段合并进你已有的覆写。
+# 它把 NetPilot 的三个 Clash 规则集挂进你的主配置：
+#   Ads → REJECT（去广告）｜Proxy → 你的策略组（默认写 PROXY，请改成你的组名）｜Direct → DIRECT
+
+name: NetPilot 规则集
+desc: NetPilot 的 Clash/Mihomo 规则集（去广告 / 代理 / 直连三分片）
+
+rule-providers:
+  NetPilot-Ads:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Ads.yaml"
+    path: ./ruleset/NetPilot_Ads.yaml
+    interval: 43200
+  NetPilot-Proxy:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Proxy.yaml"
+    path: ./ruleset/NetPilot_Proxy.yaml
+    interval: 43200
+  NetPilot-Direct:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Direct.yaml"
+    path: ./ruleset/NetPilot_Direct.yaml
+    interval: 43200
+
+rules:
+  - RULE-SET,NetPilot-Ads,REJECT
+  - RULE-SET,NetPilot-Proxy,PROXY
+  - RULE-SET,NetPilot-Direct,DIRECT

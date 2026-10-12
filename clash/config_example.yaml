@@ -1,0 +1,37 @@
+# NetPilot · Clash / Mihomo 规则集使用示例（手工维护的示例文件，不会被转换器覆盖）
+# 用法：把下面的 rule-providers 与 rules 片段合并进你自己的 Clash / Mihomo 配置。
+# 注意：NetPilot 提供的是规则集，不是完整配置；节点与策略组请用你自己的。
+
+rule-providers:
+  NetPilot-Ads:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Ads.yaml"
+    path: ./ruleset/NetPilot_Ads.yaml
+    interval: 43200 # 每 12 小时更新一次（与源模块的更新节奏对齐即可）
+  NetPilot-Proxy:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Proxy.yaml"
+    path: ./ruleset/NetPilot_Proxy.yaml
+    interval: 43200
+  NetPilot-Direct:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Direct.yaml"
+    path: ./ruleset/NetPilot_Direct.yaml
+    interval: 43200
+
+rules:
+  # 去广告（约 20 万条）
+  - RULE-SET,NetPilot-Ads,REJECT
+  # 需要走代理的域名（约 2.7 万条）。PROXY 请改成你自己配置里的策略组名，
+  # 例如你的节点选择组叫「节点选择」，就把 PROXY 换成「节点选择」。
+  - RULE-SET,NetPilot-Proxy,PROXY
+  # 直连域名（约 11 万条）
+  - RULE-SET,NetPilot-Direct,DIRECT
+  # 兜底（按你的习惯保留或修改）
+  - MATCH,PROXY
