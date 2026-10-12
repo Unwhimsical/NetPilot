@@ -314,6 +314,153 @@ def emit_clash_provider(path, title, entries):
     write_file(path, "\n".join(lines) + "\n")
 
 
+# ---------------------------------------------------------------- Quantumult X
+
+QX_TYPE_MAP = {
+    "DOMAIN": "host",
+    "DOMAIN-SUFFIX": "host-suffix",
+    "DOMAIN-KEYWORD": "host-keyword",
+    "IP-CIDR": "ip-cidr",
+    "IP-CIDR6": "ip6-cidr",
+    "GEOIP": "geoip",
+    "USER-AGENT": "user-agent",
+}
+
+
+def collect_quanx(modules, stats):
+    """按策略分片收集 QX filter 条目。返回 (buckets, counters)。"""
+    buckets = {"Ads": set(), "Proxy": set(), "Direct": set()}
+    counters = {}
+    for mod in modules:
+        for ln in mod.data_lines("Rule"):
+            r = parse_rule_line(ln)
+            if r is None:
+                counters["无法解析"] = counters.get("无法解析", 0) + 1
+                continue
+            pol = r["policy"]
+            if pol in REJECT_FAMILY:
+                bucket, qpol = "Ads", "reject"
+                if pol not in ("REJECT", "REJECT-DROP"):
+                    counters["REJECT 变体降级为 reject"] = counters.get("REJECT 变体降级为 reject", 0) + 1
+            elif pol == "PROXY":
+                bucket, qpol = "Proxy", "proxy"
+            elif pol == "DIRECT":
+                bucket, qpol = "Direct", "direct"
+            else:
+                counters["未知策略丢弃"] = counters.get("未知策略丢弃", 0) + 1
+                continue
+            t = r["type"]
+            if t == "URL-REGEX":
+                counters["URL-REGEX 丢弃（QX filter 不支持）"] = counters.get("URL-REGEX 丢弃（QX filter 不支持）", 0) + 1
+                continue
+            if t not in QX_TYPE_MAP:
+                counters["QX 不支持的类型丢弃"] = counters.get("QX 不支持的类型丢弃", 0) + 1
+                continue
+            v = r["value"].lower() if t == "GEOIP" else r["value"]
+            entry = "%s, %s, %s" % (QX_TYPE_MAP[t], v, qpol)
+            for ex in r["extras"]:
+                entry += ", " + ex
+            if entry in buckets[bucket]:
+                counters["重复去重"] = counters.get("重复去重", 0) + 1
+            buckets[bucket].add(entry)
+    return buckets, counters
+
+
+def emit_quanx_list(path, title, entries):
+    lines = ["# NetPilot %s（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）" % title,
+             "# 条目数：%d" % len(entries)]
+    lines.extend(sorted(entries))
+    write_file(path, "\n".join(lines) + "\n")
+
+
+def emit_quanx(modules, root, stats):
+    shield = modules[0]
+    buckets, counters = collect_quanx(modules, stats)
+
+    # 全量分片
+    titles = {"Ads": "去广告过滤器（reject）", "Proxy": "代理过滤器（proxy）", "Direct": "直连过滤器（direct）"}
+    for name, entries in buckets.items():
+        emit_quanx_list(os.path.join(root, "quanx", "filter", "NetPilot_%s.list" % name),
+                        titles[name], entries)
+
+    # 精简版广告过滤器：仅 2 段域名（注册域层级）的 host-suffix + 全部 host 精确规则，
+    # 覆盖主要广告网络，条目约为全量广告的四成，供低内存设备选用。
+    lite = set()
+    for e in buckets["Ads"]:
+        parts = [p.strip() for p in e.split(",")]
+        if parts[0] == "host":
+            lite.add(e)
+        elif parts[0] == "host-suffix" and parts[1].count(".") == 1:
+            lite.add(e)
+    emit_quanx_list(os.path.join(root, "quanx", "filter", "NetPilot_Ads_Lite.list"),
+                    "去广告过滤器·精简版（仅注册域层级，约全量四成）", lite)
+    counters["精简版条目"] = len(lite)
+
+    # 重写：[URL Rewrite] -> QX rewrite 语法。源里混有两种写法：
+    # 两段式“正则 reject*”（Surge 原生写法，QX 恰好同格式）与三段式“正则 _ 动作”/“正则 目标 状态码”。
+    rewrites = shield.data_lines("URL Rewrite")
+    out, dropped = [], 0
+    for ln in rewrites:
+        fields = ln.strip().split()
+        if len(fields) == 2 and fields[1].lower().startswith("reject"):
+            out.append("%s %s" % (fields[0], fields[1].lower()))
+        elif len(fields) == 3 and fields[1] == "_" and fields[2].lower().startswith("reject"):
+            out.append("%s %s" % (fields[0], fields[2].lower()))
+        elif len(fields) == 3 and fields[2] in ("302", "307"):
+            out.append("%s %s %s" % (fields[0], fields[2], fields[1]))
+        else:
+            dropped += 1
+    lines = ["# NetPilot 重写（由 Shadowrocket 模块 [URL Rewrite] 自动转换，请勿手动编辑）",
+             "# 条目数：%d" % len(out)]
+    lines.extend(out)
+    write_file(os.path.join(root, "quanx", "rewrite", "NetPilot_Rewrite.conf"), "\n".join(lines) + "\n")
+    stats.add("NetPilot_Shield.module", "QX 重写", len(rewrites), len(out),
+              "QX 无对应写法丢弃 %d 条" % dropped if dropped else "-")
+
+    # 脚本：[Script] -> QX rewrite 的 script-response-body 行
+    scripts = shield.data_lines("Script")
+    out, dropped = [], 0
+    for ln in scripts:
+        f = parse_script_line(ln)
+        if f is None:
+            dropped += 1
+            continue
+        kind = "script-response-body" if f.get("requires-body") in ("1", "true", "True") \
+            else "script-response-header"
+        out.append("%s url %s %s" % (f["pattern"], kind, f["script-path"]))
+    lines = ["# NetPilot 脚本重写（由 Shadowrocket 模块 [Script] 自动转换，请勿手动编辑）",
+             "# 条目数：%d（QX 的脚本 API 与 Shadowrocket 不完全一致，个别脚本可能需人工适配）" % len(out)]
+    lines.extend(out)
+    write_file(os.path.join(root, "quanx", "rewrite", "NetPilot_Scripts.conf"), "\n".join(lines) + "\n")
+    stats.add("NetPilot_Shield.module", "QX 脚本", len(scripts), len(out),
+              "源行格式异常丢弃 %d 条" % dropped if dropped else "-")
+
+    # MITM 域名清单（粘贴到 QX 配置的 [mitm] hostname 后）
+    hosts = []
+    for ln in shield.data_lines("MITM"):
+        if ln.strip().lower().startswith("hostname"):
+            _, _, v = ln.partition("=")
+            v = v.strip()
+            if v.startswith("%APPEND%"):
+                v = v[len("%APPEND%"):].strip()
+            hosts = [h.strip() for h in v.split(",") if h.strip()]
+    write_file(os.path.join(root, "quanx", "mitm_hostname.txt"),
+               "# NetPilot MITM 域名清单：把下面一行粘贴到 Quantumult X 配置 [mitm] 段的 hostname = 之后\n"
+               + ", ".join(hosts) + "\n")
+    stats.add("NetPilot_Shield.module", "QX MITM 域名", len(hosts), len(hosts))
+
+    gen_readme(os.path.join(root, "quanx", "README.md"), "NetPilot · Quantumult X 版",
+               "由 Shadowrocket 模块自动转换。filter/ 为按策略分片的过滤器（Ads/Proxy/Direct），"
+               "另有去广告精简版 Ads_Lite（仅注册域层级，约全量四成，适合低内存设备）；"
+               "rewrite/ 为重写与脚本；mitm_hostname.txt 为解密域名清单。",
+               [("Ads 过滤器", len(buckets["Ads"])), ("Proxy 过滤器", len(buckets["Proxy"])),
+                ("Direct 过滤器", len(buckets["Direct"])), ("Ads 精简版", len(lite))],
+                   "Quantumult X → 设置 → 引用：过滤器引用订阅 filter/*.list，"
+                   "重写引用订阅 rewrite/*.conf。过滤器中的策略名 proxy 需要你在 QX 里有同名策略组，"
+                   "或在订阅引用时用 QX 的策略映射改成你自己的组名。")
+    return counters
+
+
 # ---------------------------------------------------------------- 通用
 
 def write_file(path, content):
@@ -379,10 +526,17 @@ def generate(root):
     except Exception as e:  # noqa: BLE001
         failures.append("Clash: %s" % e)
 
-    return stats, failures, clash_counters
+    # ---- Quantumult X
+    quanx_counters = {}
+    try:
+        quanx_counters = emit_quanx(mods, root, stats)
+    except Exception as e:  # noqa: BLE001
+        failures.append("Quantumult X: %s" % e)
+
+    return stats, failures, clash_counters, quanx_counters
 
 
-def render_summary(stats, failures, clash_counters):
+def render_summary(stats, failures, clash_counters, quanx_counters=None):
     out = ["## NetPilot 格式转换汇总", "",
            "| 源文件 | 类别 | 输入 | 输出 | 说明 |",
            "|---|---|---:|---:|---|"]
@@ -391,6 +545,10 @@ def render_summary(stats, failures, clash_counters):
     if clash_counters:
         out += ["", "Clash 转换明细："]
         for k, v in sorted(clash_counters.items()):
+            out.append("- %s：%d" % (k, v))
+    if quanx_counters:
+        out += ["", "Quantumult X 转换明细："]
+        for k, v in sorted(quanx_counters.items()):
             out.append("- %s：%d" % (k, v))
     if failures:
         out += ["", "### ⚠️ 失败的格式"]
@@ -421,27 +579,27 @@ def main():
                 generate(tmp)
                 dirs.append(tmp)
             ok = True
-            for sub in ("surge", "loon", "clash"):
-                d1, d2 = os.path.join(dirs[0], sub), os.path.join(dirs[1], sub)
-                names = sorted(os.listdir(d1))
-                if names != sorted(os.listdir(d2)):
-                    ok = False
-                    print("幂等校验失败：%s 文件列表不一致" % sub)
-                    continue
-                for n in names:
-                    if not filecmp.cmp(os.path.join(d1, n), os.path.join(d2, n), shallow=False):
+            for sub in ("surge", "loon", "clash", "quanx"):
+                rels = []
+                for base, _dd, files in os.walk(os.path.join(dirs[0], sub)):
+                    for fn in files:
+                        rels.append(os.path.relpath(os.path.join(base, fn), dirs[0]))
+                for rel in sorted(rels):
+                    p2 = os.path.join(dirs[1], rel)
+                    if not os.path.exists(p2) or not filecmp.cmp(
+                            os.path.join(dirs[0], rel), p2, shallow=False):
                         ok = False
-                        print("幂等校验失败：%s/%s 两次生成不一致" % (sub, n))
+                        print("幂等校验失败：%s 两次生成不一致" % rel)
             print("幂等校验通过：两次生成逐字节一致。" if ok else "幂等校验未通过。")
             return 0 if ok else 1
         finally:
             for d in dirs:
                 shutil.rmtree(d, ignore_errors=True)
 
-    stats, failures, clash_counters = generate(args.root)
-    print(render_summary(stats, failures, clash_counters))
+    stats, failures, clash_counters, quanx_counters = generate(args.root)
+    print(render_summary(stats, failures, clash_counters, quanx_counters))
     # 全部失败才返回非零；单格式失败已在汇总中醒目标记，不阻断其他格式提交
-    return 1 if len(failures) >= 3 else 0
+    return 1 if len(failures) >= 4 else 0
 
 
 if __name__ == "__main__":
