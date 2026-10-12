@@ -49,6 +49,17 @@
 
 添加后，建议在 Shadowrocket 中将全局路由设置为“配置”，并按需开启 HTTPS 解密（仅解密去广告脚本涉及的域名）。
 
+### 其他客户端格式（自动转换）
+
+源模块每次自动更新后，会同步转换出以下格式，内容与 Shadowrocket 版保持一致：
+
+| 客户端 | 链接 |
+|------|------|
+| Surge | [NetPilot_Shield.module](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/surge/NetPilot_Shield.module) · [NetPilot_Direct.module](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/surge/NetPilot_Direct.module) |
+| Loon | [NetPilot_Shield.plugin](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/loon/NetPilot_Shield.plugin) · [NetPilot_Direct.plugin](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/loon/NetPilot_Direct.plugin) |
+| Clash / Mihomo | [去广告规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Ads.yaml) · [代理规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Proxy.yaml) · [直连规则集](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/clash/NetPilot_Direct.yaml)（规则集，需挂到自己的配置上，示例见 [config_example.yaml](clash/config_example.yaml)） |
+| Stash | [NetPilot.stoverride](https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/stash/NetPilot.stoverride)（覆写示例，引用上面的 Clash 规则集） |
+
 ---
 
 ## 🔄 更新机制
