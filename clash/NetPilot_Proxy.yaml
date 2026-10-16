@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27394
+# 条目数：27388
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -263,9 +263,7 @@ payload:
   - 'DOMAIN,himalaya-exchange.zendesk.com'
   - 'DOMAIN,hl2rcv.adobe.com'
   - 'DOMAIN,hlrcv.stage.adobe.com'
-  - 'DOMAIN,hls-amt.itunes.apple.com'
   - 'DOMAIN,hls-hamivideo.cdn.hinet.net'
-  - 'DOMAIN,hls.itunes.apple.com'
   - 'DOMAIN,holoxx.f5.si'
   - 'DOMAIN,homebrew.bintray.com'
   - 'DOMAIN,hpefonts.s3.amazonaws.com'
@@ -324,7 +322,6 @@ payload:
   - 'DOMAIN,notebooklm-pa.googleapis.com'
   - 'DOMAIN,notebooklm.googleapis.com'
   - 'DOMAIN,notify.ppy.sh'
-  - 'DOMAIN,np-edge.itunes.apple.com'
   - 'DOMAIN,ntdfreemobile-tgc.cdn.hinet.net'
   - 'DOMAIN,ntdfreepc-tgc.cdn.hinet.net'
   - 'DOMAIN,ntdfreetv-tgc.cdn.hinet.net'
@@ -376,7 +373,6 @@ payload:
   - 'DOMAIN,paper-attachments.s3.amazonaws.com'
   - 'DOMAIN,pchomeonline.com.tw'
   - 'DOMAIN,pki.google.com'
-  - 'DOMAIN,play-edge.itunes.apple.com'
   - 'DOMAIN,poshtestgallery.cloudapp.net'
   - 'DOMAIN,ppl-ai-file-upload.s3.amazonaws.com'
   - 'DOMAIN,pplx-res.cloudinary.com'
@@ -634,7 +630,6 @@ payload:
   - 'DOMAIN,utcnist.colorado.edu'
   - 'DOMAIN,utcnist2.colorado.edu'
   - 'DOMAIN,utcnist3.colorado.edu'
-  - 'DOMAIN,uts-api.itunes.apple.com'
   - 'DOMAIN,ve-dash-uk-live.akamaized.net'
   - 'DOMAIN,ve-uhd-push-uk-live.akamaized.net'
   - 'DOMAIN,venmo.s3.amazonaws.com'
@@ -17069,7 +17064,6 @@ payload:
   - 'DOMAIN-SUFFIX,myyoungwifeisnude.com'
   - 'DOMAIN-SUFFIX,mzed.com'
   - 'DOMAIN-SUFFIX,mzl.la'
-  - 'DOMAIN-SUFFIX,mzstatic.com'
   - 'DOMAIN-SUFFIX,n0vadesktop.com'
   - 'DOMAIN-SUFFIX,n26.com'
   - 'DOMAIN-SUFFIX,n3ro.lol'

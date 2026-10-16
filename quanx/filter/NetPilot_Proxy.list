@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27394
+# 条目数：27388
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -262,9 +262,7 @@ host, heads4-ak-spotify-com.akamaized.net, proxy
 host, himalaya-exchange.zendesk.com, proxy
 host, hl2rcv.adobe.com, proxy
 host, hlrcv.stage.adobe.com, proxy
-host, hls-amt.itunes.apple.com, proxy
 host, hls-hamivideo.cdn.hinet.net, proxy
-host, hls.itunes.apple.com, proxy
 host, holoxx.f5.si, proxy
 host, homebrew.bintray.com, proxy
 host, hpefonts.s3.amazonaws.com, proxy
@@ -323,7 +321,6 @@ host, notary-submissions-prod.s3.us-west-2.amazonaws.com, proxy
 host, notebooklm-pa.googleapis.com, proxy
 host, notebooklm.googleapis.com, proxy
 host, notify.ppy.sh, proxy
-host, np-edge.itunes.apple.com, proxy
 host, ntdfreemobile-tgc.cdn.hinet.net, proxy
 host, ntdfreepc-tgc.cdn.hinet.net, proxy
 host, ntdfreetv-tgc.cdn.hinet.net, proxy
@@ -375,7 +372,6 @@ host, packages.microsoft.com, proxy
 host, paper-attachments.s3.amazonaws.com, proxy
 host, pchomeonline.com.tw, proxy
 host, pki.google.com, proxy
-host, play-edge.itunes.apple.com, proxy
 host, poshtestgallery.cloudapp.net, proxy
 host, ppl-ai-file-upload.s3.amazonaws.com, proxy
 host, pplx-res.cloudinary.com, proxy
@@ -633,7 +629,6 @@ host, ut1-wwv.nist.gov, proxy
 host, utcnist.colorado.edu, proxy
 host, utcnist2.colorado.edu, proxy
 host, utcnist3.colorado.edu, proxy
-host, uts-api.itunes.apple.com, proxy
 host, ve-dash-uk-live.akamaized.net, proxy
 host, ve-uhd-push-uk-live.akamaized.net, proxy
 host, venmo.s3.amazonaws.com, proxy
@@ -17068,7 +17063,6 @@ host-suffix, myyoungmomisnude.com, proxy
 host-suffix, myyoungwifeisnude.com, proxy
 host-suffix, mzed.com, proxy
 host-suffix, mzl.la, proxy
-host-suffix, mzstatic.com, proxy
 host-suffix, n0vadesktop.com, proxy
 host-suffix, n26.com, proxy
 host-suffix, n3ro.lol, proxy

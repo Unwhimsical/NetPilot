@@ -1,5 +1,5 @@
 #!name=NetPilot Shield (Loon)
-#!desc=代理规则: 27545 ｜ 去广告规则: 210634
+#!desc=代理规则: 27539 ｜ 去广告规则: 210633
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成，源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -265,9 +265,7 @@ DOMAIN,heads4-ak-spotify-com.akamaized.net,PROXY
 DOMAIN,himalaya-exchange.zendesk.com,PROXY
 DOMAIN,hl2rcv.adobe.com,PROXY
 DOMAIN,hlrcv.stage.adobe.com,PROXY
-DOMAIN,hls-amt.itunes.apple.com,PROXY
 DOMAIN,hls-hamivideo.cdn.hinet.net,PROXY
-DOMAIN,hls.itunes.apple.com,PROXY
 DOMAIN,holoxx.f5.si,PROXY
 DOMAIN,homebrew.bintray.com,PROXY
 DOMAIN,hpefonts.s3.amazonaws.com,PROXY
@@ -326,7 +324,6 @@ DOMAIN,notary-submissions-prod.s3.us-west-2.amazonaws.com,PROXY
 DOMAIN,notebooklm-pa.googleapis.com,PROXY
 DOMAIN,notebooklm.googleapis.com,PROXY
 DOMAIN,notify.ppy.sh,PROXY
-DOMAIN,np-edge.itunes.apple.com,PROXY
 DOMAIN,ntdfreemobile-tgc.cdn.hinet.net,PROXY
 DOMAIN,ntdfreepc-tgc.cdn.hinet.net,PROXY
 DOMAIN,ntdfreetv-tgc.cdn.hinet.net,PROXY
@@ -378,7 +375,6 @@ DOMAIN,packages.microsoft.com,PROXY
 DOMAIN,paper-attachments.s3.amazonaws.com,PROXY
 DOMAIN,pchomeonline.com.tw,PROXY
 DOMAIN,pki.google.com,PROXY
-DOMAIN,play-edge.itunes.apple.com,PROXY
 DOMAIN,poshtestgallery.cloudapp.net,PROXY
 DOMAIN,ppl-ai-file-upload.s3.amazonaws.com,PROXY
 DOMAIN,pplx-res.cloudinary.com,PROXY
@@ -636,7 +632,6 @@ DOMAIN,ut1-wwv.nist.gov,PROXY
 DOMAIN,utcnist.colorado.edu,PROXY
 DOMAIN,utcnist2.colorado.edu,PROXY
 DOMAIN,utcnist3.colorado.edu,PROXY
-DOMAIN,uts-api.itunes.apple.com,PROXY
 DOMAIN,ve-dash-uk-live.akamaized.net,PROXY
 DOMAIN,ve-uhd-push-uk-live.akamaized.net,PROXY
 DOMAIN,venmo.s3.amazonaws.com,PROXY
@@ -17057,7 +17052,6 @@ DOMAIN-SUFFIX,myyoungmomisnude.com,PROXY
 DOMAIN-SUFFIX,myyoungwifeisnude.com,PROXY
 DOMAIN-SUFFIX,mzed.com,PROXY
 DOMAIN-SUFFIX,mzl.la,PROXY
-DOMAIN-SUFFIX,mzstatic.com,PROXY
 DOMAIN-SUFFIX,n0vadesktop.com,PROXY
 DOMAIN-SUFFIX,n26.com,PROXY
 DOMAIN-SUFFIX,n3ro.lol,PROXY
@@ -133955,7 +133949,6 @@ DOMAIN-SUFFIX,metrics.mysynchrony.com,REJECT
 DOMAIN-SUFFIX,metrics.mytributes.com.au,REJECT
 DOMAIN-SUFFIX,metrics.myvi.in,REJECT
 DOMAIN-SUFFIX,metrics.myyellow.com,REJECT
-DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT
 DOMAIN-SUFFIX,metrics.n-tv.de,REJECT
 DOMAIN-SUFFIX,metrics.napacanada.com,REJECT
 DOMAIN-SUFFIX,metrics.napaonline.com,REJECT
@@ -246944,6 +246937,15 @@ http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspams
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js, requires-body=true, tag=XiaoHongShu
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\? script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js, requires-body=true, tag=XiaoHongShu
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\? script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js, requires-body=true, tag=XiaoHongShu
+http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js, requires-body=true, tag=12306
+http-response ^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js, requires-body=true, tag=caixin
+http-response ^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js, requires-body=true, tag=feikechaguan
+http-response ^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js, requires-body=true, tag=jingxi
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms) script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js, requires-body=true, tag=jingdong
+http-response ^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList) script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js, requires-body=true, tag=ku'an
+http-response https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js, requires-body=true, tag=ShunFeng
+http-response ^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$ script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js, requires-body=true, tag=Stay
+http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js, requires-body=true, tag=WeChat110
 http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js, requires-body=true, tag=12306
 http-response ^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js, requires-body=true, tag=caixin
 http-response ^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js, requires-body=true, tag=feikechaguan

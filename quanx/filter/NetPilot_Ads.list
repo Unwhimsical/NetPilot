@@ -1,5 +1,5 @@
 # NetPilot 去广告过滤器（reject）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：210613
+# 条目数：210612
 host-keyword, pangolin, reject
 host-suffix, 0.avmarket.rs, reject
 host-suffix, 0.myikas.com, reject
@@ -106396,7 +106396,6 @@ host-suffix, metrics.mysynchrony.com, reject
 host-suffix, metrics.mytributes.com.au, reject
 host-suffix, metrics.myvi.in, reject
 host-suffix, metrics.myyellow.com, reject
-host-suffix, metrics.mzstatic.com, reject
 host-suffix, metrics.n-tv.de, reject
 host-suffix, metrics.napacanada.com, reject
 host-suffix, metrics.napaonline.com, reject

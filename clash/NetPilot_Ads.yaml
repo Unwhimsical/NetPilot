@@ -1,5 +1,5 @@
 # NetPilot 去广告规则集（REJECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：210613
+# 条目数：210612
 payload:
   - 'DOMAIN-KEYWORD,pangolin'
   - 'DOMAIN-SUFFIX,0.avmarket.rs'
@@ -106397,7 +106397,6 @@ payload:
   - 'DOMAIN-SUFFIX,metrics.mytributes.com.au'
   - 'DOMAIN-SUFFIX,metrics.myvi.in'
   - 'DOMAIN-SUFFIX,metrics.myyellow.com'
-  - 'DOMAIN-SUFFIX,metrics.mzstatic.com'
   - 'DOMAIN-SUFFIX,metrics.n-tv.de'
   - 'DOMAIN-SUFFIX,metrics.napacanada.com'
   - 'DOMAIN-SUFFIX,metrics.napaonline.com'
