@@ -1,14 +1,14 @@
 #!name=NetPilot Shield
 
-#!desc=代理规则: 27545 ｜ 去广告规则: 210634
+#!desc=代理规则: 27539 ｜ 去广告规则: 210633
 
 # 描述：代理分流 + 去广告模块，自动更新
 
-# 更新时间: 2026-10-16 16:43:45 北京时间
+# 更新时间: 2026-10-17 01:21:52 北京时间
 
-# 代理规则总数: 27545
+# 代理规则总数: 27539
 
-# 去广告规则总数: 210634
+# 去广告规则总数: 210633
 
 [Rule]
 
@@ -276,9 +276,7 @@ DOMAIN,heads4-ak-spotify-com.akamaized.net,PROXY
 DOMAIN,himalaya-exchange.zendesk.com,PROXY
 DOMAIN,hl2rcv.adobe.com,PROXY
 DOMAIN,hlrcv.stage.adobe.com,PROXY
-DOMAIN,hls-amt.itunes.apple.com,PROXY
 DOMAIN,hls-hamivideo.cdn.hinet.net,PROXY
-DOMAIN,hls.itunes.apple.com,PROXY
 DOMAIN,holoxx.f5.si,PROXY
 DOMAIN,homebrew.bintray.com,PROXY
 DOMAIN,hpefonts.s3.amazonaws.com,PROXY
@@ -337,7 +335,6 @@ DOMAIN,notary-submissions-prod.s3.us-west-2.amazonaws.com,PROXY
 DOMAIN,notebooklm-pa.googleapis.com,PROXY
 DOMAIN,notebooklm.googleapis.com,PROXY
 DOMAIN,notify.ppy.sh,PROXY
-DOMAIN,np-edge.itunes.apple.com,PROXY
 DOMAIN,ntdfreemobile-tgc.cdn.hinet.net,PROXY
 DOMAIN,ntdfreepc-tgc.cdn.hinet.net,PROXY
 DOMAIN,ntdfreetv-tgc.cdn.hinet.net,PROXY
@@ -389,7 +386,6 @@ DOMAIN,packages.microsoft.com,PROXY
 DOMAIN,paper-attachments.s3.amazonaws.com,PROXY
 DOMAIN,pchomeonline.com.tw,PROXY
 DOMAIN,pki.google.com,PROXY
-DOMAIN,play-edge.itunes.apple.com,PROXY
 DOMAIN,poshtestgallery.cloudapp.net,PROXY
 DOMAIN,ppl-ai-file-upload.s3.amazonaws.com,PROXY
 DOMAIN,pplx-res.cloudinary.com,PROXY
@@ -647,7 +643,6 @@ DOMAIN,ut1-wwv.nist.gov,PROXY
 DOMAIN,utcnist.colorado.edu,PROXY
 DOMAIN,utcnist2.colorado.edu,PROXY
 DOMAIN,utcnist3.colorado.edu,PROXY
-DOMAIN,uts-api.itunes.apple.com,PROXY
 DOMAIN,ve-dash-uk-live.akamaized.net,PROXY
 DOMAIN,ve-uhd-push-uk-live.akamaized.net,PROXY
 DOMAIN,venmo.s3.amazonaws.com,PROXY
@@ -17068,7 +17063,6 @@ DOMAIN-SUFFIX,myyoungmomisnude.com,PROXY
 DOMAIN-SUFFIX,myyoungwifeisnude.com,PROXY
 DOMAIN-SUFFIX,mzed.com,PROXY
 DOMAIN-SUFFIX,mzl.la,PROXY
-DOMAIN-SUFFIX,mzstatic.com,PROXY
 DOMAIN-SUFFIX,n0vadesktop.com,PROXY
 DOMAIN-SUFFIX,n26.com,PROXY
 DOMAIN-SUFFIX,n3ro.lol,PROXY
@@ -133969,7 +133963,6 @@ DOMAIN-SUFFIX,metrics.mysynchrony.com,REJECT
 DOMAIN-SUFFIX,metrics.mytributes.com.au,REJECT
 DOMAIN-SUFFIX,metrics.myvi.in,REJECT
 DOMAIN-SUFFIX,metrics.myyellow.com,REJECT
-DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT
 DOMAIN-SUFFIX,metrics.n-tv.de,REJECT
 DOMAIN-SUFFIX,metrics.napacanada.com,REJECT
 DOMAIN-SUFFIX,metrics.napaonline.com,REJECT
@@ -246965,6 +246958,15 @@ WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
 XiaoHongShu=type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/xiaohongshu.js
+12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
+caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
+feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
+jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
+jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
+ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
+ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
+Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
+WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
