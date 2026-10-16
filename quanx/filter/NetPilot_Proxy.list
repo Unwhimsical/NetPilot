@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27389
+# 条目数：27394
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -19188,6 +19188,7 @@ host-suffix, playshowtv.com, proxy
 host-suffix, playstation, proxy
 host-suffix, playstation.com, proxy
 host-suffix, playstation.net, proxy
+host-suffix, playstationnetwork.com, proxy
 host-suffix, playvalorant.com, proxy
 host-suffix, playvids.com, proxy
 host-suffix, playwarcraft3.com, proxy
@@ -20973,6 +20974,7 @@ host-suffix, scatvids.club, proxy
 host-suffix, scatville.com, proxy
 host-suffix, scb.ru, proxy
 host-suffix, scdn.co, proxy
+host-suffix, scea.com, proxy
 host-suffix, scene7.com, proxy
 host-suffix, scenesource.me, proxy
 host-suffix, scharferporno.com, proxy
@@ -21940,6 +21942,7 @@ host-suffix, sony.com.ni, proxy
 host-suffix, sony.com.pa, proxy
 host-suffix, sony.com.pe, proxy
 host-suffix, sony.com.ph, proxy
+host-suffix, sony.com.py, proxy
 host-suffix, sony.com.sg, proxy
 host-suffix, sony.com.sv, proxy
 host-suffix, sony.com.tr, proxy
@@ -21983,8 +21986,10 @@ host-suffix, sonydesign.com, proxy
 host-suffix, sonydna.com, proxy
 host-suffix, sonyentertainmentnetwork.com, proxy
 host-suffix, sonyglobalsolutions.jp, proxy
+host-suffix, sonyinteractive.com, proxy
 host-suffix, sonykigyo.jp, proxy
 host-suffix, sonylatvija.com, proxy
+host-suffix, sonymusic.com.hk, proxy
 host-suffix, sonynetwork.co.jp, proxy
 host-suffix, sonypcl.jp, proxy
 host-suffix, sonypictures.com, proxy

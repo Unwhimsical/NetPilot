@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27389
+# 条目数：27394
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -19189,6 +19189,7 @@ payload:
   - 'DOMAIN-SUFFIX,playstation'
   - 'DOMAIN-SUFFIX,playstation.com'
   - 'DOMAIN-SUFFIX,playstation.net'
+  - 'DOMAIN-SUFFIX,playstationnetwork.com'
   - 'DOMAIN-SUFFIX,playvalorant.com'
   - 'DOMAIN-SUFFIX,playvids.com'
   - 'DOMAIN-SUFFIX,playwarcraft3.com'
@@ -20974,6 +20975,7 @@ payload:
   - 'DOMAIN-SUFFIX,scatville.com'
   - 'DOMAIN-SUFFIX,scb.ru'
   - 'DOMAIN-SUFFIX,scdn.co'
+  - 'DOMAIN-SUFFIX,scea.com'
   - 'DOMAIN-SUFFIX,scene7.com'
   - 'DOMAIN-SUFFIX,scenesource.me'
   - 'DOMAIN-SUFFIX,scharferporno.com'
@@ -21941,6 +21943,7 @@ payload:
   - 'DOMAIN-SUFFIX,sony.com.pa'
   - 'DOMAIN-SUFFIX,sony.com.pe'
   - 'DOMAIN-SUFFIX,sony.com.ph'
+  - 'DOMAIN-SUFFIX,sony.com.py'
   - 'DOMAIN-SUFFIX,sony.com.sg'
   - 'DOMAIN-SUFFIX,sony.com.sv'
   - 'DOMAIN-SUFFIX,sony.com.tr'
@@ -21984,8 +21987,10 @@ payload:
   - 'DOMAIN-SUFFIX,sonydna.com'
   - 'DOMAIN-SUFFIX,sonyentertainmentnetwork.com'
   - 'DOMAIN-SUFFIX,sonyglobalsolutions.jp'
+  - 'DOMAIN-SUFFIX,sonyinteractive.com'
   - 'DOMAIN-SUFFIX,sonykigyo.jp'
   - 'DOMAIN-SUFFIX,sonylatvija.com'
+  - 'DOMAIN-SUFFIX,sonymusic.com.hk'
   - 'DOMAIN-SUFFIX,sonynetwork.co.jp'
   - 'DOMAIN-SUFFIX,sonypcl.jp'
   - 'DOMAIN-SUFFIX,sonypictures.com'
