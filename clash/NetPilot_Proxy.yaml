@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27388
+# 条目数：27389
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -1274,6 +1274,7 @@ payload:
   - 'DOMAIN-SUFFIX,7tb.cc'
   - 'DOMAIN-SUFFIX,7tv.app'
   - 'DOMAIN-SUFFIX,7tv.io'
+  - 'DOMAIN-SUFFIX,7x24hrs.com'
   - 'DOMAIN-SUFFIX,8-d.com'
   - 'DOMAIN-SUFFIX,8008206616.com'
   - 'DOMAIN-SUFFIX,8111y.top'
