@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27389
+# 条目数：27395
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -6940,6 +6940,7 @@ payload:
   - 'DOMAIN-SUFFIX,cursor.com'
   - 'DOMAIN-SUFFIX,cursor.sh'
   - 'DOMAIN-SUFFIX,cursorapi.com'
+  - 'DOMAIN-SUFFIX,cursorvm.com'
   - 'DOMAIN-SUFFIX,curve.fi'
   - 'DOMAIN-SUFFIX,curvefish.com'
   - 'DOMAIN-SUFFIX,curvybbwwives.com'
@@ -18311,6 +18312,7 @@ payload:
   - 'DOMAIN-SUFFIX,open.firstory.me'
   - 'DOMAIN-SUFFIX,openai-api.arkoselabs.com'
   - 'DOMAIN-SUFFIX,openai.com'
+  - 'DOMAIN-SUFFIX,openai.org'
   - 'DOMAIN-SUFFIX,openaiapi-site.azureedge.net'
   - 'DOMAIN-SUFFIX,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net'
   - 'DOMAIN-SUFFIX,openaicom.imgix.net'
@@ -20984,6 +20986,7 @@ payload:
   - 'DOMAIN-SUFFIX,schwab.com.hk'
   - 'DOMAIN-SUFFIX,schwab.com.sg'
   - 'DOMAIN-SUFFIX,schwabassetmanagement.com'
+  - 'DOMAIN-SUFFIX,schwabcdn.com'
   - 'DOMAIN-SUFFIX,schwabplan.com'
   - 'DOMAIN-SUFFIX,sci-hub.ee'
   - 'DOMAIN-SUFFIX,sci-hub.it.nf'
@@ -23352,6 +23355,8 @@ payload:
   - 'DOMAIN-SUFFIX,timestalks.com'
   - 'DOMAIN-SUFFIX,timeweb.cloud'
   - 'DOMAIN-SUFFIX,timeweb.com'
+  - 'DOMAIN-SUFFIX,timeweb.tech'
+  - 'DOMAIN-SUFFIX,timewebcloud.kz'
   - 'DOMAIN-SUFFIX,timi1.me'
   - 'DOMAIN-SUFFIX,timo0.com'
   - 'DOMAIN-SUFFIX,timtales.com'
@@ -23929,6 +23934,7 @@ payload:
   - 'DOMAIN-SUFFIX,typekit.net'
   - 'DOMAIN-SUFFIX,typenetwork.com'
   - 'DOMAIN-SUFFIX,typepad.com'
+  - 'DOMAIN-SUFFIX,typesafe.ai'
   - 'DOMAIN-SUFFIX,typeset.io'
   - 'DOMAIN-SUFFIX,typesquare.com'
   - 'DOMAIN-SUFFIX,typography.com'

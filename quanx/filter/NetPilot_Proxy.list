@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27389
+# 条目数：27395
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -6939,6 +6939,7 @@ host-suffix, cursor-cdn.com, proxy
 host-suffix, cursor.com, proxy
 host-suffix, cursor.sh, proxy
 host-suffix, cursorapi.com, proxy
+host-suffix, cursorvm.com, proxy
 host-suffix, curve.fi, proxy
 host-suffix, curvefish.com, proxy
 host-suffix, curvybbwwives.com, proxy
@@ -18310,6 +18311,7 @@ host-suffix, opac-project.eu, proxy
 host-suffix, open.firstory.me, proxy
 host-suffix, openai-api.arkoselabs.com, proxy
 host-suffix, openai.com, proxy
+host-suffix, openai.org, proxy
 host-suffix, openaiapi-site.azureedge.net, proxy
 host-suffix, openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net, proxy
 host-suffix, openaicom.imgix.net, proxy
@@ -20983,6 +20985,7 @@ host-suffix, schwab.com.cn, proxy
 host-suffix, schwab.com.hk, proxy
 host-suffix, schwab.com.sg, proxy
 host-suffix, schwabassetmanagement.com, proxy
+host-suffix, schwabcdn.com, proxy
 host-suffix, schwabplan.com, proxy
 host-suffix, sci-hub.ee, proxy
 host-suffix, sci-hub.it.nf, proxy
@@ -23351,6 +23354,8 @@ host-suffix, timesofindia.indiatimes.com, proxy
 host-suffix, timestalks.com, proxy
 host-suffix, timeweb.cloud, proxy
 host-suffix, timeweb.com, proxy
+host-suffix, timeweb.tech, proxy
+host-suffix, timewebcloud.kz, proxy
 host-suffix, timi1.me, proxy
 host-suffix, timo0.com, proxy
 host-suffix, timtales.com, proxy
@@ -23928,6 +23933,7 @@ host-suffix, typekit.com, proxy
 host-suffix, typekit.net, proxy
 host-suffix, typenetwork.com, proxy
 host-suffix, typepad.com, proxy
+host-suffix, typesafe.ai, proxy
 host-suffix, typeset.io, proxy
 host-suffix, typesquare.com, proxy
 host-suffix, typography.com, proxy
