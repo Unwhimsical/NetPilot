@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111180
+#!desc=直连规则总数: 111167
 
 # 描述：国内直连规则，自动更新
 
 # 更新时间: 2026-10-20 04:58:19 北京时间
 
-# 直连规则总数: 111180
+# 直连规则总数: 111167
 
 [Rule]
 
@@ -79,7 +79,6 @@ DOMAIN,cds.apple.com.akadns.net,DIRECT
 DOMAIN,cdsassets.apple.com,DIRECT
 DOMAIN,certs-lb.apple.com.akadns.net,DIRECT
 DOMAIN,certs.apple.com,DIRECT
-DOMAIN,checkin.gstatic.com,DIRECT
 DOMAIN,cl1-cdn.origin-apple.com.akadns.net,DIRECT
 DOMAIN,cl1.apple.com,DIRECT
 DOMAIN,cl2-cdn.origin-apple.com.akadns.net,DIRECT
@@ -107,14 +106,12 @@ DOMAIN,cn.windowssearch.com,DIRECT
 DOMAIN,communities.apple.com,DIRECT
 DOMAIN,configuration.apple.com,DIRECT
 DOMAIN,configuration.apple.com.akadns.net,DIRECT
-DOMAIN,connectivitycheck.gstatic.com,DIRECT
 DOMAIN,crl-lb.apple.com.akadns.net,DIRECT
 DOMAIN,crl.apple.com,DIRECT
 DOMAIN,crl.globalsign.net,DIRECT
 DOMAIN,crl.kaspersky.com,DIRECT
 DOMAIN,crl.pki.goog,DIRECT
 DOMAIN,crls.pki.goog,DIRECT
-DOMAIN,csi.gstatic.com,DIRECT
 DOMAIN,cstat.apple.com,DIRECT
 DOMAIN,cstat.cdn-apple.com,DIRECT
 DOMAIN,ctdsb.clouddiffuse.xyz,DIRECT
@@ -163,12 +160,7 @@ DOMAIN,entitlements-edge.itunes.apple.com,DIRECT
 DOMAIN,experiments.apple.com,DIRECT
 DOMAIN,f.c2r.ts.cdn.office.net,DIRECT
 DOMAIN,fides-pol.apple.com,DIRECT
-DOMAIN,fonts.gstatic.com,DIRECT
 DOMAIN,fpinit.itunes.apple.com,DIRECT
-DOMAIN,g0.gstatic.com,DIRECT
-DOMAIN,g1.gstatic.com,DIRECT
-DOMAIN,g2.gstatic.com,DIRECT
-DOMAIN,g3.gstatic.com,DIRECT
 DOMAIN,geetest.datasink.sensorsdata.cn,DIRECT
 DOMAIN,gog.qtlglb.com,DIRECT
 DOMAIN,gonglchuangl.net,DIRECT
@@ -398,7 +390,6 @@ DOMAIN,smp-device-content.apple.com,DIRECT
 DOMAIN,sp.itunes.apple.com,DIRECT
 DOMAIN,speedysub.music.apple.com,DIRECT
 DOMAIN,ss.bjmu.edu.cn,DIRECT
-DOMAIN,ssl.gstatic.com,DIRECT
 DOMAIN,staging-controlbe.floonet.goog,DIRECT
 DOMAIN,staging-databe.floonet.goog,DIRECT
 DOMAIN,staging.databe.floonet.goog,DIRECT
@@ -452,7 +443,6 @@ DOMAIN,www.apple.com,DIRECT
 DOMAIN,www.apple.com.edgekey.net.globalredir.akadns.net,DIRECT
 DOMAIN,www.destinationurl.com,DIRECT
 DOMAIN,www.entrust.cn,DIRECT
-DOMAIN,www.gstatic.com,DIRECT
 DOMAIN,www.pxcc.com,DIRECT
 DOMAIN,www.recaptcha-cn.net,DIRECT
 DOMAIN,www.recaptcha.net,DIRECT
@@ -14928,7 +14918,6 @@ DOMAIN-SUFFIX,bbfstore.com,DIRECT
 DOMAIN-SUFFIX,bbfytsn.com,DIRECT
 DOMAIN-SUFFIX,bbgdex.com,DIRECT
 DOMAIN-SUFFIX,bbgsite.com,DIRECT
-DOMAIN-SUFFIX,bbgstatic.com,DIRECT
 DOMAIN-SUFFIX,bbguangcai.com,DIRECT
 DOMAIN-SUFFIX,bbhou.com,DIRECT
 DOMAIN-SUFFIX,bbhuibangpos.com,DIRECT
@@ -32448,7 +32437,6 @@ DOMAIN-SUFFIX,elong.net,DIRECT
 DOMAIN-SUFFIX,elongai.com,DIRECT
 DOMAIN-SUFFIX,elonghotel.com,DIRECT
 DOMAIN-SUFFIX,elongshine.com,DIRECT
-DOMAIN-SUFFIX,elongstatic.com,DIRECT
 DOMAIN-SUFFIX,elongtrip.com,DIRECT
 DOMAIN-SUFFIX,elontest.com,DIRECT
 DOMAIN-SUFFIX,eloonggame.com,DIRECT
@@ -60493,7 +60481,6 @@ DOMAIN-SUFFIX,lgpj.net,DIRECT
 DOMAIN-SUFFIX,lgpm.com,DIRECT
 DOMAIN-SUFFIX,lgrcbank.com,DIRECT
 DOMAIN-SUFFIX,lgshouyou.com,DIRECT
-DOMAIN-SUFFIX,lgstatic.com,DIRECT
 DOMAIN-SUFFIX,lgtzkg.com,DIRECT
 DOMAIN-SUFFIX,lguohe.com,DIRECT
 DOMAIN-SUFFIX,lgvf.com,DIRECT
