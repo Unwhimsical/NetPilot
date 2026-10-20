@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111177
+# 条目数：111164
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -70,7 +70,6 @@ host, cds.apple.com.akadns.net, direct
 host, cdsassets.apple.com, direct
 host, certs-lb.apple.com.akadns.net, direct
 host, certs.apple.com, direct
-host, checkin.gstatic.com, direct
 host, cl1-cdn.origin-apple.com.akadns.net, direct
 host, cl1.apple.com, direct
 host, cl2-cdn.origin-apple.com.akadns.net, direct
@@ -98,14 +97,12 @@ host, cn.windowssearch.com, direct
 host, communities.apple.com, direct
 host, configuration.apple.com, direct
 host, configuration.apple.com.akadns.net, direct
-host, connectivitycheck.gstatic.com, direct
 host, crl-lb.apple.com.akadns.net, direct
 host, crl.apple.com, direct
 host, crl.globalsign.net, direct
 host, crl.kaspersky.com, direct
 host, crl.pki.goog, direct
 host, crls.pki.goog, direct
-host, csi.gstatic.com, direct
 host, cstat.apple.com, direct
 host, cstat.cdn-apple.com, direct
 host, ctdsb.clouddiffuse.xyz, direct
@@ -154,12 +151,7 @@ host, entitlements-edge.itunes.apple.com, direct
 host, experiments.apple.com, direct
 host, f.c2r.ts.cdn.office.net, direct
 host, fides-pol.apple.com, direct
-host, fonts.gstatic.com, direct
 host, fpinit.itunes.apple.com, direct
-host, g0.gstatic.com, direct
-host, g1.gstatic.com, direct
-host, g2.gstatic.com, direct
-host, g3.gstatic.com, direct
 host, geetest.datasink.sensorsdata.cn, direct
 host, gog.qtlglb.com, direct
 host, gonglchuangl.net, direct
@@ -389,7 +381,6 @@ host, smp-device-content.apple.com, direct
 host, sp.itunes.apple.com, direct
 host, speedysub.music.apple.com, direct
 host, ss.bjmu.edu.cn, direct
-host, ssl.gstatic.com, direct
 host, staging-controlbe.floonet.goog, direct
 host, staging-databe.floonet.goog, direct
 host, staging.databe.floonet.goog, direct
@@ -443,7 +434,6 @@ host, www.apple.com, direct
 host, www.apple.com.edgekey.net.globalredir.akadns.net, direct
 host, www.destinationurl.com, direct
 host, www.entrust.cn, direct
-host, www.gstatic.com, direct
 host, www.pxcc.com, direct
 host, www.recaptcha-cn.net, direct
 host, www.recaptcha.net, direct
@@ -14919,7 +14909,6 @@ host-suffix, bbfstore.com, direct
 host-suffix, bbfytsn.com, direct
 host-suffix, bbgdex.com, direct
 host-suffix, bbgsite.com, direct
-host-suffix, bbgstatic.com, direct
 host-suffix, bbguangcai.com, direct
 host-suffix, bbhou.com, direct
 host-suffix, bbhuibangpos.com, direct
@@ -32439,7 +32428,6 @@ host-suffix, elong.net, direct
 host-suffix, elongai.com, direct
 host-suffix, elonghotel.com, direct
 host-suffix, elongshine.com, direct
-host-suffix, elongstatic.com, direct
 host-suffix, elongtrip.com, direct
 host-suffix, elontest.com, direct
 host-suffix, eloonggame.com, direct
@@ -60484,7 +60472,6 @@ host-suffix, lgpj.net, direct
 host-suffix, lgpm.com, direct
 host-suffix, lgrcbank.com, direct
 host-suffix, lgshouyou.com, direct
-host-suffix, lgstatic.com, direct
 host-suffix, lgtzkg.com, direct
 host-suffix, lguohe.com, direct
 host-suffix, lgvf.com, direct

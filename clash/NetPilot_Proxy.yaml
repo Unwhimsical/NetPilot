@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27410
+# 条目数：27415
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -284,6 +284,8 @@ payload:
   - 'DOMAIN,in.appcenter.ms'
   - 'DOMAIN,incoming-telemetry.thunderbird.net'
   - 'DOMAIN,incoming.telemetry.mozilla.org'
+  - 'DOMAIN,kp-config-smart-tv.akamaized.net'
+  - 'DOMAIN,kp-configs-smart-tv.s3.eu-central-1.amazonaws.com'
   - 'DOMAIN,lastfm-img.freetls.fastly.net'
   - 'DOMAIN,lastfm.freetls.fastly.net'
   - 'DOMAIN,lazer.ppy.sh'
@@ -15332,6 +15334,7 @@ payload:
   - 'DOMAIN-SUFFIX,magestic.com'
   - 'DOMAIN-SUFFIX,magicalmirai.com'
   - 'DOMAIN-SUFFIX,magicmovies.com'
+  - 'DOMAIN-SUFFIX,magnific.com'
   - 'DOMAIN-SUFFIX,mahajantech.com'
   - 'DOMAIN-SUFFIX,mahjongsoul.com'
   - 'DOMAIN-SUFFIX,maidonanews.jp'
@@ -16803,6 +16806,7 @@ payload:
   - 'DOMAIN-SUFFIX,mt0011.site'
   - 'DOMAIN-SUFFIX,mtao.fun'
   - 'DOMAIN-SUFFIX,mthruf.com'
+  - 'DOMAIN-SUFFIX,mts-link.ru'
   - 'DOMAIN-SUFFIX,mts-ws.net'
   - 'DOMAIN-SUFFIX,mts.ru'
   - 'DOMAIN-SUFFIX,mtsbank.ru'
@@ -19661,6 +19665,7 @@ payload:
   - 'DOMAIN-SUFFIX,postimages.org'
   - 'DOMAIN-SUFFIX,postimg.cc'
   - 'DOMAIN-SUFFIX,postini.com'
+  - 'DOMAIN-SUFFIX,postman.com'
   - 'DOMAIN-SUFFIX,posts.careerengine.us'
   - 'DOMAIN-SUFFIX,posty.kr'
   - 'DOMAIN-SUFFIX,postyourgirls.ws'

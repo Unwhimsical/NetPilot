@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27410
+# 条目数：27415
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -283,6 +283,8 @@ host, imperial.insendi.com, proxy
 host, in.appcenter.ms, proxy
 host, incoming-telemetry.thunderbird.net, proxy
 host, incoming.telemetry.mozilla.org, proxy
+host, kp-config-smart-tv.akamaized.net, proxy
+host, kp-configs-smart-tv.s3.eu-central-1.amazonaws.com, proxy
 host, lastfm-img.freetls.fastly.net, proxy
 host, lastfm.freetls.fastly.net, proxy
 host, lazer.ppy.sh, proxy
@@ -15331,6 +15333,7 @@ host-suffix, magentomobile.com, proxy
 host-suffix, magestic.com, proxy
 host-suffix, magicalmirai.com, proxy
 host-suffix, magicmovies.com, proxy
+host-suffix, magnific.com, proxy
 host-suffix, mahajantech.com, proxy
 host-suffix, mahjongsoul.com, proxy
 host-suffix, maidonanews.jp, proxy
@@ -16802,6 +16805,7 @@ host-suffix, mt.lv, proxy
 host-suffix, mt0011.site, proxy
 host-suffix, mtao.fun, proxy
 host-suffix, mthruf.com, proxy
+host-suffix, mts-link.ru, proxy
 host-suffix, mts-ws.net, proxy
 host-suffix, mts.ru, proxy
 host-suffix, mtsbank.ru, proxy
@@ -19660,6 +19664,7 @@ host-suffix, postgresql.org, proxy
 host-suffix, postimages.org, proxy
 host-suffix, postimg.cc, proxy
 host-suffix, postini.com, proxy
+host-suffix, postman.com, proxy
 host-suffix, posts.careerengine.us, proxy
 host-suffix, posty.kr, proxy
 host-suffix, postyourgirls.ws, proxy
