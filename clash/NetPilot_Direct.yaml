@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111164
+# 条目数：111166
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -86268,6 +86268,8 @@ payload:
   - 'DOMAIN-SUFFIX,szty56.com'
   - 'DOMAIN-SUFFIX,sztz.org'
   - 'DOMAIN-SUFFIX,sztzzs.com'
+  - 'DOMAIN-SUFFIX,szu.app'
+  - 'DOMAIN-SUFFIX,szu.moe'
   - 'DOMAIN-SUFFIX,szuavia.org'
   - 'DOMAIN-SUFFIX,szudad.com'
   - 'DOMAIN-SUFFIX,szunionlab.com'

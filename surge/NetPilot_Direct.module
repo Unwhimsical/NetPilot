@@ -1,5 +1,5 @@
 #!name=NetPilot Direct
-#!desc=直连规则总数: 111167
+#!desc=直连规则总数: 111169
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成（Surge 合规版），源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -86271,6 +86271,8 @@ DOMAIN-SUFFIX,sztxsz.com,DIRECT
 DOMAIN-SUFFIX,szty56.com,DIRECT
 DOMAIN-SUFFIX,sztz.org,DIRECT
 DOMAIN-SUFFIX,sztzzs.com,DIRECT
+DOMAIN-SUFFIX,szu.app,DIRECT
+DOMAIN-SUFFIX,szu.moe,DIRECT
 DOMAIN-SUFFIX,szuavia.org,DIRECT
 DOMAIN-SUFFIX,szudad.com,DIRECT
 DOMAIN-SUFFIX,szunionlab.com,DIRECT
