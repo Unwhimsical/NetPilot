@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27417
+# 条目数：27439
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -152,6 +152,7 @@ host, d3c27h4odz752x.cloudfront.net, proxy
 host, d3lh5kkip965lj.cloudfront.net, proxy
 host, d3nwj80emtnjeo.cloudfront.net, proxy
 host, d3r7nsslvs6aaf.cloudfront.net, proxy
+host, d3stzm2eumvgb4.cloudfront.net, proxy
 host, d3ucl0eqgl80l5.cloudfront.net, proxy
 host, d3vd9lfkzbru3h.cloudfront.net, proxy
 host, d6d4ismr40iw.cloudfront.net, proxy
@@ -2571,6 +2572,7 @@ host-suffix, anonfiles.com, proxy
 host-suffix, anonymouse.org, proxy
 host-suffix, ansarbank.com, proxy
 host-suffix, ansin.erodayo.com, proxy
+host-suffix, ant.dev, proxy
 host-suffix, antarvasnaclips.com, proxy
 host-suffix, antarvasnax.com, proxy
 host-suffix, antenna.co.kr, proxy
@@ -2578,10 +2580,12 @@ host-suffix, anthemgame.com, proxy
 host-suffix, anthemthegame.com, proxy
 host-suffix, anthonycalzadilla.com, proxy
 host-suffix, anthropic.com, proxy
+host-suffix, anthropic.team, proxy
 host-suffix, antiphishing.nl, proxy
 host-suffix, antiphishing.ru, proxy
 host-suffix, antiwave.net, proxy
 host-suffix, antpool.com, proxy
+host-suffix, antspace.dev, proxy
 host-suffix, anudetube.com, proxy
 host-suffix, anuneko.com, proxy
 host-suffix, anxiangxing.com, proxy
@@ -6068,6 +6072,7 @@ host-suffix, chat.com, proxy
 host-suffix, chat.lmsys.org, proxy
 host-suffix, chat.openai.com.cdn.cloudflare.net, proxy
 host-suffix, chatango.com, proxy
+host-suffix, chatbotclaude.com, proxy
 host-suffix, chatgpt.com, proxy
 host-suffix, chatgpt.livekit.cloud, proxy
 host-suffix, chatgpt.site, proxy
@@ -6389,10 +6394,16 @@ host-suffix, classicnike.com, proxy
 host-suffix, classymomsex.com, proxy
 host-suffix, clau.de, proxy
 host-suffix, claude.ai, proxy
+host-suffix, claude.app, proxy
 host-suffix, claude.com, proxy
 host-suffix, claude.dev, proxy
+host-suffix, claude.new, proxy
+host-suffix, claude.site, proxy
+host-suffix, claudeacademy.com, proxy
 host-suffix, claudemcpclient.com, proxy
 host-suffix, claudemcpcontent.com, proxy
+host-suffix, claudepages.dev, proxy
+host-suffix, claudestudio.com, proxy
 host-suffix, claudeusercontent.com, proxy
 host-suffix, clawhub.ai, proxy
 host-suffix, clck.ru, proxy
@@ -9824,6 +9835,17 @@ host-suffix, fluidfxapp.com, proxy
 host-suffix, fluidpreview.com, proxy
 host-suffix, flutter.dev, proxy
 host-suffix, flutterapp.com, proxy
+host-suffix, fluxer.app, proxy
+host-suffix, fluxer.com, proxy
+host-suffix, fluxer.dev, proxy
+host-suffix, fluxer.gg, proxy
+host-suffix, fluxer.gift, proxy
+host-suffix, fluxer.media, proxy
+host-suffix, fluxer.tools, proxy
+host-suffix, fluxerapp.com, proxy
+host-suffix, fluxerstatic.com, proxy
+host-suffix, fluxerstatus.com, proxy
+host-suffix, fluxerusercontent.com, proxy
 host-suffix, fly.dev, proxy
 host-suffix, fly.io, proxy
 host-suffix, flyflv.com, proxy
