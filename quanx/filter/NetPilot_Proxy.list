@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27465
+# 条目数：27466
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -10450,6 +10450,7 @@ host-suffix, g.page, proxy
 host-suffix, g0v.social, proxy
 host-suffix, g1.com.br, proxy
 host-suffix, g6hentai.com, proxy
+host-suffix, ga.jspm.io, proxy
 host-suffix, gab.com, proxy
 host-suffix, gabocorp.com, proxy
 host-suffix, gacebook.com, proxy

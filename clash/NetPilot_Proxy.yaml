@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27465
+# 条目数：27466
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -10451,6 +10451,7 @@ payload:
   - 'DOMAIN-SUFFIX,g0v.social'
   - 'DOMAIN-SUFFIX,g1.com.br'
   - 'DOMAIN-SUFFIX,g6hentai.com'
+  - 'DOMAIN-SUFFIX,ga.jspm.io'
   - 'DOMAIN-SUFFIX,gab.com'
   - 'DOMAIN-SUFFIX,gabocorp.com'
   - 'DOMAIN-SUFFIX,gacebook.com'
