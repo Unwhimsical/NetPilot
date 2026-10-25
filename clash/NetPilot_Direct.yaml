@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111192
+# 条目数：111199
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -36,6 +36,7 @@ payload:
   - 'DOMAIN,app-measurement-cn.com'
   - 'DOMAIN,app-measurement.com'
   - 'DOMAIN,app-site-association.cdn-apple.com'
+  - 'DOMAIN,app.moegirl.org.cn'
   - 'DOMAIN,appldnld.apple.com'
   - 'DOMAIN,appldnld.g.aaplimg.com'
   - 'DOMAIN,appleid.cdn-apple.com'
@@ -389,6 +390,7 @@ payload:
   - 'DOMAIN,status.alibabacloud.com'
   - 'DOMAIN,stocks-sparkline-lb.apple.com.akadns.net'
   - 'DOMAIN,stocks-sparkline.apple.com'
+  - 'DOMAIN,storage.moegirl.org.cn'
   - 'DOMAIN,store.apple.com'
   - 'DOMAIN,store.apple.com.edgekey.net'
   - 'DOMAIN,store.apple.com.edgekey.net.globalredir.akadns.net'
@@ -19998,6 +20000,7 @@ payload:
   - 'DOMAIN-SUFFIX,cdqz.net'
   - 'DOMAIN-SUFFIX,cdrbs.net'
   - 'DOMAIN-SUFFIX,cdrcb.com'
+  - 'DOMAIN-SUFFIX,cdrcbank.com'
   - 'DOMAIN-SUFFIX,cdren.net'
   - 'DOMAIN-SUFFIX,cdrich.com'
   - 'DOMAIN-SUFFIX,cdrjob.com'
@@ -25876,6 +25879,7 @@ payload:
   - 'DOMAIN-SUFFIX,cqyygz.com'
   - 'DOMAIN-SUFFIX,cqyyjc.com'
   - 'DOMAIN-SUFFIX,cqyysx.com'
+  - 'DOMAIN-SUFFIX,cqyyxc.com'
   - 'DOMAIN-SUFFIX,cqyyzy.com'
   - 'DOMAIN-SUFFIX,cqyznews.com'
   - 'DOMAIN-SUFFIX,cqzbcg.com'
@@ -49509,6 +49513,7 @@ payload:
   - 'DOMAIN-SUFFIX,ibaizhu.com'
   - 'DOMAIN-SUFFIX,ibanana.club'
   - 'DOMAIN-SUFFIX,ibanbu.com'
+  - 'DOMAIN-SUFFIX,ibangbank.com'
   - 'DOMAIN-SUFFIX,ibanggo.com'
   - 'DOMAIN-SUFFIX,ibangkf.com'
   - 'DOMAIN-SUFFIX,ibangquan.com'
@@ -51584,6 +51589,7 @@ payload:
   - 'DOMAIN-SUFFIX,isi-gf.com'
   - 'DOMAIN-SUFFIX,isiabio.com'
   - 'DOMAIN-SUFFIX,isign.ren'
+  - 'DOMAIN-SUFFIX,isigning.com'
   - 'DOMAIN-SUFFIX,isigu.com'
   - 'DOMAIN-SUFFIX,isilent.me'
   - 'DOMAIN-SUFFIX,isilicontech.com'
@@ -67533,6 +67539,7 @@ payload:
   - 'DOMAIN-SUFFIX,nannjlnk.com'
   - 'DOMAIN-SUFFIX,nanobody-biolab.com'
   - 'DOMAIN-SUFFIX,nanochrom.com'
+  - 'DOMAIN-SUFFIX,nanocorechip.com'
   - 'DOMAIN-SUFFIX,nanoeast.net'
   - 'DOMAIN-SUFFIX,nanoer.net'
   - 'DOMAIN-SUFFIX,nanoinglobal.com'
