@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111195
+#!desc=直连规则总数: 111202
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-10-25 02:42:27 北京时间
+# 更新时间: 2026-10-25 16:55:59 北京时间
 
-# 直连规则总数: 111195
+# 直连规则总数: 111202
 
 [Rule]
 
@@ -45,6 +45,7 @@ DOMAIN,app-analytics-services.com,DIRECT
 DOMAIN,app-measurement-cn.com,DIRECT
 DOMAIN,app-measurement.com,DIRECT
 DOMAIN,app-site-association.cdn-apple.com,DIRECT
+DOMAIN,app.moegirl.org.cn,DIRECT
 DOMAIN,appldnld.apple.com,DIRECT
 DOMAIN,appldnld.g.aaplimg.com,DIRECT
 DOMAIN,appleid.cdn-apple.com,DIRECT
@@ -398,6 +399,7 @@ DOMAIN,statics.teams.cdn.office.net,DIRECT
 DOMAIN,status.alibabacloud.com,DIRECT
 DOMAIN,stocks-sparkline-lb.apple.com.akadns.net,DIRECT
 DOMAIN,stocks-sparkline.apple.com,DIRECT
+DOMAIN,storage.moegirl.org.cn,DIRECT
 DOMAIN,store.apple.com,DIRECT
 DOMAIN,store.apple.com.edgekey.net,DIRECT
 DOMAIN,store.apple.com.edgekey.net.globalredir.akadns.net,DIRECT
@@ -20007,6 +20009,7 @@ DOMAIN-SUFFIX,cdqszz.com,DIRECT
 DOMAIN-SUFFIX,cdqz.net,DIRECT
 DOMAIN-SUFFIX,cdrbs.net,DIRECT
 DOMAIN-SUFFIX,cdrcb.com,DIRECT
+DOMAIN-SUFFIX,cdrcbank.com,DIRECT
 DOMAIN-SUFFIX,cdren.net,DIRECT
 DOMAIN-SUFFIX,cdrich.com,DIRECT
 DOMAIN-SUFFIX,cdrjob.com,DIRECT
@@ -25885,6 +25888,7 @@ DOMAIN-SUFFIX,cqyxzz.com,DIRECT
 DOMAIN-SUFFIX,cqyygz.com,DIRECT
 DOMAIN-SUFFIX,cqyyjc.com,DIRECT
 DOMAIN-SUFFIX,cqyysx.com,DIRECT
+DOMAIN-SUFFIX,cqyyxc.com,DIRECT
 DOMAIN-SUFFIX,cqyyzy.com,DIRECT
 DOMAIN-SUFFIX,cqyznews.com,DIRECT
 DOMAIN-SUFFIX,cqzbcg.com,DIRECT
@@ -49518,6 +49522,7 @@ DOMAIN-SUFFIX,ibaitiao.com,DIRECT
 DOMAIN-SUFFIX,ibaizhu.com,DIRECT
 DOMAIN-SUFFIX,ibanana.club,DIRECT
 DOMAIN-SUFFIX,ibanbu.com,DIRECT
+DOMAIN-SUFFIX,ibangbank.com,DIRECT
 DOMAIN-SUFFIX,ibanggo.com,DIRECT
 DOMAIN-SUFFIX,ibangkf.com,DIRECT
 DOMAIN-SUFFIX,ibangquan.com,DIRECT
@@ -51593,6 +51598,7 @@ DOMAIN-SUFFIX,ishuw.com,DIRECT
 DOMAIN-SUFFIX,isi-gf.com,DIRECT
 DOMAIN-SUFFIX,isiabio.com,DIRECT
 DOMAIN-SUFFIX,isign.ren,DIRECT
+DOMAIN-SUFFIX,isigning.com,DIRECT
 DOMAIN-SUFFIX,isigu.com,DIRECT
 DOMAIN-SUFFIX,isilent.me,DIRECT
 DOMAIN-SUFFIX,isilicontech.com,DIRECT
@@ -67542,6 +67548,7 @@ DOMAIN-SUFFIX,nanningyouhua.com,DIRECT
 DOMAIN-SUFFIX,nannjlnk.com,DIRECT
 DOMAIN-SUFFIX,nanobody-biolab.com,DIRECT
 DOMAIN-SUFFIX,nanochrom.com,DIRECT
+DOMAIN-SUFFIX,nanocorechip.com,DIRECT
 DOMAIN-SUFFIX,nanoeast.net,DIRECT
 DOMAIN-SUFFIX,nanoer.net,DIRECT
 DOMAIN-SUFFIX,nanoinglobal.com,DIRECT
