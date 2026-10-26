@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111180
+#!desc=直连规则总数: 111202
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-10-19 17:34:12 北京时间
+# 更新时间: 2026-10-26 17:39:36 北京时间
 
-# 直连规则总数: 111180
+# 直连规则总数: 111202
 
 [Rule]
 
@@ -45,6 +45,7 @@ DOMAIN,app-analytics-services.com,DIRECT
 DOMAIN,app-measurement-cn.com,DIRECT
 DOMAIN,app-measurement.com,DIRECT
 DOMAIN,app-site-association.cdn-apple.com,DIRECT
+DOMAIN,app.moegirl.org.cn,DIRECT
 DOMAIN,appldnld.apple.com,DIRECT
 DOMAIN,appldnld.g.aaplimg.com,DIRECT
 DOMAIN,appleid.cdn-apple.com,DIRECT
@@ -79,7 +80,6 @@ DOMAIN,cds.apple.com.akadns.net,DIRECT
 DOMAIN,cdsassets.apple.com,DIRECT
 DOMAIN,certs-lb.apple.com.akadns.net,DIRECT
 DOMAIN,certs.apple.com,DIRECT
-DOMAIN,checkin.gstatic.com,DIRECT
 DOMAIN,cl1-cdn.origin-apple.com.akadns.net,DIRECT
 DOMAIN,cl1.apple.com,DIRECT
 DOMAIN,cl2-cdn.origin-apple.com.akadns.net,DIRECT
@@ -107,14 +107,12 @@ DOMAIN,cn.windowssearch.com,DIRECT
 DOMAIN,communities.apple.com,DIRECT
 DOMAIN,configuration.apple.com,DIRECT
 DOMAIN,configuration.apple.com.akadns.net,DIRECT
-DOMAIN,connectivitycheck.gstatic.com,DIRECT
 DOMAIN,crl-lb.apple.com.akadns.net,DIRECT
 DOMAIN,crl.apple.com,DIRECT
 DOMAIN,crl.globalsign.net,DIRECT
 DOMAIN,crl.kaspersky.com,DIRECT
 DOMAIN,crl.pki.goog,DIRECT
 DOMAIN,crls.pki.goog,DIRECT
-DOMAIN,csi.gstatic.com,DIRECT
 DOMAIN,cstat.apple.com,DIRECT
 DOMAIN,cstat.cdn-apple.com,DIRECT
 DOMAIN,ctdsb.clouddiffuse.xyz,DIRECT
@@ -163,12 +161,7 @@ DOMAIN,entitlements-edge.itunes.apple.com,DIRECT
 DOMAIN,experiments.apple.com,DIRECT
 DOMAIN,f.c2r.ts.cdn.office.net,DIRECT
 DOMAIN,fides-pol.apple.com,DIRECT
-DOMAIN,fonts.gstatic.com,DIRECT
 DOMAIN,fpinit.itunes.apple.com,DIRECT
-DOMAIN,g0.gstatic.com,DIRECT
-DOMAIN,g1.gstatic.com,DIRECT
-DOMAIN,g2.gstatic.com,DIRECT
-DOMAIN,g3.gstatic.com,DIRECT
 DOMAIN,geetest.datasink.sensorsdata.cn,DIRECT
 DOMAIN,gog.qtlglb.com,DIRECT
 DOMAIN,gonglchuangl.net,DIRECT
@@ -398,7 +391,6 @@ DOMAIN,smp-device-content.apple.com,DIRECT
 DOMAIN,sp.itunes.apple.com,DIRECT
 DOMAIN,speedysub.music.apple.com,DIRECT
 DOMAIN,ss.bjmu.edu.cn,DIRECT
-DOMAIN,ssl.gstatic.com,DIRECT
 DOMAIN,staging-controlbe.floonet.goog,DIRECT
 DOMAIN,staging-databe.floonet.goog,DIRECT
 DOMAIN,staging.databe.floonet.goog,DIRECT
@@ -407,6 +399,7 @@ DOMAIN,statics.teams.cdn.office.net,DIRECT
 DOMAIN,status.alibabacloud.com,DIRECT
 DOMAIN,stocks-sparkline-lb.apple.com.akadns.net,DIRECT
 DOMAIN,stocks-sparkline.apple.com,DIRECT
+DOMAIN,storage.moegirl.org.cn,DIRECT
 DOMAIN,store.apple.com,DIRECT
 DOMAIN,store.apple.com.edgekey.net,DIRECT
 DOMAIN,store.apple.com.edgekey.net.globalredir.akadns.net,DIRECT
@@ -452,7 +445,6 @@ DOMAIN,www.apple.com,DIRECT
 DOMAIN,www.apple.com.edgekey.net.globalredir.akadns.net,DIRECT
 DOMAIN,www.destinationurl.com,DIRECT
 DOMAIN,www.entrust.cn,DIRECT
-DOMAIN,www.gstatic.com,DIRECT
 DOMAIN,www.pxcc.com,DIRECT
 DOMAIN,www.recaptcha-cn.net,DIRECT
 DOMAIN,www.recaptcha.net,DIRECT
@@ -577,6 +569,7 @@ DOMAIN-SUFFIX,00fkh408382.xin,DIRECT
 DOMAIN-SUFFIX,00hh.com,DIRECT
 DOMAIN-SUFFIX,00ic.com,DIRECT
 DOMAIN-SUFFIX,00it.net,DIRECT
+DOMAIN-SUFFIX,00kxs.com,DIRECT
 DOMAIN-SUFFIX,00lfoo16454.xin,DIRECT
 DOMAIN-SUFFIX,00o5nm18258.xin,DIRECT
 DOMAIN-SUFFIX,00shu.com,DIRECT
@@ -10644,6 +10637,7 @@ DOMAIN-SUFFIX,adups.com,DIRECT
 DOMAIN-SUFFIX,aduspot.com,DIRECT
 DOMAIN-SUFFIX,adutou.com,DIRECT
 DOMAIN-SUFFIX,adutp.com,DIRECT
+DOMAIN-SUFFIX,advance.ai,DIRECT
 DOMAIN-SUFFIX,advanced-microsemi.com,DIRECT
 DOMAIN-SUFFIX,advanced-pneumatics.com,DIRECT
 DOMAIN-SUFFIX,advertcn.com,DIRECT
@@ -13564,6 +13558,7 @@ DOMAIN-SUFFIX,audiowell.net,DIRECT
 DOMAIN-SUFFIX,audiowellzq.com,DIRECT
 DOMAIN-SUFFIX,audioxj.com,DIRECT
 DOMAIN-SUFFIX,auditcn.com,DIRECT
+DOMAIN-SUFFIX,auditoryworks.co,DIRECT
 DOMAIN-SUFFIX,audlabs.com,DIRECT
 DOMAIN-SUFFIX,audtools.com,DIRECT
 DOMAIN-SUFFIX,aufewb.com,DIRECT
@@ -14928,7 +14923,6 @@ DOMAIN-SUFFIX,bbfstore.com,DIRECT
 DOMAIN-SUFFIX,bbfytsn.com,DIRECT
 DOMAIN-SUFFIX,bbgdex.com,DIRECT
 DOMAIN-SUFFIX,bbgsite.com,DIRECT
-DOMAIN-SUFFIX,bbgstatic.com,DIRECT
 DOMAIN-SUFFIX,bbguangcai.com,DIRECT
 DOMAIN-SUFFIX,bbhou.com,DIRECT
 DOMAIN-SUFFIX,bbhuibangpos.com,DIRECT
@@ -15785,6 +15779,7 @@ DOMAIN-SUFFIX,bhdxfsyy.com,DIRECT
 DOMAIN-SUFFIX,bhecard.com,DIRECT
 DOMAIN-SUFFIX,bheyy.com,DIRECT
 DOMAIN-SUFFIX,bhfc.net,DIRECT
+DOMAIN-SUFFIX,bhgcdn.com,DIRECT
 DOMAIN-SUFFIX,bhghy.com,DIRECT
 DOMAIN-SUFFIX,bhgjjy.com,DIRECT
 DOMAIN-SUFFIX,bhgmarketplace.com,DIRECT
@@ -17704,6 +17699,7 @@ DOMAIN-SUFFIX,bqgxsw.com,DIRECT
 DOMAIN-SUFFIX,bqgz88.com,DIRECT
 DOMAIN-SUFFIX,bqlcev.com,DIRECT
 DOMAIN-SUFFIX,bqpoint.com,DIRECT
+DOMAIN-SUFFIX,bqpwlw.com,DIRECT
 DOMAIN-SUFFIX,bqq8.com,DIRECT
 DOMAIN-SUFFIX,bqqpx.com,DIRECT
 DOMAIN-SUFFIX,bqrdh.com,DIRECT
@@ -20013,6 +20009,7 @@ DOMAIN-SUFFIX,cdqszz.com,DIRECT
 DOMAIN-SUFFIX,cdqz.net,DIRECT
 DOMAIN-SUFFIX,cdrbs.net,DIRECT
 DOMAIN-SUFFIX,cdrcb.com,DIRECT
+DOMAIN-SUFFIX,cdrcbank.com,DIRECT
 DOMAIN-SUFFIX,cdren.net,DIRECT
 DOMAIN-SUFFIX,cdrich.com,DIRECT
 DOMAIN-SUFFIX,cdrjob.com,DIRECT
@@ -25891,6 +25888,7 @@ DOMAIN-SUFFIX,cqyxzz.com,DIRECT
 DOMAIN-SUFFIX,cqyygz.com,DIRECT
 DOMAIN-SUFFIX,cqyyjc.com,DIRECT
 DOMAIN-SUFFIX,cqyysx.com,DIRECT
+DOMAIN-SUFFIX,cqyyxc.com,DIRECT
 DOMAIN-SUFFIX,cqyyzy.com,DIRECT
 DOMAIN-SUFFIX,cqyznews.com,DIRECT
 DOMAIN-SUFFIX,cqzbcg.com,DIRECT
@@ -26073,6 +26071,7 @@ DOMAIN-SUFFIX,crmip.com,DIRECT
 DOMAIN-SUFFIX,crmyy.com,DIRECT
 DOMAIN-SUFFIX,crnews.net,DIRECT
 DOMAIN-SUFFIX,crntt.com,DIRECT
+DOMAIN-SUFFIX,croakfang.fun,DIRECT
 DOMAIN-SUFFIX,crodigy.com,DIRECT
 DOMAIN-SUFFIX,crodigynat.com,DIRECT
 DOMAIN-SUFFIX,croot.com,DIRECT
@@ -28347,6 +28346,7 @@ DOMAIN-SUFFIX,dedesos.com,DIRECT
 DOMAIN-SUFFIX,dedezhuji.com,DIRECT
 DOMAIN-SUFFIX,deebio.com,DIRECT
 DOMAIN-SUFFIX,deeceal.com,DIRECT
+DOMAIN-SUFFIX,deeepseek.net,DIRECT
 DOMAIN-SUFFIX,deehon.com,DIRECT
 DOMAIN-SUFFIX,deemos.com,DIRECT
 DOMAIN-SUFFIX,deep56.com,DIRECT
@@ -29165,6 +29165,7 @@ DOMAIN-SUFFIX,digitalcnzz.com,DIRECT
 DOMAIN-SUFFIX,digitalcq.com,DIRECT
 DOMAIN-SUFFIX,digitaling.com,DIRECT
 DOMAIN-SUFFIX,digitaljx.com,DIRECT
+DOMAIN-SUFFIX,digitalmall.uk,DIRECT
 DOMAIN-SUFFIX,digitalmanu.com,DIRECT
 DOMAIN-SUFFIX,digitalvolvo.com,DIRECT
 DOMAIN-SUFFIX,digitalwuhan.com,DIRECT
@@ -32448,7 +32449,6 @@ DOMAIN-SUFFIX,elong.net,DIRECT
 DOMAIN-SUFFIX,elongai.com,DIRECT
 DOMAIN-SUFFIX,elonghotel.com,DIRECT
 DOMAIN-SUFFIX,elongshine.com,DIRECT
-DOMAIN-SUFFIX,elongstatic.com,DIRECT
 DOMAIN-SUFFIX,elongtrip.com,DIRECT
 DOMAIN-SUFFIX,elontest.com,DIRECT
 DOMAIN-SUFFIX,eloonggame.com,DIRECT
@@ -42501,6 +42501,7 @@ DOMAIN-SUFFIX,gzxhcbfx.com,DIRECT
 DOMAIN-SUFFIX,gzxhce.com,DIRECT
 DOMAIN-SUFFIX,gzxhhs.net,DIRECT
 DOMAIN-SUFFIX,gzxianc.com,DIRECT
+DOMAIN-SUFFIX,gzxiancheng.com,DIRECT
 DOMAIN-SUFFIX,gzxiaoban.com,DIRECT
 DOMAIN-SUFFIX,gzxict.com,DIRECT
 DOMAIN-SUFFIX,gzxijiu.com,DIRECT
@@ -49521,6 +49522,7 @@ DOMAIN-SUFFIX,ibaitiao.com,DIRECT
 DOMAIN-SUFFIX,ibaizhu.com,DIRECT
 DOMAIN-SUFFIX,ibanana.club,DIRECT
 DOMAIN-SUFFIX,ibanbu.com,DIRECT
+DOMAIN-SUFFIX,ibangbank.com,DIRECT
 DOMAIN-SUFFIX,ibanggo.com,DIRECT
 DOMAIN-SUFFIX,ibangkf.com,DIRECT
 DOMAIN-SUFFIX,ibangquan.com,DIRECT
@@ -51596,6 +51598,7 @@ DOMAIN-SUFFIX,ishuw.com,DIRECT
 DOMAIN-SUFFIX,isi-gf.com,DIRECT
 DOMAIN-SUFFIX,isiabio.com,DIRECT
 DOMAIN-SUFFIX,isign.ren,DIRECT
+DOMAIN-SUFFIX,isigning.com,DIRECT
 DOMAIN-SUFFIX,isigu.com,DIRECT
 DOMAIN-SUFFIX,isilent.me,DIRECT
 DOMAIN-SUFFIX,isilicontech.com,DIRECT
@@ -54582,6 +54585,7 @@ DOMAIN-SUFFIX,jkhapp.com,DIRECT
 DOMAIN-SUFFIX,jkhcfz.com,DIRECT
 DOMAIN-SUFFIX,jkhds872.com,DIRECT
 DOMAIN-SUFFIX,jkhealth.vip,DIRECT
+DOMAIN-SUFFIX,jkik635.com,DIRECT
 DOMAIN-SUFFIX,jkimg.net,DIRECT
 DOMAIN-SUFFIX,jkjiekuan.com,DIRECT
 DOMAIN-SUFFIX,jkjzt.com,DIRECT
@@ -57466,6 +57470,7 @@ DOMAIN-SUFFIX,kege.com,DIRECT
 DOMAIN-SUFFIX,kehaohao.com,DIRECT
 DOMAIN-SUFFIX,kehou.com,DIRECT
 DOMAIN-SUFFIX,kehu51.com,DIRECT
+DOMAIN-SUFFIX,kehua.com,DIRECT
 DOMAIN-SUFFIX,kehuan-upward.com,DIRECT
 DOMAIN-SUFFIX,kehuda.com,DIRECT
 DOMAIN-SUFFIX,kehuduan.com,DIRECT
@@ -57762,6 +57767,7 @@ DOMAIN-SUFFIX,kiinii.com,DIRECT
 DOMAIN-SUFFIX,kiiyi.com,DIRECT
 DOMAIN-SUFFIX,kijifept.com,DIRECT
 DOMAIN-SUFFIX,kikiwon.com,DIRECT
+DOMAIN-SUFFIX,kiko-play-niptan.one,DIRECT
 DOMAIN-SUFFIX,kikoplay.fun,DIRECT
 DOMAIN-SUFFIX,kikusuitape.com,DIRECT
 DOMAIN-SUFFIX,kikuu.com,DIRECT
@@ -60493,7 +60499,6 @@ DOMAIN-SUFFIX,lgpj.net,DIRECT
 DOMAIN-SUFFIX,lgpm.com,DIRECT
 DOMAIN-SUFFIX,lgrcbank.com,DIRECT
 DOMAIN-SUFFIX,lgshouyou.com,DIRECT
-DOMAIN-SUFFIX,lgstatic.com,DIRECT
 DOMAIN-SUFFIX,lgtzkg.com,DIRECT
 DOMAIN-SUFFIX,lguohe.com,DIRECT
 DOMAIN-SUFFIX,lgvf.com,DIRECT
@@ -60785,6 +60790,7 @@ DOMAIN-SUFFIX,liebaovip.com,DIRECT
 DOMAIN-SUFFIX,liebiao.com,DIRECT
 DOMAIN-SUFFIX,liebigwatch.com,DIRECT
 DOMAIN-SUFFIX,liebo.com,DIRECT
+DOMAIN-SUFFIX,liechacha.com,DIRECT
 DOMAIN-SUFFIX,liechan.com,DIRECT
 DOMAIN-SUFFIX,lieguo.com,DIRECT
 DOMAIN-SUFFIX,lieguozhi.com,DIRECT
@@ -62525,6 +62531,7 @@ DOMAIN-SUFFIX,luchengxi.com,DIRECT
 DOMAIN-SUFFIX,luchentech.com,DIRECT
 DOMAIN-SUFFIX,luchenwater.com,DIRECT
 DOMAIN-SUFFIX,luchuang.com,DIRECT
+DOMAIN-SUFFIX,luciabid.com,DIRECT
 DOMAIN-SUFFIX,luciaz.me,DIRECT
 DOMAIN-SUFFIX,lucifer.ren,DIRECT
 DOMAIN-SUFFIX,luck-number.com,DIRECT
@@ -64429,6 +64436,7 @@ DOMAIN-SUFFIX,medicalimagecloud.com,DIRECT
 DOMAIN-SUFFIX,medicalqc.com,DIRECT
 DOMAIN-SUFFIX,medicexam.net,DIRECT
 DOMAIN-SUFFIX,mediecogroup.com,DIRECT
+DOMAIN-SUFFIX,mediext.com,DIRECT
 DOMAIN-SUFFIX,medifinit.com,DIRECT
 DOMAIN-SUFFIX,medilinkthera.com,DIRECT
 DOMAIN-SUFFIX,medinoah.com,DIRECT
@@ -66372,6 +66380,7 @@ DOMAIN-SUFFIX,morninginn.com,DIRECT
 DOMAIN-SUFFIX,morningwhistle.com,DIRECT
 DOMAIN-SUFFIX,morong-elec.com,DIRECT
 DOMAIN-SUFFIX,morstar.net,DIRECT
+DOMAIN-SUFFIX,mos0039.com,DIRECT
 DOMAIN-SUFFIX,moschat.com,DIRECT
 DOMAIN-SUFFIX,moseacg.com,DIRECT
 DOMAIN-SUFFIX,moseeker.com,DIRECT
@@ -67539,6 +67548,7 @@ DOMAIN-SUFFIX,nanningyouhua.com,DIRECT
 DOMAIN-SUFFIX,nannjlnk.com,DIRECT
 DOMAIN-SUFFIX,nanobody-biolab.com,DIRECT
 DOMAIN-SUFFIX,nanochrom.com,DIRECT
+DOMAIN-SUFFIX,nanocorechip.com,DIRECT
 DOMAIN-SUFFIX,nanoeast.net,DIRECT
 DOMAIN-SUFFIX,nanoer.net,DIRECT
 DOMAIN-SUFFIX,nanoinglobal.com,DIRECT
@@ -70553,6 +70563,7 @@ DOMAIN-SUFFIX,oneplus6666.com,DIRECT
 DOMAIN-SUFFIX,oneplusbbs.com,DIRECT
 DOMAIN-SUFFIX,oneplusmobile.com,DIRECT
 DOMAIN-SUFFIX,onescorpion.com,DIRECT
+DOMAIN-SUFFIX,onesec.net,DIRECT
 DOMAIN-SUFFIX,oneself.icu,DIRECT
 DOMAIN-SUFFIX,oneshao.com,DIRECT
 DOMAIN-SUFFIX,onesight.com,DIRECT
@@ -74336,6 +74347,7 @@ DOMAIN-SUFFIX,qilinyiqi88.com,DIRECT
 DOMAIN-SUFFIX,qilitech.ltd,DIRECT
 DOMAIN-SUFFIX,qiliuxs.com,DIRECT
 DOMAIN-SUFFIX,qilong.com,DIRECT
+DOMAIN-SUFFIX,qilongnianzsq.com,DIRECT
 DOMAIN-SUFFIX,qilongtan.com,DIRECT
 DOMAIN-SUFFIX,qilongyoule.com,DIRECT
 DOMAIN-SUFFIX,qilu-pharma.com,DIRECT
@@ -75989,6 +76001,7 @@ DOMAIN-SUFFIX,qykh2009.com,DIRECT
 DOMAIN-SUFFIX,qykjedu.com,DIRECT
 DOMAIN-SUFFIX,qymdb.com,DIRECT
 DOMAIN-SUFFIX,qymgc.com,DIRECT
+DOMAIN-SUFFIX,qypaizhuo.com,DIRECT
 DOMAIN-SUFFIX,qyrb.com,DIRECT
 DOMAIN-SUFFIX,qyrcrs.com,DIRECT
 DOMAIN-SUFFIX,qyrx.cc,DIRECT
@@ -79384,6 +79397,7 @@ DOMAIN-SUFFIX,secure-chasle049.ink,DIRECT
 DOMAIN-SUFFIX,secureqin.net,DIRECT
 DOMAIN-SUFFIX,securitycn.net,DIRECT
 DOMAIN-SUFFIX,securityeb.com,DIRECT
+DOMAIN-SUFFIX,securityhg.com,DIRECT
 DOMAIN-SUFFIX,securityinsight.com,DIRECT
 DOMAIN-SUFFIX,secutimes.com,DIRECT
 DOMAIN-SUFFIX,secwk.com,DIRECT
@@ -85546,6 +85560,7 @@ DOMAIN-SUFFIX,sysush.com,DIRECT
 DOMAIN-SUFFIX,syswgw.com,DIRECT
 DOMAIN-SUFFIX,sysx.tech,DIRECT
 DOMAIN-SUFFIX,sysxhz.com,DIRECT
+DOMAIN-SUFFIX,sysy.fun,DIRECT
 DOMAIN-SUFFIX,sysydz.net,DIRECT
 DOMAIN-SUFFIX,sysysjnk.com,DIRECT
 DOMAIN-SUFFIX,syt1000.com,DIRECT
@@ -86290,6 +86305,8 @@ DOMAIN-SUFFIX,sztxsz.com,DIRECT
 DOMAIN-SUFFIX,szty56.com,DIRECT
 DOMAIN-SUFFIX,sztz.org,DIRECT
 DOMAIN-SUFFIX,sztzzs.com,DIRECT
+DOMAIN-SUFFIX,szu.app,DIRECT
+DOMAIN-SUFFIX,szu.moe,DIRECT
 DOMAIN-SUFFIX,szuavia.org,DIRECT
 DOMAIN-SUFFIX,szudad.com,DIRECT
 DOMAIN-SUFFIX,szunionlab.com,DIRECT
@@ -89237,6 +89254,7 @@ DOMAIN-SUFFIX,tongtool.com,DIRECT
 DOMAIN-SUFFIX,tongtut.com,DIRECT
 DOMAIN-SUFFIX,tongwang.net,DIRECT
 DOMAIN-SUFFIX,tongwei.com,DIRECT
+DOMAIN-SUFFIX,tongwenads.com,DIRECT
 DOMAIN-SUFFIX,tongwo.net,DIRECT
 DOMAIN-SUFFIX,tongxi.net,DIRECT
 DOMAIN-SUFFIX,tongxiang.net,DIRECT
@@ -91349,6 +91367,8 @@ DOMAIN-SUFFIX,unihertz.com,DIRECT
 DOMAIN-SUFFIX,unilaw.net,DIRECT
 DOMAIN-SUFFIX,unilumin.com,DIRECT
 DOMAIN-SUFFIX,unimasdata.com,DIRECT
+DOMAIN-SUFFIX,unimcom.com,DIRECT
+DOMAIN-SUFFIX,uniminnovation.com,DIRECT
 DOMAIN-SUFFIX,unimtx.com,DIRECT
 DOMAIN-SUFFIX,uninf.com,DIRECT
 DOMAIN-SUFFIX,uninstall-tools.com,DIRECT
@@ -102025,6 +102045,7 @@ DOMAIN-SUFFIX,ycamlyy.com,DIRECT
 DOMAIN-SUFFIX,ycangels.com,DIRECT
 DOMAIN-SUFFIX,ycaqr.com,DIRECT
 DOMAIN-SUFFIX,ycb.com,DIRECT
+DOMAIN-SUFFIX,ycbeyond.com,DIRECT
 DOMAIN-SUFFIX,ycbian.com,DIRECT
 DOMAIN-SUFFIX,ycbiz.net,DIRECT
 DOMAIN-SUFFIX,ycbright.com,DIRECT
@@ -105032,6 +105053,7 @@ DOMAIN-SUFFIX,yuanma.net,DIRECT
 DOMAIN-SUFFIX,yuanmadian.com,DIRECT
 DOMAIN-SUFFIX,yuanmait.com,DIRECT
 DOMAIN-SUFFIX,yuanmajiaoyiw.com,DIRECT
+DOMAIN-SUFFIX,yuanmancang.com,DIRECT
 DOMAIN-SUFFIX,yuanmatao.com,DIRECT
 DOMAIN-SUFFIX,yuano.cc,DIRECT
 DOMAIN-SUFFIX,yuanpanguoji.com,DIRECT
