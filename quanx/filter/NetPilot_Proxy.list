@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27488
+# 条目数：27505
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -54,6 +54,9 @@ host, apple-tv-plus-press.apple.com, proxy
 host, apple.com.akadns.net, proxy
 host, appleworldwidedeveloper.hb-api.omtrdc.net, proxy
 host, appleworldwidedeveloper.sc.omtrdc.net, proxy
+host, appsgenaiserver-pa.clients.google.com, proxy
+host, appsgenaiserver-pa.clients6.google.com, proxy
+host, appsgenaiserver-pa.googleapis.com, proxy
 host, as-dash-uk-live.akamaized.net, proxy
 host, as-hls-uk-live.akamaized.net, proxy
 host, asahishimbun.sc.omtrdc.net, proxy
@@ -162,6 +165,8 @@ host, daily-cloudcode-pa.googleapis.com, proxy
 host, databank.worldbank.org, proxy
 host, database.asahi.com, proxy
 host, datarouter.apps.netherrealm.com, proxy
+host, dc.applicationinsights.azure.com, proxy
+host, dc.services.visualstudio.com, proxy
 host, dcb0z5ovq92mz.cloudfront.net, proxy
 host, ddacn6pr5v0tl.cloudfront.net, proxy
 host, ddpjwstwtpszg.cloudfront.net, proxy
@@ -185,6 +190,7 @@ host, docker-pinata-support.s3.amazonaws.com, proxy
 host, doy2mn9upadnk.cloudfront.net, proxy
 host, dqd0jw5gvbchn.cloudfront.net, proxy
 host, dqrpb9wgowsf5.cloudfront.net, proxy
+host, dropbox.zendesk.com, proxy
 host, ds-linear-abematv.akamaized.net, proxy
 host, ds-vod-abematv.akamaized.net, proxy
 host, ds0h3roq6wcgc.cloudfront.net, proxy
@@ -299,6 +305,7 @@ host, linear-abematv.akamaized.net, proxy
 host, link.theplatform.com, proxy
 host, linkedin.sc.omtrdc.net, proxy
 host, live-patreon-marketing.pantheonsite.io, proxy
+host, live.applicationinsights.azure.com, proxy
 host, lm.licenses.adobe.com, proxy
 host, lmlicenses.wip4.adobe.com, proxy
 host, location.microsoft.com, proxy
@@ -442,6 +449,7 @@ host, rsshub.rssforever.com, proxy
 host, rsshub.umzzz.com, proxy
 host, rsshub.woodland.cafe, proxy
 host, rsshub2.asailor.org, proxy
+host, rt.services.visualstudio.com, proxy
 host, rtm.tnt-ea.com, proxy
 host, sa78gs.wpc.edgecastcdn.net, proxy
 host, sberpro.vedomosti.ru, proxy
@@ -1556,6 +1564,7 @@ host-suffix, addthis.com, proxy
 host-suffix, addthiscdn.com, proxy
 host-suffix, addthisedge.com, proxy
 host-suffix, addtoany.com, proxy
+host-suffix, addtodropbox.com, proxy
 host-suffix, addyoutube.com, proxy
 host-suffix, adelaidenow.com.au, proxy
 host-suffix, adgoogle.net, proxy
@@ -7119,6 +7128,7 @@ host-suffix, darwinsource.com, proxy
 host-suffix, darwinsource.org, proxy
 host-suffix, darwinsourcecode.com, proxy
 host-suffix, dasaob.online, proxy
+host-suffix, dash.ai, proxy
 host-suffix, dashlane.com, proxy
 host-suffix, dashly.app, proxy
 host-suffix, dashly.help, proxy
@@ -7877,6 +7887,7 @@ host-suffix, docs.com, proxy
 host-suffix, docs.new, proxy
 host-suffix, docs.rs, proxy
 host-suffix, docs.rw, proxy
+host-suffix, docsend.com, proxy
 host-suffix, doctor-videos.com, proxy
 host-suffix, documentforce.com, proxy
 host-suffix, documentingreality.com, proxy
@@ -8071,12 +8082,15 @@ host-suffix, dropbox.tech, proxy
 host-suffix, dropboxapi.com, proxy
 host-suffix, dropboxbusiness.com, proxy
 host-suffix, dropboxcaptcha.com, proxy
+host-suffix, dropboxexperiment.com, proxy
 host-suffix, dropboxforum.com, proxy
 host-suffix, dropboxforums.com, proxy
 host-suffix, dropboxinsiders.com, proxy
+host-suffix, dropboxlegal.com, proxy
 host-suffix, dropboxmail.com, proxy
 host-suffix, dropboxpartners.com, proxy
 host-suffix, dropboxstatic.com, proxy
+host-suffix, dropboxteam.com, proxy
 host-suffix, dropboxusercontent.com, proxy
 host-suffix, drpc.org, proxy
 host-suffix, drtuber.com, proxy
@@ -11815,9 +11829,11 @@ host-suffix, heise360182.buzz, proxy
 host-suffix, helixstudios.net, proxy
 host-suffix, helloandroid.com, proxy
 host-suffix, helloavgirls.com, proxy
+host-suffix, hellofax.com, proxy
 host-suffix, hellokittybeats.com, proxy
 host-suffix, hellomoto.com, proxy
 host-suffix, helloqueer.com, proxy
+host-suffix, hellosign.com, proxy
 host-suffix, hellosmartbook.com, proxy
 host-suffix, hellporno.com, proxy
 host-suffix, hellven.net, proxy
@@ -14930,6 +14946,7 @@ host-suffix, library.lol, proxy
 host-suffix, librarylovefest.com, proxy
 host-suffix, libraryofthumbs.com, proxy
 host-suffix, libredd.it, proxy
+host-suffix, librewolf.dev, proxy
 host-suffix, librewolf.net, proxy
 host-suffix, libsolutions.app, proxy
 host-suffix, libsolutions.domains, proxy

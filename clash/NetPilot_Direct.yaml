@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111199
+# 条目数：111201
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -34768,6 +34768,7 @@ payload:
   - 'DOMAIN-SUFFIX,fillersmart.com'
   - 'DOMAIN-SUFFIX,fillseo.com'
   - 'DOMAIN-SUFFIX,film-yuelongchina.com'
+  - 'DOMAIN-SUFFIX,filmorigin.com'
   - 'DOMAIN-SUFFIX,fily.fun'
   - 'DOMAIN-SUFFIX,fim34s.com'
   - 'DOMAIN-SUFFIX,fimmu.com'
@@ -57022,6 +57023,7 @@ payload:
   - 'DOMAIN-SUFFIX,kakappt.com'
   - 'DOMAIN-SUFFIX,kakashuzi.net'
   - 'DOMAIN-SUFFIX,kakatx.com'
+  - 'DOMAIN-SUFFIX,kakaxing.com'
   - 'DOMAIN-SUFFIX,kakayuy.net'
   - 'DOMAIN-SUFFIX,kaken-china.com'
   - 'DOMAIN-SUFFIX,kaku-scdn.com'
