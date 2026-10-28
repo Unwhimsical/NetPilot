@@ -1,5 +1,5 @@
 #!name=NetPilot Direct
-#!desc=直连规则总数: 111204
+#!desc=直连规则总数: 111206
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成（Surge 合规版），源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -378,7 +378,9 @@ DOMAIN,seed.siri.apple.com,DIRECT
 DOMAIN,sequoia.apple.com,DIRECT
 DOMAIN,service.urchin.com,DIRECT
 DOMAIN,sf-api-token-service.itunes.apple.com,DIRECT
+DOMAIN,sh-pod1-smp-device.apple.com,DIRECT
 DOMAIN,sh-pod2-smp-device.apple.com,DIRECT
+DOMAIN,sh-pod3-smp-device.apple.com,DIRECT
 DOMAIN,shazam-insights.cdn-apple.com,DIRECT
 DOMAIN,shell.cdn.office.net,DIRECT
 DOMAIN,smp-device-content.apple.com,DIRECT

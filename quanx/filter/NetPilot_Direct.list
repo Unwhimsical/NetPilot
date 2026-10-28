@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111201
+# 条目数：111203
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -375,7 +375,9 @@ host, seed.siri.apple.com, direct
 host, sequoia.apple.com, direct
 host, service.urchin.com, direct
 host, sf-api-token-service.itunes.apple.com, direct
+host, sh-pod1-smp-device.apple.com, direct
 host, sh-pod2-smp-device.apple.com, direct
+host, sh-pod3-smp-device.apple.com, direct
 host, shazam-insights.cdn-apple.com, direct
 host, shell.cdn.office.net, direct
 host, smp-device-content.apple.com, direct
