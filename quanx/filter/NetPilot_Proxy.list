@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27512
+# 条目数：27513
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -13863,6 +13863,7 @@ host-suffix, ius.io, proxy
 host-suffix, iutunes.com, proxy
 host-suffix, ivacy.com, proxy
 host-suffix, ivi.ru, proxy
+host-suffix, ivi.tv, proxy
 host-suffix, ivicdn.tv, proxy
 host-suffix, ivintageporn.com, proxy
 host-suffix, ivonblog.com, proxy
