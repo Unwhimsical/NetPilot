@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27521
+# 条目数：27523
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -23627,6 +23627,7 @@ payload:
   - 'DOMAIN-SUFFIX,torproject.org'
   - 'DOMAIN-SUFFIX,torrentgalaxy.to'
   - 'DOMAIN-SUFFIX,torrentkitty.tv'
+  - 'DOMAIN-SUFFIX,torrentleech.org'
   - 'DOMAIN-SUFFIX,torrentprivacy.com'
   - 'DOMAIN-SUFFIX,torrentproject.se'
   - 'DOMAIN-SUFFIX,torrenty.org'
@@ -27224,6 +27225,7 @@ payload:
   - 'DOMAIN-SUFFIX,youtubekids.com'
   - 'DOMAIN-SUFFIX,youtubemobilesupport.com'
   - 'DOMAIN-SUFFIX,youversion.com'
+  - 'DOMAIN-SUFFIX,youversionapi.com'
   - 'DOMAIN-SUFFIX,youwin.com'
   - 'DOMAIN-SUFFIX,youwuss.com'
   - 'DOMAIN-SUFFIX,youx.xxx'

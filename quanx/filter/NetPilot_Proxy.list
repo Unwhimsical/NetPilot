@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27521
+# 条目数：27523
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -23626,6 +23626,7 @@ host-suffix, toroporno.com, proxy
 host-suffix, torproject.org, proxy
 host-suffix, torrentgalaxy.to, proxy
 host-suffix, torrentkitty.tv, proxy
+host-suffix, torrentleech.org, proxy
 host-suffix, torrentprivacy.com, proxy
 host-suffix, torrentproject.se, proxy
 host-suffix, torrenty.org, proxy
@@ -27223,6 +27224,7 @@ host-suffix, youtubego.in, proxy
 host-suffix, youtubekids.com, proxy
 host-suffix, youtubemobilesupport.com, proxy
 host-suffix, youversion.com, proxy
+host-suffix, youversionapi.com, proxy
 host-suffix, youwin.com, proxy
 host-suffix, youwuss.com, proxy
 host-suffix, youx.xxx, proxy
