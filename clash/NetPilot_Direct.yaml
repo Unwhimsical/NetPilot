@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111521
+# 条目数：111524
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -18107,6 +18107,7 @@ payload:
   - 'DOMAIN-SUFFIX,bustoprint.com'
   - 'DOMAIN-SUFFIX,bustruckexpo.com'
   - 'DOMAIN-SUFFIX,busuanzi.cc'
+  - 'DOMAIN-SUFFIX,busyming.com'
   - 'DOMAIN-SUFFIX,but7.com'
   - 'DOMAIN-SUFFIX,butair.com'
   - 'DOMAIN-SUFFIX,butao.com'
@@ -30281,6 +30282,7 @@ payload:
   - 'DOMAIN-SUFFIX,doubanio.com'
   - 'DOMAIN-SUFFIX,doubao-dev.com'
   - 'DOMAIN-SUFFIX,doubao.com'
+  - 'DOMAIN-SUFFIX,doubaoapps.com'
   - 'DOMAIN-SUFFIX,doubaocdn.com'
   - 'DOMAIN-SUFFIX,doubaozhidao.com'
   - 'DOMAIN-SUFFIX,doubean.com'
@@ -111246,6 +111248,7 @@ payload:
   - 'DOMAIN-SUFFIX,zymc1.com'
   - 'DOMAIN-SUFFIX,zymkcdn.com'
   - 'DOMAIN-SUFFIX,zymkshop.com'
+  - 'DOMAIN-SUFFIX,zymls.com'
   - 'DOMAIN-SUFFIX,zyms8.me'
   - 'DOMAIN-SUFFIX,zyoffice.com'
   - 'DOMAIN-SUFFIX,zyoo.net'

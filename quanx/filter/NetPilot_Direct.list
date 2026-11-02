@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111521
+# 条目数：111524
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -18107,6 +18107,7 @@ host-suffix, busnc.com, direct
 host-suffix, bustoprint.com, direct
 host-suffix, bustruckexpo.com, direct
 host-suffix, busuanzi.cc, direct
+host-suffix, busyming.com, direct
 host-suffix, but7.com, direct
 host-suffix, butair.com, direct
 host-suffix, butao.com, direct
@@ -30281,6 +30282,7 @@ host-suffix, doubaninfo.com, direct
 host-suffix, doubanio.com, direct
 host-suffix, doubao-dev.com, direct
 host-suffix, doubao.com, direct
+host-suffix, doubaoapps.com, direct
 host-suffix, doubaocdn.com, direct
 host-suffix, doubaozhidao.com, direct
 host-suffix, doubean.com, direct
@@ -111246,6 +111248,7 @@ host-suffix, zylianto.com, direct
 host-suffix, zymc1.com, direct
 host-suffix, zymkcdn.com, direct
 host-suffix, zymkshop.com, direct
+host-suffix, zymls.com, direct
 host-suffix, zyms8.me, direct
 host-suffix, zyoffice.com, direct
 host-suffix, zyoo.net, direct
