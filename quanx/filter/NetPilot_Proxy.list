@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27532
+# 条目数：27534
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -4176,6 +4176,7 @@ host-suffix, beget.app, proxy
 host-suffix, beget.cloud, proxy
 host-suffix, beget.com, proxy
 host-suffix, beget.de, proxy
+host-suffix, beget.email, proxy
 host-suffix, beget.hosting, proxy
 host-suffix, beget.pro, proxy
 host-suffix, beget.ru, proxy
@@ -4399,6 +4400,7 @@ host-suffix, bild.de, proxy
 host-suffix, bili2.cc, proxy
 host-suffix, bili888.com, proxy
 host-suffix, bili999.com, proxy
+host-suffix, bilibili.tv, proxy
 host-suffix, bilinovel.com, proxy
 host-suffix, biliplus.com, proxy
 host-suffix, biliworld.com, proxy
