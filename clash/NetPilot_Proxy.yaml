@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27534
+# 条目数：27539
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -15002,6 +15002,9 @@ payload:
   - 'DOMAIN-SUFFIX,lilhumpers.com'
   - 'DOMAIN-SUFFIX,liliav.com'
   - 'DOMAIN-SUFFIX,lilith-soft.com'
+  - 'DOMAIN-SUFFIX,limbuscompany.global'
+  - 'DOMAIN-SUFFIX,limbuscompanyapi.com'
+  - 'DOMAIN-SUFFIX,limbuscompanycdn.org'
   - 'DOMAIN-SUFFIX,limedia.tw'
   - 'DOMAIN-SUFFIX,limelight.com'
   - 'DOMAIN-SUFFIX,limer.tw'
@@ -19910,6 +19913,7 @@ payload:
   - 'DOMAIN-SUFFIX,projectcircuitbreaker.com'
   - 'DOMAIN-SUFFIX,projecteuclid.org'
   - 'DOMAIN-SUFFIX,projectjav.com'
+  - 'DOMAIN-SUFFIX,projectmoon.studio'
   - 'DOMAIN-SUFFIX,projectmurphy.net'
   - 'DOMAIN-SUFFIX,projectpoint.com'
   - 'DOMAIN-SUFFIX,projectpoint.net'
@@ -21788,6 +21792,7 @@ payload:
   - 'DOMAIN-SUFFIX,skillshare.com'
   - 'DOMAIN-SUFFIX,skimtube.com'
   - 'DOMAIN-SUFFIX,skinstrip.net'
+  - 'DOMAIN-SUFFIX,skinswap.com'
   - 'DOMAIN-SUFFIX,skokka.com'
   - 'DOMAIN-SUFFIX,sksarab.top'
   - 'DOMAIN-SUFFIX,skunkgirl.cc'
