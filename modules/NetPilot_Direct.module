@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111527
+#!desc=直连规则总数: 111528
 
 # 描述：国内直连规则，自动更新
 
 # 更新时间: 2026-11-05 19:50:18 北京时间
 
-# 直连规则总数: 111527
+# 直连规则总数: 111528
 
 [Rule]
 
@@ -424,6 +424,7 @@ DOMAIN,swscan-cdn.apple.com.akadns.net,DIRECT
 DOMAIN,swscan.apple.com,DIRECT
 DOMAIN,sylvan.apple.com,DIRECT
 DOMAIN,sync.itunes.apple.com,DIRECT
+DOMAIN,testflight.apple.com,DIRECT
 DOMAIN,tf-feedback.itunes.apple.com,DIRECT
 DOMAIN,time.izatcloud.net,DIRECT
 DOMAIN,time.xtracloud.net,DIRECT
