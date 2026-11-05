@@ -1,5 +1,5 @@
 #!name=NetPilot Direct (Loon)
-#!desc=直连规则总数: 111527
+#!desc=直连规则总数: 111528
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成，源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -417,6 +417,7 @@ DOMAIN,swscan-cdn.apple.com.akadns.net,DIRECT
 DOMAIN,swscan.apple.com,DIRECT
 DOMAIN,sylvan.apple.com,DIRECT
 DOMAIN,sync.itunes.apple.com,DIRECT
+DOMAIN,testflight.apple.com,DIRECT
 DOMAIN,tf-feedback.itunes.apple.com,DIRECT
 DOMAIN,time.izatcloud.net,DIRECT
 DOMAIN,time.xtracloud.net,DIRECT

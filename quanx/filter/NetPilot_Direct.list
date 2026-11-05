@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111524
+# 条目数：111525
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -415,6 +415,7 @@ host, swscan-cdn.apple.com.akadns.net, direct
 host, swscan.apple.com, direct
 host, sylvan.apple.com, direct
 host, sync.itunes.apple.com, direct
+host, testflight.apple.com, direct
 host, tf-feedback.itunes.apple.com, direct
 host, time.izatcloud.net, direct
 host, time.xtracloud.net, direct
