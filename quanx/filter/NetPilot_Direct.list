@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111525
+# 条目数：111534
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -331,6 +331,7 @@ host, prod-support.apple-support.akadns.net, direct
 host, prod.databe.floonet.goog, direct
 host, publicassets.cdn-apple.com, direct
 host, qiao-cn.com, direct
+host, radio.itunes.apple.com, direct
 host, recaptcha-cn.net, direct
 host, recaptcha.net, direct
 host, redirector.bdn.dev, direct
@@ -17866,6 +17867,7 @@ host-suffix, bsdfyyls.com, direct
 host-suffix, bsdongxin.com, direct
 host-suffix, bsdt1688.com, direct
 host-suffix, bsehk.com, direct
+host-suffix, bseinfo.net, direct
 host-suffix, bseqp.com, direct
 host-suffix, bserc.com, direct
 host-suffix, bsgcnc.com, direct
@@ -62950,6 +62952,7 @@ host-suffix, luyecanyin.com, direct
 host-suffix, luyinla.com, direct
 host-suffix, luyinzhushou.com, direct
 host-suffix, luyitong.com, direct
+host-suffix, luyong.com, direct
 host-suffix, luyor.net, direct
 host-suffix, luyouqi.com, direct
 host-suffix, luyouwang.com, direct
@@ -79769,6 +79772,7 @@ host-suffix, senpian.com, direct
 host-suffix, senra.me, direct
 host-suffix, sense-hk.com, direct
 host-suffix, senseagro.com, direct
+host-suffix, senseavatar.com, direct
 host-suffix, senselock.com, direct
 host-suffix, senseluxury.com, direct
 host-suffix, senser.group, direct
@@ -82018,6 +82022,7 @@ host-suffix, shutonginfo.com, direct
 host-suffix, shutu.cc, direct
 host-suffix, shutwin.com, direct
 host-suffix, shuwangxing.com, direct
+host-suffix, shuwen.com, direct
 host-suffix, shuwenxianyun.com, direct
 host-suffix, shuwulou.com, direct
 host-suffix, shuxiangmuye.com, direct
@@ -88733,6 +88738,7 @@ host-suffix, tidejd.com, direct
 host-suffix, tidemedia.com, direct
 host-suffix, tidepharm.com, direct
 host-suffix, tidesec.com, direct
+host-suffix, tidesight.com, direct
 host-suffix, tideswing.fun, direct
 host-suffix, tidi.mobi, direct
 host-suffix, tiduyun.com, direct
@@ -91818,6 +91824,7 @@ host-suffix, ups88.net, direct
 host-suffix, upsapp.com, direct
 host-suffix, upseller.com, direct
 host-suffix, upskyshanghai.com, direct
+host-suffix, upsort.com, direct
 host-suffix, upst86.com, direct
 host-suffix, uptom.com, direct
 host-suffix, uptougu.com, direct
@@ -105777,6 +105784,7 @@ host-suffix, yundongfang.com, direct
 host-suffix, yundonghao.com, direct
 host-suffix, yundongit.com, direct
 host-suffix, yundousoft.com, direct
+host-suffix, yundouxueyuan.com, direct
 host-suffix, yundui.cc, direct
 host-suffix, yunduimedia.com, direct
 host-suffix, yundun.com, direct
@@ -106435,6 +106443,7 @@ host-suffix, yy845.com, direct
 host-suffix, yy960.com, direct
 host-suffix, yyaotec.com, direct
 host-suffix, yyarea.com, direct
+host-suffix, yybip.com, direct
 host-suffix, yyblly.com, direct
 host-suffix, yybnet.net, direct
 host-suffix, yybox.cc, direct

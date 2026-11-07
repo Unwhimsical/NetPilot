@@ -1,5 +1,5 @@
 #!name=NetPilot Direct
-#!desc=直连规则总数: 111528
+#!desc=直连规则总数: 111537
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成（Surge 合规版），源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -334,6 +334,7 @@ DOMAIN,prod-support.apple-support.akadns.net,DIRECT
 DOMAIN,prod.databe.floonet.goog,DIRECT
 DOMAIN,publicassets.cdn-apple.com,DIRECT
 DOMAIN,qiao-cn.com,DIRECT
+DOMAIN,radio.itunes.apple.com,DIRECT
 DOMAIN,recaptcha-cn.net,DIRECT
 DOMAIN,recaptcha.net,DIRECT
 DOMAIN,redirector.bdn.dev,DIRECT
@@ -17869,6 +17870,7 @@ DOMAIN-SUFFIX,bsdfyyls.com,DIRECT
 DOMAIN-SUFFIX,bsdongxin.com,DIRECT
 DOMAIN-SUFFIX,bsdt1688.com,DIRECT
 DOMAIN-SUFFIX,bsehk.com,DIRECT
+DOMAIN-SUFFIX,bseinfo.net,DIRECT
 DOMAIN-SUFFIX,bseqp.com,DIRECT
 DOMAIN-SUFFIX,bserc.com,DIRECT
 DOMAIN-SUFFIX,bsgcnc.com,DIRECT
@@ -62953,6 +62955,7 @@ DOMAIN-SUFFIX,luyecanyin.com,DIRECT
 DOMAIN-SUFFIX,luyinla.com,DIRECT
 DOMAIN-SUFFIX,luyinzhushou.com,DIRECT
 DOMAIN-SUFFIX,luyitong.com,DIRECT
+DOMAIN-SUFFIX,luyong.com,DIRECT
 DOMAIN-SUFFIX,luyor.net,DIRECT
 DOMAIN-SUFFIX,luyouqi.com,DIRECT
 DOMAIN-SUFFIX,luyouwang.com,DIRECT
@@ -79772,6 +79775,7 @@ DOMAIN-SUFFIX,senpian.com,DIRECT
 DOMAIN-SUFFIX,senra.me,DIRECT
 DOMAIN-SUFFIX,sense-hk.com,DIRECT
 DOMAIN-SUFFIX,senseagro.com,DIRECT
+DOMAIN-SUFFIX,senseavatar.com,DIRECT
 DOMAIN-SUFFIX,senselock.com,DIRECT
 DOMAIN-SUFFIX,senseluxury.com,DIRECT
 DOMAIN-SUFFIX,senser.group,DIRECT
@@ -82021,6 +82025,7 @@ DOMAIN-SUFFIX,shutonginfo.com,DIRECT
 DOMAIN-SUFFIX,shutu.cc,DIRECT
 DOMAIN-SUFFIX,shutwin.com,DIRECT
 DOMAIN-SUFFIX,shuwangxing.com,DIRECT
+DOMAIN-SUFFIX,shuwen.com,DIRECT
 DOMAIN-SUFFIX,shuwenxianyun.com,DIRECT
 DOMAIN-SUFFIX,shuwulou.com,DIRECT
 DOMAIN-SUFFIX,shuxiangmuye.com,DIRECT
@@ -88736,6 +88741,7 @@ DOMAIN-SUFFIX,tidejd.com,DIRECT
 DOMAIN-SUFFIX,tidemedia.com,DIRECT
 DOMAIN-SUFFIX,tidepharm.com,DIRECT
 DOMAIN-SUFFIX,tidesec.com,DIRECT
+DOMAIN-SUFFIX,tidesight.com,DIRECT
 DOMAIN-SUFFIX,tideswing.fun,DIRECT
 DOMAIN-SUFFIX,tidi.mobi,DIRECT
 DOMAIN-SUFFIX,tiduyun.com,DIRECT
@@ -91821,6 +91827,7 @@ DOMAIN-SUFFIX,ups88.net,DIRECT
 DOMAIN-SUFFIX,upsapp.com,DIRECT
 DOMAIN-SUFFIX,upseller.com,DIRECT
 DOMAIN-SUFFIX,upskyshanghai.com,DIRECT
+DOMAIN-SUFFIX,upsort.com,DIRECT
 DOMAIN-SUFFIX,upst86.com,DIRECT
 DOMAIN-SUFFIX,uptom.com,DIRECT
 DOMAIN-SUFFIX,uptougu.com,DIRECT
@@ -105780,6 +105787,7 @@ DOMAIN-SUFFIX,yundongfang.com,DIRECT
 DOMAIN-SUFFIX,yundonghao.com,DIRECT
 DOMAIN-SUFFIX,yundongit.com,DIRECT
 DOMAIN-SUFFIX,yundousoft.com,DIRECT
+DOMAIN-SUFFIX,yundouxueyuan.com,DIRECT
 DOMAIN-SUFFIX,yundui.cc,DIRECT
 DOMAIN-SUFFIX,yunduimedia.com,DIRECT
 DOMAIN-SUFFIX,yundun.com,DIRECT
@@ -106438,6 +106446,7 @@ DOMAIN-SUFFIX,yy845.com,DIRECT
 DOMAIN-SUFFIX,yy960.com,DIRECT
 DOMAIN-SUFFIX,yyaotec.com,DIRECT
 DOMAIN-SUFFIX,yyarea.com,DIRECT
+DOMAIN-SUFFIX,yybip.com,DIRECT
 DOMAIN-SUFFIX,yyblly.com,DIRECT
 DOMAIN-SUFFIX,yybnet.net,DIRECT
 DOMAIN-SUFFIX,yybox.cc,DIRECT
