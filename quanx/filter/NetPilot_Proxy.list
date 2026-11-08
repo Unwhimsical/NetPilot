@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27539
+# 条目数：27543
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -278,6 +278,7 @@ host, holoxx.f5.si, proxy
 host, homebrew.bintray.com, proxy
 host, hpefonts.s3.amazonaws.com, proxy
 host, hpstore.corpmerchandise.com, proxy
+host, http-intake.logs.us5.datadoghq.com, proxy
 host, hub.slarker.me, proxy
 host, hulu.playback.edge.bamgrid.com, proxy
 host, i.jeded.com, proxy
@@ -364,6 +365,7 @@ host, ntppool2.time.nl, proxy
 host, nurofensk-prod-env.eu-west-1.elasticbeanstalk.com, proxy
 host, nvidia.custhelp.com, proxy
 host, nvidia.tt.omtrdc.net, proxy
+host, o1158394.ingest.us.sentry.io, proxy
 host, ocsp.microsoft.com, proxy
 host, odc.officeapps.live.com, proxy
 host, officecdn-microsoft-com.akamaized.net, proxy
@@ -393,6 +395,7 @@ host, practivate.adobe.com, proxy
 host, prd-priconne-redive.akamaized.net, proxy
 host, preprod-publicca.googleapis.com, proxy
 host, prodforza.blob.core.windows.net, proxy
+host, production-copilot-host-westus.webpubsub.azure.com, proxy
 host, production-openaicom-storage.azureedge.net, proxy
 host, productionresultssa0.blob.core.windows.net, proxy
 host, productionresultssa1.blob.core.windows.net, proxy
@@ -11496,6 +11499,7 @@ host-suffix, greginhollywood.com, proxy
 host-suffix, gridaware.app, proxy
 host-suffix, grindr.com, proxy
 host-suffix, grok.com, proxy
+host-suffix, grokbot.com, proxy
 host-suffix, grokipedia.com, proxy
 host-suffix, grooby.com, proxy
 host-suffix, groq.com, proxy
