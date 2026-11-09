@@ -1,27 +1,27 @@
 # 变更报告 2026-11-09
 
-生成时间：2026-11-09 04:21:54
+生成时间：2026-11-09 20:30:43
 
 ---
 
 ## 直连模块
 
-- 原有规则数：111537
+- 原有规则数：111532
 - 新增规则数：0
-- 过滤海外规则：943
-- 最终规则数：111537
+- 过滤海外规则：948
+- 最终规则数：111532
 
 ## 代理模块
 
-- 原有规则数：27696
-- 新增规则数：0
-- 最终规则数：27696
+- 原有规则数：27698
+- 新增规则数：2
+- 最终规则数：27700
 
 ## 去广告模块
 
 - 原有规则数：231323
-- 新增规则数：0
-- 最终规则数：231323
+- 新增规则数：394
+- 最终规则数：231717
 
 ## 规则冲突检测
 
@@ -78,14 +78,14 @@
 - ('DOMAIN-SUFFIX,OMAIN-SUFFIX,bing.net,PROXY', "策略 'BING.NET' 不合法")
 ## 规则源健康状态
 
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 150, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 150, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 151, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 151, 失败 0, 连续失败 0)
 ## DNS 泄漏风险
 
 - **高风险 - 直连海外域名**
@@ -368,9 +368,6 @@
   直连规则包含海外域名: DOMAIN,guzzoni-apple-com.v.aaplimg.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN,guzzoni.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN,guzzoni.smoot.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
@@ -527,9 +524,6 @@
   直连规则包含海外域名: DOMAIN,podcasts.itunes.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN,probe.siri.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN,prod-support.apple-support.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
@@ -546,15 +540,6 @@
 
 - **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN,search.itunes.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN,seed-sequoia.siri.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN,seed-swallow.siri.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
-
-- **高风险 - 直连海外域名**
-  直连规则包含海外域名: DOMAIN,seed.siri.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
 
 - **高风险 - 直连海外域名**
   直连规则包含海外域名: DOMAIN,sequoia.apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
