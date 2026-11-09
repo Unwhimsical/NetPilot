@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111534
+# 条目数：111529
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -179,7 +179,6 @@ host, gspe85-cn-ssl.ls.apple.com, direct
 host, gstatic-cn.com, direct
 host, gtm.oasisfeng.com, direct
 host, guzzoni-apple-com.v.aaplimg.com, direct
-host, guzzoni.apple.com, direct
 host, guzzoni.smoot.apple.com, direct
 host, hellofontpreview.oss-cn-beijing.aliyuncs.com, direct
 host, hellowebfonts.oss-cn-beijing.aliyuncs.com, direct
@@ -324,7 +323,6 @@ host, play.itunes.apple.com, direct
 host, play.music.apple.com, direct
 host, podcasts.apple.com, direct
 host, podcasts.itunes.apple.com, direct
-host, probe.siri.apple.com, direct
 host, prod-controlbe.floonet.goog, direct
 host, prod-databe.floonet.goog, direct
 host, prod-support.apple-support.akadns.net, direct
@@ -370,9 +368,6 @@ host, s5.mzstatic.com, direct
 host, se-edge.itunes.apple.com, direct
 host, se2.itunes.apple.com, direct
 host, search.itunes.apple.com, direct
-host, seed-sequoia.siri.apple.com, direct
-host, seed-swallow.siri.apple.com, direct
-host, seed.siri.apple.com, direct
 host, sequoia.apple.com, direct
 host, service.urchin.com, direct
 host, sf-api-token-service.itunes.apple.com, direct

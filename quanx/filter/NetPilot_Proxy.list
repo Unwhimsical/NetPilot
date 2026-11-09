@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27543
+# 条目数：27547
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -264,6 +264,7 @@ host, google-ohttp-relay-safebrowsing.fastly-edge.com, proxy
 host, gs-loc-cn.apple.com, proxy
 host, gs-loc.apple.com, proxy
 host, gsp-ssl.ls.apple.com, proxy
+host, guzzoni.apple.com, proxy
 host, hamivideo.hinet.net, proxy
 host, hammerandchisel.ssl.zendesk.com, proxy
 host, hb.imgix.net, proxy
@@ -538,6 +539,7 @@ host, self.events.data.microsoft.com, proxy
 host, sentry.ppy.sh, proxy
 host, servd-anthropic-website.b-cdn.net, proxy
 host, services.bingapis.com, proxy
+host, siri.apple.com, proxy
 host, sni1dcb6gl.wpc.edgecastcdn.net, proxy
 host, spectator.ppy.sh, proxy
 host, spotify.com.edgesuite.net, proxy
@@ -11568,6 +11570,7 @@ host-suffix, guochanw.life, proxy
 host-suffix, guruofporn.com, proxy
 host-suffix, gutteruncensored.com, proxy
 host-suffix, guysnightlife.com, proxy
+host-suffix, guzzoni.apple.com, proxy
 host-suffix, gv.com, proxy
 host-suffix, gvlib.com, proxy
 host-suffix, gvm.com.tw, proxy
@@ -21752,6 +21755,7 @@ host-suffix, sipml5.org, proxy
 host-suffix, siport.com, proxy
 host-suffix, sipriyearbook.org, proxy
 host-suffix, sirenxxxstudios.com, proxy
+host-suffix, siri.apple.com, proxy
 host-suffix, siri.com, proxy
 host-suffix, sis.la, proxy
 host-suffix, sis001.com, proxy

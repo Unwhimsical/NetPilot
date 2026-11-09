@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27543
+# 条目数：27547
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -265,6 +265,7 @@ payload:
   - 'DOMAIN,gs-loc-cn.apple.com'
   - 'DOMAIN,gs-loc.apple.com'
   - 'DOMAIN,gsp-ssl.ls.apple.com'
+  - 'DOMAIN,guzzoni.apple.com'
   - 'DOMAIN,hamivideo.hinet.net'
   - 'DOMAIN,hammerandchisel.ssl.zendesk.com'
   - 'DOMAIN,hb.imgix.net'
@@ -539,6 +540,7 @@ payload:
   - 'DOMAIN,sentry.ppy.sh'
   - 'DOMAIN,servd-anthropic-website.b-cdn.net'
   - 'DOMAIN,services.bingapis.com'
+  - 'DOMAIN,siri.apple.com'
   - 'DOMAIN,sni1dcb6gl.wpc.edgecastcdn.net'
   - 'DOMAIN,spectator.ppy.sh'
   - 'DOMAIN,spotify.com.edgesuite.net'
@@ -11569,6 +11571,7 @@ payload:
   - 'DOMAIN-SUFFIX,guruofporn.com'
   - 'DOMAIN-SUFFIX,gutteruncensored.com'
   - 'DOMAIN-SUFFIX,guysnightlife.com'
+  - 'DOMAIN-SUFFIX,guzzoni.apple.com'
   - 'DOMAIN-SUFFIX,gv.com'
   - 'DOMAIN-SUFFIX,gvlib.com'
   - 'DOMAIN-SUFFIX,gvm.com.tw'
@@ -21753,6 +21756,7 @@ payload:
   - 'DOMAIN-SUFFIX,siport.com'
   - 'DOMAIN-SUFFIX,sipriyearbook.org'
   - 'DOMAIN-SUFFIX,sirenxxxstudios.com'
+  - 'DOMAIN-SUFFIX,siri.apple.com'
   - 'DOMAIN-SUFFIX,siri.com'
   - 'DOMAIN-SUFFIX,sis.la'
   - 'DOMAIN-SUFFIX,sis001.com'

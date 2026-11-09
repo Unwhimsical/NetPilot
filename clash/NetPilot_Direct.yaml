@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111534
+# 条目数：111529
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -179,7 +179,6 @@ payload:
   - 'DOMAIN,gstatic-cn.com'
   - 'DOMAIN,gtm.oasisfeng.com'
   - 'DOMAIN,guzzoni-apple-com.v.aaplimg.com'
-  - 'DOMAIN,guzzoni.apple.com'
   - 'DOMAIN,guzzoni.smoot.apple.com'
   - 'DOMAIN,hellofontpreview.oss-cn-beijing.aliyuncs.com'
   - 'DOMAIN,hellowebfonts.oss-cn-beijing.aliyuncs.com'
@@ -324,7 +323,6 @@ payload:
   - 'DOMAIN,play.music.apple.com'
   - 'DOMAIN,podcasts.apple.com'
   - 'DOMAIN,podcasts.itunes.apple.com'
-  - 'DOMAIN,probe.siri.apple.com'
   - 'DOMAIN,prod-controlbe.floonet.goog'
   - 'DOMAIN,prod-databe.floonet.goog'
   - 'DOMAIN,prod-support.apple-support.akadns.net'
@@ -370,9 +368,6 @@ payload:
   - 'DOMAIN,se-edge.itunes.apple.com'
   - 'DOMAIN,se2.itunes.apple.com'
   - 'DOMAIN,search.itunes.apple.com'
-  - 'DOMAIN,seed-sequoia.siri.apple.com'
-  - 'DOMAIN,seed-swallow.siri.apple.com'
-  - 'DOMAIN,seed.siri.apple.com'
   - 'DOMAIN,sequoia.apple.com'
   - 'DOMAIN,service.urchin.com'
   - 'DOMAIN,sf-api-token-service.itunes.apple.com'
