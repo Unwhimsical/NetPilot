@@ -64,6 +64,9 @@ FORCE_PROXY_DOMAINS = [
     "gsp-ssl.ls.apple.com",
     "bluedot.is.autonavi.com",
     "bluedot.is.autonavi.com.gds.alibabadns.com",
+    # Siri / Apple Intelligence 走代理（2026-11-09 用户要求）
+    "siri.apple.com",
+    "guzzoni.apple.com",
 ]
 
 SENSITIVE_KEYWORDS = [

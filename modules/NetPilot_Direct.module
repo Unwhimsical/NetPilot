@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111537
+#!desc=直连规则总数: 111532
 
 # 描述：国内直连规则，自动更新
 
 # 更新时间: 2026-11-09 04:20:46 北京时间
 
-# 直连规则总数: 111537
+# 直连规则总数: 111532
 
 [Rule]
 
@@ -188,7 +188,6 @@ DOMAIN,gspe85-cn-ssl.ls.apple.com,DIRECT
 DOMAIN,gstatic-cn.com,DIRECT
 DOMAIN,gtm.oasisfeng.com,DIRECT
 DOMAIN,guzzoni-apple-com.v.aaplimg.com,DIRECT
-DOMAIN,guzzoni.apple.com,DIRECT
 DOMAIN,guzzoni.smoot.apple.com,DIRECT
 DOMAIN,hellofontpreview.oss-cn-beijing.aliyuncs.com,DIRECT
 DOMAIN,hellowebfonts.oss-cn-beijing.aliyuncs.com,DIRECT
@@ -333,7 +332,6 @@ DOMAIN,play.itunes.apple.com,DIRECT
 DOMAIN,play.music.apple.com,DIRECT
 DOMAIN,podcasts.apple.com,DIRECT
 DOMAIN,podcasts.itunes.apple.com,DIRECT
-DOMAIN,probe.siri.apple.com,DIRECT
 DOMAIN,prod-controlbe.floonet.goog,DIRECT
 DOMAIN,prod-databe.floonet.goog,DIRECT
 DOMAIN,prod-support.apple-support.akadns.net,DIRECT
@@ -379,9 +377,6 @@ DOMAIN,s5.mzstatic.com,DIRECT
 DOMAIN,se-edge.itunes.apple.com,DIRECT
 DOMAIN,se2.itunes.apple.com,DIRECT
 DOMAIN,search.itunes.apple.com,DIRECT
-DOMAIN,seed-sequoia.siri.apple.com,DIRECT
-DOMAIN,seed-swallow.siri.apple.com,DIRECT
-DOMAIN,seed.siri.apple.com,DIRECT
 DOMAIN,sequoia.apple.com,DIRECT
 DOMAIN,service.urchin.com,DIRECT
 DOMAIN,sf-api-token-service.itunes.apple.com,DIRECT
