@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111527
+#!desc=直连规则总数: 111532
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-11-02 19:58:51 北京时间
+# 更新时间: 2026-11-09 20:29:30 北京时间
 
-# 直连规则总数: 111527
+# 直连规则总数: 111532
 
 [Rule]
 
@@ -188,7 +188,6 @@ DOMAIN,gspe85-cn-ssl.ls.apple.com,DIRECT
 DOMAIN,gstatic-cn.com,DIRECT
 DOMAIN,gtm.oasisfeng.com,DIRECT
 DOMAIN,guzzoni-apple-com.v.aaplimg.com,DIRECT
-DOMAIN,guzzoni.apple.com,DIRECT
 DOMAIN,guzzoni.smoot.apple.com,DIRECT
 DOMAIN,hellofontpreview.oss-cn-beijing.aliyuncs.com,DIRECT
 DOMAIN,hellowebfonts.oss-cn-beijing.aliyuncs.com,DIRECT
@@ -333,13 +332,13 @@ DOMAIN,play.itunes.apple.com,DIRECT
 DOMAIN,play.music.apple.com,DIRECT
 DOMAIN,podcasts.apple.com,DIRECT
 DOMAIN,podcasts.itunes.apple.com,DIRECT
-DOMAIN,probe.siri.apple.com,DIRECT
 DOMAIN,prod-controlbe.floonet.goog,DIRECT
 DOMAIN,prod-databe.floonet.goog,DIRECT
 DOMAIN,prod-support.apple-support.akadns.net,DIRECT
 DOMAIN,prod.databe.floonet.goog,DIRECT
 DOMAIN,publicassets.cdn-apple.com,DIRECT
 DOMAIN,qiao-cn.com,DIRECT
+DOMAIN,radio.itunes.apple.com,DIRECT
 DOMAIN,recaptcha-cn.net,DIRECT
 DOMAIN,recaptcha.net,DIRECT
 DOMAIN,redirector.bdn.dev,DIRECT
@@ -378,9 +377,6 @@ DOMAIN,s5.mzstatic.com,DIRECT
 DOMAIN,se-edge.itunes.apple.com,DIRECT
 DOMAIN,se2.itunes.apple.com,DIRECT
 DOMAIN,search.itunes.apple.com,DIRECT
-DOMAIN,seed-sequoia.siri.apple.com,DIRECT
-DOMAIN,seed-swallow.siri.apple.com,DIRECT
-DOMAIN,seed.siri.apple.com,DIRECT
 DOMAIN,sequoia.apple.com,DIRECT
 DOMAIN,service.urchin.com,DIRECT
 DOMAIN,sf-api-token-service.itunes.apple.com,DIRECT
@@ -424,6 +420,7 @@ DOMAIN,swscan-cdn.apple.com.akadns.net,DIRECT
 DOMAIN,swscan.apple.com,DIRECT
 DOMAIN,sylvan.apple.com,DIRECT
 DOMAIN,sync.itunes.apple.com,DIRECT
+DOMAIN,testflight.apple.com,DIRECT
 DOMAIN,tf-feedback.itunes.apple.com,DIRECT
 DOMAIN,time.izatcloud.net,DIRECT
 DOMAIN,time.xtracloud.net,DIRECT
@@ -17874,6 +17871,7 @@ DOMAIN-SUFFIX,bsdfyyls.com,DIRECT
 DOMAIN-SUFFIX,bsdongxin.com,DIRECT
 DOMAIN-SUFFIX,bsdt1688.com,DIRECT
 DOMAIN-SUFFIX,bsehk.com,DIRECT
+DOMAIN-SUFFIX,bseinfo.net,DIRECT
 DOMAIN-SUFFIX,bseqp.com,DIRECT
 DOMAIN-SUFFIX,bserc.com,DIRECT
 DOMAIN-SUFFIX,bsgcnc.com,DIRECT
@@ -62958,6 +62956,7 @@ DOMAIN-SUFFIX,luyecanyin.com,DIRECT
 DOMAIN-SUFFIX,luyinla.com,DIRECT
 DOMAIN-SUFFIX,luyinzhushou.com,DIRECT
 DOMAIN-SUFFIX,luyitong.com,DIRECT
+DOMAIN-SUFFIX,luyong.com,DIRECT
 DOMAIN-SUFFIX,luyor.net,DIRECT
 DOMAIN-SUFFIX,luyouqi.com,DIRECT
 DOMAIN-SUFFIX,luyouwang.com,DIRECT
@@ -79777,6 +79776,7 @@ DOMAIN-SUFFIX,senpian.com,DIRECT
 DOMAIN-SUFFIX,senra.me,DIRECT
 DOMAIN-SUFFIX,sense-hk.com,DIRECT
 DOMAIN-SUFFIX,senseagro.com,DIRECT
+DOMAIN-SUFFIX,senseavatar.com,DIRECT
 DOMAIN-SUFFIX,senselock.com,DIRECT
 DOMAIN-SUFFIX,senseluxury.com,DIRECT
 DOMAIN-SUFFIX,senser.group,DIRECT
@@ -82026,6 +82026,7 @@ DOMAIN-SUFFIX,shutonginfo.com,DIRECT
 DOMAIN-SUFFIX,shutu.cc,DIRECT
 DOMAIN-SUFFIX,shutwin.com,DIRECT
 DOMAIN-SUFFIX,shuwangxing.com,DIRECT
+DOMAIN-SUFFIX,shuwen.com,DIRECT
 DOMAIN-SUFFIX,shuwenxianyun.com,DIRECT
 DOMAIN-SUFFIX,shuwulou.com,DIRECT
 DOMAIN-SUFFIX,shuxiangmuye.com,DIRECT
@@ -88741,6 +88742,7 @@ DOMAIN-SUFFIX,tidejd.com,DIRECT
 DOMAIN-SUFFIX,tidemedia.com,DIRECT
 DOMAIN-SUFFIX,tidepharm.com,DIRECT
 DOMAIN-SUFFIX,tidesec.com,DIRECT
+DOMAIN-SUFFIX,tidesight.com,DIRECT
 DOMAIN-SUFFIX,tideswing.fun,DIRECT
 DOMAIN-SUFFIX,tidi.mobi,DIRECT
 DOMAIN-SUFFIX,tiduyun.com,DIRECT
@@ -91826,6 +91828,7 @@ DOMAIN-SUFFIX,ups88.net,DIRECT
 DOMAIN-SUFFIX,upsapp.com,DIRECT
 DOMAIN-SUFFIX,upseller.com,DIRECT
 DOMAIN-SUFFIX,upskyshanghai.com,DIRECT
+DOMAIN-SUFFIX,upsort.com,DIRECT
 DOMAIN-SUFFIX,upst86.com,DIRECT
 DOMAIN-SUFFIX,uptom.com,DIRECT
 DOMAIN-SUFFIX,uptougu.com,DIRECT
@@ -105785,6 +105788,7 @@ DOMAIN-SUFFIX,yundongfang.com,DIRECT
 DOMAIN-SUFFIX,yundonghao.com,DIRECT
 DOMAIN-SUFFIX,yundongit.com,DIRECT
 DOMAIN-SUFFIX,yundousoft.com,DIRECT
+DOMAIN-SUFFIX,yundouxueyuan.com,DIRECT
 DOMAIN-SUFFIX,yundui.cc,DIRECT
 DOMAIN-SUFFIX,yunduimedia.com,DIRECT
 DOMAIN-SUFFIX,yundun.com,DIRECT
@@ -106443,6 +106447,7 @@ DOMAIN-SUFFIX,yy845.com,DIRECT
 DOMAIN-SUFFIX,yy960.com,DIRECT
 DOMAIN-SUFFIX,yyaotec.com,DIRECT
 DOMAIN-SUFFIX,yyarea.com,DIRECT
+DOMAIN-SUFFIX,yybip.com,DIRECT
 DOMAIN-SUFFIX,yyblly.com,DIRECT
 DOMAIN-SUFFIX,yybnet.net,DIRECT
 DOMAIN-SUFFIX,yybox.cc,DIRECT
