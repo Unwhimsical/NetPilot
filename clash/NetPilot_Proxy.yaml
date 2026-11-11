@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27547
+# 条目数：27552
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,3dns-1.adobe.com'
@@ -11449,6 +11449,8 @@ payload:
   - 'DOMAIN-SUFFIX,grabhentai.com'
   - 'DOMAIN-SUFFIX,grabpussy.com'
   - 'DOMAIN-SUFFIX,gradeuptube.com'
+  - 'DOMAIN-SUFFIX,grafana.com'
+  - 'DOMAIN-SUFFIX,grafana.net'
   - 'DOMAIN-SUFFIX,grafolio.com'
   - 'DOMAIN-SUFFIX,graias.com'
   - 'DOMAIN-SUFFIX,graiasmovies.com'
@@ -20153,6 +20155,7 @@ payload:
   - 'DOMAIN-SUFFIX,quatrowireless.com'
   - 'DOMAIN-SUFFIX,quatrum.com.br'
   - 'DOMAIN-SUFFIX,quay.io'
+  - 'DOMAIN-SUFFIX,questionablequesting.com'
   - 'DOMAIN-SUFFIX,questvisual.com'
   - 'DOMAIN-SUFFIX,quicinc.com'
   - 'DOMAIN-SUFFIX,quickbook.com.br'
@@ -22165,6 +22168,7 @@ payload:
   - 'DOMAIN-SUFFIX,soyjak.party'
   - 'DOMAIN-SUFFIX,soyjak.st'
   - 'DOMAIN-SUFFIX,sp.cool'
+  - 'DOMAIN-SUFFIX,spacebattles.com'
   - 'DOMAIN-SUFFIX,spaceexplored.com'
   - 'DOMAIN-SUFFIX,spaceforce.mil'
   - 'DOMAIN-SUFFIX,spacely.com.au'
@@ -24363,6 +24367,7 @@ payload:
   - 'DOMAIN-SUFFIX,v.recipes'
   - 'DOMAIN-SUFFIX,v2.help'
   - 'DOMAIN-SUFFIX,v2.hysteria.network'
+  - 'DOMAIN-SUFFIX,v2ex.co'
   - 'DOMAIN-SUFFIX,v2ex.com'
   - 'DOMAIN-SUFFIX,v2fly.org'
   - 'DOMAIN-SUFFIX,v2ph.com'
