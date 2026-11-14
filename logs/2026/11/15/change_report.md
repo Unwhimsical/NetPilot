@@ -1,29 +1,29 @@
 # 变更报告 2026-11-15
 
-生成时间：2026-11-15 00:49:39
+生成时间：2026-11-15 04:34:36
 
 ---
 
 ## 直连模块
 
-- 原有规则数：111630
+- 原有规则数：111361
 - 新增规则数：0
 - 过滤海外规则：950
-- 去重删除：269
+- 去重删除：262
 - 最终规则数：111361
 
 ## 代理模块
 
-- 原有规则数：27706
-- 新增规则数：21775
-- 去重删除：3068
+- 原有规则数：48762
+- 新增规则数：0
+- 去重删除：3057
 - 最终规则数：48762
 
 ## 去广告模块
 
-- 原有规则数：235172
-- 新增规则数：403
-- 去重删除：2262
+- 原有规则数：233548
+- 新增规则数：0
+- 去重删除：839
 - 最终规则数：233548
 
 ## 规则冲突检测
@@ -81,19 +81,19 @@
 - ('DOMAIN-SUFFIX,OMAIN-SUFFIX,BING.NET,PROXY', "策略 'BING.NET' 不合法")
 ## 规则源健康状态
 
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 162, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 162, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf (成功 1, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf (成功 1, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf (成功 1, 失败 0, 连续失败 0)
-- ✅ https://yfamilys.com/module/AdBlock.module (成功 1, 失败 0, 连续失败 0)
-- ✅ https://yfamilys.com/module/adultraplus.module (成功 1, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 163, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 163, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf (成功 2, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf (成功 2, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf (成功 2, 失败 0, 连续失败 0)
+- ✅ https://yfamilys.com/module/AdBlock.module (成功 2, 失败 0, 连续失败 0)
+- ✅ https://yfamilys.com/module/adultraplus.module (成功 2, 失败 0, 连续失败 0)
 ## DNS 泄漏风险
 
 - **高风险 - 直连海外域名**
