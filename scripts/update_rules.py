@@ -24,6 +24,9 @@ UPSTREAM_MODULE_SOURCES = {
     "proxy": [
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module",
         "https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule",
+        # johnshall Shadowrocket-ADBlock-Rules-Forever（2026-11-15 加入）：取其中 PROXY 部分
+        "https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf",
+        "https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf",
     ],
     "shield": [
         "https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module",
@@ -31,6 +34,11 @@ UPSTREAM_MODULE_SOURCES = {
         "https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module",
         "https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module",
         "https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list",
+        # johnshall Shadowrocket-ADBlock-Rules-Forever（2026-11-15 加入）：仅去广告
+        "https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf",
+        # yfamilys.com（2026-11-15 加入）：注意只能用模块直链，索引页 https://yfamilys.com/shadowrocket 是 HTML、同步不到规则
+        "https://yfamilys.com/module/AdBlock.module",
+        "https://yfamilys.com/module/adultraplus.module",
     ],
 }
 
@@ -133,16 +141,32 @@ def clean_mitm(module_content):
     module_content = module_content[:mitm_match.start()] + new_mitm + module_content[mitm_match.end():]
     return module_content
 
+def _normalize_rule_policy(line):
+    """把规则的策略字段统一转大写（Reject -> REJECT、Proxy -> PROXY），其余部分原样保留。
+    URL-REGEX 的正则里可能含逗号，策略取最后一个逗号后的字段。"""
+    if line.startswith('URL-REGEX,'):
+        body, sep, policy = line.rpartition(',')
+        if sep and policy.strip():
+            return body + ',' + policy.strip().upper()
+        return line
+    parts = line.split(',')
+    if len(parts) >= 3:
+        parts[2] = parts[2].strip().upper()
+        return ','.join(parts)
+    return line
+
 def extract_rules(module_content, policy=None):
     rules = []
     for line in module_content.splitlines():
         line = line.strip()
         if line.startswith(('DOMAIN,', 'DOMAIN-SUFFIX,', 'DOMAIN-KEYWORD,', 'IP-CIDR,', 'IP-CIDR6,', 'USER-AGENT,', 'PROCESS-NAME,', 'URL-REGEX,')):
             if policy is None:
-                rules.append(line)
+                rules.append(_normalize_rule_policy(line))
             else:
-                if line.endswith(',' + policy) or (policy + ',') in line:
-                    rules.append(line)
+                # 策略按大小写不敏感匹配（如 johnshall 的 Reject / Proxy），抽出后统一转大写
+                upper = line.upper()
+                if upper.endswith(',' + policy) or (policy + ',') in upper:
+                    rules.append(_normalize_rule_policy(line))
     return rules
 
 def extract_url_rewrite(module_content):
@@ -371,6 +395,81 @@ def quality_check_rules(rules, label="rules"):
         seen.add(rule)
         valid.append(rule)
     return valid, invalid, invalid_details
+
+def deduplicate_rules(rules, label="规则"):
+    """查重去重：同一域名、同一策略，只保留一条。
+    处理三类重复（域名统一按小写比较）：
+    1. 同类型、同域名、同策略的重复行（大小写不同也算重复）；
+    2. DOMAIN 被同域名、同策略的 DOMAIN-SUFFIX 覆盖；
+    3. 子域名规则被同策略的父级 DOMAIN-SUFFIX 覆盖。
+    跨策略的绝不删除（那是冲突，留给冲突检测报告）。
+    只处理 DOMAIN / DOMAIN-SUFFIX；DOMAIN-KEYWORD、IP-CIDR 等原样保留。
+    返回 (去重后列表, 被删列表[(rule, 原因)])。"""
+    suffix_index = set()
+    parsed = []
+    for rule in rules:
+        parts = rule.split(',')
+        if len(parts) < 3:
+            parsed.append((rule, None, None, None))
+            continue
+        rtype = parts[0].strip().upper()
+        domain = parts[1].strip().lower()
+        policy = parts[2].strip().upper()
+        if rtype == 'DOMAIN-SUFFIX':
+            suffix_index.add((domain, policy))
+        parsed.append((rule, rtype, domain, policy))
+
+    def find_parent_suffix(domain, policy):
+        labels = domain.split('.')
+        for i in range(1, len(labels)):
+            parent = '.'.join(labels[i:])
+            if (parent, policy) in suffix_index:
+                return parent
+        return None
+
+    seen_exact = set()
+    deduped = []
+    removed = []
+    for rule, rtype, domain, policy in parsed:
+        if rtype not in ('DOMAIN', 'DOMAIN-SUFFIX'):
+            deduped.append(rule)
+            continue
+        key = (rtype, domain, policy)
+        if key in seen_exact:
+            removed.append((rule, "同类型同域名同策略重复"))
+            continue
+        seen_exact.add(key)
+        if rtype == 'DOMAIN':
+            if (domain, policy) in suffix_index:
+                removed.append((rule, f"被同策略 DOMAIN-SUFFIX,{domain} 覆盖"))
+                continue
+            parent = find_parent_suffix(domain, policy)
+            if parent:
+                removed.append((rule, f"被同策略父级 DOMAIN-SUFFIX,{parent} 覆盖"))
+                continue
+        else:
+            parent = find_parent_suffix(domain, policy)
+            if parent:
+                removed.append((rule, f"被同策略父级 DOMAIN-SUFFIX,{parent} 覆盖"))
+                continue
+        deduped.append(rule)
+    return deduped, removed
+
+def append_dedup_log(log_lines, removed, label):
+    """把去重结果写入日志（只列前 20 条样例，避免日志爆炸）。"""
+    if not removed:
+        return
+    log_lines.append(f"### 🧹 {label}去重删除（共 {len(removed)} 条）\n")
+    log_lines.append("**处理动作**：同一域名、同一策略的重复规则已删除，只保留一条；跨策略的不删。\n")
+    log_lines.append("<details>")
+    log_lines.append("<summary>展开查看去重样例（前 20 条）</summary>\n")
+    log_lines.append("```")
+    for rule, reason in removed[:20]:
+        log_lines.append(f"- {rule}  （{reason}）")
+    if len(removed) > 20:
+        log_lines.append(f"... 另有 {len(removed) - 20} 条未列出")
+    log_lines.append("```")
+    log_lines.append("</details>\n")
 
 def test_rule_hit(domain, rules):
     domain = domain.lower()
@@ -710,14 +809,17 @@ def generate_change_report(current_date, log_lines, direct_stats, proxy_stats, r
     report.append(f"- 原有规则数：{direct_stats.get('original', 0)}")
     report.append(f"- 新增规则数：{direct_stats.get('added', 0)}")
     report.append(f"- 过滤海外规则：{direct_stats.get('filtered', 0)}")
+    report.append(f"- 去重删除：{direct_stats.get('deduped', 0)}")
     report.append(f"- 最终规则数：{direct_stats.get('final', 0)}\n")
     report.append("## 代理模块\n")
     report.append(f"- 原有规则数：{proxy_stats.get('original', 0)}")
     report.append(f"- 新增规则数：{proxy_stats.get('added', 0)}")
+    report.append(f"- 去重删除：{proxy_stats.get('deduped', 0)}")
     report.append(f"- 最终规则数：{proxy_stats.get('final', 0)}\n")
     report.append("## 去广告模块\n")
     report.append(f"- 原有规则数：{reject_stats.get('original', 0)}")
     report.append(f"- 新增规则数：{reject_stats.get('added', 0)}")
+    report.append(f"- 去重删除：{reject_stats.get('deduped', 0)}")
     report.append(f"- 最终规则数：{reject_stats.get('final', 0)}\n")
     report.append("## 规则冲突检测\n")
     if conflicts:
@@ -1135,6 +1237,8 @@ def main():
         valid_direct, invalid_direct, invalid_direct_details = quality_check_rules(filtered_rules, "直连规则")
         all_quality_issues.extend([(rule, reason) for rule, reason in invalid_direct_details])
 
+        valid_direct, dedup_direct = deduplicate_rules(valid_direct, "直连规则")
+
         direct_conflicts = detect_rule_conflicts(valid_direct)
         direct_parent_child = detect_parent_child_conflicts(valid_direct)
         all_conflicts.extend(direct_conflicts)
@@ -1147,6 +1251,7 @@ def main():
             'original': len(original_direct_rules),
             'added': len(added_direct_rules),
             'filtered': filtered_out,
+            'deduped': len(dedup_direct),
             'final': len(sorted_direct_rules)
         }
 
@@ -1171,6 +1276,8 @@ def main():
                 log_lines.append(f"- {rule}  (原因: {reason})")
             log_lines.append("```")
             log_lines.append("</details>\n")
+
+        append_dedup_log(log_lines, dedup_direct, "直连规则")
 
         if direct_conflicts:
             log_lines.append(f"### ⚠️ 直连模块同域名策略冲突（共 {len(direct_conflicts)} 组）\n")
@@ -1347,6 +1454,9 @@ def main():
     all_quality_issues.extend([(rule, reason) for rule, reason in invalid_proxy_details])
     all_quality_issues.extend([(rule, reason) for rule, reason in invalid_reject_details])
 
+    valid_proxy, dedup_proxy = deduplicate_rules(valid_proxy, "代理规则")
+    valid_reject, dedup_reject = deduplicate_rules(valid_reject, "去广告规则")
+
     proxy_conflicts = detect_rule_conflicts(valid_proxy)
     reject_conflicts = detect_rule_conflicts(valid_reject)
     proxy_parent_child = detect_parent_child_conflicts(valid_proxy)
@@ -1365,11 +1475,13 @@ def main():
     proxy_stats = {
         'original': len(original_proxy_rules),
         'added': len(added_proxy_rules),
+        'deduped': len(dedup_proxy),
         'final': len(sorted_proxy_rules)
     }
     reject_stats = {
         'original': len(original_reject_rules),
         'added': len(added_reject_rules),
+        'deduped': len(dedup_reject),
         'final': len(sorted_reject_rules)
     }
 
@@ -1394,6 +1506,9 @@ def main():
             log_lines.append(f"- {rule}  (原因: {reason})")
         log_lines.append("```")
         log_lines.append("</details>\n")
+
+    append_dedup_log(log_lines, dedup_proxy, "代理规则")
+    append_dedup_log(log_lines, dedup_reject, "去广告规则")
 
     if proxy_conflicts or reject_conflicts:
         total_conflicts = len(proxy_conflicts) + len(reject_conflicts)
