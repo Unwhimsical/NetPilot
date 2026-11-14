@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：27552
+# 条目数：27553
 host, 1password.drift.click, proxy
 host, 3dns-1.adobe.com, proxy
 host, 3dns-2.adobe.com, proxy
@@ -1195,6 +1195,7 @@ host-suffix, 51lieqi.com, proxy
 host-suffix, 51luoben.com, proxy
 host-suffix, 51luoli.info, proxy
 host-suffix, 51mh.app, proxy
+host-suffix, 51papaya.com, proxy
 host-suffix, 51pincha.cc, proxy
 host-suffix, 51tuqiang.com, proxy
 host-suffix, 520aa.tv, proxy
