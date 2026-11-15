@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111358
+# 条目数：111359
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -10335,6 +10335,7 @@ host-suffix, adpchina.com, direct
 host-suffix, adpfm513.com, direct
 host-suffix, adplusx.com, direct
 host-suffix, adpsh.com, direct
+host-suffix, adqiyu.com, direct
 host-suffix, adqtt.net, direct
 host-suffix, adquan.com, direct
 host-suffix, adrkwai.com, direct

@@ -1,5 +1,5 @@
 #!name=NetPilot Direct
-#!desc=直连规则总数: 111361
+#!desc=直连规则总数: 111362
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成（Surge 合规版），源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -10338,6 +10338,7 @@ DOMAIN-SUFFIX,adpchina.com,DIRECT
 DOMAIN-SUFFIX,adpfm513.com,DIRECT
 DOMAIN-SUFFIX,adplusx.com,DIRECT
 DOMAIN-SUFFIX,adpsh.com,DIRECT
+DOMAIN-SUFFIX,adqiyu.com,DIRECT
 DOMAIN-SUFFIX,adqtt.net,DIRECT
 DOMAIN-SUFFIX,adquan.com,DIRECT
 DOMAIN-SUFFIX,adrkwai.com,DIRECT
