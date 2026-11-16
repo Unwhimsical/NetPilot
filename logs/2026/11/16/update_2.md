@@ -1,0 +1,2402 @@
+# 更新日志 2026-11-16
+
+**运行时间**: 2026-11-16 20:24:50 北京时间
+
+---
+
+## 直连模块
+
+### 🔍 过滤海外/强制代理直连规则（共 949 条）
+
+**原因**：规则域名匹配海外黑名单关键词，或属于强制代理域名（如定位模块）。
+
+<details>
+<summary>展开查看被过滤规则及命中关键词</summary>
+
+```
+- DOMAIN-SUFFIX,awsdns-cn-18.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,flashmemoryworld.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,railwaybill.com,DIRECT  (命中: railway)
+- DOMAIN-SUFFIX,hmltec.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,czhmjx.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flymeyun.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hnlshm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ntrailway.com,DIRECT  (命中: railway)
+- DOMAIN-SUFFIX,awsdns-cn-48.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,aliexpress-media.com,DIRECT  (命中: aliexpress)
+- DOMAIN-SUFFIX,tlhmhd.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,yingyecraft.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,hmgreat.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmog.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudflarestoragegw.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,htyhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,esdhm.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-60.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,yhchmo.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,xn--y8jhmm6gn.moe,DIRECT  (命中: hm)
+- DOMAIN,dl.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,szhmjp.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-62.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmmachine.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whmnls.com,DIRECT  (命中: hm)
+- DOMAIN,storecorefulfillment.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-04.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,iflyrec.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-20.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,fulinpm.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,azureflame.cloud,DIRECT  (命中: azure)
+- DOMAIN-SUFFIX,gxlzhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,qihangcrrc.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,awsdns-cn-61.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,download.visualstudio.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hwrecruit.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,zbwhmedia.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whichmba.net,DIRECT  (命中: hm)
+- DOMAIN,gs-loc.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN,tac.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,iflytek.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hm-optics.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,acrel-znyf.com,DIRECT  (命中: acr)
+- DOMAIN,mpnbenefits.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hnsyhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmzgroup.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flyertea.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,shmockup.com,DIRECT  (命中: hm)
+- DOMAIN,googleflights-cn.net,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,9125flying.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,athmapp.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-52.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,itgemini.net,DIRECT  (命中: gemini)
+- DOMAIN-SUFFIX,toprender.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,aliexpress.ru,DIRECT  (命中: aliexpress)
+- DOMAIN-SUFFIX,jinshmgw.com,DIRECT  (命中: hm)
+- DOMAIN,lexuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,t-npm.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,tshmkj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,jhqshfly.com,DIRECT  (命中: fly)
+- DOMAIN,surface.downloads.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,firebase-settings.crashlytics.com,DIRECT  (命中: firebase)
+- DOMAIN-SUFFIX,protong.com,DIRECT  (命中: proton)
+- DOMAIN-SUFFIX,awsdns-cn-52.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,shmetro.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-51.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-39.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,azuretouch.net,DIRECT  (命中: azure)
+- DOMAIN-SUFFIX,mikeauth.com,DIRECT  (命中: ikea)
+- DOMAIN,g2.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,chinacrankshaft.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,osrelease.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,i-firefly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,renderincloud.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,iflysec.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,51render.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,vultrvps.com,DIRECT  (命中: vultr)
+- DOMAIN-SUFFIX,jyhmz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-41.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmx-led.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,dockerinfo.net,DIRECT  (命中: docker)
+- DOMAIN-SUFFIX,wishetin.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,whoami.akamai.net,DIRECT  (命中: akamai)
+- DOMAIN-SUFFIX,vecrp.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,hm5988.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-20.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmyzs.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awstar.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,shmengzhong.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hyahm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,thwgetsy.com,DIRECT  (命中: etsy)
+- DOMAIN-SUFFIX,thmall.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,gx-hm.com,DIRECT  (命中: hm)
+- DOMAIN,cache-management-prod.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,smogfly.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,smogfly.cloud,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,megawords.cc,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,dmhmusic.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,googleppy.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,3richman.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudflarestaging.com,DIRECT  (命中: cloudflare)
+- DOMAIN,azuremigrate.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,developer.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,sphmc.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-54.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,mrwish.net,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,awsdns-cn-07.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,protontechcn.com,DIRECT  (命中: proton)
+- DOMAIN-SUFFIX,awsdns-cn-28.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-18.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,bwfhmall.com,DIRECT  (命中: hm)
+- DOMAIN,surface.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-11.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,dreamsparkuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-33.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-56.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,renderbus.com,DIRECT  (命中: render)
+- DOMAIN,checkin.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN,ssl.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,qualcomm.cn.cdn.cloudflare.net,DIRECT  (命中: cloudflare)
+- DOMAIN,redirector.c.pack.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,mbs.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,iflydatahub.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,phmacn.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,acrel-eem.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,flyme.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,chinacraa.org,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,aliexpress.com,DIRECT  (命中: aliexpress)
+- DOMAIN-SUFFIX,haitianpm.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,zhmu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,gshmhotels.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,gxhhmed.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudflarecn.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,cloudflareip.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,fhmv.com,DIRECT  (命中: hm)
+- DOMAIN,g3.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,whmj.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,meiji-icecream.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,awsdns-cn-63.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-37.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,flysand.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,touchmark.art,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,2google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsdns-cn-44.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hbysfhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,oemsoc.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,fly3949.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,ghsmpwalmart.com,DIRECT  (命中: walmart)
+- DOMAIN-SUFFIX,thmzedu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-51.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,arefly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-35.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-14.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,mysecrettop.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,whmc2005.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,minecraftxz.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,flyingeffect.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,chinacreator.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-24.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,zxhmjj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flyai.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,haofly.net,DIRECT  (命中: fly)
+- DOMAIN,update.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,zhinikefu.com,DIRECT  (命中: nike)
+- DOMAIN-SUFFIX,shmhtv.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmusic.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hf-iflysse.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,seaflysoft.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,vultrcn.com,DIRECT  (命中: vultr)
+- DOMAIN-SUFFIX,collaborateppe.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,fly998.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,neihanfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,storeedge.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,cthhmu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-46.net,DIRECT  (命中: aws)
+- DOMAIN,windbg.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,flyadx.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,gxhmba.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,targetportion.com,DIRECT  (命中: target)
+- DOMAIN-SUFFIX,cheetahmobile.com,DIRECT  (命中: hm)
+- DOMAIN,collaborateppe.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,lzghmy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-26.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,ylxhmy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hicnhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,sdhmjt.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,yhm11.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,inflyway.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,fhmooc.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,1fly.fun,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,elongstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,jhm2012.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmusicschool.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-17.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-05.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,flyhand.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-47.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gemini-galaxy.com,DIRECT  (命中: gemini)
+- DOMAIN-SUFFIX,shms-expo.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,24hmb.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmama.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudflareanycast.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,acroview.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,hfhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmaur.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,scratchmirror.net,DIRECT  (命中: hm)
+- DOMAIN,storeedgefd.dsx.mp.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-38.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hm163.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,feidacrusher.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,sxhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hyundai-chhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,npmtrend.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,telegramtoke.com,DIRECT  (命中: telegram)
+- DOMAIN-SUFFIX,hmoe.link,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,withmedia.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,chnrailway.com,DIRECT  (命中: railway)
+- DOMAIN,osrelease.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,download.visualstudio.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,jdhmediajd.com,DIRECT  (命中: hm)
+- DOMAIN,cbdstest.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,jxhmxxjs.com,DIRECT  (命中: hm)
+- DOMAIN,cdn.globalsigncdn.com.cdn.cloudflare.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,edrawsoft.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,vscode.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,megajoy.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,awsdns-cn-60.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,d5render.com,DIRECT  (命中: render)
+- DOMAIN,fontfiles.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,akamai.com,DIRECT  (命中: akamai)
+- DOMAIN-SUFFIX,wishisp.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,1818hm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,iflyread.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,wish-hightech.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,shmondial.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flymobi.biz,DIRECT  (命中: fly)
+- DOMAIN,mpnbenefitsrtl.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hm588.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmtu.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,chihm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsonamazon.com,DIRECT  (命中: amazon)
+- DOMAIN-SUFFIX,iflying.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,ideacreated.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,myhm.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ecrrc.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,jiansujihm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,software.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hm120.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-21.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-56.biz,DIRECT  (命中: aws)
+- DOMAIN,azuremigratetest.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,yjdatasos.com,DIRECT  (命中: asos)
+- DOMAIN-SUFFIX,whmlcy.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,zhmf.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmrsrc.com,DIRECT  (命中: hm)
+- DOMAIN,azurestackhubuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,cloudflareperf.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,hmgbtv.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmarathon.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-59.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-34.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hkgcr.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,ghmba.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whmoocs.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,xn--nmqp78hmufjwu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hlhmf.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,chmgames.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,imags-google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,whmnx.com,DIRECT  (命中: hm)
+- DOMAIN,dg-meta.video.google.com,DIRECT  (命中: google)
+- DOMAIN,lex.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,gamegamept.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,awsdns-cn-62.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,iflyhealth.com,DIRECT  (命中: fly)
+- DOMAIN,googlesyndication-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,zzfly.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-00.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,shlawserve.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,grender.com,DIRECT  (命中: render)
+- URL-REGEX,"^https?:\/\/.+\.awsdns-cn-[0-9][a-e0-9]\.cn.*$",DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,facebooksx.com,DIRECT  (命中: facebook)
+- DOMAIN-SUFFIX,fireflyacg.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-09.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,xn--vhqqbz2p62hm92e04p.com,DIRECT  (命中: hm)
+- DOMAIN,seed.siri.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,qdhmsoft.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,googlevoice.org,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,ghmd448.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,azureyun.com,DIRECT  (命中: azure)
+- DOMAIN-SUFFIX,tecreal.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,weflywifi.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,edgeone-browser-rendering-dev.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,githubshare.com,DIRECT  (命中: github)
+- DOMAIN-SUFFIX,azurestackhubuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,4hmodel.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,machmall.com,DIRECT  (命中: hm)
+- DOMAIN,download.tensorflow.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsamazonlab.com,DIRECT  (命中: amazon)
+- DOMAIN,googlevads-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,thmins.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,wecrm.net,DIRECT  (命中: ecr)
+- DOMAIN,google-analytics.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,xahmqy.com,DIRECT  (命中: hm)
+- DOMAIN,googletraveladservices.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,beijing-hmo.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,scratchmirror.com,DIRECT  (命中: hm)
+- DOMAIN,g0.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,myvs.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,msproduct.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-37.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gdsunfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,glflyy.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,whmylike.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,nnhmcj.com,DIRECT  (命中: hm)
+- DOMAIN,googletraveladservices-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,secretflow.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,forcecreat.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,azurestackhub.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-vip.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,glhmmr.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,acloudrender.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,chmc.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,chinaacryl.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,azuremigrate.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awspaas.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-15.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-58.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,aliexpress.us,DIRECT  (命中: aliexpress)
+- DOMAIN-SUFFIX,ceolaws.net,DIRECT  (命中: aws)
+- DOMAIN,officemkt.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,englishmasterclub.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmrczp.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,iflynote.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-31.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,fly84.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-00.net,DIRECT  (命中: aws)
+- DOMAIN,msdn.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-60.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gemini530.net,DIRECT  (命中: gemini)
+- DOMAIN-SUFFIX,hmtrhf.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,iwishwed.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,hmhpay.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ncjrailway.com,DIRECT  (命中: railway)
+- DOMAIN-SUFFIX,wish3d.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,awsdns-cn-20.com,DIRECT  (命中: aws)
+- DOMAIN,download.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,flytexpress.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,nike666.com,DIRECT  (命中: nike)
+- DOMAIN-SUFFIX,thmovie.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ddwhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudhvacr.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-02.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-40.biz,DIRECT  (命中: aws)
+- DOMAIN,sdx.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-28.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gdhmgc.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmjc.org,DIRECT  (命中: hm)
+- DOMAIN,www-google-analytics.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,oneflys.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hbhm.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,bjhmyq.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,drugoogle.com,DIRECT  (命中: google)
+- DOMAIN,www.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,whminwei.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,zhmold.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cdnhwcohm19.com,DIRECT  (命中: hm)
+- DOMAIN,connectivitycheck.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,elecrystal.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,flyenglish.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,macrosan.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,dcg.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-48.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,cloudflare-cn.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,whmxrj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,imgs.ovh,DIRECT  (命中: ovh)
+- DOMAIN-SUFFIX,bghmj.com,DIRECT  (命中: hm)
+- DOMAIN,imasdk.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,lhmp.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cloudflare.fun,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,wbecrisfro.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,ghmcchina.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,rsm.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,secrui.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,bulbsquare.com,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,nhmuni.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whmzkf.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,tinsecret.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,yzhmyy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,welchmat.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,kphm88.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,asosoaiid.com,DIRECT  (命中: asos)
+- DOMAIN-SUFFIX,awsdns-cn-03.biz,DIRECT  (命中: aws)
+- DOMAIN,volic.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,oemssl.cn.cdn.cloudflare.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,storecorefulfillment.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hifly.tv,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,sectigochina.com.cdn.cloudflare.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,daiwofly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hifly.mobi,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,smogflycloud.net,DIRECT  (命中: fly)
+- DOMAIN,azurestackhub.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,yfldocker.com,DIRECT  (命中: docker)
+- DOMAIN-SUFFIX,awsdns-cn-10.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,ucfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,jshmrcb.com,DIRECT  (命中: hm)
+- DOMAIN,fonts.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN,msdprod-ad.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hnpm.cc,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,nnpml.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,itacademyuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-19.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,originalkindergarten.com,DIRECT  (命中: kinde)
+- DOMAIN,dreamspark.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,bjhmcm.com,DIRECT  (命中: hm)
+- DOMAIN,msproduct.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hbhml.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,chinaflashmarket.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-01.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmplay.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whhmmbl.com,DIRECT  (命中: hm)
+- DOMAIN,vscode.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-45.net,DIRECT  (命中: aws)
+- DOMAIN,mpnbenefitsrtluat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,shhmu.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,sharjahmadrasa.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,testshm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hfly.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,ovhlb.net,DIRECT  (命中: ovh)
+- DOMAIN-SUFFIX,qeoagphm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,macrozheng.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,ctrender.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,zhmodaoli.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ecr-global.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,wecrm.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,whmvc.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmfxw.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,secretgardenresorts.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,oecr.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,thmz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,orasos.com,DIRECT  (命中: asos)
+- DOMAIN-SUFFIX,bzmhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-24.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-43.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,pihmh.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmkp.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,youtube-dubbing.com,DIRECT  (命中: youtube)
+- DOMAIN-SUFFIX,c-thme.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmarathon.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,3zhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmzhtc.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,honchmedia.com,DIRECT  (命中: hm)
+- DOMAIN,adservice.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hearfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-11.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,cn-railway.net,DIRECT  (命中: railway)
+- DOMAIN-SUFFIX,oktamall.com,DIRECT  (命中: okta)
+- DOMAIN-SUFFIX,officemktuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,cnflyinghorse.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,aftersale-amazon.com,DIRECT  (命中: amazon)
+- DOMAIN-SUFFIX,ztrhmall.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,megarobo.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,iflyink.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,cacre.org,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,hm16888.net,DIRECT  (命中: hm)
+- DOMAIN,collaborate.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,bebhmongb.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,qjhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,webclose-whatsapp.com,DIRECT  (命中: whatsapp)
+- DOMAIN-SUFFIX,awsdns-cn-50.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,sun-wish.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,machenike.com,DIRECT  (命中: nike)
+- DOMAIN-SUFFIX,chinacrane.net,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,sunnyfly.com,DIRECT  (命中: fly)
+- DOMAIN,googleoptimize.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmxx.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,surface-microsoftstore.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,chinamaven.com,DIRECT  (命中: maven)
+- DOMAIN-SUFFIX,qhmsg.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,zztfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-35.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-02.biz,DIRECT  (命中: aws)
+- URL-REGEX,"^https?:\/\/.+\.awsdns-cn-[0-9][0-9]\.(biz|com|net|top).*$",DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,wodecrowd.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,sdx.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hmedu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,sdhmkj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-25.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,applysquare.com,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,cnpmjs.org,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,bixuecrm.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,dragonfly.fun,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,lgstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,lex.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,shmengyang.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hm025.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-52.biz,DIRECT  (命中: aws)
+- DOMAIN,googleadservices.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,flytcloud.com,DIRECT  (命中: fly)
+- DOMAIN,gs-loc-cn.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,shmhzp.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-53.com,DIRECT  (命中: aws)
+- DOMAIN,cache.pack.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,yindo-ohm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,abcdocker.com,DIRECT  (命中: docker)
+- DOMAIN-SUFFIX,awsdns-cn-50.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,fly-exp.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,lexuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,e-flyinc.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmtgo.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,officebay.net,DIRECT  (命中: ebay)
+- DOMAIN-SUFFIX,oemsocuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,itacademy.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,51google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmly666.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cproton.com,DIRECT  (命中: proton)
+- DOMAIN-SUFFIX,fishflying.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,shmbjy.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,syfly007.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,flylinking.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,chinacrops.org,DIRECT  (命中: acr)
+- DOMAIN,seed-sequoia.siri.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,ggshmy.com,DIRECT  (命中: hm)
+- DOMAIN,redirector.c.play.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,flymopaper.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,fishmobi.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,jinshasitemuseum.com,DIRECT  (命中: temu)
+- DOMAIN-SUFFIX,awsdns-cn-55.com,DIRECT  (命中: aws)
+- DOMAIN,googleanalytics.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hhmajiang.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-14.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,chinawssdxh.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,openailab.com,DIRECT  (命中: openai)
+- DOMAIN-SUFFIX,ifireflygame.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmxixie.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hm-3223.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,githubim.com,DIRECT  (命中: github)
+- DOMAIN-SUFFIX,chinahvacr.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,asosde.com,DIRECT  (命中: asos)
+- DOMAIN-SUFFIX,awsdns-cn-62.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-16.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,whmeigao.com,DIRECT  (命中: hm)
+- DOMAIN,mbs.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,macrosilicon.com,DIRECT  (命中: acr)
+- DOMAIN,google-analytics-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,shtimessquare.com,DIRECT  (命中: square)
+- DOMAIN,rsm.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,citichmc.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flygo.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,elitecrm.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,applysquare.net,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,digcredit.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,haiqianghm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,openai.wf,DIRECT  (命中: openai)
+- DOMAIN-SUFFIX,mightsquare.com,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,whmdedu.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-49.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-33.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,chmecc.org,DIRECT  (命中: hm)
+- DOMAIN,googleapis-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,dhmsnyy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,collaborate.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-09.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,qixingcr.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,eflybird.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,3hmlg.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,oacrm.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-41.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,szhmkeji.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,wishdown.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,awsdns-cn-45.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,azure.cc,DIRECT  (命中: azure)
+- DOMAIN-SUFFIX,moonfly.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,whmnrc.com,DIRECT  (命中: hm)
+- DOMAIN,ssl-google-analytics.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hhmage.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,officemkt.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-48.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmqg.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-17.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,edgeone-browser-rendering.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,awsdns-cn-05.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-06.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-07.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,fly160.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hminvestment.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-42.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,kindechem.com,DIRECT  (命中: kinde)
+- DOMAIN-SUFFIX,fly139.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,macrounion.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-23.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,xhmedia.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,wishtec.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,awsdns-cn-16.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,zchmh.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hlnpm.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,ttfly.com,DIRECT  (命中: fly)
+- DOMAIN,qpx.googleflights.net,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsdns-cn-12.biz,DIRECT  (命中: aws)
+- URL-REGEX,"^https?:\/\/.+-mihayo\.akamaized\.net.*$",DIRECT  (命中: akamai)
+- DOMAIN-SUFFIX,bbgstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,windbg.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,ugdocker.link,DIRECT  (命中: docker)
+- DOMAIN-SUFFIX,rohm-chip.com,DIRECT  (命中: hm)
+- DOMAIN,crashlyticsreports-pa.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,gyhm.cc,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ahmif.com,DIRECT  (命中: hm)
+- DOMAIN,redirector.c.chat.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,iflyadx.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,lawsdata.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,fly1999.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-46.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,chinacrt.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,dylyghm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,smogfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,zhmzqi.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,googleyixia.com,DIRECT  (命中: google)
+- DOMAIN,clientservices.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmting.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,njnaws.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,bfhmj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,google-hub.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmwzjs.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,megasig.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,aflytec.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,dreamspark.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-58.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,flydigi.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,flyingpigeon1936.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,volcecr.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,gogofly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmchina.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-47.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,msdn.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,azureflying.com,DIRECT  (命中: azure)
+- DOMAIN,googleadservices-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,dockerone.com,DIRECT  (命中: docker)
+- DOMAIN-SUFFIX,awsdns-cn-63.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,qmacro.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,qhm123.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,fingerflyapp.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,openai-hub.com,DIRECT  (命中: openai)
+- DOMAIN-SUFFIX,iflytoy.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,gacrnd.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-06.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,zhmag.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,tokenrhythm.studio,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,happypingpang.com,DIRECT  (命中: pypi)
+- DOMAIN-SUFFIX,awsdns-cn-12.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,chatgptboke.com,DIRECT  (命中: chatgpt)
+- DOMAIN-SUFFIX,cuahmap.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmszkj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,unpmcc.com,DIRECT  (命中: npm)
+- DOMAIN,googletagmanager-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,flyml.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,chinaws.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,iflydocs.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,flyfishx.com,DIRECT  (命中: fly)
+- DOMAIN,googleapps-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsdns-cn-25.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,rcolab.com,DIRECT  (命中: colab)
+- DOMAIN-SUFFIX,zgxhm.com,DIRECT  (命中: hm)
+- DOMAIN,vz.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,mysecretrainbow.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,awsdns-cn-55.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,omegatravel.net,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,awsdns-cn-41.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmsemi.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,acrel-microgrid.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,zjgcreative.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,hmeili.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,szpowerfly.com,DIRECT  (命中: fly)
+- DOMAIN,itacademy.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,probe.siri.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,awsdns-cn-01.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,azure-wave.com,DIRECT  (命中: azure)
+- DOMAIN,c.android.clients.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,chmed.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmtnew.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,lzbhmy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,wishcad.com,DIRECT  (命中: wish)
+- DOMAIN,googlesyndication.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsdns-cn-40.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,shmljm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,azuremigratetest.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,sheinet.com,DIRECT  (命中: shein)
+- DOMAIN-SUFFIX,awsdns-cn-63.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,lzhmmr.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,bjhdhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,iflyaiedu.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,cqhma.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,whmama.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,xhma.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-37.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,square16.org,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,cdnchatgpt.com,DIRECT  (命中: chatgpt)
+- DOMAIN-SUFFIX,bjwhmedia.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,seersecret.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,sfecr.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,hellogitlab.com,DIRECT  (命中: gitlab)
+- DOMAIN,googleoptimize-cn.com,DIRECT  (命中: google)
+- DOMAIN,software.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,lhmj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-46.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,megahugo.net,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,flyneutron.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-54.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,mpnbenefitsrtl.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hbhmxx.com,DIRECT  (命中: hm)
+- DOMAIN,performanceparameters.googleapis.com,DIRECT  (命中: google)
+- DOMAIN,googletagservices-cn.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,chmia.org,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,t-firefly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,iflygse.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-39.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,yz-proton.com,DIRECT  (命中: proton)
+- DOMAIN-SUFFIX,hefeilaws.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,njhmmr.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,likeaboat2023.com,DIRECT  (命中: ikea)
+- DOMAIN-SUFFIX,hm152n.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,macrowing.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,victoriassecretclearance.online,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,hmgj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-17.com,DIRECT  (命中: aws)
+- DOMAIN,pagead-googlehosted.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,facri.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,minecraftzw.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,smogfly.club,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,pkulaws.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,cbdstest.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,dhmeri.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cofly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-29.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,3hmedicalgroup.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,jxhmjx.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,ihmch.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,nikefans.com,DIRECT  (命中: nike)
+- DOMAIN-SUFFIX,iqhmh.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,zhmedcenter.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,mpnbenefitsrtluat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,techmoris.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-23.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hyundai-hmtc.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cqrailway.com,DIRECT  (命中: railway)
+- DOMAIN-SUFFIX,fly63.com,DIRECT  (命中: fly)
+- DOMAIN,time.amazonaws.cn,DIRECT  (命中: amazon)
+- DOMAIN-SUFFIX,cloudflareinsights-cn.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,thmnet.com,DIRECT  (命中: hm)
+- DOMAIN,seed-swallow.siri.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,iflyresearch.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,zgzhmz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-34.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gzhm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,brighticecream.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,shmfmr.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cyhm.com,DIRECT  (命中: hm)
+- DOMAIN,storeedge.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,iva-schmetz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,fhmion.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmaas.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,npmmirror.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,yytiflytek.com,DIRECT  (命中: fly)
+- DOMAIN,safebrowsing-cache.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmlan.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,acrossmetals.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,bshmzx.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-42.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,52kfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-21.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,ayhmjy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,southmoney.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,volic.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,techmiao.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmylike.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmz8.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-36.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,sdhmdp.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,xczhmzb.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmf-china.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,macroprocess.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,shmds.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,appsflyer-cn.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,algorithmart.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-07.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,iflytektstd.com,DIRECT  (命中: fly)
+- DOMAIN,googletagmanager.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,chiconysquare.com,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,flyfunny.com,DIRECT  (命中: fly)
+- DOMAIN,download.mlcc.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,awsdns-cn-27.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,smogflycloud.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmxw.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,aquayee.com,DIRECT  (命中: quay)
+- DOMAIN-SUFFIX,gzrecruit.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,hmj666.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmbzfjt.com,DIRECT  (命中: hm)
+- DOMAIN,guzzoni.apple.com,DIRECT  (命中: 强制代理域名)
+- DOMAIN-SUFFIX,megagamelog.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,xn--vhq4ut2dsxd5xqnicjxxo55a756aovhik0aunm.com,DIRECT  (命中: ovh)
+- DOMAIN-SUFFIX,awsdns-cn-45.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,xrender.com,DIRECT  (命中: render)
+- DOMAIN-SUFFIX,codeflying.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-58.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,luxtarget.com,DIRECT  (命中: target)
+- DOMAIN-SUFFIX,airtofly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,whmf8.com,DIRECT  (命中: hm)
+- DOMAIN,vlportal.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,simplecreator.net,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,awsdns-cn-44.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmnst.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,zhmxchina.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmlcar.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,secretmine.net,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,awsdns-cn-47.biz,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,ovhlb.com,DIRECT  (命中: ovh)
+- DOMAIN-SUFFIX,eflycloud.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,flypy.cc,DIRECT  (命中: fly)
+- DOMAIN,myvs.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,netsyq.com,DIRECT  (命中: etsy)
+- DOMAIN,g1.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN,googletagservices.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,hmus.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,cqs-hm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,vz.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,jhmnew.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,724pridecryogenics.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,flymeauto.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,lenovo.com.cdn.cloudflare.net,DIRECT  (命中: cloudflare)
+- DOMAIN,redirector.c.youtubeeducation.com,DIRECT  (命中: youtube)
+- DOMAIN-SUFFIX,zchmbx.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,znhhmedical.com,DIRECT  (命中: hm)
+- DOMAIN,gstaticadssl.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,mcohmygod.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,armfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-57.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,macrolake.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,awsdns-cn-27.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,itfly.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-09.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,tb-whatsapp.com,DIRECT  (命中: whatsapp)
+- DOMAIN-SUFFIX,awsdns-cn-36.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,gdlinefly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,ahmwgroup.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,vdfly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,cloudfront-cn.net,DIRECT  (命中: cloudfront)
+- DOMAIN-SUFFIX,hmwdj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shhmbio.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,qflyinc.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,googlebbs.net,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,lubanpm.com,DIRECT  (命中: npm)
+- DOMAIN-SUFFIX,flyme.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,cmacredit.org,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,megagenchina.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,megaemoji.com,DIRECT  (命中: mega)
+- DOMAIN-SUFFIX,ahmky.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,pmphmooc.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,nike.host,DIRECT  (命中: nike)
+- DOMAIN-SUFFIX,msdprod-ad.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,fawsoft.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,cloudflareglobal.net,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,jcodecraeer.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,shmet.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,secrss.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,gxhmdjt.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,officecdn.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,mikecrm.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,xhmwxy.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-59.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-44.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,chmti.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,qiantangcredit.com,DIRECT  (命中: gcr)
+- DOMAIN,redirector.c.mail.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,czxthmls.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,bjhmdkj.com,DIRECT  (命中: hm)
+- DOMAIN,www-googletagmanager.l.google.com,DIRECT  (命中: google)
+- DOMAIN,avail.googleflights.net,DIRECT  (命中: google)
+- DOMAIN,officemktuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,safebrowsing.googleapis.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,alltechmed.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flysheeep.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmqjsb.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,squarecn.com,DIRECT  (命中: square)
+- DOMAIN-SUFFIX,chmod0777kk.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,flymeos.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,awsdns-cn-22.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,macrr.com,DIRECT  (命中: acr)
+- DOMAIN,dl.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,zjecredit.org,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,02hm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-39.com,DIRECT  (命中: aws)
+- DOMAIN,dreamsparkuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,awsdns-cn-22.com,DIRECT  (命中: aws)
+- DOMAIN,images-cn-8.ssl-images-amazon.com,DIRECT  (命中: amazon)
+- DOMAIN-SUFFIX,awsdns-cn-36.biz,DIRECT  (命中: aws)
+- DOMAIN,wear.googleapis.com,DIRECT  (命中: google)
+- DOMAIN,pki-goog.l.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,likeacg.com,DIRECT  (命中: ikea)
+- DOMAIN-SUFFIX,cloudflareprod.com,DIRECT  (命中: cloudflare)
+- DOMAIN-SUFFIX,yunqifly.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,surface.downloads.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,hmadgz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,weighment.com,DIRECT  (命中: hm)
+- DOMAIN,oemsocuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,flyco.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,lzarays.com,DIRECT  (命中: zara)
+- DOMAIN-SUFFIX,shmds.vip,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,bmp.ovh,DIRECT  (命中: ovh)
+- DOMAIN,clickserver.googleads.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,iflyiot.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,hmzhtc.com,DIRECT  (命中: hm)
+- DOMAIN,itacademyuat.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN,csi.gstatic.com,DIRECT  (命中: gstatic.com)
+- DOMAIN-SUFFIX,awsdns-cn-40.net,DIRECT  (命中: aws)
+- DOMAIN,oemsoc.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,uuu.ovh,DIRECT  (命中: ovh)
+- DOMAIN-SUFFIX,91hmi.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,hmzixin.com,DIRECT  (命中: hm)
+- DOMAIN,tools.google.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,natywish.com,DIRECT  (命中: wish)
+- DOMAIN-SUFFIX,rushmail.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,surface.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- URL-REGEX,"^https?:\/\/r+[0-9]+(---|\.)sn-(2x3|ni5|j5o)\w{5}\.googlevideo\.com.*$",DIRECT  (命中: google)
+- DOMAIN,officecdn.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,whuznhmedj.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,mecru.com,DIRECT  (命中: ecr)
+- DOMAIN-SUFFIX,flycua.com,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,chinacrosspoint.com,DIRECT  (命中: acr)
+- DOMAIN-SUFFIX,googlenav.com,DIRECT  (命中: google)
+- DOMAIN-SUFFIX,qzynhhmm.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awspony.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hzhm888.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,shmedia.tech,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,mpnbenefits.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,xawscu.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,magentochina.org,DIRECT  (命中: magento)
+- DOMAIN-SUFFIX,rainbutterfly.xyz,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,microsoftuwp.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,ylhmgz.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-55.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,awsdns-cn-24.com,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,hmzs.net,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,awsdns-cn-19.net,DIRECT  (命中: aws)
+- DOMAIN-SUFFIX,vlportal.download.prss.microsoft.com,DIRECT  (命中: microsoft)
+- DOMAIN-SUFFIX,whhmgroup.com,DIRECT  (命中: hm)
+- DOMAIN-SUFFIX,lnwish.com,DIRECT  (命中: wish)
+- DOMAIN,images-cn.ssl-images-amazon.com,DIRECT  (命中: amazon)
+- DOMAIN-SUFFIX,flygon.net,DIRECT  (命中: fly)
+- DOMAIN-SUFFIX,dagongcredit.com,DIRECT  (命中: gcr)
+- DOMAIN-SUFFIX,squarefong.com,DIRECT  (命中: square)
+```
+</details>
+
+### 🧹 直连规则去重删除（共 266 条）
+
+**处理动作**：同一域名、同一策略的重复规则已删除，只保留一条；跨策略的不删。
+
+<details>
+<summary>展开查看去重样例（前 20 条）</summary>
+
+```
+- DOMAIN,ntp7.aliyun.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,aliyun.com 覆盖）
+- DOMAIN,amp-api-edge.apps.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,drivers.amd.com,DIRECT  （被同策略 DOMAIN-SUFFIX,drivers.amd.com 覆盖）
+- DOMAIN,clientflow.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,ntp.aliyun.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,aliyun.com 覆盖）
+- DOMAIN,radio.itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,cma.itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,ntp5.tencent.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,tencent.com 覆盖）
+- DOMAIN,s16.upd.kaspersky.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,upd.kaspersky.com 覆盖）
+- DOMAIN,sp.itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,configuration.ls.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,p15.upd.kaspersky.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,upd.kaspersky.com 覆盖）
+- DOMAIN,s18.upd.kaspersky.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,upd.kaspersky.com 覆盖）
+- DOMAIN,streamingaudio.itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,osxapps.itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,amp-api.music.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,sh-pod1-smp-device.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,itunes.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,discussionschinese.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+- DOMAIN,store.apple.com,DIRECT  （被同策略父级 DOMAIN-SUFFIX,apple.com 覆盖）
+... 另有 246 条未列出
+```
+</details>
+
+### 上游源状态
+
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module
+
+**原有规则数**: 111362
+**新增规则数**: 0
+**更新后总数**: 111362
+
+🩺 直连模块: 健康检查通过（111362 条规则，3.6 MB）
+
+✅ 直连模块已写入，共 111362 条规则
+
+## 代理分流模块
+
+### 🛡️ 白名单豁免（代理规则，共 30 条）
+
+**原因**：这些域名在 `direct_whitelist.txt` 中，已从代理规则中移除，确保走直连。
+
+<details>
+<summary>展开查看被豁免的代理规则（30 条）</summary>
+
+
+- `DOMAIN,copilot-telemetry-service.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN,nix-community.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,hls.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN,copilot-proxy.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN,np-edge.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,snssdk.com,PROXY`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,ru.ccb.com,PROXY`
+  - 匹配白名单：`ccb.com`
+  - 用途：中国建设银行
+- `DOMAIN,play-edge.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,githubassets.com,PROXY`
+  - 匹配白名单：`githubassets.com`
+  - 用途：GitHub 静态资源（CSS、JS、头像等）
+- `DOMAIN,matsuridayo.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN-SUFFIX,githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN,bybit-exchange.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,hls-amt.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,bytegecko.com,PROXY`
+  - 匹配白名单：`bytegecko.com`
+  - 用途：字节跳动 CDN（网页资源）
+- `DOMAIN-SUFFIX,github.com,PROXY`
+  - 匹配白名单：`github.com`
+  - 用途：GitHub 主站
+- `DOMAIN-SUFFIX,mzstatic.com,PROXY`
+  - 匹配白名单：`mzstatic.com`
+  - 用途：苹果商店静态资源 CDN（截图、图标等）
+- `DOMAIN-SUFFIX,github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,copilot-telemetry.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN,throneproj.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,trojan-gfw.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,metacubex.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,xtls.github.io,PROXY`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN,uts-api.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,play.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,bag.itunes.apple.com,PROXY`
+  - 匹配白名单：`itunes.apple.com`
+  - 用途：iTunes/App Store 传统商店内容
+- `DOMAIN-SUFFIX,raw.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN-SUFFIX,gist.github.com,PROXY`
+  - 匹配白名单：`github.com`
+  - 用途：GitHub 主站
+- `DOMAIN-SUFFIX,avatars2.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN-SUFFIX,media.githubusercontent.com,PROXY`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN-SUFFIX,www.douyin.com,PROXY`
+  - 匹配白名单：`douyin.com`
+  - 用途：抖音主站
+
+</details>
+
+### 🛡️ 白名单豁免（去广告规则，共 31 条）
+
+**原因**：这些域名在 `direct_whitelist.txt` 中，已从去广告规则中移除，避免误拦截。
+
+<details>
+<summary>展开查看被豁免的去广告规则（31 条）</summary>
+
+
+- `DOMAIN,abtest-ch.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN,ads.95516.com,REJECT`
+  - 匹配白名单：`95516.com`
+  - 用途：银联客服
+- `DOMAIN,ads.cup.com.cn,REJECT`
+  - 匹配白名单：`cup.com.cn`
+  - 用途：银联
+- `DOMAIN,log.amemv.com,REJECT`
+  - 匹配白名单：`amemv.com`
+  - 用途：字节跳动短视频（抖音、火山等）
+- `DOMAIN,metrics.mzstatic.com,REJECT`
+  - 匹配白名单：`mzstatic.com`
+  - 用途：苹果商店静态资源 CDN（截图、图标等）
+- `DOMAIN,open.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN,p3-tt.byteimg.com,REJECT`
+  - 匹配白名单：`byteimg.com`
+  - 用途：字节跳动图片 CDN
+- `DOMAIN,tnc3-aliec2.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN,tnc3-alisc1.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN,tnc3-bjlgy.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,ads.cup.com.cn,REJECT`
+  - 匹配白名单：`cup.com.cn`
+  - 用途：银联
+- `DOMAIN-SUFFIX,adv.ccb.com,REJECT`
+  - 匹配白名单：`ccb.com`
+  - 用途：中国建设银行
+- `DOMAIN-SUFFIX,log.snssdk.com,REJECT-200`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,p3-ad-sign.byteimg.com,REJECT`
+  - 匹配白名单：`byteimg.com`
+  - 用途：字节跳动图片 CDN
+- `DOMAIN-SUFFIX,ib.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,log0-misc-hl.amemv.com,REJECT`
+  - 匹配白名单：`amemv.com`
+  - 用途：字节跳动短视频（抖音、火山等）
+- `DOMAIN-SUFFIX,mihoutao1868.github.io,REJECT`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN-SUFFIX,googleads.github.io,REJECT`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN-SUFFIX,dm.pstatp.com,REJECT`
+  - 匹配白名单：`pstatp.com`
+  - 用途：字节跳动基础域名（推荐、API 等）
+- `DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT`
+  - 匹配白名单：`mzstatic.com`
+  - 用途：苹果商店静态资源 CDN（截图、图标等）
+- `DOMAIN-SUFFIX,collector-cdn.github.com,REJECT`
+  - 匹配白名单：`github.com`
+  - 用途：GitHub 主站
+- `DOMAIN-SUFFIX,mon.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,log.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,log-hl.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,mcs.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,collector.github.com,REJECT`
+  - 匹配白名单：`github.com`
+  - 用途：GitHub 主站
+- `DOMAIN-SUFFIX,xlog.snssdk.com,REJECT`
+  - 匹配白名单：`snssdk.com`
+  - 用途：字节跳动基础域名（短视频、直播等）
+- `DOMAIN-SUFFIX,analytics.githubassets.com,REJECT`
+  - 匹配白名单：`githubassets.com`
+  - 用途：GitHub 静态资源（CSS、JS、头像等）
+- `DOMAIN-SUFFIX,copilot-telemetry.githubusercontent.com,REJECT`
+  - 匹配白名单：`githubusercontent.com`
+  - 用途：GitHub 用户内容（raw 文件、图片、附件等）
+- `DOMAIN-SUFFIX,devgottia.github.io,REJECT`
+  - 匹配白名单：`github.io`
+  - 用途：GitHub Pages 站点
+- `DOMAIN-SUFFIX,log.cmbchina.com,REJECT`
+  - 匹配白名单：`cmbchina.com`
+  - 用途：招商银行
+
+</details>
+
+### ❌ 代理规则质量检查异常（共 1 条）
+
+**处理动作**：异常规则已从最终模块中移除。
+
+<details>
+<summary>展开查看异常规则及原因</summary>
+
+```
+- DOMAIN-SUFFIX,OMAIN-SUFFIX,BING.NET,PROXY  (原因: 策略 'BING.NET' 不合法)
+```
+</details>
+
+### 🧹 代理规则去重删除（共 3059 条）
+
+**处理动作**：同一域名、同一策略的重复规则已删除，只保留一条；跨策略的不删。
+
+<details>
+<summary>展开查看去重样例（前 20 条）</summary>
+
+```
+- DOMAIN,bnetcmsus-a.akamaihd.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,akamaihd.net 覆盖）
+- DOMAIN,time3.facebook.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,facebook.com 覆盖）
+- DOMAIN,ereg.wip1.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,nurofensk-prod-env.eu-west-1.elasticbeanstalk.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,elasticbeanstalk.com 覆盖）
+- DOMAIN,wwis-dubc1-vip37.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,developers.facebook.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,facebook.com 覆盖）
+- DOMAIN,d3vd9lfkzbru3h.cloudfront.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,cloudfront.net 覆盖）
+- DOMAIN,wwis-dubc1-vip43.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,github-production-repository-file-5c1aeb.s3.amazonaws.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,amazonaws.com 覆盖）
+- DOMAIN,adobe-dns-3.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,wwis-dubc1-vip39.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,d2fg91fzjsrcv1.cloudfront.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,cloudfront.net 覆盖）
+- DOMAIN,scholar.google.dk,PROXY  （被同策略父级 DOMAIN-SUFFIX,google.dk 覆盖）
+- DOMAIN,d1k2us671qcoau.cloudfront.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,cloudfront.net 覆盖）
+- DOMAIN,time-a-b.nist.gov,PROXY  （被同策略父级 DOMAIN-SUFFIX,nist.gov 覆盖）
+- DOMAIN,wwis-dubc1-vip44.adobe.com,PROXY  （被同策略父级 DOMAIN-SUFFIX,adobe.com 覆盖）
+- DOMAIN,brightcove.imgix.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,imgix.net 覆盖）
+- DOMAIN,msh.amazon.co.uk,PROXY  （被同策略父级 DOMAIN-SUFFIX,amazon.co.uk 覆盖）
+- DOMAIN,production-openaicom-storage.azureedge.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,azureedge.net 覆盖）
+- DOMAIN,www.quora.com.cdn.cloudflare.net,PROXY  （被同策略父级 DOMAIN-SUFFIX,cdn.cloudflare.net 覆盖）
+... 另有 3039 条未列出
+```
+</details>
+
+### 🧹 去广告规则去重删除（共 840 条）
+
+**处理动作**：同一域名、同一策略的重复规则已删除，只保留一条；跨策略的不删。
+
+<details>
+<summary>展开查看去重样例（前 20 条）</summary>
+
+```
+- DOMAIN,ad-splash-tracking.hktvmall.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad-splash-tracking.hktvmall.com 覆盖）
+- DOMAIN,ad-splash.hktvmall.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad-splash.hktvmall.com 覆盖）
+- DOMAIN,ad.12306.cn,REJECT  （被同策略 DOMAIN-SUFFIX,ad.12306.cn 覆盖）
+- DOMAIN,ad.api.3g.youku.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.api.3g.youku.com 覆盖）
+- DOMAIN,ad.cctv.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.cctv.com 覆盖）
+- DOMAIN,ad.doubleclick.net,REJECT  （被同策略父级 DOMAIN-SUFFIX,doubleclick.net 覆盖）
+- DOMAIN,ad.gameley.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.gameley.com 覆盖）
+- DOMAIN,ad.hpplay.cn,REJECT  （被同策略 DOMAIN-SUFFIX,ad.hpplay.cn 覆盖）
+- DOMAIN,ad.qq.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.qq.com 覆盖）
+- DOMAIN,ad.shunchangzhixing.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.shunchangzhixing.com 覆盖）
+- DOMAIN,ad.tencentmusic.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.tencentmusic.com 覆盖）
+- DOMAIN,ad.zijieapi.com,REJECT  （被同策略 DOMAIN-SUFFIX,ad.zijieapi.com 覆盖）
+- DOMAIN,adash-emas.cn-hangzhou.aliyuncs.com,REJECT  （被同策略 DOMAIN-SUFFIX,adash-emas.cn-hangzhou.aliyuncs.com 覆盖）
+- DOMAIN,adashx.m.taobao.com,REJECT  （被同策略 DOMAIN-SUFFIX,adashx.m.taobao.com 覆盖）
+- DOMAIN,adbox.sina.com.cn,REJECT  （被同策略 DOMAIN-SUFFIX,adbox.sina.com.cn 覆盖）
+- DOMAIN,adcdn.hpplay.cn,REJECT  （被同策略 DOMAIN-SUFFIX,adcdn.hpplay.cn 覆盖）
+- DOMAIN,adclick.g.doubleclick.net,REJECT  （被同策略父级 DOMAIN-SUFFIX,doubleclick.net 覆盖）
+- DOMAIN,adcolony.com,REJECT  （被同策略 DOMAIN-SUFFIX,adcolony.com 覆盖）
+- DOMAIN,adeng.hpplay.cn,REJECT  （被同策略 DOMAIN-SUFFIX,adeng.hpplay.cn 覆盖）
+- DOMAIN,adexp.liftoff.io,REJECT  （被同策略父级 DOMAIN-SUFFIX,liftoff.io 覆盖）
+... 另有 820 条未列出
+```
+</details>
+
+### ⚠️ Shield 模块同域名策略冲突（共 16 组）
+
+**判断依据**：同一域名出现多个规则，且策略不同。
+
+**处理动作**：排序后靠前的规则优先生效，后续冲突规则不会影响最终策略，但已记录。
+
+<details>
+<summary>展开查看冲突详情</summary>
+
+**DOMAIN-SUFFIX:adashx.m.taobao.com**
+```
+- DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT
+- DOMAIN-SUFFIX,adashx.m.taobao.com,REJECT-200
+```
+**DOMAIN-SUFFIX:amdc.m.taobao.com**
+```
+- DOMAIN-SUFFIX,amdc.m.taobao.com,REJECT
+- DOMAIN-SUFFIX,amdc.m.taobao.com,REJECT-200
+```
+**DOMAIN-SUFFIX:applog.uc.cn**
+```
+- DOMAIN-SUFFIX,applog.uc.cn,REJECT
+- DOMAIN-SUFFIX,applog.uc.cn,REJECT-200
+```
+**DOMAIN-SUFFIX:cnlogs.umengcloud.com**
+```
+- DOMAIN-SUFFIX,cnlogs.umengcloud.com,REJECT
+- DOMAIN-SUFFIX,cnlogs.umengcloud.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:dualstack-logs.amap.com**
+```
+- DOMAIN-SUFFIX,dualstack-logs.amap.com,REJECT
+- DOMAIN-SUFFIX,dualstack-logs.amap.com,REJECT-200
+```
+**DOMAIN-SUFFIX:e.qq.com**
+```
+- DOMAIN-SUFFIX,e.qq.com,REJECT
+- DOMAIN-SUFFIX,e.qq.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:h-adashx.ut.taobao.com**
+```
+- DOMAIN-SUFFIX,h-adashx.ut.taobao.com,REJECT
+- DOMAIN-SUFFIX,h-adashx.ut.taobao.com,REJECT-200
+```
+**DOMAIN-SUFFIX:imasdk.googleapis.com**
+```
+- DOMAIN-SUFFIX,imasdk.googleapis.com,REJECT
+- DOMAIN-SUFFIX,imasdk.googleapis.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:iyes.youku.com**
+```
+- DOMAIN-SUFFIX,iyes.youku.com,REJECT
+- DOMAIN-SUFFIX,iyes.youku.com,REJECT-200
+```
+**DOMAIN-SUFFIX:lf-static.tiktokpangle-cdn-us.com**
+```
+- DOMAIN-SUFFIX,lf-static.tiktokpangle-cdn-us.com,REJECT
+- DOMAIN-SUFFIX,lf-static.tiktokpangle-cdn-us.com,REJECT-200
+```
+**DOMAIN-SUFFIX:logs.amap.com**
+```
+- DOMAIN-SUFFIX,logs.amap.com,REJECT
+- DOMAIN-SUFFIX,logs.amap.com,REJECT-200
+```
+**DOMAIN-SUFFIX:pangolin-sdk-toutiao-b.com**
+```
+- DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com,REJECT
+- DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:pangolin-sdk-toutiao.com**
+```
+- DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
+- DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:pglstatp-toutiao.com**
+```
+- DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT
+- DOMAIN-SUFFIX,pglstatp-toutiao.com,REJECT-DICT
+```
+**DOMAIN-SUFFIX:tanx.com**
+```
+- DOMAIN-SUFFIX,tanx.com,REJECT
+- DOMAIN-SUFFIX,tanx.com,REJECT-200
+```
+**DOMAIN-SUFFIX:ulogs.umengcloud.com**
+```
+- DOMAIN-SUFFIX,ulogs.umengcloud.com,REJECT
+- DOMAIN-SUFFIX,ulogs.umengcloud.com,REJECT-DICT
+```
+</details>
+
+### ⚠️ 父子域冲突（合计 13 组）
+
+**判断依据**：DOMAIN 规则被 DOMAIN-SUFFIX 规则覆盖且策略不同。
+
+**处理动作**：排序后 DOMAIN 规则在前，将优先生效。
+
+<details>
+<summary>展开查看冲突详情</summary>
+
+- DOMAIN adashbc.ut.taobao.com (REJECT) 被 DOMAIN-SUFFIX adashbc.ut.taobao.com (REJECT-200) 覆盖
+- DOMAIN adashxgc.ut.taobao.com (REJECT) 被 DOMAIN-SUFFIX adashxgc.ut.taobao.com (REJECT-200) 覆盖
+- DOMAIN bootpreload.uve.weibo.com (REJECT) 被 DOMAIN-SUFFIX bootpreload.uve.weibo.com (REJECT-200) 覆盖
+- DOMAIN cnlogs.umeng.com (REJECT) 被 DOMAIN-SUFFIX cnlogs.umeng.com (REJECT-DICT) 覆盖
+- DOMAIN mssdk.volces.com (REJECT) 被 DOMAIN-SUFFIX mssdk.volces.com (REJECT-DICT) 覆盖
+- DOMAIN resolve.umeng.com (REJECT) 被 DOMAIN-SUFFIX resolve.umeng.com (REJECT-DICT) 覆盖
+- DOMAIN sdk-track.66mobi.com (REJECT) 被 DOMAIN-SUFFIX sdk-track.66mobi.com (REJECT-DICT) 覆盖
+- DOMAIN sdk.1rtb.net (REJECT) 被 DOMAIN-SUFFIX sdk.1rtb.net (REJECT-DICT) 覆盖
+- DOMAIN sdkapp.uve.weibo.com (REJECT) 被 DOMAIN-SUFFIX sdkapp.uve.weibo.com (REJECT-DICT) 覆盖
+- DOMAIN smartad.10010.com (REJECT) 被 DOMAIN-SUFFIX smartad.10010.com (REJECT-200) 覆盖
+- DOMAIN success.ctobsnssdk.com (REJECT) 被 DOMAIN-SUFFIX ctobsnssdk.com (REJECT-DICT) 覆盖
+- DOMAIN ulogs.umeng.com (REJECT) 被 DOMAIN-SUFFIX ulogs.umeng.com (REJECT-DICT) 覆盖
+- DOMAIN utoken.umeng.com (REJECT) 被 DOMAIN-SUFFIX utoken.umeng.com (REJECT-DICT) 覆盖
+</details>
+
+### 上游源状态
+
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf
+
+**原有代理规则数**: 48762
+**新增代理规则数**: 3
+**更新后代理规则总数**: 48765
+
+#### 新增代理规则明细
+
+<details>
+<summary>展开查看新增代理规则（共 3 条）</summary>
+
+```
+DOMAIN-SUFFIX,debot.ai,PROXY
+DOMAIN-SUFFIX,remna.dev,PROXY
+DOMAIN,builds.dotnet.microsoft.com,PROXY
+```
+</details>
+
+## 去广告模块
+
+### 上游源状态
+
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf
+- ✅ https://yfamilys.com/module/AdBlock.module
+- ✅ https://yfamilys.com/module/adultraplus.module
+
+**原有去广告规则数**: 233906
+**新增去广告规则数**: 402
+**更新后去广告规则总数**: 234308
+
+#### 新增去广告规则明细
+
+<details>
+<summary>展开查看新增去广告规则（共 402 条）</summary>
+
+```
+DOMAIN-SUFFIX,outsulkeila.cyou,REJECT
+DOMAIN-SUFFIX,vanbrozuro.in,REJECT
+DOMAIN-SUFFIX,nftvsgrqvhxsq.space,REJECT
+DOMAIN-SUFFIX,tackledmurut.cfd,REJECT
+DOMAIN-SUFFIX,biarhejukhyrf.space,REJECT
+DOMAIN-SUFFIX,thagurlcyol.in,REJECT
+DOMAIN-SUFFIX,ihdccuemavhxu.site,REJECT
+DOMAIN-SUFFIX,uchtcpyzexfjm.space,REJECT
+DOMAIN-SUFFIX,spittlegrame.cfd,REJECT
+DOMAIN-SUFFIX,pkcdyenajogbh.space,REJECT
+DOMAIN-SUFFIX,mvpapyxbiivhb.online,REJECT
+DOMAIN-SUFFIX,reihcepcbrnay.space,REJECT
+DOMAIN-SUFFIX,aioulubiibfnl.space,REJECT
+DOMAIN-SUFFIX,torhosting.net,REJECT
+DOMAIN-SUFFIX,qtmomptkuldtf.online,REJECT
+DOMAIN-SUFFIX,qplmmkbxkeqiq.website,REJECT
+DOMAIN-SUFFIX,latomiabraless.com,REJECT
+DOMAIN-SUFFIX,anwaoomjbxmdy.site,REJECT
+DOMAIN-SUFFIX,isxkokwwwzvkp.space,REJECT
+DOMAIN-SUFFIX,vduskqdswmnzd.space,REJECT
+DOMAIN-SUFFIX,vbxsxpqqjoyae.site,REJECT
+DOMAIN-SUFFIX,chymicfinewed.cyou,REJECT
+DOMAIN-SUFFIX,iyvzbbqlo.com,REJECT
+DOMAIN-SUFFIX,poneytinosa.rest,REJECT
+DOMAIN-SUFFIX,lqtxaxvnpa.com,REJECT
+DOMAIN-SUFFIX,kscwlxjzvjvot.site,REJECT
+DOMAIN-SUFFIX,lhjehvulthcmf.space,REJECT
+DOMAIN-SUFFIX,cwhxsz.com,REJECT
+DOMAIN-SUFFIX,swnyoxrjheueq.online,REJECT
+DOMAIN-SUFFIX,quilatg.com,REJECT
+DOMAIN-SUFFIX,coysbrandi.com,REJECT
+DOMAIN-SUFFIX,sjcudmxlqgcwp.space,REJECT
+DOMAIN-SUFFIX,o4tgvt3jbymf4yh.rest,REJECT
+DOMAIN-SUFFIX,pwhy8foc2mk7tj6bmw4h6bkgmwyb2tr513.cfd,REJECT
+DOMAIN-SUFFIX,erianswarmysyruped.cfd,REJECT
+DOMAIN-SUFFIX,pjuvppenmulbk.site,REJECT
+DOMAIN-SUFFIX,rqjvb1f386ypq6p9ettgoymy1616y.rest,REJECT
+DOMAIN-SUFFIX,lmohlfnbelorf.website,REJECT
+DOMAIN-SUFFIX,rzqhwdljfufdn.online,REJECT
+DOMAIN-SUFFIX,ibnndmxeltmux.online,REJECT
+DOMAIN-SUFFIX,feltmansambhar.cyou,REJECT
+DOMAIN-SUFFIX,voicersvapid.cfd,REJECT
+DOMAIN-SUFFIX,nalwvxnmmtfjy.space,REJECT
+DOMAIN-SUFFIX,xnyt3yhcnbbu57o3.cfd,REJECT
+DOMAIN-SUFFIX,tcsqvqblsbsbl.online,REJECT
+DOMAIN-SUFFIX,bobbinglivorcotys.cfd,REJECT
+DOMAIN-SUFFIX,mudkyzmsm.com,REJECT
+DOMAIN-SUFFIX,kbxutltusende.website,REJECT
+DOMAIN-SUFFIX,eucvlsdimzdvb.online,REJECT
+DOMAIN-SUFFIX,dzxgdmduahpdk.website,REJECT
+DOMAIN-SUFFIX,flcvcdvgqxplv.website,REJECT
+DOMAIN-SUFFIX,tonemesburweed.cyou,REJECT
+DOMAIN-SUFFIX,pdlhbgrqgjndo.site,REJECT
+DOMAIN-SUFFIX,jdrylpnrrxvsk.website,REJECT
+DOMAIN-SUFFIX,xlhhawtuhmnxw.site,REJECT
+DOMAIN-SUFFIX,unacutedassent.cyou,REJECT
+DOMAIN-SUFFIX,lhchjg2369ymgg.rest,REJECT
+DOMAIN-SUFFIX,6n5uxtcq1l2ncvr19w44iwhnitu525.cfd,REJECT
+DOMAIN-SUFFIX,pajgljtoxclsa.website,REJECT
+DOMAIN-SUFFIX,txlwepstcntnc.website,REJECT
+DOMAIN-SUFFIX,pyffgcmldyudr.website,REJECT
+DOMAIN-SUFFIX,laukwnzmnzits.site,REJECT
+DOMAIN-SUFFIX,titulusoctoic.click,REJECT
+DOMAIN-SUFFIX,yxnjqmjye2e7778pio1.rest,REJECT
+DOMAIN-SUFFIX,vinylanswer.net,REJECT
+DOMAIN-SUFFIX,7nwt5qq78.com,REJECT
+DOMAIN-SUFFIX,xmvtwdfthhoak.site,REJECT
+DOMAIN-SUFFIX,epkxaxxrzmutq.website,REJECT
+DOMAIN-SUFFIX,sedseuimkjqfr.online,REJECT
+DOMAIN-SUFFIX,derwqryqvgrtp.online,REJECT
+DOMAIN-SUFFIX,mewykibkrkgnr.site,REJECT
+DOMAIN-SUFFIX,gatoramorphy.cfd,REJECT
+DOMAIN-SUFFIX,z3vkcnj9f.com,REJECT
+DOMAIN-SUFFIX,jbsckzvzaxdop.online,REJECT
+DOMAIN-SUFFIX,drizzleplanet.com,REJECT
+DOMAIN-SUFFIX,gtulketrrgdvf.site,REJECT
+DOMAIN-SUFFIX,veilspeascod.click,REJECT
+DOMAIN-SUFFIX,lathiebirdeengooier.cyou,REJECT
+DOMAIN-SUFFIX,atofsegchckii.space,REJECT
+DOMAIN-SUFFIX,qurtibenzolsosamine.cyou,REJECT
+DOMAIN-SUFFIX,afavtbjyhqoqv.online,REJECT
+DOMAIN-SUFFIX,kifrgktcqlzha.space,REJECT
+DOMAIN-SUFFIX,buavblbsdrwmk.website,REJECT
+DOMAIN-SUFFIX,ismwhoosis.cfd,REJECT
+DOMAIN-SUFFIX,scnkklarfmvac.online,REJECT
+DOMAIN-SUFFIX,ascedwdpivyfl.space,REJECT
+DOMAIN-SUFFIX,ulzgdvsqjkirw.online,REJECT
+DOMAIN-SUFFIX,highlowalosa.click,REJECT
+DOMAIN-SUFFIX,hotpotarroyos.rest,REJECT
+DOMAIN-SUFFIX,touchesvapor.cyou,REJECT
+DOMAIN-SUFFIX,afhmgqtsufvgq.online,REJECT
+DOMAIN-SUFFIX,qtjqntugrlwyn.website,REJECT
+DOMAIN-SUFFIX,zgamlt.com,REJECT
+DOMAIN-SUFFIX,ktrbyvzcahpih.space,REJECT
+DOMAIN-SUFFIX,flesherjanapumsteamer.cfd,REJECT
+DOMAIN-SUFFIX,qwhrfaudlpwjl.website,REJECT
+DOMAIN-SUFFIX,pgpuonqjgfcdg.online,REJECT
+DOMAIN-SUFFIX,hxlaealramyuy.site,REJECT
+DOMAIN-SUFFIX,hmqivs.com,REJECT
+DOMAIN-SUFFIX,hwkwmwyz.com,REJECT
+DOMAIN-SUFFIX,ulfxxyzjtxztp.space,REJECT
+DOMAIN-SUFFIX,pluffmamers.cyou,REJECT
+DOMAIN-SUFFIX,xcoddqfdcumcn.space,REJECT
+DOMAIN-SUFFIX,quieterangle.rest,REJECT
+DOMAIN-SUFFIX,xktioeceokipr.site,REJECT
+DOMAIN-SUFFIX,tbqmqiplxkfil.site,REJECT
+DOMAIN-SUFFIX,okllifdk.in,REJECT
+DOMAIN-SUFFIX,byvkyedpuwadd.website,REJECT
+DOMAIN-SUFFIX,apqczwdhqvlnu.site,REJECT
+DOMAIN-SUFFIX,summasaprobe.com,REJECT
+DOMAIN-SUFFIX,homilyondine.com,REJECT
+DOMAIN-SUFFIX,irowisoerkqoi.site,REJECT
+DOMAIN-SUFFIX,jnno9y1a9.com,REJECT
+DOMAIN-SUFFIX,wjnjdihupzwuf.online,REJECT
+DOMAIN-SUFFIX,r45jho6ug.com,REJECT
+DOMAIN-SUFFIX,xklxywanhkjnm.website,REJECT
+DOMAIN-SUFFIX,illdmnvmkwejz.website,REJECT
+DOMAIN-SUFFIX,ogarfyucpapgy.space,REJECT
+DOMAIN-SUFFIX,smeethcertosa.cfd,REJECT
+DOMAIN-SUFFIX,embedslubbers.cyou,REJECT
+DOMAIN-SUFFIX,vavgqsnrpfchm.site,REJECT
+DOMAIN-SUFFIX,tarriedotertwelve.cyou,REJECT
+DOMAIN-SUFFIX,jzq915.playmobil.com,REJECT
+DOMAIN-SUFFIX,ecmwvwfxfveyw.website,REJECT
+DOMAIN-SUFFIX,ppftjwpsyvber.online,REJECT
+DOMAIN-SUFFIX,nqlzubhisdvms.website,REJECT
+DOMAIN-SUFFIX,jpwxjnyomybsx.website,REJECT
+DOMAIN-SUFFIX,yspzbyaomuvym.website,REJECT
+DOMAIN-SUFFIX,synchropeucylpardine.cfd,REJECT
+DOMAIN-SUFFIX,athensfungatetriform.cfd,REJECT
+DOMAIN-SUFFIX,qusaxluumpqyn.space,REJECT
+DOMAIN-SUFFIX,pxtogfhazlxqp.online,REJECT
+DOMAIN-SUFFIX,nilsceipfvpza.online,REJECT
+DOMAIN-SUFFIX,tesxmfmekkbln.space,REJECT
+DOMAIN-SUFFIX,jzfciiwgqwzxx.online,REJECT
+DOMAIN-SUFFIX,scxkqiokavdyh.online,REJECT
+DOMAIN-SUFFIX,lethalwhosis.com,REJECT
+DOMAIN-SUFFIX,swnrapyxhkuzk.website,REJECT
+DOMAIN-SUFFIX,unwillagree.com,REJECT
+DOMAIN-SUFFIX,ppeyjomsayefp.online,REJECT
+DOMAIN-SUFFIX,serdarpostact.cyou,REJECT
+DOMAIN-SUFFIX,trailwind.pro,REJECT
+DOMAIN-SUFFIX,ix4q97np.xyz,REJECT
+DOMAIN-SUFFIX,seethesslithy.click,REJECT
+DOMAIN-SUFFIX,bsoiviywqwlgq.online,REJECT
+DOMAIN-SUFFIX,aseptichylicwrast.cyou,REJECT
+DOMAIN-SUFFIX,anxfxfnivqoef.online,REJECT
+DOMAIN-SUFFIX,5qpogztzt.com,REJECT
+DOMAIN-SUFFIX,untardoctors.rest,REJECT
+DOMAIN-SUFFIX,ofpagrfix.in,REJECT
+DOMAIN-SUFFIX,saxqnqyjusmxo.online,REJECT
+DOMAIN-SUFFIX,0vtqrw86o.com,REJECT
+DOMAIN-SUFFIX,fubsymustela.cyou,REJECT
+DOMAIN-SUFFIX,sfuwwizvaunax.online,REJECT
+DOMAIN-SUFFIX,silkyslumber.com,REJECT
+DOMAIN-SUFFIX,yzvcweqojsuhy.space,REJECT
+DOMAIN-SUFFIX,vmedmqbfgkcmv.site,REJECT
+DOMAIN-SUFFIX,xbvqmcariiebn.website,REJECT
+DOMAIN-SUFFIX,rewxtfwwcdsdf.site,REJECT
+DOMAIN-SUFFIX,aevqazbsmoyln.website,REJECT
+DOMAIN-SUFFIX,fangedrouts.click,REJECT
+DOMAIN-SUFFIX,ugdkfgcxs.com,REJECT
+DOMAIN-SUFFIX,lixfumydauavt.space,REJECT
+DOMAIN-SUFFIX,lowdownchapletseracs.cyou,REJECT
+DOMAIN-SUFFIX,bafmdrafqsjou.website,REJECT
+DOMAIN-SUFFIX,ohvdllyqpecsn.online,REJECT
+DOMAIN-SUFFIX,cbnpcekwcypza.space,REJECT
+DOMAIN-SUFFIX,oujykoverucym.website,REJECT
+DOMAIN-SUFFIX,ikumbbfcrfxhk.online,REJECT
+DOMAIN-SUFFIX,cbeisxacqkzwn.site,REJECT
+DOMAIN-SUFFIX,vxnvskrzuwmpo.online,REJECT
+DOMAIN-SUFFIX,m526mlg7xw1uc29e1.rest,REJECT
+DOMAIN-SUFFIX,ltaawkfdnhyvw.space,REJECT
+DOMAIN-SUFFIX,charkshiite.qpon,REJECT
+DOMAIN-SUFFIX,lintertungus.rest,REJECT
+DOMAIN-SUFFIX,meedfulunsappy.com,REJECT
+DOMAIN-SUFFIX,ouciwtivkmehy.space,REJECT
+DOMAIN-SUFFIX,jasmingnars.com,REJECT
+DOMAIN-SUFFIX,mamshirt.com,REJECT
+DOMAIN-SUFFIX,wxuxyslgbtgea.space,REJECT
+DOMAIN-SUFFIX,iehhrhylkggzg.website,REJECT
+DOMAIN-SUFFIX,zlfjkudsycpcf.online,REJECT
+DOMAIN-SUFFIX,qbupzairypjtf.online,REJECT
+DOMAIN-SUFFIX,vhfdpjmfdcovi.website,REJECT
+DOMAIN-SUFFIX,lnnxihlzzigrz.online,REJECT
+DOMAIN-SUFFIX,mcgdgbexkyrpj.site,REJECT
+DOMAIN-SUFFIX,kfvyfdqunrfvn.website,REJECT
+DOMAIN-SUFFIX,clearparcel.info,REJECT
+DOMAIN-SUFFIX,rewosgdaurhwh.space,REJECT
+DOMAIN-SUFFIX,reboantflative.com,REJECT
+DOMAIN-SUFFIX,geenvqqqccffg.online,REJECT
+DOMAIN-SUFFIX,pqptuwdqvzzpp.online,REJECT
+DOMAIN-SUFFIX,fervorszymomin.com,REJECT
+DOMAIN-SUFFIX,lxtfdrkijxlhp.online,REJECT
+DOMAIN-SUFFIX,g5bny6mn7v8p7x3otp6byngovz3uokp.rest,REJECT
+DOMAIN-SUFFIX,qacaaeiwqzeeq.website,REJECT
+DOMAIN-SUFFIX,popjoybivial.com,REJECT
+DOMAIN-SUFFIX,mdsmxzoxqghyd.site,REJECT
+DOMAIN-SUFFIX,xpbylwqvmbliu.online,REJECT
+DOMAIN-SUFFIX,servianagujon.click,REJECT
+DOMAIN-SUFFIX,snapbagoarial.com,REJECT
+DOMAIN-SUFFIX,cljeuvjzqbdhq.space,REJECT
+DOMAIN-SUFFIX,gjnvqqittwnna.website,REJECT
+DOMAIN-SUFFIX,ezyugddfggrni.space,REJECT
+DOMAIN-SUFFIX,omberhymenia.cyou,REJECT
+DOMAIN-SUFFIX,hcttyzzzsyxat.online,REJECT
+DOMAIN-SUFFIX,revmupigbrxpz.site,REJECT
+DOMAIN-SUFFIX,kh4iuliqqwxztgty1f9mfxpx.cfd,REJECT
+DOMAIN-SUFFIX,ranliscian.cfd,REJECT
+DOMAIN-SUFFIX,ramblabulged.cyou,REJECT
+DOMAIN-SUFFIX,kafizhulsite.cyou,REJECT
+DOMAIN-SUFFIX,lyeryfabula.rest,REJECT
+DOMAIN-SUFFIX,poqsrzievvwqy.site,REJECT
+DOMAIN-SUFFIX,spasconfidenappies.cfd,REJECT
+DOMAIN-SUFFIX,ygtkdzqigdrxe.site,REJECT
+DOMAIN-SUFFIX,cexvufrpmtiqf.space,REJECT
+DOMAIN-SUFFIX,wawsembira.com,REJECT
+DOMAIN-SUFFIX,snowplain.biz,REJECT
+DOMAIN-SUFFIX,ylhqyebrgifgc.space,REJECT
+DOMAIN-SUFFIX,loqsbbhlvfeow.online,REJECT
+DOMAIN-SUFFIX,ajtapfafvorl.in,REJECT
+DOMAIN-SUFFIX,ysqpentdqclqv.site,REJECT
+DOMAIN-SUFFIX,deecjvukhtjwn.online,REJECT
+DOMAIN-SUFFIX,udeighczpwyua.website,REJECT
+DOMAIN-SUFFIX,taprootgingham.cfd,REJECT
+DOMAIN-SUFFIX,hxlkkopbzraak.site,REJECT
+DOMAIN-SUFFIX,triaenegrantiagyrinid.cyou,REJECT
+DOMAIN-SUFFIX,uhhhvqaeswlzs.website,REJECT
+DOMAIN-SUFFIX,quojugvrafzuj.online,REJECT
+DOMAIN-SUFFIX,maximumboggles.click,REJECT
+DOMAIN-SUFFIX,ischarmusicotarn.cfd,REJECT
+DOMAIN-SUFFIX,vvtopvrueosml.space,REJECT
+DOMAIN-SUFFIX,vaqetroicqqfz.space,REJECT
+DOMAIN-SUFFIX,melitisxenian.rest,REJECT
+DOMAIN-SUFFIX,faciendorchidsrelose.cyou,REJECT
+DOMAIN-SUFFIX,uyetmitbsxcwd.website,REJECT
+DOMAIN-SUFFIX,uatwechiwfeef.space,REJECT
+DOMAIN-SUFFIX,oebubal.qpon,REJECT
+DOMAIN-SUFFIX,bhzlnqdgqg.com,REJECT
+DOMAIN-SUFFIX,amxpjpqepqmbe.space,REJECT
+DOMAIN-SUFFIX,tngessxbmzvba.space,REJECT
+DOMAIN-SUFFIX,zfqmslr.com,REJECT
+DOMAIN-SUFFIX,ksmhmxnsvrrhv.site,REJECT
+DOMAIN-SUFFIX,xemvxxbwlehem.website,REJECT
+DOMAIN-SUFFIX,becrustarmsize.com,REJECT
+DOMAIN-SUFFIX,afccuxkwiuhkw.online,REJECT
+DOMAIN-SUFFIX,hgngpqjoxquky.online,REJECT
+DOMAIN-SUFFIX,yveldihvltien.site,REJECT
+DOMAIN-SUFFIX,bortzeswaspy.cfd,REJECT
+DOMAIN-SUFFIX,kipewarison.click,REJECT
+DOMAIN-SUFFIX,vutufqlkwoenw.site,REJECT
+DOMAIN-SUFFIX,xavdvzoxjspkf.space,REJECT
+DOMAIN-SUFFIX,calmatokeekingniris.cfd,REJECT
+DOMAIN-SUFFIX,xs27ycutl.com,REJECT
+DOMAIN-SUFFIX,rftseepsjwbdl.site,REJECT
+DOMAIN-SUFFIX,idfzfafqzoxby.website,REJECT
+DOMAIN-SUFFIX,uweohpauhitgm.online,REJECT
+DOMAIN-SUFFIX,clearparcel.pro,REJECT
+DOMAIN-SUFFIX,erkebopmeaner.cyou,REJECT
+DOMAIN-SUFFIX,pdzgxujvfqngs.website,REJECT
+DOMAIN-SUFFIX,benacusumbos.cfd,REJECT
+DOMAIN-SUFFIX,embracerepine.click,REJECT
+DOMAIN-SUFFIX,7846kugkrc425475gli7zkkpe.cfd,REJECT
+DOMAIN-SUFFIX,rc91gizcl1njbiw.cfd,REJECT
+DOMAIN-SUFFIX,pisoteelemis.com,REJECT
+DOMAIN-SUFFIX,vmqxjqgaanhkb.space,REJECT
+DOMAIN-SUFFIX,tbuddzqmsexbc.website,REJECT
+DOMAIN-SUFFIX,gvpsqmzbelfpr.website,REJECT
+DOMAIN-SUFFIX,bolivarsharns.click,REJECT
+DOMAIN-SUFFIX,trlcvrshzpmfj.space,REJECT
+DOMAIN-SUFFIX,hndytrpbsxput.site,REJECT
+DOMAIN-SUFFIX,hsiyrghptxjyd.site,REJECT
+DOMAIN-SUFFIX,jzutaqhlvunkb.website,REJECT
+DOMAIN-SUFFIX,ceereyjjvdrjr.site,REJECT
+DOMAIN-SUFFIX,mhtulkoysljdg.site,REJECT
+DOMAIN-SUFFIX,acbsygadxq.com,REJECT
+DOMAIN-SUFFIX,xucsbjivmbzlw.online,REJECT
+DOMAIN-SUFFIX,dalleeclats.com,REJECT
+DOMAIN-SUFFIX,vhxpwnetchszz.website,REJECT
+DOMAIN-SUFFIX,borderram.com,REJECT
+DOMAIN-SUFFIX,uzjwrcyopvzej.website,REJECT
+DOMAIN-SUFFIX,tourspicker.com,REJECT
+DOMAIN-SUFFIX,eshtjkrptousr.space,REJECT
+DOMAIN-SUFFIX,kmahykmbkzrch.online,REJECT
+DOMAIN-SUFFIX,ysaqjvicsvkqv.website,REJECT
+DOMAIN-SUFFIX,3hxoppqji4etwm1r4.cfd,REJECT
+DOMAIN-SUFFIX,bleezyrocker.cfd,REJECT
+DOMAIN-SUFFIX,culticservals.com,REJECT
+DOMAIN-SUFFIX,ukjcgjxbwitpr.online,REJECT
+DOMAIN-SUFFIX,bvfwjqkkxauml.site,REJECT
+DOMAIN-SUFFIX,cgjepstpnrkxj.online,REJECT
+DOMAIN-SUFFIX,recroujzrmnca.online,REJECT
+DOMAIN-SUFFIX,omasumdeworm.click,REJECT
+DOMAIN-SUFFIX,vespinemudroom.cfd,REJECT
+DOMAIN-SUFFIX,qyxpefyzhauch.site,REJECT
+DOMAIN-SUFFIX,zyfhytcqui.com,REJECT
+DOMAIN-SUFFIX,ubqycneopueye.website,REJECT
+DOMAIN-SUFFIX,areuxlnjiswdo.site,REJECT
+DOMAIN-SUFFIX,neatpiano.com,REJECT
+DOMAIN-SUFFIX,pbkexxgndyysd.online,REJECT
+DOMAIN-SUFFIX,bocardocalfs.rest,REJECT
+DOMAIN-SUFFIX,rpnuhrsxgnhup.online,REJECT
+DOMAIN-SUFFIX,icpiqjeohymkf.space,REJECT
+DOMAIN-SUFFIX,vxomziqjykxru.website,REJECT
+DOMAIN-SUFFIX,soulfreedom.net,REJECT
+DOMAIN-SUFFIX,xjeqqizdepifo.website,REJECT
+DOMAIN-SUFFIX,trailwind.biz,REJECT
+DOMAIN-SUFFIX,zmddqosfwnsoc.space,REJECT
+DOMAIN-SUFFIX,qpudvuejxjzki.site,REJECT
+DOMAIN-SUFFIX,fxdptwiqspttp.online,REJECT
+DOMAIN-SUFFIX,64u6qhfhwfqrqefk9gxzenxmle.rest,REJECT
+DOMAIN-SUFFIX,jaymguxbzomra.site,REJECT
+DOMAIN-SUFFIX,9712446644.com,REJECT
+DOMAIN-SUFFIX,nungjykcnmsoo.space,REJECT
+DOMAIN-SUFFIX,kaaoyavxmogtc.site,REJECT
+DOMAIN-SUFFIX,qtpqpyxtzflsv.site,REJECT
+DOMAIN-SUFFIX,uxtctarowbrsv.online,REJECT
+DOMAIN-SUFFIX,perfectalto.com,REJECT
+DOMAIN-SUFFIX,dqgxcjyrfawra.online,REJECT
+DOMAIN-SUFFIX,yearnedchampy.cyou,REJECT
+DOMAIN-SUFFIX,aospdqoteetsk.site,REJECT
+DOMAIN-SUFFIX,eumihjtdyfydm.online,REJECT
+DOMAIN-SUFFIX,hyostotqriagm.site,REJECT
+DOMAIN-SUFFIX,dwykafeckamorism.cfd,REJECT
+DOMAIN-SUFFIX,bttejamyle.com,REJECT
+DOMAIN-SUFFIX,ogopuwzzklqde.site,REJECT
+DOMAIN-SUFFIX,etybnfvcsbjbc.space,REJECT
+DOMAIN-SUFFIX,dcennnmyxxefo.site,REJECT
+DOMAIN-SUFFIX,lbosovartuxkv.online,REJECT
+DOMAIN-SUFFIX,qtiizeosoagct.site,REJECT
+DOMAIN-SUFFIX,r3y8661xhr944471pb99ptm49.cfd,REJECT
+DOMAIN-SUFFIX,nuzrkozxu.com,REJECT
+DOMAIN-SUFFIX,shanechkalik.qpon,REJECT
+DOMAIN-SUFFIX,supaoyedsvqnb.site,REJECT
+DOMAIN-SUFFIX,spakkjxonfaks.space,REJECT
+DOMAIN-SUFFIX,genhkjwtgpemz.space,REJECT
+DOMAIN-SUFFIX,roundsshinkindaraf.cyou,REJECT
+DOMAIN-SUFFIX,slothcaama.com,REJECT
+DOMAIN-SUFFIX,mobdxuycnrdfw.website,REJECT
+DOMAIN-SUFFIX,roplochscreve.click,REJECT
+DOMAIN-SUFFIX,dwvlfvqxbxovi.website,REJECT
+DOMAIN-SUFFIX,ljtcjahzugefb.website,REJECT
+DOMAIN-SUFFIX,wwgrhbijznvli.online,REJECT
+DOMAIN-SUFFIX,hhyasfwivol.in,REJECT
+DOMAIN-SUFFIX,extraction14.com,REJECT
+DOMAIN-SUFFIX,pulpaltolanes.rest,REJECT
+DOMAIN-SUFFIX,martinshither.click,REJECT
+DOMAIN-SUFFIX,ygwfdtm.com,REJECT
+DOMAIN-SUFFIX,cousinyschistolive.cyou,REJECT
+DOMAIN-SUFFIX,dispelsknoutsempanel.cfd,REJECT
+DOMAIN-SUFFIX,egemetembunbv.space,REJECT
+DOMAIN-SUFFIX,anfclnzyegrtz.space,REJECT
+DOMAIN-SUFFIX,zfoickexwpjma.online,REJECT
+DOMAIN-SUFFIX,dgemzi.com,REJECT
+DOMAIN-SUFFIX,gumgferheobz.in,REJECT
+DOMAIN-SUFFIX,dkxutggyyyajh.website,REJECT
+DOMAIN-SUFFIX,aggvurollo.in,REJECT
+DOMAIN-SUFFIX,xthlhkxjzfgqy.space,REJECT
+DOMAIN-SUFFIX,fzoypgornqpef.online,REJECT
+DOMAIN-SUFFIX,glansfulmarilvaite.cyou,REJECT
+DOMAIN-SUFFIX,e5pb8rzj6tw8lk8.rest,REJECT
+DOMAIN-SUFFIX,rumoursacorn.com,REJECT
+DOMAIN-SUFFIX,wiqwxalxcjmsw.online,REJECT
+DOMAIN-SUFFIX,jyyuzztncaicf.online,REJECT
+DOMAIN-SUFFIX,rotondaetherin.com,REJECT
+DOMAIN-SUFFIX,eiolebduzlulw.site,REJECT
+DOMAIN-SUFFIX,botulinopaquedoodle.cyou,REJECT
+DOMAIN-SUFFIX,mysticslicca.com,REJECT
+DOMAIN-SUFFIX,omanilodens.com,REJECT
+DOMAIN-SUFFIX,uxawyas.com,REJECT
+DOMAIN-SUFFIX,mlfslerfeptaf.online,REJECT
+DOMAIN-SUFFIX,mewwjwqrxaajg.website,REJECT
+DOMAIN-SUFFIX,roiledmoats.com,REJECT
+DOMAIN-SUFFIX,duvalppqxazxm.site,REJECT
+DOMAIN-SUFFIX,egoismtenths.rest,REJECT
+DOMAIN-SUFFIX,einlvdolqdllj.space,REJECT
+DOMAIN-SUFFIX,xmaqolcvrsdvd.online,REJECT
+DOMAIN-SUFFIX,zblykoizftori.space,REJECT
+DOMAIN-SUFFIX,wyyniwgrffwvu.space,REJECT
+DOMAIN-SUFFIX,vegnjxepturpr.online,REJECT
+DOMAIN-SUFFIX,qqaysngljwdof.website,REJECT
+DOMAIN-SUFFIX,umaoyubtybuzq.site,REJECT
+DOMAIN-SUFFIX,cxkmmqqdacsqa.website,REJECT
+DOMAIN-SUFFIX,resorbslantern.cfd,REJECT
+DOMAIN-SUFFIX,ubzmsckogaiwr.space,REJECT
+DOMAIN-SUFFIX,cqxfhwmednxod.online,REJECT
+DOMAIN-SUFFIX,tmvkimckojpwv.space,REJECT
+DOMAIN-SUFFIX,droyltriodes.cyou,REJECT
+DOMAIN-SUFFIX,lwlqblkcucbrjy.com,REJECT
+DOMAIN-SUFFIX,thegnssqudgy.cfd,REJECT
+DOMAIN-SUFFIX,gaiulfxwfsccl.website,REJECT
+DOMAIN-SUFFIX,certaincactus.com,REJECT
+DOMAIN-SUFFIX,cmyjmeiecznbw.site,REJECT
+DOMAIN-SUFFIX,ftjyyuqyjddej.online,REJECT
+DOMAIN-SUFFIX,hecwzxhrotjyl.site,REJECT
+DOMAIN-SUFFIX,ksrqqwcddnxwy.site,REJECT
+DOMAIN-SUFFIX,lazardamierrussene.cfd,REJECT
+DOMAIN-SUFFIX,ofzjdrufnrcms.online,REJECT
+DOMAIN-SUFFIX,qtgzrg.com,REJECT
+DOMAIN-SUFFIX,rbzcivyibcpib.online,REJECT
+DOMAIN-SUFFIX,rxazveloolzlw.space,REJECT
+DOMAIN-SUFFIX,yzbvxqxvgfujw.space,REJECT
+```
+</details>
+
+## ⚠️ 敏感域名已自动过滤（银行/支付）
+
+**原因**：域名包含银行/支付关键词，为防止隐私泄露，不加入解密列表。
+
+<details>
+<summary>展开查看被过滤的敏感域名（共 7 个）</summary>
+
+```
+creditcardapp.bankcomm.com
+webappcfg.paas.cmbchina.com
+m.creditcard.ecitic.com
+mpos-pic.helipay.com
+yunbusiness.ccb.com
+creditcardapp.bankcomm.cn
+lban.spdb.com.cn
+```
+</details>
+
+## JS 脚本本地化
+
+<details>
+<summary>展开查看 JS 本地化详情（共 128 条）</summary>
+
+```
+- ✅ Netpilot_adblock.js 下载成功
+- ⚠️ Netpilot_adblock.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, eval\(
+- ⏭️ 12306.js 内容未变，跳过写入
+- ⏭️ caixinads.js 内容未变，跳过写入
+- ⏭️ fly.js 内容未变，跳过写入
+- ⏭️ startup.js 内容未变，跳过写入
+- ⏭️ jd_json.js 内容未变，跳过写入
+- ⏭️ coolapk.js 内容未变，跳过写入
+- ⏭️ shunfeng_json.js 内容未变，跳过写入
+- ⏭️ stay.js 内容未变，跳过写入
+- ⏭️ UnblockURLinWeChat.js 内容未变，跳过写入
+- ⚠️ UnblockURLinWeChat.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch
+- ⏭️ xiaohongshu.js 内容未变，跳过写入
+- ⚠️ xiaohongshu.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, pasteboard
+- ⏭️ wyres.js 内容未变，跳过写入
+- ⏭️ xmApp.js 内容未变，跳过写入
+- ⏭️ rrtv_json.js 内容未变，跳过写入
+- ⚠️ rrtv_json.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, \$persistentStore\.write
+- ⏭️ smzdm_json.js 内容未变，跳过写入
+- ⏭️ picc_ads.js 内容未变，跳过写入
+- ⏭️ ccblife.js 内容未变，跳过写入
+- ⏭️ zhangshanggongjiao.js 内容未变，跳过写入
+- ⏭️ zheye.min.js 内容未变，跳过写入
+- ⚠️ zheye.min.js 可疑模式: \$task\.fetch, \$persistentStore\.write, \$prefs\.setValueForKey
+- ⏭️ usmile.js 内容未变，跳过写入
+- ⏭️ flyert.js 内容未变，跳过写入
+- ⏭️ ltsst-ad.js 内容未变，跳过写入
+- ⏭️ 123pan.js 内容未变，跳过写入
+- ⚠️ 123pan.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, \$persistentStore\.write
+- ⏭️ caiyun_json.js 内容未变，跳过写入
+- ⏭️ weibo_json.js 内容未变，跳过写入
+- ⚠️ weibo_json.js 可疑模式: eval\(
+- ⏭️ weibo_search_topic.json 内容未变，跳过写入
+- ⏭️ weibo_search_info.json 内容未变，跳过写入
+- ⏭️ kuwo.js 内容未变，跳过写入
+- ⏭️ ddxq.js 内容未变，跳过写入
+- ⏭️ smzdm_ads.js 内容未变，跳过写入
+- ⏭️ Smzdm.js 内容未变，跳过写入
+- ⏭️ cnftp.js 内容未变，跳过写入
+- ⏭️ wechatApplet.js 内容未变，跳过写入
+- ⏭️ fenbi.js 内容未变，跳过写入
+- ⏭️ blued.js 内容未变，跳过写入
+- ⏭️ bing.js 内容未变，跳过写入
+- ⏭️ didiAds.js 内容未变，跳过写入
+- ⏭️ soul_ads.js 内容未变，跳过写入
+- ⚠️ soul_ads.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, pasteboard
+- ⏭️ myBlockAds.js 内容未变，跳过写入
+- ⏭️ quark.js 内容未变，跳过写入
+- ⏭️ pixivAds.js 内容未变，跳过写入
+- ⏭️ baidumap.js 内容未变，跳过写入
+- ⚠️ baidumap.js 可疑模式: eval\(
+- ⏭️ ithome.js 内容未变，跳过写入
+- ⏭️ xiaotucc.js 内容未变，跳过写入
+- ⏭️ mafengwo.js 内容未变，跳过写入
+- ⏭️ qidian.js 内容未变，跳过写入
+- ⏭️ pupumarket.js 内容未变，跳过写入
+- ⏭️ QuDa.js 内容未变，跳过写入
+- ⏭️ netease.adblock.js 内容未变，跳过写入
+- ⏭️ dianping.js 内容未变，跳过写入
+- ⏭️ reddit.js 内容未变，跳过写入
+- ⏭️ caixinAd.js 内容未变，跳过写入
+- ⏭️ alicdn.js 内容未变，跳过写入
+- ⏭️ miguvideo_ads.js 内容未变，跳过写入
+- ⚠️ miguvideo_ads.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, pasteboard
+- ⏭️ dict-youdao-ad.js 内容未变，跳过写入
+- ⏭️ 51job.js 内容未变，跳过写入
+- ⏭️ mdb.js 内容未变，跳过写入
+- ⏭️ cainiao.js 内容未变，跳过写入
+- ⏭️ baishitv.js 内容未变，跳过写入
+- ⏭️ zhuanzhuan.js 内容未变，跳过写入
+- ⏭️ vgtime.js 内容未变，跳过写入
+- ⏭️ foliday.js 内容未变，跳过写入
+- ⏭️ dict.js 内容未变，跳过写入
+- ⏭️ zhihu_openads.js 内容未变，跳过写入
+- ⏭️ yx.js 内容未变，跳过写入
+- ⏭️ 51card.js 内容未变，跳过写入
+- ⏭️ soda.js 内容未变，跳过写入
+- ⏭️ jingxiAd.js 内容未变，跳过写入
+- ⏭️ keep.js 内容未变，跳过写入
+- ⏭️ keepStyle.js 内容未变，跳过写入
+- ⏭️ BahamutAnimeAds.js 内容未变，跳过写入
+- ⚠️ BahamutAnimeAds.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch
+- ⏭️ freshippo.js 内容未变，跳过写入
+- ✅ redbook.ads.js 下载成功
+- ⏭️ cainiao_json.js 内容未变，跳过写入
+- ⏭️ 555Ad.js 内容未变，跳过写入
+- ⏭️ xjsp.js 内容未变，跳过写入
+- ⏭️ iqiyi_open_ads.js 内容未变，跳过写入
+- ⏭️ ximalaya_json.js 内容未变，跳过写入
+- ⏭️ amap.js 内容未变，跳过写入
+- ⏭️ ahfs.js 内容未变，跳过写入
+- ⏭️ tieba-proto.js 内容未变，跳过写入
+- ⏭️ tieba-json.js 内容未变，跳过写入
+- ⏭️ qq-news.js 内容未变，跳过写入
+- ⏭️ tuhu.js 内容未变，跳过写入
+- ⏭️ qmai.js 内容未变，跳过写入
+- ⏭️ zhihu.js 内容未变，跳过写入
+- ⏭️ wnbz.js 内容未变，跳过写入
+- ⏭️ huifutianxia_ads.js 内容未变，跳过写入
+- ⏭️ adrive.js 内容未变，跳过写入
+- ⏭️ cmschina.js 内容未变，跳过写入
+- ⏭️ lawson.js 内容未变，跳过写入
+- ⏭️ PupuSplashAds.js 内容未变，跳过写入
+- ⏭️ goofish.js 内容未变，跳过写入
+- ⏭️ meiyou_ads.js 内容未变，跳过写入
+- ⚠️ meiyou_ads.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch, pasteboard
+- ⏭️ dianyinglieshou.js 内容未变，跳过写入
+- ⏭️ jingdong.js 内容未变，跳过写入
+- ⏭️ bohe_ads.js 内容未变，跳过写入
+- ⏭️ mlxx.js 内容未变，跳过写入
+- ⏭️ maimai_ads.js 内容未变，跳过写入
+- ⏭️ adsense.js 内容未变，跳过写入
+- ⏭️ umetrip_ads.js 内容未变，跳过写入
+- ⏭️ amdc.js 内容未变，跳过写入
+- ⏭️ applet.js 内容未变，跳过写入
+- ⏭️ 12306.js 内容未变，跳过写入
+- ⏭️ caixinads.js 内容未变，跳过写入
+- ⏭️ fly.js 内容未变，跳过写入
+- ⏭️ startup.js 内容未变，跳过写入
+- ⏭️ jd_json.js 内容未变，跳过写入
+- ⏭️ coolapk.js 内容未变，跳过写入
+- ⏭️ shunfeng_json.js 内容未变，跳过写入
+- ⏭️ stay.js 内容未变，跳过写入
+- ⏭️ UnblockURLinWeChat.js 内容未变，跳过写入
+- ⚠️ UnblockURLinWeChat.js 可疑模式: \$httpClient\.(get|post|put|delete), \$task\.fetch
+- ❌ xiaohongshu.js 下载失败，已丢弃引用（下次会重试）: 404 Client Error: Not Found for url: https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
+- ❌ xiaohongshu.js 下载失败，已丢弃引用（下次会重试）: 404 Client Error: Not Found for url: https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
+- ❌ xiaohongshu.js 下载失败，已丢弃引用（下次会重试）: 404 Client Error: Not Found for url: https://github.com/ddgksf2013/Scripts/raw/master/xiaohongshu.js
+```
+</details>
+
+🩺 Shield模块: 健康检查通过（283073 条规则，12.8 MB）
+
+✅ Shield 模块已写入，代理 48765 条，去广告 234308 条
+
+## 🩺 规则源健康状态
+
+<details>
+<summary>展开查看各上游源健康状态（共 13 个源）</summary>
+
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:50
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:58
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:58
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:59
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:59
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:00
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:00
+  - 最近失败: 无 
+
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list
+  - 成功 166 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:00
+  - 最近失败: 无 
+
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf
+  - 成功 5 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:59
+  - 最近失败: 无 
+
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf
+  - 成功 5 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:24:59
+  - 最近失败: 无 
+
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf
+  - 成功 5 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:00
+  - 最近失败: 无 
+
+- ✅ https://yfamilys.com/module/AdBlock.module
+  - 成功 5 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:01
+  - 最近失败: 无 
+
+- ✅ https://yfamilys.com/module/adultraplus.module
+  - 成功 5 次，失败 0 次，连续失败 0 次
+  - 最近成功: 2026-11-16 20:25:01
+  - 最近失败: 无 
+
+</details>
+
+## 🔒 DNS 泄漏风险检测
+
+### 🔴 高风险（89 条）
+
+<details>
+<summary>展开查看高风险详情</summary>
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,adcdownload.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,amp-api-edge-lb-cn.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,amp-api-edge-lb.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,app-site-association.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,appleid.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,bag-cdn.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn-cn.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn-cn1.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn-cn2.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn-cn3.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn-cn4.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn1.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn2.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn3.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cdn4.apple-mapkit.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cds.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,certs-lb.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl1-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl2-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl2.apple.com.edgekey.net.globalredir.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl3-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl4-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cl5-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,clientflow.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,configuration.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,crl-lb.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,cstat.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,dd-cdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,gspe19-2-cn-ssl.ls-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,gspe19-cn.ls-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,images.apple.com.edgekey.net.globalredir.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,inappcheck-cn.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,inappcheck-lb.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,init-p01md-lb.push-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,init-p01st-lb.push-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,init-s01st-lb.push-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,init.gc-lb.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,iphone-ld.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,is-ssl.mzstatic.com-cn-lb.itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,itunes-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,mensura.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,mesu-cdn.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,mesu-china.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,ml.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,oscdn.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,prod-support.apple-support.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,publicassets.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,shazam-insights.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,stocks-sparkline-lb.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,store.apple.com.edgekey.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,store.apple.com.edgekey.net.globalredir.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,store.storeimages.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,store.storeimages.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,support-china.apple-support.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,swcatalog-cdn.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,swdist.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,swscan-cdn.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,updates-http.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,updates-http.cdn-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,updates.cdn-apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,valid.origin-apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,weather-data.apple.com.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN,www.apple.com.edgekey.net.globalredir.akadns.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple-corer.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple110.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple114.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple17.club,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple4.us,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple523.club,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,apple886.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applebl.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applejp.cloud,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applemei.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applepopo.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,appletuan.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applex.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,applezhang.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,badapple.pro,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,china-applefix.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,iappler.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,nnpurapple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,red-apple.net,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,redapplechina.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,simapple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,svip5-applefix.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+- **直连海外域名**
+  直连规则包含海外域名: DOMAIN-SUFFIX,tuiapple.com,DIRECT，可能导致 DNS 查询在本地解析，暴露访问记录。
+
+</details>
+
+### 🟡 中风险（8 条）
+
+<details>
+<summary>展开查看中风险详情</summary>
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,104.18.0.0/15,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,143.198.200.27/32,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,159.89.204.203/32,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,172.64.0.0/13,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,24.199.123.28/32,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,45.76.214.191/32,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **代理规则使用 no-resolve**
+  代理规则带 no-resolve: IP-CIDR,64.23.132.171/32,PROXY,no-resolve，该域名的 DNS 将在本地解析，可能泄漏。
+
+- **dns-direct-system 开启**
+  主配置中 dns-direct-system = true，直连域名将使用系统 DNS，可能造成 DNS 泄漏。建议改为 false。
+
+</details>
+
+
+
+---
