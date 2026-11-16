@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48609
+# 条目数：48612
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -13,6 +13,7 @@ payload:
   - 'DOMAIN,bbs.boingboing.net'
   - 'DOMAIN,beck-online.beck.de'
   - 'DOMAIN,blizzard.nefficient.co.kr'
+  - 'DOMAIN,builds.dotnet.microsoft.com'
   - 'DOMAIN,bybit.ada.support'
   - 'DOMAIN,cbsi.live.ott.irdeto.com'
   - 'DOMAIN,cbsplaylistserver.aws.syncbak.com'
@@ -11146,6 +11147,7 @@ payload:
   - 'DOMAIN-SUFFIX,debatepolitics.com'
   - 'DOMAIN-SUFFIX,debenhams.com'
   - 'DOMAIN-SUFFIX,debian.org'
+  - 'DOMAIN-SUFFIX,debot.ai'
   - 'DOMAIN-SUFFIX,debug.com'
   - 'DOMAIN-SUFFIX,debugproject.com'
   - 'DOMAIN-SUFFIX,deca.art'
@@ -32854,6 +32856,7 @@ payload:
   - 'DOMAIN-SUFFIX,remi.flamary.com'
   - 'DOMAIN-SUFFIX,reminderfox.org'
   - 'DOMAIN-SUFFIX,remirepo.net'
+  - 'DOMAIN-SUFFIX,remna.dev'
   - 'DOMAIN-SUFFIX,remna.st'
   - 'DOMAIN-SUFFIX,remocontro.it'
   - 'DOMAIN-SUFFIX,remote.utorrent.com'

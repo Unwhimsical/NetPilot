@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48609
+# 条目数：48612
 host, 1password.drift.click, proxy
 host, a4e8s8k3.map2.ssl.hwcdn.net, proxy
 host, adobeereg.com, proxy
@@ -12,6 +12,7 @@ host, azuremarketplace.microsoft.com, proxy
 host, bbs.boingboing.net, proxy
 host, beck-online.beck.de, proxy
 host, blizzard.nefficient.co.kr, proxy
+host, builds.dotnet.microsoft.com, proxy
 host, bybit.ada.support, proxy
 host, cbsi.live.ott.irdeto.com, proxy
 host, cbsplaylistserver.aws.syncbak.com, proxy
@@ -11145,6 +11146,7 @@ host-suffix, debate.org, proxy
 host-suffix, debatepolitics.com, proxy
 host-suffix, debenhams.com, proxy
 host-suffix, debian.org, proxy
+host-suffix, debot.ai, proxy
 host-suffix, debug.com, proxy
 host-suffix, debugproject.com, proxy
 host-suffix, deca.art, proxy
@@ -32853,6 +32855,7 @@ host-suffix, remenxs.com, proxy
 host-suffix, remi.flamary.com, proxy
 host-suffix, reminderfox.org, proxy
 host-suffix, remirepo.net, proxy
+host-suffix, remna.dev, proxy
 host-suffix, remna.st, proxy
 host-suffix, remocontro.it, proxy
 host-suffix, remote.utorrent.com, proxy
