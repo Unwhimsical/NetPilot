@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48612
+# 条目数：48614
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -10741,6 +10741,7 @@ payload:
   - 'DOMAIN-SUFFIX,cydia.ifuckgfw.com'
   - 'DOMAIN-SUFFIX,cyfrowypolsat.pl'
   - 'DOMAIN-SUFFIX,cygames.co.jp'
+  - 'DOMAIN-SUFFIX,cygames.com'
   - 'DOMAIN-SUFFIX,cygames.jp'
   - 'DOMAIN-SUFFIX,cygwin.com'
   - 'DOMAIN-SUFFIX,cylink.pro'
@@ -47390,6 +47391,7 @@ payload:
   - 'DOMAIN-SUFFIX,yazhouse8.com'
   - 'DOMAIN-SUFFIX,yazhouseba.co'
   - 'DOMAIN-SUFFIX,yazhouseba.com'
+  - 'DOMAIN-SUFFIX,yb-payment.ru'
   - 'DOMAIN-SUFFIX,yb1111.com'
   - 'DOMAIN-SUFFIX,ybvip.com'
   - 'DOMAIN-SUFFIX,yc6443.com'
