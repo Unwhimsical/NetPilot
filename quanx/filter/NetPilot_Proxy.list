@@ -1,11 +1,12 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48614
+# 条目数：48626
 host, 1password.drift.click, proxy
 host, a4e8s8k3.map2.ssl.hwcdn.net, proxy
 host, adobeereg.com, proxy
 host, agb9r0ad.qllfkl.com, proxy
 host, angle.com.tw, proxy
 host, api-p.videomarket.jp, proxy
+host, api-siri-prod.apple.com, proxy
 host, apple-tv-plus-press.apple.com, proxy
 host, azure.microsoft.com, proxy
 host, azuremarketplace.microsoft.com, proxy
@@ -95,6 +96,7 @@ host, rsshub2.asailor.org, proxy
 host, self.events.data.microsoft.com, proxy
 host, straitsx-826709081262441084-b790f87a2ae6fd417434295.freshchat.com, proxy
 host, supercell.helpshift.com, proxy
+host, swallow.apple.com, proxy
 host, time.apple.com, proxy
 host, time.asia.apple.com, proxy
 host, time.euro.apple.com, proxy
@@ -130,6 +132,7 @@ host-keyword, onedrive, proxy
 host-keyword, openai, proxy
 host-keyword, openaicom-api, proxy
 host-keyword, phobos, proxy
+host-keyword, siri, proxy
 host-keyword, skydrive, proxy
 host-keyword, tiktok, proxy
 host-suffix, 000321365.com, proxy
@@ -3990,6 +3993,8 @@ host-suffix, appl.com, proxy
 host-suffix, appl4e.com, proxy
 host-suffix, appla.com, proxy
 host-suffix, apple, proxy
+host-suffix, apple-ai.com, proxy
+host-suffix, apple-cloudcompute.com, proxy
 host-suffix, apple-cloudkit.com, proxy
 host-suffix, apple-darwin.com, proxy
 host-suffix, apple-darwin.net, proxy
@@ -4008,6 +4013,7 @@ host-suffix, apple-online.com, proxy
 host-suffix, apple-pay.com, proxy
 host-suffix, apple-pay.rs, proxy
 host-suffix, apple-pay.wang, proxy
+host-suffix, apple-relay.apple.com, proxy
 host-suffix, apple-store.net, proxy
 host-suffix, apple-store.wang, proxy
 host-suffix, apple-studies.com, proxy
@@ -13228,6 +13234,7 @@ host-suffix, elephanttube.com, proxy
 host-suffix, elephanttubenew.com, proxy
 host-suffix, elevenlabs.com, proxy
 host-suffix, elevenlabs.io, proxy
+host-suffix, elevenlabsusercontent.com, proxy
 host-suffix, elfys.sprintit.fi, proxy
 host-suffix, elgaronline.com, proxy
 host-suffix, elgoog.im, proxy
@@ -16439,6 +16446,7 @@ host-suffix, gateio.live, proxy
 host-suffix, gateio.services, proxy
 host-suffix, gatestoneinstitute.org, proxy
 host-suffix, gateway.dev, proxy
+host-suffix, gateway.icloud.com, proxy
 host-suffix, gateway.jbo03.com, proxy
 host-suffix, gateway.jbo98.com, proxy
 host-suffix, gateway.pinata.cloud, proxy
@@ -17877,7 +17885,6 @@ host-suffix, gsherald.com.au, proxy
 host-suffix, gshow.com, proxy
 host-suffix, gshow.com.br, proxy
 host-suffix, gslink.us, proxy
-host-suffix, gsp-ssl.ls.apple.com, proxy
 host-suffix, gspace.com, proxy
 host-suffix, gsrc.io, proxy
 host-suffix, gstatic-cn.com, proxy
@@ -24268,6 +24275,7 @@ host-suffix, lrfdsoftware.com, proxy
 host-suffix, lrfz.com, proxy
 host-suffix, lrip.org, proxy
 host-suffix, lrysgee.xyz, proxy
+host-suffix, ls.apple.com, proxy
 host-suffix, lsawards.com, proxy
 host-suffix, lsd.org.hk, proxy
 host-suffix, lsdmusic.ru, proxy
@@ -24933,6 +24941,9 @@ host-suffix, masalladeloslimites.com, proxy
 host-suffix, mash.to, proxy
 host-suffix, mashaalradio.com, proxy
 host-suffix, masiukiewicz.pl, proxy
+host-suffix, mask-api.icloud.com, proxy
+host-suffix, mask-h2.icloud.com, proxy
+host-suffix, mask.icloud.com, proxy
 host-suffix, mask.me, proxy
 host-suffix, maskedsingerfox.com, proxy
 host-suffix, masqulin.com, proxy
@@ -35177,6 +35188,7 @@ host-suffix, smn.news, proxy
 host-suffix, smobserved.com, proxy
 host-suffix, smokingsweeties.com, proxy
 host-suffix, smokinmovies.com, proxy
+host-suffix, smoot.apple.com, proxy
 host-suffix, smotreshka.tv, proxy
 host-suffix, smplace.com, proxy
 host-suffix, smpte.org, proxy

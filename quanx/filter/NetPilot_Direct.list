@@ -1,5 +1,5 @@
 # NetPilot 直连过滤器（direct）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111359
+# 条目数：111363
 geoip, cn, direct
 host, 2mdn-cn.net, direct
 host, 2mdn.net, direct
@@ -60183,6 +60183,7 @@ host-suffix, lenovocloudos.com, direct
 host-suffix, lenovoconnect.com, direct
 host-suffix, lenovoeservice.com, direct
 host-suffix, lenovofile.com, direct
+host-suffix, lenovofuturecenter.com, direct
 host-suffix, lenovogame.com, direct
 host-suffix, lenovohci.com, direct
 host-suffix, lenovohuishang.com, direct
@@ -75012,6 +75013,7 @@ host-suffix, qpjylm.com, direct
 host-suffix, qpkaifa.com, direct
 host-suffix, qplus.com, direct
 host-suffix, qplusstatic.com, direct
+host-suffix, qpmcn.com, direct
 host-suffix, qpoc.com, direct
 host-suffix, qpstar.com, direct
 host-suffix, qpwater.com, direct
@@ -89903,6 +89905,7 @@ host-suffix, troxchina.com, direct
 host-suffix, trpc.center, direct
 host-suffix, trpc.group, direct
 host-suffix, trpc.tech, direct
+host-suffix, trpcdn.com, direct
 host-suffix, trpcdn.net, direct
 host-suffix, trs-logistics.com, direct
 host-suffix, trsoft.vip, direct
@@ -107702,6 +107705,7 @@ host-suffix, zhaoketang.com, direct
 host-suffix, zhaokuaizhao.com, direct
 host-suffix, zhaolaobanla.com, direct
 host-suffix, zhaoliangji.com, direct
+host-suffix, zhaoliangjipc.com, direct
 host-suffix, zhaoliming.net, direct
 host-suffix, zhaoming.biz, direct
 host-suffix, zhaomishijie.com, direct
