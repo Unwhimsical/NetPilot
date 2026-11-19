@@ -1,12 +1,12 @@
 #!name=NetPilot Direct
 
-#!desc=直连规则总数: 111362
+#!desc=直连规则总数: 111366
 
 # 描述：国内直连规则，自动更新
 
-# 更新时间: 2026-11-19 06:54:23 北京时间
+# 更新时间: 2026-11-19 20:28:06 北京时间
 
-# 直连规则总数: 111362
+# 直连规则总数: 111366
 
 [Rule]
 
@@ -60192,6 +60192,7 @@ DOMAIN-SUFFIX,lenovocloudos.com,DIRECT
 DOMAIN-SUFFIX,lenovoconnect.com,DIRECT
 DOMAIN-SUFFIX,lenovoeservice.com,DIRECT
 DOMAIN-SUFFIX,lenovofile.com,DIRECT
+DOMAIN-SUFFIX,lenovofuturecenter.com,DIRECT
 DOMAIN-SUFFIX,lenovogame.com,DIRECT
 DOMAIN-SUFFIX,lenovohci.com,DIRECT
 DOMAIN-SUFFIX,lenovohuishang.com,DIRECT
@@ -75021,6 +75022,7 @@ DOMAIN-SUFFIX,qpjylm.com,DIRECT
 DOMAIN-SUFFIX,qpkaifa.com,DIRECT
 DOMAIN-SUFFIX,qplus.com,DIRECT
 DOMAIN-SUFFIX,qplusstatic.com,DIRECT
+DOMAIN-SUFFIX,qpmcn.com,DIRECT
 DOMAIN-SUFFIX,qpoc.com,DIRECT
 DOMAIN-SUFFIX,qpstar.com,DIRECT
 DOMAIN-SUFFIX,qpwater.com,DIRECT
@@ -89912,6 +89914,7 @@ DOMAIN-SUFFIX,troxchina.com,DIRECT
 DOMAIN-SUFFIX,trpc.center,DIRECT
 DOMAIN-SUFFIX,trpc.group,DIRECT
 DOMAIN-SUFFIX,trpc.tech,DIRECT
+DOMAIN-SUFFIX,trpcdn.com,DIRECT
 DOMAIN-SUFFIX,trpcdn.net,DIRECT
 DOMAIN-SUFFIX,trs-logistics.com,DIRECT
 DOMAIN-SUFFIX,trsoft.vip,DIRECT
@@ -107711,6 +107714,7 @@ DOMAIN-SUFFIX,zhaoketang.com,DIRECT
 DOMAIN-SUFFIX,zhaokuaizhao.com,DIRECT
 DOMAIN-SUFFIX,zhaolaobanla.com,DIRECT
 DOMAIN-SUFFIX,zhaoliangji.com,DIRECT
+DOMAIN-SUFFIX,zhaoliangjipc.com,DIRECT
 DOMAIN-SUFFIX,zhaoliming.net,DIRECT
 DOMAIN-SUFFIX,zhaoming.biz,DIRECT
 DOMAIN-SUFFIX,zhaomishijie.com,DIRECT
