@@ -1,5 +1,5 @@
 # NetPilot 直连规则集（DIRECT）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：111363
+# 条目数：111366
 payload:
   - 'DOMAIN,2mdn-cn.net'
   - 'DOMAIN,2mdn.net'
@@ -31654,6 +31654,7 @@ payload:
   - 'DOMAIN-SUFFIX,echo-isoftstone.com'
   - 'DOMAIN-SUFFIX,echo188.com'
   - 'DOMAIN-SUFFIX,echoing.tech'
+  - 'DOMAIN-SUFFIX,echooai.com'
   - 'DOMAIN-SUFFIX,echoteen.com'
   - 'DOMAIN-SUFFIX,echovelle.com'
   - 'DOMAIN-SUFFIX,echu-cable.com'
@@ -33930,6 +33931,7 @@ payload:
   - 'DOMAIN-SUFFIX,fayufaguo.com'
   - 'DOMAIN-SUFFIX,fazhi12368.com'
   - 'DOMAIN-SUFFIX,fazhijx.com'
+  - 'DOMAIN-SUFFIX,fazhipro.com'
   - 'DOMAIN-SUFFIX,fazz.fun'
   - 'DOMAIN-SUFFIX,fb32dc52302e6b9b.com'
   - 'DOMAIN-SUFFIX,fb46cd5483f029aa.com'
@@ -77907,6 +77909,7 @@ payload:
   - 'DOMAIN-SUFFIX,saaas.com'
   - 'DOMAIN-SUFFIX,saagasports.com'
   - 'DOMAIN-SUFFIX,saasddos.com'
+  - 'DOMAIN-SUFFIX,saasfz.com'
   - 'DOMAIN-SUFFIX,saaslb.com'
   - 'DOMAIN-SUFFIX,saasops.tech'
   - 'DOMAIN-SUFFIX,saasruanjian.com'
