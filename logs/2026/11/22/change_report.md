@@ -1,6 +1,6 @@
 # 变更报告 2026-11-22
 
-生成时间：2026-11-22 05:34:19
+生成时间：2026-11-22 20:17:00
 
 ---
 
@@ -15,16 +15,16 @@
 ## 代理模块
 
 - 原有规则数：48785
-- 新增规则数：0
+- 新增规则数：24
 - 去重删除：3077
-- 最终规则数：48785
+- 最终规则数：48809
 
 ## 去广告模块
 
 - 原有规则数：236195
-- 新增规则数：0
-- 去重删除：843
-- 最终规则数：236195
+- 新增规则数：371
+- 去重删除：846
+- 最终规则数：236563
 
 ## 规则冲突检测
 
@@ -78,27 +78,27 @@
 
 发现 6 条异常规则：
 
-- ('DOMAIN-SUFFIX,IP-CIDR,45.76.214.191/32,no-resolve,PROXY', "策略 '45.76.214.191/32' 不合法")
-- ('DOMAIN-SUFFIX,IP-CIDR,24.199.123.28/32,no-resolve,PROXY', "策略 '24.199.123.28/32' 不合法")
 - ('DOMAIN-SUFFIX,IP-CIDR,64.23.132.171/32,no-resolve,PROXY', "策略 '64.23.132.171/32' 不合法")
-- ('DOMAIN-SUFFIX,IP-CIDR,159.89.204.203/32,no-resolve,PROXY', "策略 '159.89.204.203/32' 不合法")
-- ('DOMAIN-SUFFIX,IP-CIDR,143.198.200.27/32,no-resolve,PROXY', "策略 '143.198.200.27/32' 不合法")
 - ('DOMAIN-SUFFIX,OMAIN-SUFFIX,BING.NET,PROXY', "策略 'BING.NET' 不合法")
+- ('DOMAIN-SUFFIX,IP-CIDR,143.198.200.27/32,no-resolve,PROXY', "策略 '143.198.200.27/32' 不合法")
+- ('DOMAIN-SUFFIX,IP-CIDR,159.89.204.203/32,no-resolve,PROXY', "策略 '159.89.204.203/32' 不合法")
+- ('DOMAIN-SUFFIX,IP-CIDR,24.199.123.28/32,no-resolve,PROXY', "策略 '24.199.123.28/32' 不合法")
+- ('DOMAIN-SUFFIX,IP-CIDR,45.76.214.191/32,no-resolve,PROXY', "策略 '45.76.214.191/32' 不合法")
 ## 规则源健康状态
 
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 177, 失败 0, 连续失败 0)
-- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 177, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf (成功 16, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf (成功 16, 失败 0, 连续失败 0)
-- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf (成功 16, 失败 0, 连续失败 0)
-- ✅ https://yfamilys.com/module/AdBlock.module (成功 16, 失败 0, 连续失败 0)
-- ✅ https://yfamilys.com/module/adultraplus.module (成功 16, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_proxy_list.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/Talkatone.sgmodule (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/huijingfei/Shadowrocket-Rules/refs/heads/main/sr_app_ad.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/refs/heads/main/modules/startingad.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_reject_list.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/Unwhimsical/NetPilot/refs/heads/main/modules/%E6%B5%8B%E8%AF%95.module (成功 178, 失败 0, 连续失败 0)
+- ✅ https://raw.githubusercontent.com/LOWERTOP/Shadowrocket-First/main/TalkatoneAntiAds.list (成功 178, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_top500_banlist_ad.conf (成功 17, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_cnip_ad.conf (成功 17, 失败 0, 连续失败 0)
+- ✅ https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf (成功 17, 失败 0, 连续失败 0)
+- ✅ https://yfamilys.com/module/AdBlock.module (成功 17, 失败 0, 连续失败 0)
+- ✅ https://yfamilys.com/module/adultraplus.module (成功 17, 失败 0, 连续失败 0)
 ## DNS 泄漏风险
 
 - **高风险 - 直连海外域名**
