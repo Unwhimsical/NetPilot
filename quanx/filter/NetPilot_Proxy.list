@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48656
+# 条目数：48657
 host, 1password.drift.click, proxy
 host, a4e8s8k3.map2.ssl.hwcdn.net, proxy
 host, adobeereg.com, proxy
@@ -16662,6 +16662,7 @@ host-suffix, gemfire.net, proxy
 host-suffix, gemforex.com, proxy
 host-suffix, gemfury.com, proxy
 host-suffix, gemini.com, proxy
+host-suffix, gemma.ai, proxy
 host-suffix, gemports.com, proxy
 host-suffix, gemtextil.net, proxy
 host-suffix, gen.lib.rus.ec, proxy

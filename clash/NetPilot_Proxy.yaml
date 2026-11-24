@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48656
+# 条目数：48657
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -16663,6 +16663,7 @@ payload:
   - 'DOMAIN-SUFFIX,gemforex.com'
   - 'DOMAIN-SUFFIX,gemfury.com'
   - 'DOMAIN-SUFFIX,gemini.com'
+  - 'DOMAIN-SUFFIX,gemma.ai'
   - 'DOMAIN-SUFFIX,gemports.com'
   - 'DOMAIN-SUFFIX,gemtextil.net'
   - 'DOMAIN-SUFFIX,gen.lib.rus.ec'
