@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48657
+# 条目数：48662
 host, 1password.drift.click, proxy
 host, a4e8s8k3.map2.ssl.hwcdn.net, proxy
 host, adobeereg.com, proxy
@@ -22,6 +22,7 @@ host, cdn-spotify-experiments.conductrics.com, proxy
 host, cdn.js7k.com, proxy
 host, cdn.usefathom.com, proxy
 host, cisco.evergage.com, proxy
+host, courses.myecnu.org, proxy
 host, crl.microsoft.com, proxy
 host, crl.versign.net, proxy
 host, databank.worldbank.org, proxy
@@ -8362,6 +8363,7 @@ host-suffix, cache.panguke.com, proxy
 host-suffix, cache.pttweb.cc, proxy
 host-suffix, cachefly.com, proxy
 host-suffix, cachefly.net, proxy
+host-suffix, cachix.org, proxy
 host-suffix, cachyos.org, proxy
 host-suffix, cacnews.ca, proxy
 host-suffix, cacnw.com, proxy
@@ -14555,10 +14557,12 @@ host-suffix, fastindianporn.com, proxy
 host-suffix, fastlane.ci, proxy
 host-suffix, fastlane.tools, proxy
 host-suffix, fastly-edge.com, proxy
+host-suffix, fastly-insights.com, proxy
 host-suffix, fastly-terrarium.com, proxy
 host-suffix, fastly.com, proxy
 host-suffix, fastly.io, proxy
 host-suffix, fastly.net, proxy
+host-suffix, fastlydns.net, proxy
 host-suffix, fastlylabs.com, proxy
 host-suffix, fastlylb.net, proxy
 host-suffix, fastpic.ru, proxy
@@ -40235,6 +40239,7 @@ host-suffix, vivi-chat.com, proxy
 host-suffix, vividstream.xxx, proxy
 host-suffix, vividtranny.com, proxy
 host-suffix, viviporn.tv, proxy
+host-suffix, vivox.com, proxy
 host-suffix, vivthomas.com, proxy
 host-suffix, vivwin88.com, proxy
 host-suffix, vixen.com, proxy

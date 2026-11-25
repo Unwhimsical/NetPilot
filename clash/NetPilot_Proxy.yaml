@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48657
+# 条目数：48662
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -23,6 +23,7 @@ payload:
   - 'DOMAIN,cdn.js7k.com'
   - 'DOMAIN,cdn.usefathom.com'
   - 'DOMAIN,cisco.evergage.com'
+  - 'DOMAIN,courses.myecnu.org'
   - 'DOMAIN,crl.microsoft.com'
   - 'DOMAIN,crl.versign.net'
   - 'DOMAIN,databank.worldbank.org'
@@ -8363,6 +8364,7 @@ payload:
   - 'DOMAIN-SUFFIX,cache.pttweb.cc'
   - 'DOMAIN-SUFFIX,cachefly.com'
   - 'DOMAIN-SUFFIX,cachefly.net'
+  - 'DOMAIN-SUFFIX,cachix.org'
   - 'DOMAIN-SUFFIX,cachyos.org'
   - 'DOMAIN-SUFFIX,cacnews.ca'
   - 'DOMAIN-SUFFIX,cacnw.com'
@@ -14556,10 +14558,12 @@ payload:
   - 'DOMAIN-SUFFIX,fastlane.ci'
   - 'DOMAIN-SUFFIX,fastlane.tools'
   - 'DOMAIN-SUFFIX,fastly-edge.com'
+  - 'DOMAIN-SUFFIX,fastly-insights.com'
   - 'DOMAIN-SUFFIX,fastly-terrarium.com'
   - 'DOMAIN-SUFFIX,fastly.com'
   - 'DOMAIN-SUFFIX,fastly.io'
   - 'DOMAIN-SUFFIX,fastly.net'
+  - 'DOMAIN-SUFFIX,fastlydns.net'
   - 'DOMAIN-SUFFIX,fastlylabs.com'
   - 'DOMAIN-SUFFIX,fastlylb.net'
   - 'DOMAIN-SUFFIX,fastpic.ru'
@@ -40236,6 +40240,7 @@ payload:
   - 'DOMAIN-SUFFIX,vividstream.xxx'
   - 'DOMAIN-SUFFIX,vividtranny.com'
   - 'DOMAIN-SUFFIX,viviporn.tv'
+  - 'DOMAIN-SUFFIX,vivox.com'
   - 'DOMAIN-SUFFIX,vivthomas.com'
   - 'DOMAIN-SUFFIX,vivwin88.com'
   - 'DOMAIN-SUFFIX,vixen.com'

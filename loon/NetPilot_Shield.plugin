@@ -1,5 +1,5 @@
 #!name=NetPilot Shield (Loon)
-#!desc=代理规则: 48810 ｜ 去广告规则: 241796
+#!desc=代理规则: 48815 ｜ 去广告规则: 241802
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成，源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -25,6 +25,7 @@ DOMAIN,cdn-spotify-experiments.conductrics.com,PROXY
 DOMAIN,cdn.js7k.com,PROXY
 DOMAIN,cdn.usefathom.com,PROXY
 DOMAIN,cisco.evergage.com,PROXY
+DOMAIN,courses.myecnu.org,PROXY
 DOMAIN,crl.microsoft.com,PROXY
 DOMAIN,crl.versign.net,PROXY
 DOMAIN,databank.worldbank.org,PROXY
@@ -8343,6 +8344,7 @@ DOMAIN-SUFFIX,cache.panguke.com,PROXY
 DOMAIN-SUFFIX,cache.pttweb.cc,PROXY
 DOMAIN-SUFFIX,cachefly.com,PROXY
 DOMAIN-SUFFIX,cachefly.net,PROXY
+DOMAIN-SUFFIX,cachix.org,PROXY
 DOMAIN-SUFFIX,cachyos.org,PROXY
 DOMAIN-SUFFIX,cacnews.ca,PROXY
 DOMAIN-SUFFIX,cacnw.com,PROXY
@@ -14536,10 +14538,12 @@ DOMAIN-SUFFIX,fastindianporn.com,PROXY
 DOMAIN-SUFFIX,fastlane.ci,PROXY
 DOMAIN-SUFFIX,fastlane.tools,PROXY
 DOMAIN-SUFFIX,fastly-edge.com,PROXY
+DOMAIN-SUFFIX,fastly-insights.com,PROXY
 DOMAIN-SUFFIX,fastly-terrarium.com,PROXY
 DOMAIN-SUFFIX,fastly.com,PROXY
 DOMAIN-SUFFIX,fastly.io,PROXY
 DOMAIN-SUFFIX,fastly.net,PROXY
+DOMAIN-SUFFIX,fastlydns.net,PROXY
 DOMAIN-SUFFIX,fastlylabs.com,PROXY
 DOMAIN-SUFFIX,fastlylb.net,PROXY
 DOMAIN-SUFFIX,fastpic.ru,PROXY
@@ -40216,6 +40220,7 @@ DOMAIN-SUFFIX,vivi-chat.com,PROXY
 DOMAIN-SUFFIX,vividstream.xxx,PROXY
 DOMAIN-SUFFIX,vividtranny.com,PROXY
 DOMAIN-SUFFIX,viviporn.tv,PROXY
+DOMAIN-SUFFIX,vivox.com,PROXY
 DOMAIN-SUFFIX,vivthomas.com,PROXY
 DOMAIN-SUFFIX,vivwin88.com,PROXY
 DOMAIN-SUFFIX,vixen.com,PROXY
@@ -136638,6 +136643,7 @@ DOMAIN-SUFFIX,hxdecujrfmyyv.online,REJECT
 DOMAIN-SUFFIX,hxdswx.com,REJECT
 DOMAIN-SUFFIX,hxdzei.habitium.it,REJECT
 DOMAIN-SUFFIX,hxgjlczbvlzfm.space,REJECT
+DOMAIN-SUFFIX,hxgnwrwslhzgrmjsfvdevrjpn.com,REJECT
 DOMAIN-SUFFIX,hxgqmhtogvxuy.website,REJECT
 DOMAIN-SUFFIX,hxhasxphmqhyf.website,REJECT
 DOMAIN-SUFFIX,hxhnsopexglnj.online,REJECT
@@ -140822,6 +140828,7 @@ DOMAIN-SUFFIX,ingest.make.rvohealth.com,REJECT
 DOMAIN-SUFFIX,ingest.metzler-electronics.com,REJECT
 DOMAIN-SUFFIX,ingest.promptwatch.com,REJECT
 DOMAIN-SUFFIX,ingest.skarb.work,REJECT
+DOMAIN-SUFFIX,ingest.t3.codes,REJECT
 DOMAIN-SUFFIX,ingest.webcol.sdp.peacocktv.com,REJECT
 DOMAIN-SUFFIX,ingesteer.services-prod.nsvcs.net,REJECT
 DOMAIN-SUFFIX,ingestion.webanalytics.italia.it,REJECT
@@ -152391,6 +152398,7 @@ DOMAIN-SUFFIX,lightspeedcash.com,REJECT
 DOMAIN-SUFFIX,lightspite.com,REJECT
 DOMAIN-SUFFIX,lightstep.medium.systems,REJECT
 DOMAIN-SUFFIX,lighttalon.com,REJECT
+DOMAIN-SUFFIX,lightwars.com,REJECT
 DOMAIN-SUFFIX,lignosegobangs.cfd,REJECT
 DOMAIN-SUFFIX,ligupxjukssuu.space,REJECT
 DOMAIN-SUFFIX,ligxyv.hackers.co.kr,REJECT
@@ -175025,6 +175033,7 @@ DOMAIN-SUFFIX,motion.inmotionmktg.com,REJECT
 DOMAIN-SUFFIX,motion.kollmorgen.com,REJECT
 DOMAIN-SUFFIX,motionarray.net,REJECT
 DOMAIN-SUFFIX,motionflowers.com,REJECT
+DOMAIN-SUFFIX,motionless-bus.com,REJECT
 DOMAIN-SUFFIX,motionless-initiative.pro,REJECT
 DOMAIN-SUFFIX,motionless-sock.pro,REJECT
 DOMAIN-SUFFIX,motionlessarmsvanished.com,REJECT
@@ -204742,6 +204751,7 @@ DOMAIN-SUFFIX,rxzefz.icu,REJECT
 DOMAIN-SUFFIX,rxzfhfmoegfvts.com,REJECT
 DOMAIN-SUFFIX,rxzz.metcalfehotel.com,REJECT
 DOMAIN-SUFFIX,ry0.rythmefm.com,REJECT
+DOMAIN-SUFFIX,ry6wy3dr62usd0fnicfk.com,REJECT
 DOMAIN-SUFFIX,ry7icaih0p.com,REJECT
 DOMAIN-SUFFIX,ryabokoshka.link,REJECT
 DOMAIN-SUFFIX,ryajoacyyymej.site,REJECT
@@ -275238,6 +275248,7 @@ DOMAIN-SUFFIX,watch-netfiix.com,REJECT
 DOMAIN-SUFFIX,watch-online.49n7wqynho5u.top,REJECT
 DOMAIN-SUFFIX,watch-this.live,REJECT
 DOMAIN-SUFFIX,watch.watchshopbd.com,REJECT
+DOMAIN-SUFFIX,watchbighead.com,REJECT
 DOMAIN-SUFFIX,watchcpm.com,REJECT
 DOMAIN-SUFFIX,watchetdorlot.shop,REJECT
 DOMAIN-SUFFIX,watchetifuters.cloud,REJECT
@@ -300442,6 +300453,15 @@ http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path=https://
 http-response ^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js, requires-body=true, tag=caixin
 http-response ^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js, requires-body=true, tag=feikechaguan
 http-response https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js, requires-body=true, tag=ShunFeng
+http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js, requires-body=true, tag=WeChat110
+http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js, requires-body=true, tag=12306
+http-response ^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js, requires-body=true, tag=caixin
+http-response ^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js, requires-body=true, tag=feikechaguan
+http-response ^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js, requires-body=true, tag=jingxi
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms) script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js, requires-body=true, tag=jingdong
+http-response ^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList) script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js, requires-body=true, tag=ku'an
+http-response https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js, requires-body=true, tag=ShunFeng
+http-response ^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$ script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js, requires-body=true, tag=Stay
 http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js, requires-body=true, tag=WeChat110
 http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js, requires-body=true, tag=12306
 http-response ^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362 script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js, requires-body=true, tag=caixin
