@@ -1,5 +1,5 @@
 # NetPilot 去广告过滤器·精简版（仅注册域层级，约全量四成）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：100025
+# 条目数：100031
 host, 1500020991.vodplayer.wxamedia.com, reject
 host, 1500022744.vodplayer.wxamedia.com, reject
 host, 1500026601.vodplayer.wxamedia.com, reject
@@ -38,7 +38,6 @@ host, adapi.yynetwk.com, reject
 host, adashbc.ut.taobao.com, reject
 host, adashxgc.ut.taobao.com, reject
 host, adc.hpplay.cn, reject
-host, adcanvas.com, reject
 host, adcdn.tencentmusic.com, reject
 host, adclick.tencentmusic.com, reject
 host, addata.jd.com, reject
@@ -4710,6 +4709,7 @@ host-suffix, adcampo.com, reject
 host-suffix, adcanadian.com, reject
 host-suffix, adcannyads.com, reject
 host-suffix, adcannyxml.com, reject
+host-suffix, adcanvas.com, reject
 host-suffix, adcarem.co, reject
 host-suffix, adcash.com, reject
 host-suffix, adcastmarket.com, reject
@@ -17014,6 +17014,7 @@ host-suffix, chomageaiming.shop, reject
 host-suffix, chompsvesuvin.com, reject
 host-suffix, chong-wu.net, reject
 host-suffix, chookybilsted.qpon, reject
+host-suffix, choosehobby.com, reject
 host-suffix, chooseroverlaidspecies.com, reject
 host-suffix, choppedremains.com, reject
 host-suffix, chopsticks22.com, reject
@@ -37000,6 +37001,7 @@ host-suffix, heaterlumberexploit.com, reject
 host-suffix, heathertravelledpast.com, reject
 host-suffix, heathsleavenlinaloe.cfd, reject
 host-suffix, heathspewer.shop, reject
+host-suffix, heathstyle.com, reject
 host-suffix, heatingapiece.com, reject
 host-suffix, heatmap.it, reject
 host-suffix, heatrave.com, reject
@@ -37606,6 +37608,7 @@ host-suffix, hihkqknzaiomi.site, reject
 host-suffix, hihohehgobxem.site, reject
 host-suffix, hiibel.com, reject
 host-suffix, hiicscvkquoud.site, reject
+host-suffix, hiiltrack.online, reject
 host-suffix, hiiona.com, reject
 host-suffix, hijackprolans.cfd, reject
 host-suffix, hijbogiaodgil.space, reject
@@ -38556,6 +38559,7 @@ host-suffix, howesschone.qpon, reject
 host-suffix, howeversoliped.qpon, reject
 host-suffix, howffcapsulatrendel.cfd, reject
 host-suffix, howfingtusher.com, reject
+host-suffix, howglam.com, reject
 host-suffix, howhow.cl, reject
 host-suffix, howkcarson.cyou, reject
 host-suffix, howlingkilned.com, reject
@@ -51568,6 +51572,7 @@ host-suffix, mashlamvaginas.cfd, reject
 host-suffix, mashrokit.info, reject
 host-suffix, mashrudramm.cyou, reject
 host-suffix, maskcubical.cfd, reject
+host-suffix, maskdomains.com, reject
 host-suffix, maskedadmin.com, reject
 host-suffix, maskedpairedredsear.cyou, reject
 host-suffix, maskermixedlyglucid.qpon, reject
@@ -78308,6 +78313,7 @@ host-suffix, stactesder.shop, reject
 host-suffix, stacylackers.shop, reject
 host-suffix, stacyshutes.cfd, reject
 host-suffix, stadiumzoo.net, reject
+host-suffix, stads.cfd, reject
 host-suffix, stagepopkek.com, reject
 host-suffix, stageseshoals.com, reject
 host-suffix, stageynea.cfd, reject

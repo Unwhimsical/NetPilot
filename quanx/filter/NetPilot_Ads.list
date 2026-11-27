@@ -1,5 +1,5 @@
 # NetPilot 去广告过滤器（reject）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：242533
+# 条目数：242543
 host, 1500020991.vodplayer.wxamedia.com, reject
 host, 1500022744.vodplayer.wxamedia.com, reject
 host, 1500026601.vodplayer.wxamedia.com, reject
@@ -38,7 +38,6 @@ host, adapi.yynetwk.com, reject
 host, adashbc.ut.taobao.com, reject
 host, adashxgc.ut.taobao.com, reject
 host, adc.hpplay.cn, reject
-host, adcanvas.com, reject
 host, adcdn.tencentmusic.com, reject
 host, adclick.tencentmusic.com, reject
 host, addata.jd.com, reject
@@ -9298,6 +9297,7 @@ host-suffix, adcampo.com, reject
 host-suffix, adcanadian.com, reject
 host-suffix, adcannyads.com, reject
 host-suffix, adcannyxml.com, reject
+host-suffix, adcanvas.com, reject
 host-suffix, adcarem.co, reject
 host-suffix, adcash.com, reject
 host-suffix, adcast.deviantart.com, reject
@@ -20697,6 +20697,7 @@ host-suffix, applytics.os4work.com, reject
 host-suffix, applytics.zwyr157wwiu6eior.com, reject
 host-suffix, applzr.com, reject
 host-suffix, appmetr.com, reject
+host-suffix, appmetrica.sovcombank.ru, reject
 host-suffix, appmetrica.yandex.com, reject
 host-suffix, appmetrica.yandex.net, reject
 host-suffix, appmon.shinhan.com, reject
@@ -35288,6 +35289,7 @@ host-suffix, chong-wu.net, reject
 host-suffix, chookybilsted.qpon, reject
 host-suffix, choose.405dentalaesthetics.com, reject
 host-suffix, choose.adelaide.edu.au, reject
+host-suffix, choosehobby.com, reject
 host-suffix, chooseroverlaidspecies.com, reject
 host-suffix, choppedremains.com, reject
 host-suffix, chopsticks22.com, reject
@@ -84853,6 +84855,7 @@ host-suffix, heaterlumberexploit.com, reject
 host-suffix, heathertravelledpast.com, reject
 host-suffix, heathsleavenlinaloe.cfd, reject
 host-suffix, heathspewer.shop, reject
+host-suffix, heathstyle.com, reject
 host-suffix, heatingapiece.com, reject
 host-suffix, heatmap-events-collector.instapage.com, reject
 host-suffix, heatmap-tracking-do-to-s3-worker-prod.flipdesk.workers.dev, reject
@@ -85702,6 +85705,7 @@ host-suffix, hihkqknzaiomi.site, reject
 host-suffix, hihohehgobxem.site, reject
 host-suffix, hiibel.com, reject
 host-suffix, hiicscvkquoud.site, reject
+host-suffix, hiiltrack.online, reject
 host-suffix, hiiona.com, reject
 host-suffix, hij57uflerm19utj.8tx9eg1oi7kojw.cyou, reject
 host-suffix, hijab.decentattire.com, reject
@@ -87010,6 +87014,7 @@ host-suffix, howesschone.qpon, reject
 host-suffix, howeversoliped.qpon, reject
 host-suffix, howffcapsulatrendel.cfd, reject
 host-suffix, howfingtusher.com, reject
+host-suffix, howglam.com, reject
 host-suffix, howhow.cl, reject
 host-suffix, howkcarson.cyou, reject
 host-suffix, howlingkilned.com, reject
@@ -117912,6 +117917,7 @@ host-suffix, mashlamvaginas.cfd, reject
 host-suffix, mashrokit.info, reject
 host-suffix, mashrudramm.cyou, reject
 host-suffix, maskcubical.cfd, reject
+host-suffix, maskdomains.com, reject
 host-suffix, maskedadmin.com, reject
 host-suffix, maskedpairedredsear.cyou, reject
 host-suffix, maskermixedlyglucid.qpon, reject
@@ -138979,6 +138985,7 @@ host-suffix, pampopholf.com, reject
 host-suffix, pamswrings.cfd, reject
 host-suffix, pamvc.sexymodest.com, reject
 host-suffix, pamzqm.yitechnology.com, reject
+host-suffix, pan.pazarama.com, reject
 host-suffix, panamaphotog.cfd, reject
 host-suffix, panaservers.com, reject
 host-suffix, pancakedecrypt.cfd, reject
@@ -191987,6 +191994,7 @@ host-suffix, stactesder.shop, reject
 host-suffix, stacylackers.shop, reject
 host-suffix, stacyshutes.cfd, reject
 host-suffix, stadiumzoo.net, reject
+host-suffix, stads.cfd, reject
 host-suffix, stag-neuro.kinshealth.in, reject
 host-suffix, stag.4us.hr, reject
 host-suffix, stag.4us.si, reject
@@ -206591,6 +206599,7 @@ host-suffix, thohd.shelf-co.com, reject
 host-suffix, thoinket.com, reject
 host-suffix, thokishbahoo.cyou, reject
 host-suffix, tholor.com, reject
+host-suffix, thomann.clickfire.de, reject
 host-suffix, thomanvarisse.com, reject
 host-suffix, thomasmore.fr, reject
 host-suffix, thomastorch.com, reject
@@ -229327,6 +229336,7 @@ host-suffix, widget-view.dmm.com, reject
 host-suffix, widget.admiral.hr, reject
 host-suffix, widget.block4d.com, reject
 host-suffix, widget.chat.zalo.me, reject
+host-suffix, widget.clickfire.io, reject
 host-suffix, widget.educationdynamics.com, reject
 host-suffix, widget.faphouse.com, reject
 host-suffix, widget.golfscape.com, reject
