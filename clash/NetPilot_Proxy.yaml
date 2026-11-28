@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48673
+# 条目数：48675
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -2750,6 +2750,7 @@ payload:
   - 'DOMAIN-SUFFIX,aiailah.com'
   - 'DOMAIN-SUFFIX,aiasahi.jp'
   - 'DOMAIN-SUFFIX,aichatting.net'
+  - 'DOMAIN-SUFFIX,aicu.cc'
   - 'DOMAIN-SUFFIX,aidc.com.tw'
   - 'DOMAIN-SUFFIX,aiddata.org'
   - 'DOMAIN-SUFFIX,aidol.asia'
@@ -10941,6 +10942,7 @@ payload:
   - 'DOMAIN-SUFFIX,danielmessana.com'
   - 'DOMAIN-SUFFIX,danilo.to'
   - 'DOMAIN-SUFFIX,danke4china.net'
+  - 'DOMAIN-SUFFIX,danmakus.com'
   - 'DOMAIN-SUFFIX,danmarkbeatsbydrdre.com'
   - 'DOMAIN-SUFFIX,danskpornofilm.com'
   - 'DOMAIN-SUFFIX,dansmovies.com'
