@@ -1,5 +1,5 @@
 # NetPilot 代理过滤器（proxy）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48675
+# 条目数：48677
 host, 1password.drift.click, proxy
 host, a4e8s8k3.map2.ssl.hwcdn.net, proxy
 host, adobeereg.com, proxy
@@ -8,6 +8,7 @@ host, angle.com.tw, proxy
 host, api-p.videomarket.jp, proxy
 host, api-siri-prod.apple.com, proxy
 host, apple-tv-plus-press.apple.com, proxy
+host, aurora-customization-usw2.lithium.com, proxy
 host, azure.microsoft.com, proxy
 host, azuremarketplace.microsoft.com, proxy
 host, bbs.boingboing.net, proxy
@@ -14654,6 +14655,7 @@ host-suffix, fc336.com, proxy
 host-suffix, fcacebook.com, proxy
 host-suffix, fcaebook.com, proxy
 host-suffix, fcchk.org, proxy
+host-suffix, fce.gg, proxy
 host-suffix, fcebook.com, proxy
 host-suffix, fcebookk.com, proxy
 host-suffix, fcfacebook.com, proxy

@@ -1,5 +1,5 @@
 # NetPilot 去广告过滤器·精简版（仅注册域层级，约全量四成）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：100406
+# 条目数：100414
 host, 1500020991.vodplayer.wxamedia.com, reject
 host, 1500022744.vodplayer.wxamedia.com, reject
 host, 1500026601.vodplayer.wxamedia.com, reject
@@ -4876,6 +4876,7 @@ host-suffix, adform.net, reject
 host-suffix, adformdsp.net, reject
 host-suffix, adfox.cam, reject
 host-suffix, adfpoint.com, reject
+host-suffix, adfractal.com, reject
 host-suffix, adfrontiers.com, reject
 host-suffix, adfsxwbdqlcwf.space, reject
 host-suffix, adfun.ru, reject
@@ -49370,6 +49371,7 @@ host-suffix, livezombymil.com, reject
 host-suffix, livid-factor.com, reject
 host-suffix, lividlyabies.cfd, reject
 host-suffix, lividlydonnee.qpon, reject
+host-suffix, livingoff.com, reject
 host-suffix, livingsleet.com, reject
 host-suffix, livingsspinule.cyou, reject
 host-suffix, livreral.fr, reject
@@ -51851,6 +51853,7 @@ host-suffix, mathematicswhineconvene.com, reject
 host-suffix, matheranalytics.com, reject
 host-suffix, mathilde-ads.com, reject
 host-suffix, mathphenate.qpon, reject
+host-suffix, mathrevolt.com, reject
 host-suffix, mathsanalyse.com, reject
 host-suffix, mathspositionuproar.com, reject
 host-suffix, mathtag.com, reject
@@ -52480,6 +52483,7 @@ host-suffix, melodiousharmony.com, reject
 host-suffix, melodioussymphony.com, reject
 host-suffix, melodramaticquery.com, reject
 host-suffix, melodyglobe.com, reject
+host-suffix, melodyivory.com, reject
 host-suffix, meloidsandron.qpon, reject
 host-suffix, meloshounder.com, reject
 host-suffix, melosthosnarc.cfd, reject
@@ -52664,6 +52668,7 @@ host-suffix, messardu.com, reject
 host-suffix, messetcanopicclavial.cyou, reject
 host-suffix, messireresows.cfd, reject
 host-suffix, messmonster.com, reject
+host-suffix, messrod.com, reject
 host-suffix, messy-brain.com, reject
 host-suffix, messyadvance.com, reject
 host-suffix, messyhanging.com, reject
@@ -63998,6 +64003,7 @@ host-suffix, pitvdiulclmds.space, reject
 host-suffix, pityneedsdads.com, reject
 host-suffix, piupvzxrjejxr.online, reject
 host-suffix, piuyt.com, reject
+host-suffix, pivotfresh.com, reject
 host-suffix, pivotrunner.com, reject
 host-suffix, piwik.org, reject
 host-suffix, piwik.pro, reject
@@ -80944,6 +80950,7 @@ host-suffix, tarokshabits.qpon, reject
 host-suffix, tarorumpy.cyou, reject
 host-suffix, tarotaffirm.com, reject
 host-suffix, tarpturfdom.cfd, reject
+host-suffix, tarqivo.com, reject
 host-suffix, tarquingumtreemourner.qpon, reject
 host-suffix, tarrasspumpman.click, reject
 host-suffix, tarrescurioso.com, reject
@@ -87576,6 +87583,7 @@ host-suffix, userneeds.dk, reject
 host-suffix, userreplay.com, reject
 host-suffix, userreplay.net, reject
 host-suffix, usersasa.com, reject
+host-suffix, usersays.com, reject
 host-suffix, userstat.net, reject
 host-suffix, usertag.online, reject
 host-suffix, userwave.com, reject

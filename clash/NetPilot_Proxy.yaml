@@ -1,5 +1,5 @@
 # NetPilot 代理规则集（PROXY）（由 Shadowrocket 模块自动转换，源更新后自动同步，请勿手动编辑）
-# 条目数：48675
+# 条目数：48677
 payload:
   - 'DOMAIN,1password.drift.click'
   - 'DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net'
@@ -9,6 +9,7 @@ payload:
   - 'DOMAIN,api-p.videomarket.jp'
   - 'DOMAIN,api-siri-prod.apple.com'
   - 'DOMAIN,apple-tv-plus-press.apple.com'
+  - 'DOMAIN,aurora-customization-usw2.lithium.com'
   - 'DOMAIN,azure.microsoft.com'
   - 'DOMAIN,azuremarketplace.microsoft.com'
   - 'DOMAIN,bbs.boingboing.net'
@@ -14655,6 +14656,7 @@ payload:
   - 'DOMAIN-SUFFIX,fcacebook.com'
   - 'DOMAIN-SUFFIX,fcaebook.com'
   - 'DOMAIN-SUFFIX,fcchk.org'
+  - 'DOMAIN-SUFFIX,fce.gg'
   - 'DOMAIN-SUFFIX,fcebook.com'
   - 'DOMAIN-SUFFIX,fcebookk.com'
   - 'DOMAIN-SUFFIX,fcfacebook.com'

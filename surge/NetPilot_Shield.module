@@ -1,5 +1,5 @@
 #!name=NetPilot Shield
-#!desc=代理规则: 48828 ｜ 去广告规则: 242941
+#!desc=代理规则: 48830 ｜ 去广告规则: 242956
 # 由 NetPilot 转换器自 Shadowrocket 模块自动生成（Surge 合规版），源更新后自动同步，请勿手动编辑。
 
 [Rule]
@@ -14,6 +14,7 @@ DOMAIN,angle.com.tw,PROXY
 DOMAIN,api-p.videomarket.jp,PROXY
 DOMAIN,api-siri-prod.apple.com,PROXY
 DOMAIN,apple-tv-plus-press.apple.com,PROXY
+DOMAIN,aurora-customization-usw2.lithium.com,PROXY
 DOMAIN,azure.microsoft.com,PROXY
 DOMAIN,azuremarketplace.microsoft.com,PROXY
 DOMAIN,bbs.boingboing.net,PROXY
@@ -14638,6 +14639,7 @@ DOMAIN-SUFFIX,fc336.com,PROXY
 DOMAIN-SUFFIX,fcacebook.com,PROXY
 DOMAIN-SUFFIX,fcaebook.com,PROXY
 DOMAIN-SUFFIX,fcchk.org,PROXY
+DOMAIN-SUFFIX,fce.gg,PROXY
 DOMAIN-SUFFIX,fcebook.com,PROXY
 DOMAIN-SUFFIX,fcebookk.com,PROXY
 DOMAIN-SUFFIX,fcfacebook.com,PROXY
@@ -56639,6 +56641,7 @@ DOMAIN-SUFFIX,ac.4wank.com,REJECT
 DOMAIN-SUFFIX,ac.86huoche.com,REJECT
 DOMAIN-SUFFIX,ac.art456.com,REJECT
 DOMAIN-SUFFIX,ac.atpanel.com,REJECT
+DOMAIN-SUFFIX,ac.avito.ru,REJECT
 DOMAIN-SUFFIX,ac.conel.jp,REJECT
 DOMAIN-SUFFIX,ac.ecai-report.com,REJECT
 DOMAIN-SUFFIX,ac.fapnado.xxx,REJECT
@@ -58475,6 +58478,7 @@ DOMAIN-SUFFIX,adformdsp.net,REJECT
 DOMAIN-SUFFIX,adfox.cam,REJECT
 DOMAIN-SUFFIX,adfox.yandex.ru,REJECT
 DOMAIN-SUFFIX,adfpoint.com,REJECT
+DOMAIN-SUFFIX,adfractal.com,REJECT
 DOMAIN-SUFFIX,adfree-stat.p3g.hu,REJECT
 DOMAIN-SUFFIX,adfrontiers.com,REJECT
 DOMAIN-SUFFIX,adfs.algomoneo.com,REJECT
@@ -67235,6 +67239,7 @@ DOMAIN-SUFFIX,aoyptpffgxcjy.website,REJECT
 DOMAIN-SUFFIX,aoyzivvtxwzev.online,REJECT
 DOMAIN-SUFFIX,aozmpm.jwell.com,REJECT
 DOMAIN-SUFFIX,aozwsa.scotthotel.com,REJECT
+DOMAIN-SUFFIX,ap-prd-edge-clientlog.nexon.com,REJECT
 DOMAIN-SUFFIX,ap.absoluteprotein.in,REJECT
 DOMAIN-SUFFIX,ap.ad-feed.com,REJECT
 DOMAIN-SUFFIX,ap.alphaplatform.net,REJECT
@@ -74255,6 +74260,7 @@ DOMAIN-SUFFIX,beakfuljato.com,REJECT
 DOMAIN-SUFFIX,beaksuccisa.qpon,REJECT
 DOMAIN-SUFFIX,bealafulup.com,REJECT
 DOMAIN-SUFFIX,beam.bereach.ai,REJECT
+DOMAIN-SUFFIX,beam.denikn.cz,REJECT
 DOMAIN-SUFFIX,beam.ecomms.beamconnect.com.au,REJECT
 DOMAIN-SUFFIX,beam.koddi.com,REJECT
 DOMAIN-SUFFIX,beam.mjhlifesciences.com,REJECT
@@ -82630,6 +82636,7 @@ DOMAIN-SUFFIX,cdn.defractal.com,REJECT
 DOMAIN-SUFFIX,cdn.deviceinf.com,REJECT
 DOMAIN-SUFFIX,cdn.dezacibesodexi.com,REJECT
 DOMAIN-SUFFIX,cdn.dfsdk.com,REJECT
+DOMAIN-SUFFIX,cdn.diginetica.net,REJECT
 DOMAIN-SUFFIX,cdn.djtig.com,REJECT
 DOMAIN-SUFFIX,cdn.dminorschool.com,REJECT
 DOMAIN-SUFFIX,cdn.dmtgvn.com,REJECT
@@ -153524,6 +153531,7 @@ DOMAIN-SUFFIX,livid-factor.com,REJECT
 DOMAIN-SUFFIX,lividlyabies.cfd,REJECT
 DOMAIN-SUFFIX,lividlydonnee.qpon,REJECT
 DOMAIN-SUFFIX,living.chartwell.com,REJECT
+DOMAIN-SUFFIX,livingoff.com,REJECT
 DOMAIN-SUFFIX,livingsleet.com,REJECT
 DOMAIN-SUFFIX,livingsspinule.cyou,REJECT
 DOMAIN-SUFFIX,livkjl.recea.pl,REJECT
@@ -167061,6 +167069,7 @@ DOMAIN-SUFFIX,mathematicswhineconvene.com,REJECT
 DOMAIN-SUFFIX,matheranalytics.com,REJECT
 DOMAIN-SUFFIX,mathilde-ads.com,REJECT
 DOMAIN-SUFFIX,mathphenate.qpon,REJECT
+DOMAIN-SUFFIX,mathrevolt.com,REJECT
 DOMAIN-SUFFIX,mathsanalyse.com,REJECT
 DOMAIN-SUFFIX,mathspositionuproar.com,REJECT
 DOMAIN-SUFFIX,mathtag.com,REJECT
@@ -169393,6 +169402,7 @@ DOMAIN-SUFFIX,melodiousharmony.com,REJECT
 DOMAIN-SUFFIX,melodioussymphony.com,REJECT
 DOMAIN-SUFFIX,melodramaticquery.com,REJECT
 DOMAIN-SUFFIX,melodyglobe.com,REJECT
+DOMAIN-SUFFIX,melodyivory.com,REJECT
 DOMAIN-SUFFIX,meloidsandron.qpon,REJECT
 DOMAIN-SUFFIX,meloshounder.com,REJECT
 DOMAIN-SUFFIX,melosthosnarc.cfd,REJECT
@@ -169660,6 +169670,7 @@ DOMAIN-SUFFIX,messardu.com,REJECT
 DOMAIN-SUFFIX,messetcanopicclavial.cyou,REJECT
 DOMAIN-SUFFIX,messireresows.cfd,REJECT
 DOMAIN-SUFFIX,messmonster.com,REJECT
+DOMAIN-SUFFIX,messrod.com,REJECT
 DOMAIN-SUFFIX,messy-brain.com,REJECT
 DOMAIN-SUFFIX,messyadvance.com,REJECT
 DOMAIN-SUFFIX,messyhanging.com,REJECT
@@ -191271,6 +191282,7 @@ DOMAIN-SUFFIX,piu.alldent-zahnzentrum-bremen.de,REJECT
 DOMAIN-SUFFIX,piupvzxrjejxr.online,REJECT
 DOMAIN-SUFFIX,piuyt.com,REJECT
 DOMAIN-SUFFIX,pivimc.unitrailer.pl,REJECT
+DOMAIN-SUFFIX,pivotfresh.com,REJECT
 DOMAIN-SUFFIX,pivotrunner.com,REJECT
 DOMAIN-SUFFIX,piwik.agglo-larochelle.fr,REJECT
 DOMAIN-SUFFIX,piwik.astiga.com,REJECT
@@ -199091,6 +199103,7 @@ DOMAIN-SUFFIX,r.l.youku.com,REJECT
 DOMAIN-SUFFIX,r.lafamo.com,REJECT
 DOMAIN-SUFFIX,r.libl6n31q51ym1jvevxqkm49qv1ugh8h.cyou,REJECT
 DOMAIN-SUFFIX,r.logrocket.io,REJECT
+DOMAIN-SUFFIX,r.lr-hv-in.com,REJECT
 DOMAIN-SUFFIX,r.maintoast.com,REJECT
 DOMAIN-SUFFIX,r.maintrck.com,REJECT
 DOMAIN-SUFFIX,r.marketing.dubaisothebys.com,REJECT
@@ -253648,6 +253661,7 @@ DOMAIN-SUFFIX,tarokshabits.qpon,REJECT
 DOMAIN-SUFFIX,tarorumpy.cyou,REJECT
 DOMAIN-SUFFIX,tarotaffirm.com,REJECT
 DOMAIN-SUFFIX,tarpturfdom.cfd,REJECT
+DOMAIN-SUFFIX,tarqivo.com,REJECT
 DOMAIN-SUFFIX,tarquingumtreemourner.qpon,REJECT
 DOMAIN-SUFFIX,tarrasspumpman.click,REJECT
 DOMAIN-SUFFIX,tarrescurioso.com,REJECT
@@ -258175,6 +258189,7 @@ DOMAIN-SUFFIX,toxsngyxcncej.website,REJECT
 DOMAIN-SUFFIX,toxtren.com,REJECT
 DOMAIN-SUFFIX,toxwllaihbegb.website,REJECT
 DOMAIN-SUFFIX,toy.libaasfashionmart.com,REJECT
+DOMAIN-SUFFIX,toy.log.nexon.io,REJECT
 DOMAIN-SUFFIX,toy4factories.com,REJECT
 DOMAIN-SUFFIX,toyishvat.cyou,REJECT
 DOMAIN-SUFFIX,toylessdispute.cfd,REJECT
@@ -269664,6 +269679,7 @@ DOMAIN-SUFFIX,users.vesrox.com,REJECT
 DOMAIN-SUFFIX,users.vidy.st,REJECT
 DOMAIN-SUFFIX,users16.jabry.com,REJECT
 DOMAIN-SUFFIX,usersasa.com,REJECT
+DOMAIN-SUFFIX,usersays.com,REJECT
 DOMAIN-SUFFIX,usersegment.wpdigital.net,REJECT
 DOMAIN-SUFFIX,userstat.net,REJECT
 DOMAIN-SUFFIX,userstats.shopee.vn,REJECT
@@ -279058,6 +279074,7 @@ DOMAIN-SUFFIX,wkamwqeelkywr.top,REJECT
 DOMAIN-SUFFIX,wkavgpqloh.com,REJECT
 DOMAIN-SUFFIX,wkbkgxkjopxfc.space,REJECT
 DOMAIN-SUFFIX,wkbozgzpgsaex.space,REJECT
+DOMAIN-SUFFIX,wkbrs1.tingyun.com,REJECT
 DOMAIN-SUFFIX,wkbyglkyywtez.space,REJECT
 DOMAIN-SUFFIX,wkcipnrwggdht.store,REJECT
 DOMAIN-SUFFIX,wkclick.baidu.com,REJECT
@@ -301618,6 +301635,15 @@ WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
 feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
 ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
+WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
+12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
+caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
+feikechaguan=type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/fly.js
+jingxi=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/startup.js
+jingdong=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/jd_json.js
+ku'an=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/coolapk.js
+ShunFeng=type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/shunfeng_json.js
+Stay=type=http-response,pattern=^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/stay.js
 WeChat110=type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/UnblockURLinWeChat.js
 12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/12306.js
 caixin=type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://raw.githubusercontent.com/Unwhimsical/NetPilot/main/modules/local_js/caixinads.js
